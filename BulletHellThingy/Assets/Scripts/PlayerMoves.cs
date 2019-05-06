@@ -16,13 +16,13 @@ public class PlayerMoves : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             Vector3 position = this.transform.position;
-            position.z--;
+            position.x--;
             this.transform.position = position;
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             Vector3 position = this.transform.position;
-            position.z++;
+            position.x++;
             this.transform.position = position;
 
         }
