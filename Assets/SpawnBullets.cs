@@ -28,7 +28,7 @@ public class SpawnBullets : MonoBehaviour
         Quaternion rot = transform.rotation;
         float z = rot.eulerAngles.z;
         z -= Input.GetAxis("Rotation") * playerRotationSpeed * Time.deltaTime;
-        rot = Quaternion.Euler(0, 0, z);
+        rot = Quaternion.Euler(90, 0, 0);
         transform.rotation = rot;
 
         //Move Player
