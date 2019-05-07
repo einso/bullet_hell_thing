@@ -15,7 +15,7 @@ public class EnemyLife : MonoBehaviour
     }
     
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Bullet")
         {
