@@ -41,12 +41,12 @@ public class SinusoidalMove : MonoBehaviour
 
     void CheckWhereToFace()
     {
-        if (pos.x <= -7f)
+        if (pos.x <= -6f)
         {
             facingRight = true;
             Debug.Log("MoveLeft");
         }
-        else if (pos.x >= 8f)
+        else if (pos.x >= 7f)
         {
             facingRight = false;
             Debug.Log("MoveRight");
