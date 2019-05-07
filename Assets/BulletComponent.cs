@@ -6,6 +6,6 @@ using Unity.Mathematics;
 
 public struct BulletComponent : IComponentData
 {
-    public float moveSpeed;   
+    public float moveSpeed;
 }
 
