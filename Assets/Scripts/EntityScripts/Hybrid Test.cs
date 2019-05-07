@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 
-public class HybridTest : MonoBehaviour
-{
-    public Vector3 pos;
-}
 
 class HybridTestSystem : ComponentSystem
 {
-    struct Components
+    struct Componentstest
     {
         public Transform transform;
        
@@ -19,13 +15,13 @@ class HybridTestSystem : ComponentSystem
     protected override void OnUpdate()
     {
         //Do something for each Entity with referenced components
-        Entities.ForEach(( ref BulletComponent bulletComponent, ref EnemyPosComponent enemyPosComponent) =>
+        Entities.ForEach(( ref BulletComponent bulletComponent) =>
         {
 
+
             
 
 
-            
 
         });
     }

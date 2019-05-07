@@ -18,4 +18,5 @@ public class BulletMovement : MonoBehaviour
         pos += rot * posChange;
         transform.position = pos;
     }
+
 }

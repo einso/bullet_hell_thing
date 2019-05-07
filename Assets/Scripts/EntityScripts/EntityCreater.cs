@@ -5,7 +5,7 @@ using Unity.Entities;
 using Unity.Transforms;
 using Unity.Rendering;
 
-public class Manager : MonoBehaviour
+public class EntityCreater : MonoBehaviour
 {
     public GameObject Enemy;
     public GameObject Player;
