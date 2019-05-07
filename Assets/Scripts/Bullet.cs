@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "EndWall")
         {
             Debug.Log(other.name);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
     }
