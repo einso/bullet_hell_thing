@@ -19,6 +19,7 @@ public class BulletsPlayer : MonoBehaviour
             Debug.Log(other.name);
             Destroy(other.gameObject);
             Destroy(gameObject);
+            //FindObjectOfType<SpawnEnemies>().NumberOfEnemies -= 1;
         }
 
     }
