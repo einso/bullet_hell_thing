@@ -38,14 +38,14 @@ public class SpawnBullets : MonoBehaviour
         transform.position = pos;
 
         //Create Bullet Entities
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Entity bullet = entityManager.CreateEntity(typeof(BulletComponent), typeof(Translation), typeof(RenderMesh), typeof(LocalToWorld), typeof(Rotation));
-            entityManager.SetComponentData(bullet, new BulletComponent { moveSpeed = bulletSpeed });
-            entityManager.SetComponentData(bullet, new Translation { Value = transform.position });
-            entityManager.SetComponentData(bullet, new Rotation { Value = transform.rotation });
-            entityManager.SetSharedComponentData(bullet, new RenderMesh { mesh = mesh, material = material });
-        }
+        //if (Input.GetKey(KeyCode.Space))
+        //{
+        //    Entity bullet = entityManager.CreateEntity(typeof(BulletComponent), typeof(Translation), typeof(RenderMesh), typeof(LocalToWorld), typeof(Rotation));
+        //    entityManager.SetComponentData(bullet, new BulletComponent { moveSpeed = bulletSpeed });
+        //    entityManager.SetComponentData(bullet, new Translation { Value = transform.position });
+        //    entityManager.SetComponentData(bullet, new Rotation { Value = transform.rotation });
+        //    entityManager.SetSharedComponentData(bullet, new RenderMesh { mesh = mesh, material = material });
+        //}
 
     }
 }
