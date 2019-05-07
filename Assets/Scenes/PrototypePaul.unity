@@ -2876,5 +2876,15 @@ PrefabInstance:
       propertyPath: SpawnNextEnemy
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8876464564475743305, guid: ef8aa62233a64dd4fb313380b3fd689c,
+        type: 3}
+      propertyPath: maxSecNextEnemySpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876464564475743305, guid: ef8aa62233a64dd4fb313380b3fd689c,
+        type: 3}
+      propertyPath: minSecNextEnemySpawn
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef8aa62233a64dd4fb313380b3fd689c, type: 3}

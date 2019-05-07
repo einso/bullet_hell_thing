@@ -7,25 +7,28 @@ public class Manager : MonoBehaviour
     public GameObject Camera;
     public GameObject enemyPrefab;
     float time;
-    public float SpawnNextEnemy = 2;
+    public float maxSecNextEnemySpawn = 1;
+    public float minSecNextEnemySpawn = 3;
+    float randSecNextEnemySpawn;
     //public int NumberOfEnemies;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        randSecNextEnemySpawn = time;
     }
 
     // Update is called once per frame
     void Update()
     {
         time = time + 1 * Time.deltaTime;
-        Debug.Log(time);
 
-        if(time > SpawnNextEnemy)
+        if(time > randSecNextEnemySpawn)
         {
             SpawnEnemy();
             time = 0;
+            randSecNextEnemySpawn = Random.Range(minSecNextEnemySpawn, maxSecNextEnemySpawn);
+            Debug.Log(randSecNextEnemySpawn);
         }
     }
 
