@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Transforms;
+using Unity.Physics;
 
 public class BulletSystem : ComponentSystem 
 {
