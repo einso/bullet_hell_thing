@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemies : MonoBehaviour
+public class Manager : MonoBehaviour
 {
     public GameObject Camera;
     public GameObject enemyPrefab;
