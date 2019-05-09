@@ -3785,6 +3785,8 @@ MonoBehaviour:
   Camera: {fileID: 1687258581}
   enemyPrefab: {fileID: 6907306608720739348, guid: 29a9fa6cd9a5d324f851d47663af8b02,
     type: 3}
+  ghostPrefab: {fileID: 6907306608720739348, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+    type: 3}
   DeathScreen: {fileID: 358547442}
   PauseScreen: {fileID: 2096148748}
   scoreGUI: {fileID: 516773713}

@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  frequency: 8
-  magnitude: 0.5
+  frequency: 1
+  magnitude: 1
 --- !u!1 &6907306609974665126
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,4 +162,4 @@ MonoBehaviour:
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
-  splitShot: 1
+  splitShot: 0
