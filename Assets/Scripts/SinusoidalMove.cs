@@ -5,10 +5,10 @@ using UnityEngine;
 public class SinusoidalMove : MonoBehaviour
 {
     [SerializeField]
-    float moveSpeed = 5f;
+    public float moveSpeed = 5f;
 
     [SerializeField]
-    float frequency = 20f;
+    public float frequency = 20f;
 
     [SerializeField]
     float magnitude = 0.5f;
@@ -41,12 +41,12 @@ public class SinusoidalMove : MonoBehaviour
 
     void CheckWhereToFace()
     {
-        if (pos.x <= -6f)
+        if (pos.x <= -7f)
         {
             facingRight = true;
             Debug.Log("MoveLeft");
         }
-        else if (pos.x >= 7f)
+        else if (pos.x >= 8f)
         {
             facingRight = false;
             Debug.Log("MoveRight");

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2671275500394267908}
   - component: {fileID: 848473712969589009}
   - component: {fileID: 6361607847503917791}
-  - component: {fileID: 3576156577370960219}
+  - component: {fileID: 3364433788916065474}
   m_Layer: 0
-  m_Name: EnemyProjectile
+  m_Name: EnemyProjectile 1
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &3576156577370960219
+--- !u!114 &3364433788916065474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,8 +118,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5023740037609329906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3e843772bc359e488250758d3191fbb, type: 3}
+  m_Script: {fileID: 11500000, guid: d36810431ac0a2140ad250558b64431c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  rb: {fileID: 6361607847503917791}
+  moveSpeed: 5
+  frequency: 8
+  magnitude: 0.5

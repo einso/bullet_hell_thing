@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6907306608720739346}
   - component: {fileID: 6907306608720739345}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Ghost
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  frequency: 8
-  magnitude: 0.5
+  frequency: 1
+  magnitude: 1
 --- !u!1 &6907306609974665126
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,4 +162,4 @@ MonoBehaviour:
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
-  splitShot: 1
+  splitShot: 0

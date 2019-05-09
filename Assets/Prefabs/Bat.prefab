@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6907306608720739347}
   - component: {fileID: 6907306608720739346}
   - component: {fileID: 6907306608720739345}
+  - component: {fileID: 5532556812900462677}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,8 +107,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  frequency: 8
+  frequency: 7
   magnitude: 0.5
+--- !u!114 &5532556812900462677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907306608720739348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36e0b6cb5549444688396de3f600dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
 --- !u!1 &6907306609974665126
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,4 +176,4 @@ MonoBehaviour:
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
-  splitShot: 1
+  splitShot: 0
