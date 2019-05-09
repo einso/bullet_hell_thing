@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Move Player
         Vector3 pos = transform.position;
-        Vector3 posChange = new Vector3(Input.GetAxis("Horizontal") * playerMoveSpeed * Time.deltaTime, Input.GetAxis("Vertical") * playerMoveSpeed * Time.deltaTime, 0);
+        Vector3 posChange = new Vector3(Input.GetAxisRaw("Horizontal") * playerMoveSpeed * Time.deltaTime, Input.GetAxisRaw("Vertical") * playerMoveSpeed * Time.deltaTime, 0);
         pos += rot * posChange;
         transform.position = pos;
 

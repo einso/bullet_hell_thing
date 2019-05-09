@@ -19,6 +19,7 @@ public class EnemyBullet : MonoBehaviour
             Debug.Log(other.name);
             Destroy(other.gameObject);
             Destroy(gameObject);
+            FindObjectOfType<Manager>().PlayerDeath();
         }
         if (other.gameObject.tag == "EndWall")
         {
