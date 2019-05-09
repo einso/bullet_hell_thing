@@ -18,7 +18,8 @@ public class BulletsPlayer : MonoBehaviour
         {
             Debug.Log(other.name);
             Destroy(other.gameObject);
-            Destroy(gameObject);            
+            Destroy(gameObject);
+            FindObjectOfType<Manager>().scoreCount += 100;
             //FindObjectOfType<SpawnEnemies>().NumberOfEnemies -= 1;
         }
 

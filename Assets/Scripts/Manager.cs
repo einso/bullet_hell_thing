@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,10 +11,16 @@ public class Manager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject DeathScreen;
     public GameObject PauseScreen;
+    public GameObject scoreGUI;
+    public GameObject timeGUI;
+
     float time;
+
     public float maxSecNextEnemySpawn = 1;
     public float minSecNextEnemySpawn = 3;
     float randSecNextEnemySpawn;
+
+    public float scoreCount;
     //public int NumberOfEnemies;
 
     // Start is called before the first frame update
@@ -36,8 +43,11 @@ public class Manager : MonoBehaviour
                 SpawnEnemy();
                 time = 0;
                 randSecNextEnemySpawn = Random.Range(minSecNextEnemySpawn, maxSecNextEnemySpawn);
-                Debug.Log(randSecNextEnemySpawn);
             }
+
+            //GUI Update
+            scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0.00"); ;
 
             //PauseGame
             PauseGame();
@@ -61,7 +71,7 @@ public class Manager : MonoBehaviour
     //PlayerDeathEvent
     public void PlayerDeath()
     {
-        DeathScreen.SetActive(true);   
+        DeathScreen.SetActive(true);
     }
 
     //PauseGameEvent

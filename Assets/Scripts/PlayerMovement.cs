@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
-
+    float shipBoundary = 0.35f;
 
     private void Update()
     {
