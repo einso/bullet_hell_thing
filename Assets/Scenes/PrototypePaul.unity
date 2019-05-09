@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbc4d35d8a64444d88d610ea886f0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 1802247901}
   playerMoveSpeed: 5
   playerRotationSpeed: 15
 --- !u!136 &175833661
@@ -2375,7 +2376,10 @@ MonoBehaviour:
   enemyFireSpawn: {fileID: 972769778}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
+  EnemyProjectilePrefab2: {fileID: 0}
   firingPeriod: 1.2
+  linearShot: 0
+  sinusShot: 0
 --- !u!1 &979803503
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,7 +2426,11 @@ MonoBehaviour:
   enemyFireSpawn: {fileID: 979803504}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
+  EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
+    type: 3}
   firingPeriod: 1
+  linearShot: 0
+  sinusShot: 0
 --- !u!1 &1047783795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2469,7 +2477,10 @@ MonoBehaviour:
   enemyFireSpawn: {fileID: 1047783796}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
+  EnemyProjectilePrefab2: {fileID: 0}
   firingPeriod: 0.4
+  linearShot: 0
+  sinusShot: 0
 --- !u!1 &1059463938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3259,7 +3270,10 @@ MonoBehaviour:
   enemyFireSpawn: {fileID: 1618570570}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
+  EnemyProjectilePrefab2: {fileID: 0}
   firingPeriod: 1
+  linearShot: 0
+  sinusShot: 0
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,7 +3505,10 @@ MonoBehaviour:
   enemyFireSpawn: {fileID: 1715990669}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
+  EnemyProjectilePrefab2: {fileID: 0}
   firingPeriod: 1
+  linearShot: 0
+  sinusShot: 0
 --- !u!1 &1722703463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3538,7 +3555,10 @@ MonoBehaviour:
   enemyFireSpawn: {fileID: 1722703464}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
+  EnemyProjectilePrefab2: {fileID: 0}
   firingPeriod: 0.7
+  linearShot: 0
+  sinusShot: 0
 --- !u!1 &1723715367
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,7 +3846,10 @@ MonoBehaviour:
   enemyFireSpawn: {fileID: 1909448012}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
+  EnemyProjectilePrefab2: {fileID: 0}
   firingPeriod: 0.8
+  linearShot: 0
+  sinusShot: 0
 --- !u!1 &1952511435
 GameObject:
   m_ObjectHideFlags: 0
@@ -4295,7 +4318,10 @@ MonoBehaviour:
   enemyFireSpawn: {fileID: 2113658254}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
+  EnemyProjectilePrefab2: {fileID: 0}
   firingPeriod: 0.7
+  linearShot: 0
+  sinusShot: 0
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
@@ -4387,6 +4413,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 45, y: 130, z: 90}
+--- !u!1001 &2178710025674972765
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6907306608720739348, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739348, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739349, guid: 29a9fa6cd9a5d324f851d47663af8b02,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29a9fa6cd9a5d324f851d47663af8b02, type: 3}
 --- !u!4 &3900005062024962029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3900005062024962029, guid: 462eb3366aa9afe48acba628e94f8480,

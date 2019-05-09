@@ -7,7 +7,7 @@ using Unity.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public GameObject Manager;
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
     float shipBoundary = 0.35f;
@@ -29,6 +29,6 @@ public class PlayerMovement : MonoBehaviour
         transform.position = pos;
 
 
-        
     }
+
 }
