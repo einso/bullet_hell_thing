@@ -16,7 +16,7 @@ public class RotateWorld : MonoBehaviour
     {
         if (potato == true)
         {
-            Debug.Log("potatooooo!");
+
             transform.Rotate(Vector3.up * 20 * Time.deltaTime);
             
         }

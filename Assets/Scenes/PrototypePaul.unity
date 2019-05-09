@@ -467,7 +467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175833657}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.5, y: 0.88, z: 0.86}
+  m_LocalPosition: {x: 0.5, y: 0.88, z: 1.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1603048834}
@@ -2377,9 +2377,12 @@ MonoBehaviour:
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
+  EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 1.2
   linearShot: 0
   sinusShot: 0
+  sprayShot: 0
+  splitShot: 0
 --- !u!1 &979803503
 GameObject:
   m_ObjectHideFlags: 0
@@ -2428,9 +2431,12 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
     type: 3}
+  EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 1
   linearShot: 0
   sinusShot: 0
+  sprayShot: 0
+  splitShot: 0
 --- !u!1 &1047783795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,9 +2484,12 @@ MonoBehaviour:
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
+  EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 0.4
   linearShot: 0
   sinusShot: 0
+  sprayShot: 0
+  splitShot: 0
 --- !u!1 &1059463938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,9 +3280,12 @@ MonoBehaviour:
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
+  EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 1
   linearShot: 0
   sinusShot: 0
+  sprayShot: 0
+  splitShot: 0
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3506,9 +3518,12 @@ MonoBehaviour:
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
+  EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 1
   linearShot: 0
   sinusShot: 0
+  sprayShot: 0
+  splitShot: 0
 --- !u!1 &1722703463
 GameObject:
   m_ObjectHideFlags: 0
@@ -3556,9 +3571,12 @@ MonoBehaviour:
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
+  EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 0.7
   linearShot: 0
   sinusShot: 0
+  sprayShot: 0
+  splitShot: 0
 --- !u!1 &1723715367
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,9 +3865,12 @@ MonoBehaviour:
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
+  EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 0.8
   linearShot: 0
   sinusShot: 0
+  sprayShot: 0
+  splitShot: 0
 --- !u!1 &1952511435
 GameObject:
   m_ObjectHideFlags: 0
@@ -4319,9 +4340,12 @@ MonoBehaviour:
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
+  EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 0.7
   linearShot: 0
   sinusShot: 0
+  sprayShot: 0
+  splitShot: 0
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0

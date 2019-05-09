@@ -12,6 +12,7 @@ public class EnemyBullet : MonoBehaviour
         rb.velocity = transform.forward * speed;
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
