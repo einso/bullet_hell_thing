@@ -26,6 +26,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         randSecNextEnemySpawn = time;
     }
 
@@ -47,7 +48,7 @@ public class Manager : MonoBehaviour
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0.00"); ;
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0.00"); 
 
             //PauseGame
             PauseGame();
