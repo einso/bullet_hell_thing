@@ -62,12 +62,6 @@ public class Manager : MonoBehaviour
         Instantiate(enemyPrefab, new Vector3(spawnPosX - 10, 0.78f, Camera.transform.position.z + 3.7f), transform.rotation);
     }
 
-    //RestartEvent
-    public void Restart()
-    {
-        SceneManager.LoadScene(0);
-    }
-
     //PlayerDeathEvent
     public void PlayerDeath()
     {
@@ -90,17 +84,12 @@ public class Manager : MonoBehaviour
         }
     }
 
-    //void ContinueEvent   
+    //ContinueEvent   
     public void Continue()
     {
         PauseScreen.SetActive(false);
         Time.timeScale = 1;
     }
 
-    //void QuitEvent   
-    public void Quit()
-    {
-        Application.Quit();
-    }   
-    
+
 }
