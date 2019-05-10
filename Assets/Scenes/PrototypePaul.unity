@@ -2424,6 +2424,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 1
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &926745873
 GameObject:
@@ -2677,6 +2678,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 0
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &979803503
 GameObject:
@@ -2733,6 +2735,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 0
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &1047783795
 GameObject:
@@ -2788,6 +2791,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 0
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &1059463938
 GameObject:
@@ -3279,6 +3283,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 1
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &1239992173
 GameObject:
@@ -3336,6 +3341,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 1
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &1333654776
 GameObject:
@@ -3700,6 +3706,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 0
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1001 &1650969519
 PrefabInstance:
@@ -4019,6 +4026,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 0
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &1722703463
 GameObject:
@@ -4074,6 +4082,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 0
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &1723715367
 GameObject:
@@ -4374,6 +4383,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 0
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &1952511435
 GameObject:
@@ -4854,6 +4864,7 @@ MonoBehaviour:
   sprayShot: 0
   splitShot: 0
   ghostShot: 0
+  duoShot: 0
   triShot: 0
 --- !u!1 &2138677391
 GameObject:

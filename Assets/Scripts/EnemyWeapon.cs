@@ -18,6 +18,7 @@ public class EnemyWeapon : MonoBehaviour
     public bool sprayShot;
     public bool splitShot;
     public bool ghostShot;
+    public bool duoShot;
     public bool triShot;
 
     void Start()
@@ -100,6 +101,16 @@ public class EnemyWeapon : MonoBehaviour
             GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
             shot.GetComponent<EnemyBullet>().speed = 5;
             shot.transform.LookAt(Player);
+            time = 0;
+        }
+    }
+
+    void DuoShot(float firingPeriod)
+    {
+        if (time >= firingPeriod)
+        {
+            GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
+            GameObject shot2 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
             time = 0;
         }
     }
