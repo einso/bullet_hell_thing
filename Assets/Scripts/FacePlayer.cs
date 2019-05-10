@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FacePlayer : MonoBehaviour
 {
-    public GameObject Player;
+    Transform Player;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class FacePlayer : MonoBehaviour
     {
         if (Player != null)
         {
-            //transform.LookAt(Player);
+            transform.LookAt(Player);
         }
     }
 }
