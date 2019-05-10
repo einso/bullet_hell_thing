@@ -13,11 +13,12 @@ public class Manager : MonoBehaviour
     public GameObject PauseScreen;
     public GameObject scoreGUI;
     public GameObject timeGUI;
+    public int spawnsAtOnce = 3;
 
     float time;
 
-    public float maxSecNextEnemySpawn = 1;
-    public float minSecNextEnemySpawn = 3;
+    public float maxSecNextEnemySpawn = 0f;
+    public float minSecNextEnemySpawn = 0.2f;
     float randSecNextEnemySpawn;
 
     public float scoreCount;
@@ -55,6 +56,10 @@ public class Manager : MonoBehaviour
         }
     }
 
+    void SpawnNumber()
+    { for (int i = 0; i < spawnsAtOnce; i++);
+            { Invoke("SpawnEnemy", 1); }
+    }
     //SpawnEnemyEvent
     void SpawnEnemy()
     {
@@ -68,6 +73,10 @@ public class Manager : MonoBehaviour
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);
     }
 
+    public void PlayerLevelUp()
+    {
+
+    }
     //PlayerDeathEvent
     public void PlayerDeath()
     {
