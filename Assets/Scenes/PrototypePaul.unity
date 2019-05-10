@@ -3902,8 +3902,9 @@ MonoBehaviour:
   PauseScreen: {fileID: 2096148748}
   scoreGUI: {fileID: 516773713}
   timeGUI: {fileID: 2013133576}
+  spawnsAtOnce: 10
   maxSecNextEnemySpawn: 0
-  minSecNextEnemySpawn: 2
+  minSecNextEnemySpawn: 1
   scoreCount: 0
 --- !u!4 &1802247903
 Transform:
