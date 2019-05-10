@@ -163,3 +163,5 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 1
+  triShot: 0

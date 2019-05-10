@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour
 {
     public Transform enemyFireSpawn;
+    Transform Player;
+
     public GameObject EnemyProjectilePrefab;
     public GameObject EnemyProjectilePrefab2;
     public GameObject EnemyProjectilePrefab3;
@@ -15,22 +17,33 @@ public class EnemyWeapon : MonoBehaviour
     public bool sinusShot;
     public bool sprayShot;
     public bool splitShot;
+    public bool ghostShot;
+    public bool triShot;
+
+    void Start()
+    {
+        Player = GameObject.Find("Player").transform;
+    }
 
     void Update()
     {
         time += Time.deltaTime;
 
-        if (linearShot) LinearShot();
+        if (linearShot) LinearShot(3);
 
-        if (sinusShot) SinusShot();
+        if (sinusShot) SinusShot(3);
 
-        if (sprayShot) SprayShot();
+        if (sprayShot) SprayShot(3);
 
-        if (splitShot) SplitShot();
+        if (splitShot) SplitShot(3);
+
+        if (ghostShot) GhostShot(3);
+
+        if (triShot) TriShot(3);
 
     }
     
-    void LinearShot()
+    void LinearShot(float firingPeriod)
     {
         if (time >= firingPeriod)
         {
@@ -39,7 +52,7 @@ public class EnemyWeapon : MonoBehaviour
         }
     }
     
-    void SinusShot()
+    void SinusShot(float firingPeriod)
     {
         if (time >= firingPeriod)
         {
@@ -48,7 +61,7 @@ public class EnemyWeapon : MonoBehaviour
         }
     }
 
-    void SprayShot()
+    void SprayShot(float firingPeriod)
     {
         if (time >= firingPeriod)
         {
@@ -71,12 +84,43 @@ public class EnemyWeapon : MonoBehaviour
         }
     }
 
-    void SplitShot()
+    void SplitShot(float firingPeriod)
     {
         if (time >= firingPeriod)
         {
             Instantiate(EnemyProjectilePrefab3, enemyFireSpawn.position, enemyFireSpawn.rotation);
             time = 0;
+        }
+    }
+
+    void GhostShot(float firingPeriod)
+    {
+        if (time >= firingPeriod)
+        {
+            GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
+            shot.GetComponent<EnemyBullet>().speed = 5;
+            shot.transform.LookAt(Player);
+            time = 0;
+        }
+    }
+
+    void TriShot(float firingPeriod)
+    {
+        if (time >= firingPeriod)
+        {
+            GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
+            shot.GetComponent<EnemyBullet>().speed = 5;
+            shot.transform.LookAt(Player);
+
+            GameObject shot2 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
+            shot2.GetComponent<EnemyBullet>().speed = 3;
+            shot2.transform.LookAt(Player);
+
+            GameObject shot3 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
+            shot3.GetComponent<EnemyBullet>().speed = 1;
+            shot3.transform.LookAt(Player);
+
+            time = 0;  
         }
     }
 
