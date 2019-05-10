@@ -608,6 +608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  straight: 0
+  angled: 0
   moveSpeed: 4
   frequency: 4
   magnitude: 0.5
@@ -1027,6 +1029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  straight: 0
+  angled: 0
   moveSpeed: 2
   frequency: 2
   magnitude: 0.5
@@ -1135,6 +1139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  straight: 0
+  angled: 0
   moveSpeed: 9
   frequency: 2
   magnitude: 0.5
@@ -1243,6 +1249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  straight: 0
+  angled: 0
   moveSpeed: 8
   frequency: 12
   magnitude: 0.5
@@ -1711,6 +1719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  straight: 0
+  angled: 0
   moveSpeed: 2
   frequency: 2
   magnitude: 0.5
@@ -1819,6 +1829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  straight: 0
+  angled: 0
   moveSpeed: 3
   frequency: 3
   magnitude: 0.5
@@ -2374,7 +2386,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 972769778}
-  Player: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -2384,6 +2395,7 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 0
   triShot: 0
 --- !u!1 &979803503
 GameObject:
@@ -2429,7 +2441,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 979803504}
-  Player: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
@@ -2440,6 +2451,7 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 0
   triShot: 0
 --- !u!1 &1047783795
 GameObject:
@@ -2485,7 +2497,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1047783796}
-  Player: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -2495,6 +2506,7 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 0
   triShot: 0
 --- !u!1 &1059463938
 GameObject:
@@ -3283,7 +3295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1618570570}
-  Player: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -3293,6 +3304,7 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 0
   triShot: 0
 --- !u!1001 &1650969519
 PrefabInstance:
@@ -3305,6 +3317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306608720739348, guid: f8911a5e99d8f194e8234c7e0555a313,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6907306608720739349, guid: f8911a5e99d8f194e8234c7e0555a313,
         type: 3}
@@ -3597,7 +3614,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1715990669}
-  Player: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -3607,6 +3623,7 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 0
   triShot: 0
 --- !u!1 &1722703463
 GameObject:
@@ -3652,7 +3669,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1722703464}
-  Player: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -3662,6 +3678,7 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 0
   triShot: 0
 --- !u!1 &1723715367
 GameObject:
@@ -3834,6 +3851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  straight: 0
+  angled: 0
   moveSpeed: 3
   frequency: 3
   magnitude: 0.5
@@ -3869,12 +3888,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 175833657}
   Camera: {fileID: 1687258581}
-  enemyPrefab: {fileID: 6907306608720739348, guid: 29a9fa6cd9a5d324f851d47663af8b02,
-    type: 3}
-  ghostPrefab: {fileID: 6907306608720739348, guid: d72a9ceb4f90f104c8c887307c6972eb,
-    type: 3}
-  batPrefab: {fileID: 6907306608720739348, guid: f8911a5e99d8f194e8234c7e0555a313,
-    type: 3}
+  enemyPrefabs:
+  - {fileID: 6907306608720739348, guid: d72a9ceb4f90f104c8c887307c6972eb, type: 3}
+  - {fileID: 6907306608720739348, guid: f8911a5e99d8f194e8234c7e0555a313, type: 3}
   DeathScreen: {fileID: 358547442}
   PauseScreen: {fileID: 2096148748}
   scoreGUI: {fileID: 516773713}
@@ -3952,7 +3968,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1909448012}
-  Player: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -3962,6 +3977,7 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 0
   triShot: 0
 --- !u!1 &1952511435
 GameObject:
@@ -4349,6 +4365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  straight: 0
+  angled: 0
   moveSpeed: 6
   frequency: 12
   magnitude: 0.5
@@ -4429,7 +4447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 2113658254}
-  Player: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -4439,6 +4456,7 @@ MonoBehaviour:
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+  ghostShot: 0
   triShot: 0
 --- !u!1 &2138677391
 GameObject:

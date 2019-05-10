@@ -29,17 +29,17 @@ public class EnemyWeapon : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if (linearShot) LinearShot(3);
+        if (linearShot) LinearShot(firingPeriod);
 
-        if (sinusShot) SinusShot(3);
+        if (sinusShot) SinusShot(firingPeriod);
 
-        if (sprayShot) SprayShot(3);
+        if (sprayShot) SprayShot(firingPeriod);
 
-        if (splitShot) SplitShot(3);
+        if (splitShot) SplitShot(firingPeriod);
 
-        if (ghostShot) GhostShot(3);
+        if (ghostShot) GhostShot(firingPeriod);
 
-        if (triShot) TriShot(3);
+        if (triShot) TriShot(firingPeriod);
 
     }
     
