@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   straight: 0
   angled: 0
   moveSpeed: 4
@@ -1029,6 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   straight: 0
   angled: 0
   moveSpeed: 2
@@ -1139,6 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   straight: 0
   angled: 0
   moveSpeed: 9
@@ -1249,6 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   straight: 0
   angled: 0
   moveSpeed: 8
@@ -1719,6 +1723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   straight: 0
   angled: 0
   moveSpeed: 2
@@ -1829,6 +1834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   straight: 0
   angled: 0
   moveSpeed: 3
@@ -3851,6 +3857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   straight: 0
   angled: 0
   moveSpeed: 3
@@ -4365,6 +4372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   straight: 0
   angled: 0
   moveSpeed: 6

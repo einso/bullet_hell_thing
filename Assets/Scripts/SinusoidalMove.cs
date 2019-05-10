@@ -6,6 +6,8 @@ public class SinusoidalMove : MonoBehaviour
 {
     GameObject Camera;
 
+    public float scoreValue = 100;
+
     public bool straight;
     public bool angled;
 

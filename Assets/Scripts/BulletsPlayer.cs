@@ -19,7 +19,8 @@ public class BulletsPlayer : MonoBehaviour
             Debug.Log(other.name);
             Destroy(other.gameObject);
             Destroy(gameObject);
-            FindObjectOfType<Manager>().scoreCount += 100;
+            FindObjectOfType<Manager>().scoreCount += other.GetComponent<SinusoidalMove>().scoreValue;
+
             //FindObjectOfType<SpawnEnemies>().NumberOfEnemies -= 1;
         }
 
