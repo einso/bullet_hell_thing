@@ -2440,6 +2440,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
+        type: 3}
+      propertyPath: flowerShot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
+        type: 3}
+      propertyPath: triShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
+        type: 3}
+      propertyPath: duoShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
+        type: 3}
+      propertyPath: ghostShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
+        type: 3}
+      propertyPath: splitShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
+        type: 3}
+      propertyPath: sprayShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
+        type: 3}
+      propertyPath: sinusShot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
+        type: 3}
+      propertyPath: linearShot
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9556fa7d972944c8fcb3310d24e547, type: 3}
 --- !u!1 &891318980
@@ -4389,7 +4429,7 @@ MonoBehaviour:
   scoreGUI: {fileID: 516773713}
   timeGUI: {fileID: 2013133576}
   spawnsAtOnce: 10
-  maxSecNextEnemySpawn: 0
+  maxSecNextEnemySpawn: 3
   minSecNextEnemySpawn: 1
   scoreCount: 0
 --- !u!4 &1802247903
