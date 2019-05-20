@@ -448,7 +448,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 14042d87f38d67348b13aed3318844a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99921d43fb8bceb41b8cb3218be86a50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -468,7 +468,7 @@ Transform:
   m_GameObject: {fileID: 175833657}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.5, y: 0.88, z: 1.44}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1603048834}
   m_Father: {fileID: 0}
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1802247901}
-  playerMoveSpeed: 5
+  playerMoveSpeed: 7.5
   playerRotationSpeed: 15
   Camera: {fileID: 1687258584}
 --- !u!136 &175833661
@@ -2082,15 +2082,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653260035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: 680922c45b9bfe14085ea8a49e7d23dd, type: 2}
-  isGlobal: 1
+  isGlobal: 0
   blendDistance: 0
-  weight: 1
+  weight: 0
   priority: 0
 --- !u!4 &653260038
 Transform:
@@ -3289,7 +3289,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cfc9e5cf257d0ff4b95d7a61c374d36b, type: 2}
+  - {fileID: 2100000, guid: 722feb76aa683bc448ff38990348daa9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3325,8 +3325,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130955374}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.70710677}
-  m_LocalPosition: {x: 0.52, y: -10.347094, z: 3.296371}
-  m_LocalScale: {x: 20.57728, y: 20.57728, z: 20.57728}
+  m_LocalPosition: {x: 0.52, y: -20.54, z: 3.296371}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 3900005062024962029}
   m_Father: {fileID: 0}
@@ -3733,7 +3733,7 @@ MonoBehaviour:
   firePoint: {fileID: 1603048834}
   bulletPrefab: {fileID: 805040988089598216, guid: 0acca75acd7a85541b030fa975715f23,
     type: 3}
-  delay: 0.25
+  delay: 0.15
 --- !u!1 &1605132127
 GameObject:
   m_ObjectHideFlags: 0
@@ -4007,7 +4007,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -4621,7 +4621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1983710426
 Transform:
   m_ObjectHideFlags: 0
@@ -5183,7 +5183,7 @@ PrefabInstance:
     - target: {fileID: 3900005062024962029, guid: 462eb3366aa9afe48acba628e94f8480,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5026
+      value: 0.479
       objectReference: {fileID: 0}
     - target: {fileID: 3900005062024962029, guid: 462eb3366aa9afe48acba628e94f8480,
         type: 3}
