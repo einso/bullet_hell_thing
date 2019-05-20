@@ -4415,6 +4415,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1802247903}
   - component: {fileID: 1802247902}
+  - component: {fileID: 1802247905}
+  - component: {fileID: 1802247906}
+  - component: {fileID: 1802247908}
+  - component: {fileID: 1802247907}
   - component: {fileID: 1802247904}
   m_Layer: 0
   m_Name: Manager
@@ -4441,6 +4445,11 @@ MonoBehaviour:
   PauseScreen: {fileID: 2096148748}
   scoreGUI: {fileID: 516773713}
   timeGUI: {fileID: 2013133576}
+  amountOfProbabilities: 0
+  enemyPrefabs:
+  - {fileID: 6907306608720739348, guid: d72a9ceb4f90f104c8c887307c6972eb, type: 3}
+  - {fileID: 6907306608720739348, guid: f8911a5e99d8f194e8234c7e0555a313, type: 3}
+  enemyProbabilities: 0200000001000000
   spawnsAtOnce: 1
   maxSecNextEnemySpawn: 3
   minSecNextEnemySpawn: 1
@@ -4471,6 +4480,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2d472ca4e0119439a709d50ade839c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1802247905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802247901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6483755f2e26a434aa3d44193f5fecd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level_1: 0
+  Level_2: 1
+  Level_3: 0
+--- !u!114 &1802247906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802247901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acdfcf50b2a2654a9eb7b0880560650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProbabilities: 0500000001000000
+  maxSecNextEnemySpawn: 4
+  minSecNextEnemySpawn: 1
+--- !u!114 &1802247907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802247901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf6d9ca011b20842a458130b165d90f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProbabilities: 0100000001000000
+  maxSecNextEnemySpawn: 1
+  minSecNextEnemySpawn: 1
+--- !u!114 &1802247908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802247901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4f2313a2d781149a06b0e1a9888fd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyProbabilities: 0900000001000000
+  maxSecNextEnemySpawn: 2
+  minSecNextEnemySpawn: 1
 --- !u!1 &1909448011
 GameObject:
   m_ObjectHideFlags: 0

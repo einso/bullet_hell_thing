@@ -15,7 +15,8 @@ public class Manager : MonoBehaviour
 
     float time;
 
-    int amountOfProbabilities;
+    [HideInInspector]
+    public int amountOfProbabilities;
 
     [Space(20)]
     public GameObject[] enemyPrefabs;
@@ -36,15 +37,9 @@ public class Manager : MonoBehaviour
     {
         Time.timeScale = 1;                //Set Time to 1
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
-        
-        //Get Total of all probabilities in the enemyProbabilities Array
-        for (int i = 0; i < enemyProbabilities.Length; i++)
-        {
-            amountOfProbabilities += enemyProbabilities[i];            
-        }
 
-
-        
+        AmountOfProbabilities();           //Set the amount of probabilities
+      
     }
 
     // Update is called once per frame
@@ -75,7 +70,8 @@ public class Manager : MonoBehaviour
     //Generate a random number to detect which type of enemy should spawn next
     int randProbability()
     {
-        int randomEnemy = Random.Range(0, amountOfProbabilities);   //random number between 0 and total of all probabilities
+        int randomEnemy = Random.Range(1, AmountOfProbabilities());   //random number between 0 and total of all probabilities
+        Debug.Log(amountOfProbabilities);
         int probabilityPool = 0;                                    //reset probabilitypool
 
         //check for each enemy if the random number is inside the probabilityPool
@@ -88,8 +84,19 @@ public class Manager : MonoBehaviour
                 return i;   //return index to spawn enemy with same index
             }
         }
-        Debug.LogError("the random generated number was not part of the probability pool!");
+        Debug.LogError("Du musst noch Wahrscheinlichkeiten einstellen, du Spast!");
         return 0;
+    }
+
+    public int AmountOfProbabilities()
+    {
+        amountOfProbabilities = 0;
+        //Get Total of all probabilities in the enemyProbabilities Array
+        for (int i = 0; i < enemyProbabilities.Length; i++)
+        {
+            amountOfProbabilities += enemyProbabilities[i];
+        }
+        return amountOfProbabilities;
     }
 
     //SpawnEnemyEvent
