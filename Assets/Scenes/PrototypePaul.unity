@@ -511,7 +511,8 @@ MonoBehaviour:
   Manager: {fileID: 1802247901}
   playerMoveSpeed: 7.5
   playerRotationSpeed: 15
-  playerShiftSpeed: 3
+  playerShiftSpeed: 0.1
+  hitParticlePrefab: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
 --- !u!136 &175833661
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2057,7 +2058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &608737892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4619,6 +4620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d872c24a845534faf27294c3748ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GodMode: 1
   Player: {fileID: 175833657}
   Camera: {fileID: 1687258581}
   DeathScreen: {fileID: 358547442}
@@ -4687,7 +4689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acdfcf50b2a2654a9eb7b0880560650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyProbabilities: 0000000005000000
+  enemyProbabilities: 0300000002000000
   maxSecNextEnemySpawn: 1
   minSecNextEnemySpawn: 0.25
 --- !u!114 &1802247907

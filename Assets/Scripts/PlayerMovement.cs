@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float playerRotationSpeed = 15;
     public float playerShiftSpeed = 0.1f;
 
+    public GameObject hitParticlePrefab;
+
     private void Update()
     {
 

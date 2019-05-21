@@ -10,7 +10,7 @@ public class BulletsPlayer : MonoBehaviour
     public Rigidbody rb;
     public GameObject DestroyEnemyParticle;
     public GameObject HitEnemyParticle;
-
+    public bool ScoreVFX;
 
     void Start()
     {
@@ -31,8 +31,11 @@ public class BulletsPlayer : MonoBehaviour
             FindObjectOfType<Manager>().scoreCount += scoreValue;
 
             //SHOW SCORE OVER ENEMY
-            /*GameObject scoreFeedback = Instantiate(scoreFeedbackPrefab, new Vector3(other.transform.position.x - 0.3f, other.transform.position.y, other.transform.position.z - 4.5f), scoreFeedbackPrefab.transform.rotation);
-            scoreFeedback.GetComponent<TextMeshPro>().text = ""+ other.GetComponent<SinusoidalMove>().scoreValue;*/
+            if(ScoreVFX)
+            {
+                GameObject scoreFeedback = Instantiate(scoreFeedbackPrefab, new Vector3(other.transform.position.x - 0.3f, other.transform.position.y, other.transform.position.z - 4.8f), scoreFeedbackPrefab.transform.rotation);
+                scoreFeedback.GetComponent<TextMeshPro>().text = "" + other.GetComponent<SinusoidalMove>().scoreValue;
+            }
 
             //FindObjectOfType<SpawnEnemies>().NumberOfEnemies -= 1;
 

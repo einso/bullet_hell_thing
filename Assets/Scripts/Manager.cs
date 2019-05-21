@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
+    public bool GodMode;
+    [Space(20)]
+
     public GameObject Player;
     public GameObject Camera;
     public GameObject DeathScreen;
@@ -39,6 +42,11 @@ public class Manager : MonoBehaviour
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
         AmountOfProbabilities();           //Set the amount of probabilities
+
+        if(GodMode)
+        {
+            Player.GetComponent<Collider>().enabled = false;
+        }
       
     }
 
@@ -71,7 +79,6 @@ public class Manager : MonoBehaviour
     int randProbability()
     {
         int randomEnemy = Random.Range(1, AmountOfProbabilities()+1);   //random number between 0 and total of all probabilities
-        Debug.Log(randomEnemy);
         int probabilityPool = 0;                                    //reset probabilitypool
 
         //check for each enemy if the random number is inside the probabilityPool
