@@ -105,9 +105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+=======
   scoreValue: 125
   straight: 0
   angled: 1
+>>>>>>> Stashed changes
   moveSpeed: 0
   frequency: 0
   magnitude: 0
@@ -155,18 +158,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 6907306609974665127}
+  Player: {fileID: 6907306609974665127}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
-  firingPeriod: 2
+  firingPeriod: 1
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
+<<<<<<< Updated upstream
+=======
   ghostShot: 0
   duoShot: 0
+>>>>>>> Stashed changes
   triShot: 1
   flowerShot: 0

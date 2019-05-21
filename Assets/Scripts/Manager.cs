@@ -8,6 +8,12 @@ public class Manager : MonoBehaviour
 {
     public GameObject Player;
     public GameObject Camera;
+<<<<<<< Updated upstream
+    public GameObject enemyPrefab;
+    public GameObject ghostPrefab;
+    public GameObject batPrefab;
+=======
+>>>>>>> Stashed changes
     public GameObject DeathScreen;
     public GameObject PauseScreen;
     public GameObject scoreGUI;
@@ -70,8 +76,8 @@ public class Manager : MonoBehaviour
     //Generate a random number to detect which type of enemy should spawn next
     int randProbability()
     {
-        int randomEnemy = Random.Range(1, AmountOfProbabilities()+1);   //random number between 0 and total of all probabilities
-        Debug.Log(randomEnemy);
+        int randomEnemy = Random.Range(1, AmountOfProbabilities());   //random number between 0 and total of all probabilities
+        Debug.Log(amountOfProbabilities);
         int probabilityPool = 0;                                    //reset probabilitypool
 
         //check for each enemy if the random number is inside the probabilityPool
@@ -79,7 +85,7 @@ public class Manager : MonoBehaviour
         {
             probabilityPool += enemyProbabilities[i];   
 
-            if (probabilityPool >= randomEnemy)  
+            if (probabilityPool > randomEnemy)  
             {                
                 return i;   //return index to spawn enemy with same index
             }
@@ -91,7 +97,6 @@ public class Manager : MonoBehaviour
     public int AmountOfProbabilities()
     {
         amountOfProbabilities = 0;
-
         //Get Total of all probabilities in the enemyProbabilities Array
         for (int i = 0; i < enemyProbabilities.Length; i++)
         {
@@ -105,11 +110,16 @@ public class Manager : MonoBehaviour
     {
         //NumberOfEnemies++;
         float spawnPosX = Random.Range(1, 21);
+<<<<<<< Updated upstream
+        
+        GameObject instance = Instantiate(ghostPrefab, new Vector3(spawnPosX - 10, 0.78f, Camera.transform.position.z + 3.7f), transform.rotation);
+=======
 
 
 
 
         GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 10, 0.78f, Camera.transform.position.z + 6.7f), transform.rotation);
+>>>>>>> Stashed changes
 
         //instance.GetComponent<SinusoidalMove>().moveSpeed = Random.Range(2, 15);
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);

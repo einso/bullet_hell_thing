@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,6 @@ using UnityEngine;
 public class SinusoidalMove : MonoBehaviour
 {
     GameObject Camera;
-
-    public float scoreValue = 100;
 
     public bool straight;
     public bool angled;
@@ -21,7 +20,6 @@ public class SinusoidalMove : MonoBehaviour
     float magnitude = 0.5f;
 
     bool facingRight = false;
-    bool movedDown;
 
     Vector3 pos; //,localScale
 
@@ -39,7 +37,7 @@ public class SinusoidalMove : MonoBehaviour
     void Update()
     {
 
-        MoveDown();
+        CheckWhereToFace();
 
         if(movedDown)
         {
@@ -129,9 +127,67 @@ public class SinusoidalMove : MonoBehaviour
             }
         }
 
+    GameObject Camera;
 
+    public float scoreValue = 100;
 
+    public bool straight;
+    public bool angled;
 
+        if(movedDown)
+        {
+            CheckWhereToFace();
+
+            if (facingRight)
+                MoveRight();
+            else
+                MoveLeft();
+        }
+       
     }
 
-}
+    void MoveDown()
+    {
+        if(!movedDown)
+        {
+            if (straight)
+            {
+                if (transform.position.z > 8)
+                {
+                    pos += transform.right * Time.deltaTime * moveSpeed;
+                    transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+                }
+                else
+                {
+                    movedDown = true;
+                }
+            }
+
+            if (angled)
+            {
+                if (transform.position.z > 8)
+                {
+                    moveSpeed = 2;
+                    pos += transform.right * Time.deltaTime * moveSpeed;
+                    transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+
+                    if (pos.x < 0.5f)
+                    {
+                        pos += transform.right * Time.deltaTime * moveSpeed;
+                        pos += transform.forward * Time.deltaTime * moveSpeed*2;
+                        transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+                    }
+                    else if (pos.x >= 0.5f)
+                    {
+                        pos += transform.right * Time.deltaTime * moveSpeed;
+                        pos -= transform.forward * Time.deltaTime * moveSpeed*2;
+                        transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+                    }
+                }
+                else
+                {
+                    movedDown = true;
+                    moveSpeed = 0;
+                }
+            }
+        }
