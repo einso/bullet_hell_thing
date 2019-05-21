@@ -11,6 +11,7 @@ public class EnemyWeapon : MonoBehaviour
     public GameObject EnemyProjectilePrefab2;
     public GameObject EnemyProjectilePrefab3;
     private float time = 0;
+    float yincrease;
     public float firingPeriod = 1;
 
     public bool linearShot;
@@ -18,7 +19,9 @@ public class EnemyWeapon : MonoBehaviour
     public bool sprayShot;
     public bool splitShot;
     public bool ghostShot;
+    public bool duoShot;
     public bool triShot;
+    public bool flowerShot;
 
     void Start()
     {
@@ -29,17 +32,25 @@ public class EnemyWeapon : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if (linearShot) LinearShot(firingPeriod);
+        if (linearShot) LinearShot(3);
 
-        if (sinusShot) SinusShot(firingPeriod);
+        if (sinusShot) SinusShot(3);
 
-        if (sprayShot) SprayShot(firingPeriod);
+        if (sprayShot) SprayShot(3);
 
-        if (splitShot) SplitShot(firingPeriod);
+        if (splitShot) SplitShot(3);
 
-        if (ghostShot) GhostShot(firingPeriod);
+        if (ghostShot) GhostShot(3);
+
+<<<<<<< Updated upstream
+        if (triShot) TriShot(3);
+=======
+        if (duoShot) DuoShot(firingPeriod);
 
         if (triShot) TriShot(firingPeriod);
+>>>>>>> Stashed changes
+
+        if (flowerShot) FlowerShot(firingPeriod);
 
     }
     
@@ -104,6 +115,16 @@ public class EnemyWeapon : MonoBehaviour
         }
     }
 
+    void DuoShot(float firingPeriod)
+    {
+        if (time >= firingPeriod)
+        {
+            Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x - 1.9f, 0.8f, enemyFireSpawn.transform.position.z), enemyFireSpawn.rotation);
+            Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x + 1.9f, 0.8f, enemyFireSpawn.transform.position.z), enemyFireSpawn.rotation);
+            time = 0;
+        }
+    }
+
     void TriShot(float firingPeriod)
     {
         if (time >= firingPeriod)
@@ -121,6 +142,26 @@ public class EnemyWeapon : MonoBehaviour
             shot3.transform.LookAt(Player);
 
             time = 0;  
+        }
+    }
+
+    void FlowerShot(float firingPeriod)
+    {
+        if (time >= firingPeriod)
+        {
+            float rotX = 0;
+            float rotY = 145 + yincrease;
+            float rotZ = 0;
+
+            for (int i = 0; i < 8; i++)
+            {
+                Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
+                Instantiate(EnemyProjectilePrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), rot);
+                rotY -= 45;
+            }
+
+            yincrease -= 10;
+            time = 0;
         }
     }
 
