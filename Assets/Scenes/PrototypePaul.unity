@@ -358,6 +358,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60696286}
   m_CullTransparentMesh: 0
+--- !u!1 &101558320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6907306608720739348, guid: 6a9556fa7d972944c8fcb3310d24e547,
+    type: 3}
+  m_PrefabInstance: {fileID: 804124107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &101558321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101558320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34b4207941a0fa45900e73a0ce41068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patternLength_1: 5
+  patternLength_2: 5
+  patternLength_3: 5
 --- !u!1 &125921312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,7 +2420,7 @@ PrefabInstance:
     - target: {fileID: 6907306608720739348, guid: 6a9556fa7d972944c8fcb3310d24e547,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6907306608720739349, guid: 6a9556fa7d972944c8fcb3310d24e547,
         type: 3}
@@ -2459,7 +2480,7 @@ PrefabInstance:
     - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
         type: 3}
       propertyPath: flowerShot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6907306609974665124, guid: 6a9556fa7d972944c8fcb3310d24e547,
         type: 3}
@@ -4434,7 +4455,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802247901}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94d872c24a845534faf27294c3748ecf, type: 3}
   m_Name: 
@@ -4493,7 +4514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level_1: 0
-  Level_2: 1
+  Level_2: 0
   Level_3: 0
 --- !u!114 &1802247906
 MonoBehaviour:

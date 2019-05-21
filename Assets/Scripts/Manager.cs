@@ -71,7 +71,6 @@ public class Manager : MonoBehaviour
     int randProbability()
     {
         int randomEnemy = Random.Range(1, AmountOfProbabilities());   //random number between 0 and total of all probabilities
-        Debug.Log(amountOfProbabilities);
         int probabilityPool = 0;                                    //reset probabilitypool
 
         //check for each enemy if the random number is inside the probabilityPool
@@ -91,6 +90,7 @@ public class Manager : MonoBehaviour
     public int AmountOfProbabilities()
     {
         amountOfProbabilities = 0;
+
         //Get Total of all probabilities in the enemyProbabilities Array
         for (int i = 0; i < enemyProbabilities.Length; i++)
         {
