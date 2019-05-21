@@ -21,7 +21,7 @@ public class BossPattern : MonoBehaviour
         //Pattern1
         if(Pattern_1)
         {
-            if (time < patternLength_1)        //as long as time is smaller then pattern length do something
+            if (time < patternLength_1)        //as long as time is smaller then pattern length, do something
             {
                 /////////////////     
                 Debug.Log("Pattern: 1");
@@ -36,7 +36,7 @@ public class BossPattern : MonoBehaviour
 
         if (Pattern_2)
         {
-            if (time < patternLength_2)        //as long as time is smaller then pattern length do something
+            if (time < patternLength_2)        //as long as time is smaller then pattern length, do something
             {
                 /////////////////
                 Debug.Log("Pattern: 2");
@@ -51,7 +51,7 @@ public class BossPattern : MonoBehaviour
 
         if (Pattern_3)
         {
-            if (time < patternLength_3)        //as long as time is smaller then pattern length do something
+            if (time < patternLength_3)        //as long as time is smaller then pattern length, do something
             {
                 /////////////////
                 Debug.Log("Pattern: 3");

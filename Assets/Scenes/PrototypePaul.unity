@@ -511,8 +511,8 @@ MonoBehaviour:
   Manager: {fileID: 1802247901}
   playerMoveSpeed: 7.5
   playerRotationSpeed: 15
-  hitParticlePrefab: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   playerShiftSpeed: 3
+  hitParticlePrefab: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
 --- !u!136 &175833661
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3927,6 +3927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f18f0f9781ea44dbeba3b47782fc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playerweapon1: 0
+  Playerweapon2: 1
   firePoint: {fileID: 1603048834}
   bulletPrefab: {fileID: 805040988089598216, guid: 0acca75acd7a85541b030fa975715f23,
     type: 3}
