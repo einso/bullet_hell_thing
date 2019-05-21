@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6907306608720739346}
   - component: {fileID: 6907306608720739345}
   m_Layer: 0
-  m_Name: Ghost
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dc8cf9411f2c97b479d9d6a55dbcaac5, type: 2}
+  - {fileID: 2100000, guid: 1b0a7ebefd9186f48ad4f4b7a9de55f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   scoreValue: 100
   straight: 1
   angled: 0
-  moveSpeed: 3
+  moveSpeed: 0
   frequency: 0
   magnitude: 0
 --- !u!1 &6907306609974665126
@@ -161,12 +161,12 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
-  firingPeriod: 2
+  firingPeriod: 0.4
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
   splitShot: 0
-  ghostShot: 1
+  ghostShot: 0
   duoShot: 0
   triShot: 0
-  flowerShot: 0
+  flowerShot: 1

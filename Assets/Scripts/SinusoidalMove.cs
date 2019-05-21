@@ -58,12 +58,10 @@ public class SinusoidalMove : MonoBehaviour
         if (pos.x <= -7f)
         {
             facingRight = true;
-            Debug.Log("MoveLeft");
         }
         else if (pos.x >= 8f)
         {
             facingRight = false;
-            Debug.Log("MoveRight");
         }
 
         //if (((facingRight) && (localScale.z < 0)) || ((!facingRight) && (localScale.z > 0)))

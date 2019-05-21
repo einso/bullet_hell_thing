@@ -10,7 +10,12 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Manager;
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
-    float shipBoundary = 0.35f;
+
+
+    void Start()
+    {
+
+    }
 
     private void Update()
     {
@@ -22,13 +27,60 @@ public class PlayerMovement : MonoBehaviour
         rot = Quaternion.Euler(90, 0, 0);
         transform.rotation = rot;
 
-        //Move Player
+        //Get Movement Input
         Vector3 pos = transform.position;
-        Vector3 posChange = new Vector3(Input.GetAxisRaw("Horizontal") * playerMoveSpeed * Time.deltaTime, Input.GetAxisRaw("Vertical") * playerMoveSpeed * Time.deltaTime, 0);
+        float moveHori = Input.GetAxisRaw("Horizontal");
+        float moveVerti = Input.GetAxisRaw("Vertical");
+
+        //Set Movement Boundaries
+        if (transform.position.x < -7.75f)
+        {
+            if(moveHori < 0)
+            {
+                moveHori = 0;
+            }
+        }
+
+        if (transform.position.x > 9.25f)
+        {
+            if (moveHori > 0)
+            {
+                moveHori = 0;
+            }
+        }
+
+        if (transform.position.z < -0.5f)
+        {
+            if (moveVerti < 0)
+            {
+                moveVerti = 0;
+            }
+        }
+
+        if (transform.position.z > 8f)
+        {
+            if (moveVerti > 0)
+            {
+                moveVerti = 0;
+            }
+        }
+
+        //Set Player to new Position
+        Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime, moveVerti * playerMoveSpeed * Time.deltaTime, 0);
         pos += rot * posChange;
         transform.position = pos;
 
 
+
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            FindObjectOfType<Manager>().PlayerDeath();
+        }
+    }
 }
