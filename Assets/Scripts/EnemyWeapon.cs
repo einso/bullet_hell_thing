@@ -32,27 +32,19 @@ public class EnemyWeapon : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if (linearShot) LinearShot(3);
+        if (linearShot) LinearShot(firingPeriod);
 
-        if (sinusShot) SinusShot(3);
+        if (sinusShot) SinusShot(firingPeriod);
 
-        if (sprayShot) SprayShot(3);
+        if (sprayShot) SprayShot(firingPeriod);
 
-        if (splitShot) SplitShot(3);
+        if (splitShot) SplitShot(firingPeriod);
 
-        if (ghostShot) GhostShot(3);
-
-<<<<<<< Updated upstream
-        if (triShot) TriShot(3);
-=======
-        if (duoShot) DuoShot(firingPeriod);
+        if (ghostShot) GhostShot(firingPeriod);
 
         if (duoShot) DuoShot(firingPeriod);
 
         if (triShot) TriShot(firingPeriod);
->>>>>>> Stashed changes
-
-        if (flowerShot) FlowerShot(firingPeriod);
 
         if (flowerShot) FlowerShot(firingPeriod);
 
