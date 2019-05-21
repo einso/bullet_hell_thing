@@ -10,8 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Manager;
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
-    public float playerShiftSpeed = 3f;
-
+    public float playerShiftSpeed = 3;
     public GameObject hitParticlePrefab;
 
     private void Update()
