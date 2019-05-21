@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Manager;
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
-    public float playerShiftSpeed = 0.1f;
+    public GameObject hitParticlePrefab;
 
     private void Update()
     {
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
 
         //Set Movement Boundaries
-        if (transform.position.x < -7.75f)
+        if (transform.position.x < -5f)
         {
             if(moveHori < 0)
             {
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.x > 9.25f)
+        if (transform.position.x > 5f)
         {
             if (moveHori > 0)
             {
@@ -86,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
             FindObjectOfType<Manager>().PlayerDeath();
+            Instantiate(hitParticlePrefab, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
         }
     }
 }

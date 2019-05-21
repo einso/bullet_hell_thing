@@ -70,7 +70,8 @@ public class Manager : MonoBehaviour
     //Generate a random number to detect which type of enemy should spawn next
     int randProbability()
     {
-        int randomEnemy = Random.Range(1, AmountOfProbabilities());   //random number between 0 and total of all probabilities
+        int randomEnemy = Random.Range(1, AmountOfProbabilities()+1);   //random number between 0 and total of all probabilities
+        Debug.Log(randomEnemy);
         int probabilityPool = 0;                                    //reset probabilitypool
 
         //check for each enemy if the random number is inside the probabilityPool
@@ -78,7 +79,7 @@ public class Manager : MonoBehaviour
         {
             probabilityPool += enemyProbabilities[i];   
 
-            if (probabilityPool > randomEnemy)  
+            if (probabilityPool >= randomEnemy)  
             {                
                 return i;   //return index to spawn enemy with same index
             }
@@ -103,12 +104,12 @@ public class Manager : MonoBehaviour
     void SpawnEnemy()
     {
         //NumberOfEnemies++;
-        float spawnPosX = Random.Range(1, 21);
+        float spawnPosX = Random.Range(0, 11);
+        Debug.Log(spawnPosX);
 
 
 
-
-        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 10, 0.78f, Camera.transform.position.z + 6.7f), transform.rotation);
+        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 5, 0.78f, Camera.transform.position.z + 6.7f), transform.rotation);
 
         //instance.GetComponent<SinusoidalMove>().moveSpeed = Random.Range(2, 15);
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);
