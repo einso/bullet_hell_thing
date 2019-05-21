@@ -511,6 +511,7 @@ MonoBehaviour:
   Manager: {fileID: 1802247901}
   playerMoveSpeed: 7.5
   playerRotationSpeed: 15
+  playerShiftSpeed: 3
 --- !u!136 &175833661
 CapsuleCollider:
   m_ObjectHideFlags: 0
