@@ -10,12 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Manager;
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
-    public GameObject hitParticlePrefab;
-
-    void Start()
-    {
-
-    }
+    public float playerShiftSpeed = 0.1f;
 
     private void Update()
     {
@@ -31,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 pos = transform.position;
         float moveHori = Input.GetAxisRaw("Horizontal");
         float moveVerti = Input.GetAxisRaw("Vertical");
+        //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
+        //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
 
         //Set Movement Boundaries
         if (transform.position.x < -5f)
@@ -66,13 +63,21 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Set Player to new Position
-        Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime, moveVerti * playerMoveSpeed * Time.deltaTime, 0);
-        pos += rot * posChange;
-        transform.position = pos;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Vector3 posChange = new Vector3(moveHori * playerShiftSpeed * Time.deltaTime, moveVerti * playerShiftSpeed * Time.deltaTime, 0);
+            pos += rot * posChange;
+            transform.position = pos;
+        }
+        else
+        {
+            Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime, moveVerti * playerMoveSpeed * Time.deltaTime, 0);
+            pos += rot * posChange;
+            transform.position = pos;
+        }
+          
 
-
-
-    }
+     }
 
     private void OnTriggerEnter(Collider other)
     {
