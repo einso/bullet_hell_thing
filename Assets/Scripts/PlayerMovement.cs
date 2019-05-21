@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Manager;
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
-
+    public GameObject hitParticlePrefab;
 
     void Start()
     {
@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
             FindObjectOfType<Manager>().PlayerDeath();
+            Instantiate(hitParticlePrefab, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
         }
     }
 }

@@ -70,7 +70,8 @@ public class Manager : MonoBehaviour
     //Generate a random number to detect which type of enemy should spawn next
     int randProbability()
     {
-        int randomEnemy = Random.Range(1, AmountOfProbabilities());   //random number between 0 and total of all probabilities
+        int randomEnemy = Random.Range(1, AmountOfProbabilities()+1);   //random number between 0 and total of all probabilities
+        Debug.Log(randomEnemy);
         int probabilityPool = 0;                                    //reset probabilitypool
 
         //check for each enemy if the random number is inside the probabilityPool
@@ -78,7 +79,7 @@ public class Manager : MonoBehaviour
         {
             probabilityPool += enemyProbabilities[i];   
 
-            if (probabilityPool > randomEnemy)  
+            if (probabilityPool >= randomEnemy)  
             {                
                 return i;   //return index to spawn enemy with same index
             }
