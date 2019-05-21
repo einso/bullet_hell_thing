@@ -104,12 +104,12 @@ public class Manager : MonoBehaviour
     void SpawnEnemy()
     {
         //NumberOfEnemies++;
-        float spawnPosX = Random.Range(1, 21);
+        float spawnPosX = Random.Range(0, 11);
+        Debug.Log(spawnPosX);
 
 
 
-
-        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 10, 0.78f, Camera.transform.position.z + 6.7f), transform.rotation);
+        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 5, 0.78f, Camera.transform.position.z + 6.7f), transform.rotation);
 
         //instance.GetComponent<SinusoidalMove>().moveSpeed = Random.Range(2, 15);
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);

@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         float moveVerti = Input.GetAxisRaw("Vertical");
 
         //Set Movement Boundaries
-        if (transform.position.x < -7.75f)
+        if (transform.position.x < -5f)
         {
             if(moveHori < 0)
             {
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.x > 9.25f)
+        if (transform.position.x > 5f)
         {
             if (moveHori > 0)
             {

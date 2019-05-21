@@ -55,11 +55,11 @@ public class SinusoidalMove : MonoBehaviour
 
     void CheckWhereToFace()
     {
-        if (pos.x <= -7f)
+        if (pos.x <= -5f)
         {
             facingRight = true;
         }
-        else if (pos.x >= 8f)
+        else if (pos.x >= 5f)
         {
             facingRight = false;
         }
@@ -91,7 +91,7 @@ public class SinusoidalMove : MonoBehaviour
             {
                 if (transform.position.z > 8)
                 {
-                    pos += transform.right * Time.deltaTime * moveSpeed;
+                    pos += transform.right * Time.deltaTime * 3;
                     transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
                 }
                 else
@@ -108,13 +108,13 @@ public class SinusoidalMove : MonoBehaviour
                     pos += transform.right * Time.deltaTime * moveSpeed;
                     transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
 
-                    if (pos.x < 0.5f)
+                    if (pos.x < 0f)
                     {
                         pos += transform.right * Time.deltaTime * moveSpeed;
                         pos += transform.forward * Time.deltaTime * moveSpeed*2;
                         transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
                     }
-                    else if (pos.x >= 0.5f)
+                    else if (pos.x >= 0f)
                     {
                         pos += transform.right * Time.deltaTime * moveSpeed;
                         pos -= transform.forward * Time.deltaTime * moveSpeed*2;

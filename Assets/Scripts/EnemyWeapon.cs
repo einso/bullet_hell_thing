@@ -126,15 +126,15 @@ public class EnemyWeapon : MonoBehaviour
         if (time >= firingPeriod)
         {
             GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot.GetComponent<EnemyBullet>().speed = 5;
+            shot.GetComponent<EnemyBullet>().speed = 4;
             shot.transform.LookAt(Player);
 
             GameObject shot2 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot2.GetComponent<EnemyBullet>().speed = 3;
+            shot2.GetComponent<EnemyBullet>().speed = 3f;
             shot2.transform.LookAt(Player);
 
             GameObject shot3 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot3.GetComponent<EnemyBullet>().speed = 1;
+            shot3.GetComponent<EnemyBullet>().speed = 2;
             shot3.transform.LookAt(Player);
 
             time = 0;  

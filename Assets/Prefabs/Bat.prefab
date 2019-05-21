@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 125
-  straight: 0
-  angled: 1
+  straight: 1
+  angled: 0
   moveSpeed: 0
   frequency: 0
   magnitude: 0
