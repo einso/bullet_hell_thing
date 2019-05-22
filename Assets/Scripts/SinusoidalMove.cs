@@ -8,8 +8,8 @@ public class SinusoidalMove : MonoBehaviour
 
     public float scoreValue = 100;
 
-    public bool straight;
-    public bool angled;
+    bool straight = true;
+    bool angled;
 
     [SerializeField]
     public float moveSpeed = 5f;

@@ -10,12 +10,12 @@ public class Weapon : MonoBehaviour
     public bool Playerweapon4;
     public bool Playerweapon5;
     [Space(20)]
-    public float delay = 0.25f;
+    public float delay = 0.15f;
     float weaponSprayStrengthWhilePressingShift = 0;
     public float weapon2SprayStrength = 7;
-    public float weapon3SprayStrength = 9;
-    public float weapon4SprayStrength = 10;
-    public float weapon5SprayStrength = 11;
+    public float weapon3SprayStrength = 7;
+    public float weapon4SprayStrength = 7;
+    public float weapon5SprayStrength = 7;
     [Space(20)]
     // Start is called before the first frame update
     public Transform firePoint;
