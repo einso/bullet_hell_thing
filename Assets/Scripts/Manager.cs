@@ -15,6 +15,7 @@ public class Manager : MonoBehaviour
     public GameObject PauseScreen;
     public GameObject scoreGUI;
     public GameObject timeGUI;
+    public GameObject levelGUI;
 
     float time;
 
@@ -33,6 +34,7 @@ public class Manager : MonoBehaviour
 
     [HideInInspector]
     public float scoreCount;
+    public float levelCount = 1f;
     //public int NumberOfEnemies;
 
     // Start is called before the first frame update
@@ -68,7 +70,8 @@ public class Manager : MonoBehaviour
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0.00"); 
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0.00");
+            levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
 
             //PauseGame
             PauseGame();
@@ -132,7 +135,11 @@ public class Manager : MonoBehaviour
 
     public void PlayerLevelUp()
     {
-
+       if (scoreCount >= 0)
+        {
+            levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: " + levelCount;
+            Debug.Log("you leveled up!");
+        }
     }
 
     //PlayerDeathEvent
