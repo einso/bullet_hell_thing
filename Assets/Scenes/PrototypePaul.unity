@@ -4010,11 +4010,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f18f0f9781ea44dbeba3b47782fc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Baseshot: 1
+  Baseshot: 0
   Playerlevel1: 0
   Playerlevel2: 0
   Playerlevel3: 0
-  Playerlevel4: 0
+  Playerlevel4: 1
   delay: 0.25
   baseShotDistanceBetweenShots: 0.25
   podSprayStrength: 7
@@ -4740,7 +4740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d872c24a845534faf27294c3748ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodMode: 1
+  GodMode: 0
   Player: {fileID: 175833657}
   Camera: {fileID: 1687258581}
   DeathScreen: {fileID: 358547442}
