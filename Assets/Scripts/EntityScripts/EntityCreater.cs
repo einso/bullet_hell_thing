@@ -7,24 +7,31 @@ using Unity.Rendering;
 
 public class EntityCreater : MonoBehaviour
 {
-    public bool Playerweapon1;
-    public bool Playerweapon2;
-    public bool Playerweapon3;
-    public bool Playerweapon4;
-    public bool Playerweapon5;
+    public bool Baseshot;
+    public bool Playerlevel1;
+    public bool Playerlevel2;
+    public bool Playerlevel3;
+    public bool Playerlevel4;
     [Space(20)]
     public float delay = 0.25f;
+    public float baseShotDistanceBetweenShots = 0.25f;
     float weaponSprayStrengthWhilePressingShift = 0;
-    public float weapon2SprayStrength = 7;
-    public float weapon3SprayStrength = 7;
-    public float weapon4SprayStrength = 7;
-    public float weapon5SprayStrength = 7;
+    public float podSprayStrength = 7;
+    float weapon3SprayStrength = 7;
+    float weapon4SprayStrength = 7;
+    float weapon5SprayStrength = 7;
     public float bulletSpeed = 20;
     [Space(20)]
 
 
     public GameObject Player;
+    public GameObject Pod;
+    public GameObject PodLeft;
+    public GameObject PodRight;
     float t;
+    float podDistanceToPlayer;
+    float shiftPodLeft;
+    float shiftPodRight;
     EntityManager entityManager;
     Entity bullet;
 
@@ -39,6 +46,7 @@ public class EntityCreater : MonoBehaviour
     void Start()
     {
         entityManager = World.Active.EntityManager;
+        podDistanceToPlayer = PodRight.transform.position.x;
     }
 
     // Update is called once per frame
@@ -50,41 +58,58 @@ public class EntityCreater : MonoBehaviour
         //Create Bullet Entities
         if (Input.GetKey(KeyCode.Space) && t > delay)
         {
-            if (Playerweapon1)
+            if (Baseshot)
             {
-                PlayerWeapon1();
+                BaseShot();
                 t = 0;
             }
-            else if (Playerweapon2)
+            else if (Playerlevel1)
             {
-                PlayerWeapon2();
+                PlayerLevel1();
                 t = 0;
             }
-            else if (Playerweapon3)
+            else if (Playerlevel2)
             {
-                PlayerWeapon3();
+                PlayerLevel2();
                 t = 0;
             }
-            else if (Playerweapon4)
+            else if (Playerlevel3)
             {
-                PlayerWeapon4();
+                PlayerLevel3();
                 t = 0;
             }
-            else if (Playerweapon5)
+            else if (Playerlevel4)
             {
-                PlayerWeapon5();
+                PlayerLevel4();
                 t = 0;
             }
 
+        }
+
+        //Player BaseShot
+        void BaseShot() {
+            float distance = baseShotDistanceBetweenShots / 2;
+            CreateBullet(distance, 0, Player.transform.rotation);
+            CreateBullet(-distance, 0, Player.transform.rotation);
+
+            t = 0;  //reset time
         }
 
         //Player Level 1
-        void PlayerWeapon1() {
-            CreateBullet(0, 0, Player.transform.rotation);
+        void PlayerLevel1()
+        {
+            float distance = baseShotDistanceBetweenShots / 2;
+            CreateBullet(distance, 0, Player.transform.rotation);
+            CreateBullet(-distance, 0, Player.transform.rotation);
+            CreateBullet( 0, Pod.transform.position.z, Player.transform.rotation);
+
+
+
+            t = 0; //reset time
         }
 
         //Player Level 2
-        void PlayerWeapon2()
+        void PlayerLevel2()
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -93,86 +118,80 @@ public class EntityCreater : MonoBehaviour
             }
             else
             {
-                bulletRotation1 = Quaternion.Euler(90, 0 - weapon2SprayStrength, 0);
-                bulletRotation2 = Quaternion.Euler(90, 0 + weapon2SprayStrength, 0);
+                bulletRotation1 = Quaternion.Euler(90, 0 - podSprayStrength, 0);
+                bulletRotation2 = Quaternion.Euler(90, 0 + podSprayStrength, 0);
             }
 
-            CreateBullet(-0.2f, 0, bulletRotation1);
-            CreateBullet(+0.2f, 0, bulletRotation2);
+            float distance = baseShotDistanceBetweenShots / 2;
+            CreateBullet(distance, 0, Player.transform.rotation);
+            CreateBullet(-distance, 0, Player.transform.rotation);
+            CreateBullet(-distance, Pod.transform.position.z, bulletRotation1);
+            CreateBullet(distance, Pod.transform.position.z, bulletRotation2);
 
             t = 0; //reset time
         }
 
         //Player Level 3
-        void PlayerWeapon3()
+        void PlayerLevel3()
         {
+            
+            float distance = baseShotDistanceBetweenShots / 2;
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                bulletRotation1 = Quaternion.Euler(90, 0, 0);
-                bulletRotation2 = Quaternion.Euler(90, 0, 0);
+                shiftPodLeft = Player.transform.position.x - baseShotDistanceBetweenShots * 2;
+                shiftPodRight = Player.transform.position.x + baseShotDistanceBetweenShots * 2;
+                PodLeft.transform.position = new Vector3(shiftPodLeft, Player.transform.position.y, Player.transform.position.z);
+                PodRight.transform.position = new Vector3(shiftPodRight, Player.transform.position.y, Player.transform.position.z);
+
             }
             else
             {
-                bulletRotation1 = Quaternion.Euler(90, 0 - weapon3SprayStrength, 0);
-                bulletRotation2 = Quaternion.Euler(90, 0 + weapon3SprayStrength, 0);
+                shiftPodLeft = Player.transform.position.x - podDistanceToPlayer;
+                shiftPodRight = Player.transform.position.x + podDistanceToPlayer;
+                PodLeft.transform.position = new Vector3(shiftPodLeft, PodLeft.transform.position.y, PodLeft.transform.position.z);
+                PodRight.transform.position = new Vector3(shiftPodRight, PodRight.transform.position.y, PodRight.transform.position.z);
             }
 
-            CreateBullet(0, 0, Player.transform.rotation);
-            CreateBullet(-0.2f, 0, bulletRotation1);
-            CreateBullet(+0.2f, 0, bulletRotation2);
+            CreateBullet(distance, 0, Player.transform.rotation);
+            CreateBullet(-distance, 0, Player.transform.rotation);
+            CreatePiercingBullet(PodLeft.transform.position.x, 0, Player.transform.rotation);
+            CreatePiercingBullet(PodRight.transform.position.x, 0, Player.transform.rotation);
 
             t = 0; //reset time
         }
 
         //Player Level 4
-        void PlayerWeapon4()
+        void PlayerLevel4()
         {
+            float distance = baseShotDistanceBetweenShots / 2;
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 bulletRotation1 = Quaternion.Euler(90, 0, 0);
-                bulletRotation3 = Quaternion.Euler(90, 0, 0);
                 bulletRotation2 = Quaternion.Euler(90, 0, 0);
-                bulletRotation4 = Quaternion.Euler(90, 0, 0);
+                shiftPodLeft = Player.transform.position.x - baseShotDistanceBetweenShots * 2;
+                shiftPodRight = Player.transform.position.x + baseShotDistanceBetweenShots * 2;
+                PodLeft.transform.position = new Vector3(shiftPodLeft, Player.transform.position.y, Player.transform.position.z);
+                PodRight.transform.position = new Vector3(shiftPodRight, Player.transform.position.y, Player.transform.position.z);
+
             }
             else
             {
-                bulletRotation1 = Quaternion.Euler(90, 0 - weapon3SprayStrength, 0);
-                bulletRotation3 = Quaternion.Euler(90, 0 - weapon3SprayStrength - weapon3SprayStrength - weapon3SprayStrength, 0);
-                bulletRotation2 = Quaternion.Euler(90, 0 + weapon3SprayStrength, 0);
-                bulletRotation4 = Quaternion.Euler(90, 0 + weapon3SprayStrength + weapon3SprayStrength + weapon3SprayStrength, 0);
+                bulletRotation1 = Quaternion.Euler(90, 0 - podSprayStrength, 0);
+                bulletRotation2 = Quaternion.Euler(90, 0 + podSprayStrength, 0);
+                shiftPodLeft = Player.transform.position.x - podDistanceToPlayer;
+                shiftPodRight = Player.transform.position.x + podDistanceToPlayer;
+                PodLeft.transform.position = new Vector3(shiftPodLeft, PodLeft.transform.position.y, PodLeft.transform.position.z);
+                PodRight.transform.position = new Vector3(shiftPodRight, PodRight.transform.position.y, PodRight.transform.position.z);
             }
 
-            CreateBullet(-0.1f, 0, bulletRotation1);
-            CreateBullet(-0.3f, -0.1f, bulletRotation3);
-            CreateBullet(+0.1f, 0, bulletRotation2);
-            CreateBullet(+0.3f, -0.1f, bulletRotation4);
-
-            t = 0; //reset time
-        }
-
-        //Player Level 5
-        void PlayerWeapon5()
-        {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                bulletRotation1 = Quaternion.Euler(90, 0, 0);
-                bulletRotation3 = Quaternion.Euler(90, 0, 0);
-                bulletRotation2 = Quaternion.Euler(90, 0, 0);
-                bulletRotation4 = Quaternion.Euler(90, 0, 0);
-            }
-            else
-            {
-                bulletRotation1 = Quaternion.Euler(90, 0 - weapon3SprayStrength, 0);
-                bulletRotation3 = Quaternion.Euler(90, 0 - weapon3SprayStrength - weapon3SprayStrength , 0);
-                bulletRotation2 = Quaternion.Euler(90, 0 + weapon3SprayStrength, 0);
-                bulletRotation4 = Quaternion.Euler(90, 0 + weapon3SprayStrength + weapon3SprayStrength , 0);
-            }
-
-            CreateBullet(0, +0.1f, Player.transform.rotation);
-            CreateBullet(-0.15f, 0,bulletRotation1);
-            CreateBullet(-0.3f, -0.1f,bulletRotation3);
-            CreateBullet(+0.15f, 0,bulletRotation2);
-            CreateBullet(+0.3f, -0.1f,bulletRotation4);
+            CreateBullet(distance, 0, Player.transform.rotation);
+            CreateBullet(-distance, 0, Player.transform.rotation);
+            CreatePiercingBullet(PodLeft.transform.position.x + distance, 0, Player.transform.rotation);
+            CreatePiercingBullet(PodLeft.transform.position.x - distance, 0, bulletRotation1);
+            CreatePiercingBullet(PodRight.transform.position.x + distance, 0, bulletRotation2);
+            CreatePiercingBullet(PodRight.transform.position.x - distance, 0, Player.transform.rotation);
 
             t = 0; //reset time
         }
@@ -183,6 +202,15 @@ public class EntityCreater : MonoBehaviour
             bullet = entityManager.CreateEntity(typeof(BulletComponent), typeof(Translation), typeof(RenderMesh), typeof(LocalToWorld), typeof(Rotation)); //assign components
             entityManager.SetComponentData(bullet, new BulletComponent { moveSpeed = bulletSpeed }); //set movespeed of bullet
             entityManager.SetComponentData(bullet, new Translation { Value = new Vector3(Player.transform.position.x + posX, Player.transform.position.y, Player.transform.position.z + posZ) }); //set bullet position
+            entityManager.SetComponentData(bullet, new Rotation { Value = rot }); //set bullet rotation
+            entityManager.SetSharedComponentData(bullet, new RenderMesh { mesh = mesh, material = material }); //set mesh and material
+        }
+
+        void CreatePiercingBullet(float posX, float posZ, Quaternion rot)
+        {
+            bullet = entityManager.CreateEntity(typeof(BulletComponent), typeof(Translation), typeof(RenderMesh), typeof(LocalToWorld), typeof(Rotation)); //assign components
+            entityManager.SetComponentData(bullet, new BulletComponent { moveSpeed = bulletSpeed }); //set movespeed of bullet
+            entityManager.SetComponentData(bullet, new Translation { Value = new Vector3(posX, Player.transform.position.y, Player.transform.position.z + posZ) }); //set bullet position
             entityManager.SetComponentData(bullet, new Rotation { Value = rot }); //set bullet rotation
             entityManager.SetSharedComponentData(bullet, new RenderMesh { mesh = mesh, material = material }); //set mesh and material
         }

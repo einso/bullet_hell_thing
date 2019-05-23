@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public bool Playerweapon1;
-    public bool Playerweapon2;
-    public bool Playerweapon3;
-    public bool Playerweapon4;
-    public bool Playerweapon5;
+    public bool Baseshot;
+    public bool Playerlevel1;
+    public bool Playerlevel2;
+    public bool Playerlevel3;
+    public bool Playerlevel4;
+    bool Playerlevel5;
     [Space(20)]
     public float delay = 0.15f;
-    float weaponSprayStrengthWhilePressingShift = 0;
-    public float weapon2SprayStrength = 7;
-    public float weapon3SprayStrength = 7;
-    public float weapon4SprayStrength = 7;
-    public float weapon5SprayStrength = 7;
+    public float baseShotDistanceBetweenShots = 0.5f;
+    public float podSprayStrength = 7;
+    float shiftPodSprayStrength = 0;
+    float weapon3SprayStrength = 7;
+    float weapon4SprayStrength = 7;
+    float weapon5SprayStrength = 7;
     [Space(20)]
     // Start is called before the first frame update
     public Transform firePoint;
+    public GameObject piercingBulletPrefab;
     public GameObject bulletPrefab;
+    public Transform pod;
+    public GameObject podLeft;
+    public GameObject podRight;
+    Vector3 podLeftTran;
+    Vector3 podRightTran;
+    float podDistanceToPlayer;
     float t;
 
     Quaternion bulletRotation1;
@@ -30,6 +39,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         t = delay;
+        podDistanceToPlayer = podRight.transform.position.x;
     }
 
     // Update is called once per frame
@@ -39,27 +49,33 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && t > delay)
         {
-            if(Playerweapon1)
+            if(Baseshot)
             {
-                PlayerWeapon1();
+                BaseShot();
                 t = 0;
             }
-            else if(Playerweapon2)
+            else if(Playerlevel1)
             {
-                PlayerWeapon2();
+                
+                PlayerLevel1();
                 t = 0;
             }
-            else if(Playerweapon3)
+            else if(Playerlevel2)
             {
-                PlayerWeapon3();
+                PlayerLevel2();
                 t = 0;
             }
-            else if (Playerweapon4)
+            else if(Playerlevel3)
             {
-                PlayerWeapon4();
+                PlayerLevel3();
                 t = 0;
             }
-            else if (Playerweapon5)
+            else if (Playerlevel4)
+            {
+                PlayerLevel4();
+                t = 0;
+            }
+            else if (Playerlevel5)
             {
                 PlayerWeapon5();
                 t = 0;
@@ -68,75 +84,116 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    //Player Level 1
-    void PlayerWeapon1()
+    //BaseShot
+    void BaseShot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bulletRotation1 = Quaternion.Euler(0, -90, 0);
+        bulletRotation2 = Quaternion.Euler(0, -90, 0);
+
+        float distance = baseShotDistanceBetweenShots / 2;
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation2);
+    }
+
+    //Player Level 1
+    void PlayerLevel1()
+    {
+        //BaseShot
+        bulletRotation1 = Quaternion.Euler(0, -90, 0);
+        bulletRotation2 = Quaternion.Euler(0, -90, 0);
+        float distance = baseShotDistanceBetweenShots / 2;
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation2);
+
+        //PodShot
+        Instantiate(piercingBulletPrefab, pod.position, bulletRotation1);
     }
 
     //Player Level 2
-    void PlayerWeapon2()
+    void PlayerLevel2()
     {
+        //BaseShot
+        bulletRotation1 = Quaternion.Euler(0, -90, 0);
+        bulletRotation2 = Quaternion.Euler(0, -90, 0);
+        float distance = baseShotDistanceBetweenShots / 2;
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation2);
 
+        //PodShot
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            bulletRotation1 = Quaternion.Euler(0, -90 - weaponSprayStrengthWhilePressingShift, 0);
-            bulletRotation2 = Quaternion.Euler(0, -90 + weaponSprayStrengthWhilePressingShift, 0);
+            bulletRotation1 = Quaternion.Euler(0, -90 - shiftPodSprayStrength, 0);
+            bulletRotation2 = Quaternion.Euler(0, -90 + shiftPodSprayStrength, 0);
         }
         else
         {
-            bulletRotation1 = Quaternion.Euler(0, -90 - weapon2SprayStrength, 0);
-            bulletRotation2 = Quaternion.Euler(0, -90 + weapon2SprayStrength, 0);
+            bulletRotation1 = Quaternion.Euler(0, -90 - podSprayStrength, 0);
+            bulletRotation2 = Quaternion.Euler(0, -90 + podSprayStrength, 0);
         }
-
-
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x -0.2f, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + 0.2f, firePoint.position.y, firePoint.position.z), bulletRotation2);
+        
+        Instantiate(piercingBulletPrefab, new Vector3(pod.position.x -0.2f, pod.position.y, pod.position.z), bulletRotation1);
+        Instantiate(piercingBulletPrefab, new Vector3(pod.position.x + 0.2f, pod.position.y, pod.position.z), bulletRotation2);
     }
 
     //Player Level 3
-    void PlayerWeapon3()
+    void PlayerLevel3()
     {
+        //BaseShot
+        bulletRotation1 = Quaternion.Euler(0, -90, 0);
+        bulletRotation2 = Quaternion.Euler(0, -90, 0);
+        float distance = baseShotDistanceBetweenShots / 2;
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation2);
 
+        //PodShot
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            bulletRotation1 = Quaternion.Euler(0, -90 - weaponSprayStrengthWhilePressingShift, 0);
-            bulletRotation2 = Quaternion.Euler(0, -90 + weaponSprayStrengthWhilePressingShift, 0);
+            float shiftPodLeft = firePoint.position.x - baseShotDistanceBetweenShots *2;
+            float shiftPodRight = firePoint.position.x + baseShotDistanceBetweenShots *2 ;
+            podLeft.transform.position = new Vector3(shiftPodLeft, podLeft.transform.position.y, podLeft.transform.position.z);
+            podRight.transform.position = new Vector3(shiftPodRight, podLeft.transform.position.y, podLeft.transform.position.z);
         }
         else
         {
-            bulletRotation1 = Quaternion.Euler(0, -90 - weapon3SprayStrength, 0);
-            bulletRotation2 = Quaternion.Euler(0, -90 + weapon3SprayStrength, 0);
+            podLeft.transform.position = new Vector3(firePoint.position.x - podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
+            podRight.transform.position = new Vector3(firePoint.position.x + podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
         }
 
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x, firePoint.position.y, firePoint.position.z), firePoint.rotation);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - 0.2f, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + 0.2f, firePoint.position.y, firePoint.position.z), bulletRotation2);
+        Instantiate(piercingBulletPrefab, new Vector3(podLeft.transform.position.x, podLeft.transform.position.y, podLeft.transform.position.z), bulletRotation1);
+        Instantiate(piercingBulletPrefab, new Vector3(podRight.transform.position.x, podRight.transform.position.y, podRight.transform.position.z), bulletRotation2);
     }
 
     //Player Level 4
-    void PlayerWeapon4()
+    void PlayerLevel4()
     {
+        //BaseShot
+        bulletRotation1 = Quaternion.Euler(0, -90, 0);
+        float distance = baseShotDistanceBetweenShots / 2;
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
 
+        //PodShot
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            bulletRotation1 = Quaternion.Euler(0, -90 - weaponSprayStrengthWhilePressingShift, 0);
-            bulletRotation3 = Quaternion.Euler(0, -90 - weaponSprayStrengthWhilePressingShift, 0);
-            bulletRotation2 = Quaternion.Euler(0, -90 + weaponSprayStrengthWhilePressingShift, 0);
-            bulletRotation4 = Quaternion.Euler(0, -90 + weaponSprayStrengthWhilePressingShift, 0);
+            float shiftPodLeft = firePoint.position.x - baseShotDistanceBetweenShots * 2;
+            float shiftPodRight = firePoint.position.x + baseShotDistanceBetweenShots * 2;
+            podLeft.transform.position = new Vector3(shiftPodLeft, podLeft.transform.position.y, podLeft.transform.position.z);
+            podRight.transform.position = new Vector3(shiftPodRight, podLeft.transform.position.y, podLeft.transform.position.z);
+            bulletRotation2 = bulletRotation1;
+            bulletRotation3 = bulletRotation1;
         }
         else
         {
-            bulletRotation1 = Quaternion.Euler(0, -90 - weapon4SprayStrength, 0);
-            bulletRotation3 = Quaternion.Euler(0, -90 - weapon4SprayStrength - weapon4SprayStrength - weapon4SprayStrength, 0);
-            bulletRotation2 = Quaternion.Euler(0, -90 + weapon4SprayStrength, 0);
-            bulletRotation4 = Quaternion.Euler(0, -90 + weapon4SprayStrength + weapon4SprayStrength + weapon4SprayStrength, 0);
+            podLeft.transform.position = new Vector3(firePoint.position.x - podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
+            podRight.transform.position = new Vector3(firePoint.position.x + podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
+            bulletRotation2 = Quaternion.Euler(0, -90 + podSprayStrength, 0);
+            bulletRotation3 = Quaternion.Euler(0, -90 - podSprayStrength, 0);
         }
 
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - 0.1f, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - 0.3f, firePoint.position.y, firePoint.position.z - 0.1f), bulletRotation3);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + 0.1f, firePoint.position.y, firePoint.position.z), bulletRotation2);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + 0.3f, firePoint.position.y, firePoint.position.z - 0.1f), bulletRotation4);
+        Instantiate(piercingBulletPrefab, new Vector3(podLeft.transform.position.x, podLeft.transform.position.y, podLeft.transform.position.z), bulletRotation1);
+        Instantiate(piercingBulletPrefab, new Vector3(podLeft.transform.position.x - baseShotDistanceBetweenShots, podLeft.transform.position.y, podLeft.transform.position.z), bulletRotation3);
+        Instantiate(piercingBulletPrefab, new Vector3(podRight.transform.position.x, podRight.transform.position.y, podRight.transform.position.z), bulletRotation1);
+        Instantiate(piercingBulletPrefab, new Vector3(podRight.transform.position.x + baseShotDistanceBetweenShots, podRight.transform.position.y, podRight.transform.position.z), bulletRotation2);
     }
 
     //Player Level 5
@@ -145,10 +202,10 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            bulletRotation1 = Quaternion.Euler(0, -90 - weaponSprayStrengthWhilePressingShift, 0);
-            bulletRotation3 = Quaternion.Euler(0, -90 - weaponSprayStrengthWhilePressingShift, 0);
-            bulletRotation2 = Quaternion.Euler(0, -90 + weaponSprayStrengthWhilePressingShift, 0);
-            bulletRotation4 = Quaternion.Euler(0, -90 + weaponSprayStrengthWhilePressingShift, 0);
+            bulletRotation1 = Quaternion.Euler(0, -90 - shiftPodSprayStrength, 0);
+            bulletRotation3 = Quaternion.Euler(0, -90 - shiftPodSprayStrength, 0);
+            bulletRotation2 = Quaternion.Euler(0, -90 + shiftPodSprayStrength, 0);
+            bulletRotation4 = Quaternion.Euler(0, -90 + shiftPodSprayStrength, 0);
         }
         else
         {

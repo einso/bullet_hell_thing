@@ -493,6 +493,9 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1603048834}
+  - {fileID: 207124071}
+  - {fileID: 1482780102}
+  - {fileID: 1513633729}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -756,6 +759,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &207124070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 207124071}
+  m_Layer: 0
+  m_Name: PodMid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &207124071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207124070}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 175833659}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &227554167
 GameObject:
   m_ObjectHideFlags: 0
@@ -3741,6 +3774,66 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1482780101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482780102}
+  m_Layer: 0
+  m_Name: PodLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1482780102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482780101}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.9, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 175833659}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &1513633728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1513633729}
+  m_Layer: 0
+  m_Name: PodRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1513633729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513633728}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.9, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 175833659}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1569835829
 GameObject:
   m_ObjectHideFlags: 0
@@ -3899,7 +3992,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603048833}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.017, y: 0.26112145, z: 0.12999998}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 175833659}
@@ -3917,19 +4010,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f18f0f9781ea44dbeba3b47782fc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Playerweapon1: 1
-  Playerweapon2: 0
-  Playerweapon3: 0
-  Playerweapon4: 0
-  Playerweapon5: 0
-  delay: 0.15
-  weapon2SprayStrength: 7
-  weapon3SprayStrength: 7
-  weapon4SprayStrength: 7
-  weapon5SprayStrength: 7
+  Baseshot: 1
+  Playerlevel1: 0
+  Playerlevel2: 0
+  Playerlevel3: 0
+  Playerlevel4: 0
+  delay: 0.25
+  baseShotDistanceBetweenShots: 0.25
+  podSprayStrength: 7
   firePoint: {fileID: 1603048834}
+  piercingBulletPrefab: {fileID: 805040988089598216, guid: a2757fdc15721344482f1d7d2c1286f6,
+    type: 3}
   bulletPrefab: {fileID: 805040988089598216, guid: 0acca75acd7a85541b030fa975715f23,
     type: 3}
+  pod: {fileID: 207124071}
+  podLeft: {fileID: 1482780101}
+  podRight: {fileID: 1513633728}
 --- !u!114 &1603048836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3937,23 +4033,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603048833}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a8894ba9e8b07f40bd9b7133f074449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Playerweapon1: 0
-  Playerweapon2: 0
-  Playerweapon3: 0
-  Playerweapon4: 0
-  Playerweapon5: 1
-  delay: 0.15
-  weapon2SprayStrength: 7
-  weapon3SprayStrength: 7
-  weapon4SprayStrength: 7
-  weapon5SprayStrength: 7
+  Baseshot: 0
+  Playerlevel1: 0
+  Playerlevel2: 0
+  Playerlevel3: 0
+  Playerlevel4: 0
+  delay: 0.25
+  baseShotDistanceBetweenShots: 0.3
+  podSprayStrength: 7
   bulletSpeed: 20
   Player: {fileID: 175833657}
+  Pod: {fileID: 207124070}
+  PodLeft: {fileID: 1482780101}
+  PodRight: {fileID: 1513633728}
   mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: 9c2f7fc97965c394fa207af4ec5733bc, type: 2}
 --- !u!1 &1605132127
