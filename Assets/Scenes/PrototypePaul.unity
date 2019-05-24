@@ -4010,11 +4010,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f18f0f9781ea44dbeba3b47782fc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Baseshot: 0
+  Baseshot: 1
   Playerlevel1: 0
   Playerlevel2: 0
   Playerlevel3: 0
-  Playerlevel4: 1
+  Playerlevel4: 0
   delay: 0.25
   baseShotDistanceBetweenShots: 0.25
   podSprayStrength: 7
@@ -4033,7 +4033,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603048833}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a8894ba9e8b07f40bd9b7133f074449, type: 3}
   m_Name: 
@@ -4721,6 +4721,7 @@ GameObject:
   - component: {fileID: 1802247908}
   - component: {fileID: 1802247907}
   - component: {fileID: 1802247904}
+  - component: {fileID: 1802247909}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -4844,6 +4845,18 @@ MonoBehaviour:
   enemyProbabilities: 0900000001000000
   maxSecNextEnemySpawn: 2
   minSecNextEnemySpawn: 1
+--- !u!114 &1802247909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802247901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b009d5fd929bf984c819743ff4aa3608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1909448011
 GameObject:
   m_ObjectHideFlags: 0
