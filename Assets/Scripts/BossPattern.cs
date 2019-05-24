@@ -24,7 +24,9 @@ public class BossPattern : MonoBehaviour
             if (time < patternLength_1)        //as long as time is smaller then pattern length, do something
             {
                 /////////////////     
-                Debug.Log("Pattern: 1");
+                GetComponent<SinusoidalMove>().moveSpeed = 2;
+                GetComponentInChildren<EnemyWeapon>().duoShot = true;
+                GetComponentInChildren<EnemyWeapon>().firingPeriod = 0.1f;
             }
             else
             {
@@ -39,7 +41,11 @@ public class BossPattern : MonoBehaviour
             if (time < patternLength_2)        //as long as time is smaller then pattern length, do something
             {
                 /////////////////
-                Debug.Log("Pattern: 2");
+                transform.position = new Vector3(0, transform.position.y, transform.position.z);
+                GetComponent<SinusoidalMove>().moveSpeed = 0;
+                GetComponentInChildren<EnemyWeapon>().duoShot = false;
+                GetComponentInChildren<EnemyWeapon>().flowerShot = true;
+                GetComponentInChildren<EnemyWeapon>().firingPeriod = 0.25f;
             }
             else
             {
@@ -54,7 +60,7 @@ public class BossPattern : MonoBehaviour
             if (time < patternLength_3)        //as long as time is smaller then pattern length, do something
             {
                 /////////////////
-                Debug.Log("Pattern: 3");
+
             }
             else
             {

@@ -32,9 +32,6 @@ public class BulletSystem : ComponentSystem
             UnityEngine.Ray CheckBulletHit1 = new UnityEngine.Ray(new Vector3(pos.x - 0.1f, pos.y, pos.z), Quaternion.Euler(new Vector3(rot.eulerAngles.z, rot.eulerAngles.y, rot.eulerAngles.x)) * Vector3.forward);
             UnityEngine.Ray CheckBulletHit2 = new UnityEngine.Ray(new Vector3(pos.x + 0.1f, pos.y, pos.z), Quaternion.Euler(new Vector3(rot.eulerAngles.z, rot.eulerAngles.y, rot.eulerAngles.x)) * Vector3.forward);
 
-            //7 / 45 * 100 = 0.1555;
-            //90 / 45 * 100 =
-
             Debug.DrawRay(new Vector3(pos.x - 0.1f, pos.y, pos.z), Quaternion.Euler(new Vector3(rot.eulerAngles.z,rot.eulerAngles.y,rot.eulerAngles.x)) * Vector3.forward);
             Debug.DrawRay(new Vector3(pos.x + 0.1f, pos.y, pos.z), Quaternion.Euler(new Vector3(rot.eulerAngles.z, rot.eulerAngles.y, rot.eulerAngles.x)) * Vector3.forward);
 
@@ -44,12 +41,13 @@ public class BulletSystem : ComponentSystem
             {
                 if (hit.transform.tag == "Enemy")
                 {
-                    Debug.Log("HIT");
 
                     float scale = hit.transform.localScale.y+0.1f;
                     if (pos.z> hit.transform.position.z - scale)
                     {
                         hit.transform.GetComponent<ECSCollision>().DestroyOnHit();
+                        
+                        
                     }
                     
                 }

@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
         //Get Movement Input
         Vector3 pos = transform.position;
-        float moveHori = Input.GetAxisRaw("Horizontal");
-        float moveVerti = Input.GetAxisRaw("Vertical");
+        float moveHori = Input.GetAxis("Horizontal");
+        float moveVerti = Input.GetAxis("Vertical");
         //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
         //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
 
