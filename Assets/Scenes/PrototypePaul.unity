@@ -4741,7 +4741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d872c24a845534faf27294c3748ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodMode: 0
+  GodMode: 1
   Player: {fileID: 175833657}
   Camera: {fileID: 1687258581}
   DeathScreen: {fileID: 358547442}

@@ -44,11 +44,6 @@ public class Manager : MonoBehaviour
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
         AmountOfProbabilities();           //Set the amount of probabilities
-
-        if(GodMode)
-        {
-            Player.GetComponent<Collider>().enabled = false;
-        }
       
     }
 
@@ -75,6 +70,9 @@ public class Manager : MonoBehaviour
 
             //PauseGame
             PauseGame();
+
+            //GodMode
+            ToggleGodMode();
         }
     }
 
@@ -171,5 +169,16 @@ public class Manager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    void ToggleGodMode()
+    {
 
+        if (GodMode)
+        {
+            Player.GetComponent<Collider>().enabled = false;
+        }
+        else
+        {
+            Player.GetComponent<Collider>().enabled = true;
+        }
+    }
 }

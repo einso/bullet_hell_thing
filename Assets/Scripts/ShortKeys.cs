@@ -94,5 +94,15 @@ public class ShortKeys : MonoBehaviour
             weapon.GetComponent<Weapon>().Playerlevel2 = false;
             weapon.GetComponent<Weapon>().Playerlevel3 = false;
         }
+
+        if(Input.GetKeyUp(KeyCode.G) && GetComponent<Manager>().GodMode == true)
+        {
+            GetComponent<Manager>().GodMode = false;
+        }
+
+        else if (Input.GetKeyUp(KeyCode.G) && GetComponent<Manager>().GodMode == false)
+        {
+            GetComponent<Manager>().GodMode = true;
+        }
     }
 }
