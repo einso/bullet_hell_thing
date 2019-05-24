@@ -51,27 +51,41 @@ public class Weapon : MonoBehaviour
         {
             if(Baseshot)
             {
+                if (pod.GetComponent<SpriteRenderer>().enabled == true) pod.GetComponent<SpriteRenderer>().enabled = false;
+                if (podLeft.GetComponent<SpriteRenderer>().enabled == true) podLeft.GetComponent<SpriteRenderer>().enabled = false;
+                if (podRight.GetComponent<SpriteRenderer>().enabled == true) podRight.GetComponent<SpriteRenderer>().enabled = false;
                 BaseShot();
                 t = 0;
             }
             else if(Playerlevel1)
             {
-                
+                if(pod.GetComponent<SpriteRenderer>().enabled == false) pod.GetComponent<SpriteRenderer>().enabled = true;
+                if (podLeft.GetComponent<SpriteRenderer>().enabled == true) podLeft.GetComponent<SpriteRenderer>().enabled = false;
+                if (podRight.GetComponent<SpriteRenderer>().enabled == true) podRight.GetComponent<SpriteRenderer>().enabled = false;
                 PlayerLevel1();
                 t = 0;
             }
             else if(Playerlevel2)
             {
+                if (pod.GetComponent<SpriteRenderer>().enabled == false) pod.GetComponent<SpriteRenderer>().enabled = true;
+                if (podLeft.GetComponent<SpriteRenderer>().enabled == true) podLeft.GetComponent<SpriteRenderer>().enabled = false;
+                if (podRight.GetComponent<SpriteRenderer>().enabled == true) podRight.GetComponent<SpriteRenderer>().enabled = false;
                 PlayerLevel2();
                 t = 0;
             }
             else if(Playerlevel3)
             {
+                if (pod.GetComponent<SpriteRenderer>().enabled == true) pod.GetComponent<SpriteRenderer>().enabled = false;
+                if (podLeft.GetComponent<SpriteRenderer>().enabled == false) podLeft.GetComponent<SpriteRenderer>().enabled = true;
+                if (podRight.GetComponent<SpriteRenderer>().enabled == false) podRight.GetComponent<SpriteRenderer>().enabled = true;
                 PlayerLevel3();
                 t = 0;
             }
             else if (Playerlevel4)
             {
+                if (pod.GetComponent<SpriteRenderer>().enabled == true) pod.GetComponent<SpriteRenderer>().enabled = false;
+                if (podLeft.GetComponent<SpriteRenderer>().enabled == false) podLeft.GetComponent<SpriteRenderer>().enabled = true;
+                if (podRight.GetComponent<SpriteRenderer>().enabled == false) podRight.GetComponent<SpriteRenderer>().enabled = true;
                 PlayerLevel4();
                 t = 0;
             }
@@ -91,8 +105,8 @@ public class Weapon : MonoBehaviour
         bulletRotation2 = Quaternion.Euler(0, -90, 0);
 
         float distance = baseShotDistanceBetweenShots / 2;
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation2);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation2);
     }
 
     //Player Level 1
@@ -102,11 +116,11 @@ public class Weapon : MonoBehaviour
         bulletRotation1 = Quaternion.Euler(0, -90, 0);
         bulletRotation2 = Quaternion.Euler(0, -90, 0);
         float distance = baseShotDistanceBetweenShots / 2;
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation2);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation2);
 
         //PodShot
-        Instantiate(piercingBulletPrefab, pod.position, bulletRotation1);
+        Instantiate(piercingBulletPrefab, new Vector3(pod.position.x, pod.position.y - 0.1f, pod.position.z), bulletRotation1);
     }
 
     //Player Level 2
@@ -116,8 +130,8 @@ public class Weapon : MonoBehaviour
         bulletRotation1 = Quaternion.Euler(0, -90, 0);
         bulletRotation2 = Quaternion.Euler(0, -90, 0);
         float distance = baseShotDistanceBetweenShots / 2;
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation2);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation2);
 
         //PodShot
         if (Input.GetKey(KeyCode.LeftShift))
@@ -131,8 +145,8 @@ public class Weapon : MonoBehaviour
             bulletRotation2 = Quaternion.Euler(0, -90 + podSprayStrength, 0);
         }
         
-        Instantiate(piercingBulletPrefab, new Vector3(pod.position.x -0.2f, pod.position.y, pod.position.z), bulletRotation1);
-        Instantiate(piercingBulletPrefab, new Vector3(pod.position.x + 0.2f, pod.position.y, pod.position.z), bulletRotation2);
+        Instantiate(piercingBulletPrefab, new Vector3(pod.position.x -0.2f, pod.position.y - 0.1f, pod.position.z), bulletRotation1);
+        Instantiate(piercingBulletPrefab, new Vector3(pod.position.x + 0.2f, pod.position.y - 0.1f, pod.position.z), bulletRotation2);
     }
 
     //Player Level 3
@@ -142,8 +156,8 @@ public class Weapon : MonoBehaviour
         bulletRotation1 = Quaternion.Euler(0, -90, 0);
         bulletRotation2 = Quaternion.Euler(0, -90, 0);
         float distance = baseShotDistanceBetweenShots / 2;
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation2);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y , firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y , firePoint.position.z), bulletRotation2);
 
         //PodShot
         if (Input.GetKey(KeyCode.LeftShift))
@@ -159,8 +173,8 @@ public class Weapon : MonoBehaviour
             podRight.transform.position = new Vector3(firePoint.position.x + podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
         }
 
-        Instantiate(piercingBulletPrefab, new Vector3(podLeft.transform.position.x, podLeft.transform.position.y, podLeft.transform.position.z), bulletRotation1);
-        Instantiate(piercingBulletPrefab, new Vector3(podRight.transform.position.x, podRight.transform.position.y, podRight.transform.position.z), bulletRotation2);
+        Instantiate(piercingBulletPrefab, new Vector3(podLeft.transform.position.x, podLeft.transform.position.y-0.1f, podLeft.transform.position.z), bulletRotation1);
+        Instantiate(piercingBulletPrefab, new Vector3(podRight.transform.position.x, podRight.transform.position.y-0.1f, podRight.transform.position.z), bulletRotation2);
     }
 
     //Player Level 4
@@ -169,8 +183,8 @@ public class Weapon : MonoBehaviour
         //BaseShot
         bulletRotation1 = Quaternion.Euler(0, -90, 0);
         float distance = baseShotDistanceBetweenShots / 2;
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y, firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - distance, firePoint.position.y-0.1f , firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + distance, firePoint.position.y-0.1f , firePoint.position.z), bulletRotation1);
 
         //PodShot
         if (Input.GetKey(KeyCode.LeftShift))
@@ -190,10 +204,10 @@ public class Weapon : MonoBehaviour
             bulletRotation3 = Quaternion.Euler(0, -90 - podSprayStrength, 0);
         }
 
-        Instantiate(piercingBulletPrefab, new Vector3(podLeft.transform.position.x, podLeft.transform.position.y, podLeft.transform.position.z), bulletRotation1);
-        Instantiate(piercingBulletPrefab, new Vector3(podLeft.transform.position.x - baseShotDistanceBetweenShots, podLeft.transform.position.y, podLeft.transform.position.z), bulletRotation3);
-        Instantiate(piercingBulletPrefab, new Vector3(podRight.transform.position.x, podRight.transform.position.y, podRight.transform.position.z), bulletRotation1);
-        Instantiate(piercingBulletPrefab, new Vector3(podRight.transform.position.x + baseShotDistanceBetweenShots, podRight.transform.position.y, podRight.transform.position.z), bulletRotation2);
+        Instantiate(bulletPrefab, new Vector3(podLeft.transform.position.x + baseShotDistanceBetweenShots / 2, podLeft.transform.position.y-0.1f, podLeft.transform.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(podLeft.transform.position.x - baseShotDistanceBetweenShots/2, podLeft.transform.position.y - 0.1f, podLeft.transform.position.z), bulletRotation3);
+        Instantiate(bulletPrefab, new Vector3(podRight.transform.position.x - baseShotDistanceBetweenShots / 2, podRight.transform.position.y-0.1f, podRight.transform.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(podRight.transform.position.x + baseShotDistanceBetweenShots/2, podRight.transform.position.y - 0.1f, podRight.transform.position.z), bulletRotation2);
     }
 
     //Player Level 5
@@ -216,9 +230,9 @@ public class Weapon : MonoBehaviour
         }
 
         Instantiate(bulletPrefab, new Vector3(firePoint.position.x, firePoint.position.y, firePoint.position.z + 0.1f), firePoint.rotation);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - 0.15f, firePoint.position.y, firePoint.position.z), bulletRotation1);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - 0.3f, firePoint.position.y, firePoint.position.z - 0.1f), bulletRotation3);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + 0.15f, firePoint.position.y, firePoint.position.z), bulletRotation2);
-        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + 0.3f, firePoint.position.y, firePoint.position.z - 0.1f), bulletRotation4);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - 0.15f, firePoint.position.y-0.1f , firePoint.position.z), bulletRotation1);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x - 0.3f, firePoint.position.y-0.1f , firePoint.position.z - 0.1f), bulletRotation3);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + 0.15f, firePoint.position.y-0.1f , firePoint.position.z), bulletRotation2);
+        Instantiate(bulletPrefab, new Vector3(firePoint.position.x + 0.3f, firePoint.position.y-0.1f , firePoint.position.z - 0.1f), bulletRotation4);
     }
 }
