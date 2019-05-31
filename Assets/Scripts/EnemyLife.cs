@@ -6,21 +6,16 @@ public class EnemyLife : MonoBehaviour
 {
     public float health = 1;
 
-    void Update()
-    {
-        if (health <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-    
-
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Bullet")
         {
             health -= 1;
-            Destroy(other.gameObject);
+        }
+
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

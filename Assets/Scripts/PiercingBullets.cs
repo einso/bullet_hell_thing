@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class BulletsPlayer : MonoBehaviour
+public class PiercingBullets : MonoBehaviour
 {
     GameObject scoreFeedbackPrefab;
     public float speed = 20f;
@@ -22,9 +22,6 @@ public class BulletsPlayer : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            //DESTROY BOTH OBJECTS
-            Destroy(gameObject);
-
             //CALCULATE SCORE
             float scoreValue = other.GetComponent<SinusoidalMove>().scoreValue;
             FindObjectOfType<Manager>().scoreCount += scoreValue;

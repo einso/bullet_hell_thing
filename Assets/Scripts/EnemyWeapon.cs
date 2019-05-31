@@ -115,8 +115,10 @@ public class EnemyWeapon : MonoBehaviour
     {
         if (time >= firingPeriod)
         {
-            Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x - 1.9f, 0.8f, enemyFireSpawn.transform.position.z), enemyFireSpawn.rotation);
-            Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x + 1.9f, 0.8f, enemyFireSpawn.transform.position.z), enemyFireSpawn.rotation);
+            GameObject shot1 = Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x - 1.9f, 0.8f, enemyFireSpawn.transform.position.z), enemyFireSpawn.rotation);
+            GameObject shot2 = Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x + 1.9f, 0.8f, enemyFireSpawn.transform.position.z), enemyFireSpawn.rotation);
+            shot1.GetComponent<EnemyBullet>().speed = 5;
+            shot2.GetComponent<EnemyBullet>().speed = 5;
             time = 0;
         }
     }
@@ -152,7 +154,7 @@ public class EnemyWeapon : MonoBehaviour
             for (int i = 0; i < 8; i++)
             {
                 Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
-                Instantiate(EnemyProjectilePrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), rot);
+                Instantiate(EnemyProjectilePrefab, new Vector3(0, transform.position.y, transform.position.z), rot);
                 rotY -= 45;
             }
 

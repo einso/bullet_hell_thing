@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
+    public bool GodMode;
+    [Space(20)]
+
     public GameObject Player;
     public GameObject Camera;
     public GameObject DeathScreen;
@@ -67,6 +70,9 @@ public class Manager : MonoBehaviour
 
             //PauseGame
             PauseGame();
+
+            //GodMode
+            ToggleGodMode();
         }
     }
 
@@ -74,7 +80,6 @@ public class Manager : MonoBehaviour
     int randProbability()
     {
         int randomEnemy = Random.Range(1, AmountOfProbabilities()+1);   //random number between 0 and total of all probabilities
-        Debug.Log(randomEnemy);
         int probabilityPool = 0;                                    //reset probabilitypool
 
         //check for each enemy if the random number is inside the probabilityPool
@@ -108,11 +113,11 @@ public class Manager : MonoBehaviour
     {
         //NumberOfEnemies++;
         float spawnPosX = Random.Range(0, 11);
-        Debug.Log(spawnPosX);
 
 
 
-        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 5, 0.78f, Camera.transform.position.z + 6.7f), transform.rotation);
+
+        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 5, 1f, Camera.transform.position.z + 6.7f), transform.rotation);
 
         //instance.GetComponent<SinusoidalMove>().moveSpeed = Random.Range(2, 15);
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);
@@ -164,5 +169,16 @@ public class Manager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    void ToggleGodMode()
+    {
 
+        if (GodMode)
+        {
+            Player.GetComponent<Collider>().enabled = false;
+        }
+        else
+        {
+            Player.GetComponent<Collider>().enabled = true;
+        }
+    }
 }
