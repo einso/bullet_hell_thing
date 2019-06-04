@@ -6117,7 +6117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6483755f2e26a434aa3d44193f5fecd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level_1: 1
+  Level_1: 0
   Level_2: 0
   Level_3: 0
 --- !u!114 &1802247906
@@ -6132,7 +6132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acdfcf50b2a2654a9eb7b0880560650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyProbabilities: 0300000002000000
+  enemyProbabilities: 0300000000000000
   maxSecNextEnemySpawn: 2
   minSecNextEnemySpawn: 1
 --- !u!114 &1802247907
