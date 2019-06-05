@@ -15,7 +15,17 @@ public class BulletsPlayer : MonoBehaviour
     void Start()
     {
         scoreFeedbackPrefab = GameObject.Find("ScoreFeedbackTMP");
-        rb.velocity = transform.right * speed;
+       // rb.velocity = transform.right * speed;
+    }
+
+    void Update()
+    {
+        //Bullet Movement            
+        Quaternion rot = transform.rotation;
+        Vector3 pos = transform.position;
+        Vector3 posChange = new Vector3(speed * Time.deltaTime, 0, 0);
+        pos += rot * posChange;
+        transform.position = pos;
     }
 
     private void OnTriggerEnter(Collider other)
