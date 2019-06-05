@@ -123,7 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b613cefa880fee342be8e7243535a21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyEnemyParticle: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
+    type: 3}
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   ScoreVFX: 1
 --- !u!114 &8721418114503959234
@@ -141,6 +142,8 @@ MonoBehaviour:
   scoreFeedbackPrefab: {fileID: 7853798212319667328, guid: 4319e0ec063b81742a708ad91a34e580,
     type: 3}
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
+    type: 3}
   Manager: {fileID: 8876464564475743307, guid: ef8aa62233a64dd4fb313380b3fd689c, type: 3}
   health: 1
 --- !u!1 &6907306609974665126

@@ -95,7 +95,7 @@ public class Manager : MonoBehaviour
                 return i;   //return index to spawn enemy with same index
             }
         }
-        Debug.LogError("Du musst noch Wahrscheinlichkeiten einstellen, du Spast!");
+        Debug.LogError("Du musst noch Wahrscheinlichkeiten einstellen");
         return 0;
     }
 
@@ -148,7 +148,7 @@ public class Manager : MonoBehaviour
     }
 
     //EnemyDeathEvent
-    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle)
+    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle)
     {
 
         //CALCULATE SCORE
@@ -167,8 +167,8 @@ public class Manager : MonoBehaviour
         //FindObjectOfType<SpawnEnemies>().NumberOfEnemies -= 1;
 
         //Spawn Particle Effect
-        //Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
-        Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
+        Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
+        //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
     }
 
 
