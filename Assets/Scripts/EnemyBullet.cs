@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+
     public float speed = 2f;
     public Rigidbody rb;
 

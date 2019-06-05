@@ -6,7 +6,6 @@ public class PlayerAbilities : MonoBehaviour
 {
     bool timeSlow;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +20,11 @@ public class PlayerAbilities : MonoBehaviour
         {
             timeSlow = true;
             TimeSlow();
-            Debug.Log(Time.timeScale);
         }
         else if (Input.GetKeyDown(KeyCode.T) && timeSlow)
         {
             timeSlow = false;
             TimeSlow();
-            Debug.Log(Time.timeScale);
         }
 
     }
@@ -44,6 +41,5 @@ public class PlayerAbilities : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
-
 
 }

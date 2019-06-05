@@ -34,8 +34,8 @@ public class Manager : MonoBehaviour
     public float minSecNextEnemySpawn = 0.2f;
     float randSecNextEnemySpawn;
 
-    [HideInInspector]
     public float scoreCount;
+    [HideInInspector]
     public float levelCount = 1f;
     //public int NumberOfEnemies;
 
@@ -46,6 +46,7 @@ public class Manager : MonoBehaviour
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
         AmountOfProbabilities();           //Set the amount of probabilities
+        scoreCount = 0;
       
     }
 
@@ -145,6 +146,32 @@ public class Manager : MonoBehaviour
     {
         DeathScreen.SetActive(true);
     }
+
+    //EnemyDeathEvent
+    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle)
+    {
+
+        //CALCULATE SCORE
+        float scoreValue = other.GetComponent<SinusoidalMove>().scoreValue;
+        FindObjectOfType<Manager>().scoreCount += scoreValue;
+        //GetComponent<Manager>().scoreCount += scoreValue;
+
+        //SHOW SCORE OVER ENEMY
+
+        //GameObject scoreFeedback = Instantiate(scoreFeedbackPrefab, new Vector3(other.transform.position.x - 0.3f, other.transform.position.y, other.transform.position.z - 4.8f), scoreFeedbackPrefab.transform.rotation);
+        GameObject scoreFeedback = Instantiate(scoreFeedbackPrefab, new Vector3(other.transform.position.x +4.73f, other.transform.position.y , other.transform.position.z-0.4f), scoreFeedbackPrefab.transform.rotation);
+
+        scoreFeedback.GetComponent<TextMeshPro>().text = "" + other.GetComponent<SinusoidalMove>().scoreValue;
+
+
+        //FindObjectOfType<SpawnEnemies>().NumberOfEnemies -= 1;
+
+        //Spawn Particle Effect
+        //Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
+        Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
+    }
+
+
 
     //PauseGameEvent
     public void PauseGame()
