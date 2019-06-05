@@ -15,7 +15,7 @@ public class EnemyLife : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet")
         {
             health -= 1;
             Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
@@ -39,7 +39,7 @@ public class EnemyLife : MonoBehaviour
             Debug.Log(rand);
         }
 
-        if(destroy)
+        if (destroy)
         {
             t += 1 * Time.deltaTime;
 
@@ -50,5 +50,5 @@ public class EnemyLife : MonoBehaviour
             }
         }
     }
- 
+
 }

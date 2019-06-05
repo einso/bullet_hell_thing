@@ -4971,7 +4971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8894ba9e8b07f40bd9b7133f074449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Baseshot: 0
+  Baseshot: 1
   Playerlevel1: 0
   Playerlevel2: 0
   Playerlevel3: 0
