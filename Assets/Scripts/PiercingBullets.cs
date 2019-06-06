@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class BulletsPlayer : MonoBehaviour
+public class PiercingBullets : MonoBehaviour
 {
     public GameObject Manager;
     public GameObject scoreFeedbackPrefab;
@@ -16,7 +16,7 @@ public class BulletsPlayer : MonoBehaviour
     void Start()
     {
         //scoreFeedbackPrefab = GameObject.Find("ScoreFeedbackTMP");
-       // rb.velocity = transform.right * speed;
+        //rb.velocity = transform.right * speed;
     }
 
     void Update()
@@ -33,10 +33,7 @@ public class BulletsPlayer : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
-            //Manager.GetComponent<Manager>().EnemyDeathEvent(Manager,other.gameObject,scoreFeedbackPrefab,HitEnemyParticle,ScoreVFX);
-
-           
+            //Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, other.gameObject, scoreFeedbackPrefab, HitEnemyParticle);
 
         }
 
