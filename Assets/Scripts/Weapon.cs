@@ -7,11 +7,24 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public float delay = 0.25f;
+    float t;
+
+    void Start()
+    {
+        t = delay;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {Shoot();}
+        t = t + 1 * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.Space) && t > delay)
+        {
+            Shoot();
+            t = 0;
+        }
     }
 
     void Shoot()

@@ -8,6 +8,7 @@
     "com.unity.entities": "0.0.12-preview.31",
     "com.unity.mathematics": "1.0.1",
     "com.unity.package-manager-ui": "2.1.2",
+    "com.unity.physics": "0.0.2-preview.1",
     "com.unity.purchasing": "2.0.6",
     "com.unity.render-pipelines.lightweight": "5.7.2",
     "com.unity.rendering.hybrid": "0.0.1-preview.11",

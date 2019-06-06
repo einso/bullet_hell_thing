@@ -12,17 +12,18 @@ public class EnemyBullet : MonoBehaviour
         rb.velocity = transform.forward * speed;
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log(other.name);
             Destroy(other.gameObject);
             Destroy(gameObject);
+            FindObjectOfType<Manager>().PlayerDeath();
         }
         if (other.gameObject.tag == "EndWall")
         {
-            Debug.Log(other.name);
+
             Destroy(gameObject);
         }
 

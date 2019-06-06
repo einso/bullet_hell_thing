@@ -16,13 +16,13 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Cube")
         {
-            Debug.Log(other.name);
+            //Debug.Log(other.name);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
         if (other.gameObject.tag == "EndWall")
         {
-            Debug.Log(other.name);
+            //Debug.Log(other.name);
             Destroy(this.gameObject);
         }
 

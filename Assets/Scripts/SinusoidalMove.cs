@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class SinusoidalMove : MonoBehaviour
 {
-    [SerializeField]
-    float moveSpeed = 5f;
+    GameObject Camera;
+
+    public float scoreValue = 100;
+
+    public bool straight;
+    public bool angled;
 
     [SerializeField]
-    float frequency = 20f;
+    public float moveSpeed = 5f;
+
+    [SerializeField]
+    public float frequency = 20f;
 
     [SerializeField]
     float magnitude = 0.5f;
 
     bool facingRight = false;
+    bool movedDown;
 
     Vector3 pos; //,localScale
 
@@ -31,25 +39,29 @@ public class SinusoidalMove : MonoBehaviour
     void Update()
     {
 
-        CheckWhereToFace();
+        MoveDown();
 
-        if (facingRight)
-            MoveRight();
-        else
-            MoveLeft();
+        if(movedDown)
+        {
+            CheckWhereToFace();
+
+            if (facingRight)
+                MoveRight();
+            else
+                MoveLeft();
+        }
+       
     }
 
     void CheckWhereToFace()
     {
-        if (pos.x <= -7f)
+        if (pos.x <= -5f)
         {
             facingRight = true;
-            Debug.Log("MoveLeft");
         }
-        else if (pos.x >= 8f)
+        else if (pos.x >= 5f)
         {
             facingRight = false;
-            Debug.Log("MoveRight");
         }
 
         //if (((facingRight) && (localScale.z < 0)) || ((!facingRight) && (localScale.z > 0)))
@@ -71,5 +83,55 @@ public class SinusoidalMove : MonoBehaviour
         transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;
     }
 
+    void MoveDown()
+    {
+        if(!movedDown)
+        {
+            if (straight)
+            {
+                if (transform.position.z > 8)
+                {
+                    pos += transform.right * Time.deltaTime * 3;
+                    transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+                }
+                else
+                {
+                    movedDown = true;
+                }
+            }
+
+            if (angled)
+            {
+                if (transform.position.z > 8)
+                {
+                    moveSpeed = 2;
+                    pos += transform.right * Time.deltaTime * moveSpeed;
+                    transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+
+                    if (pos.x < 0f)
+                    {
+                        pos += transform.right * Time.deltaTime * moveSpeed;
+                        pos += transform.forward * Time.deltaTime * moveSpeed*2;
+                        transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+                    }
+                    else if (pos.x >= 0f)
+                    {
+                        pos += transform.right * Time.deltaTime * moveSpeed;
+                        pos -= transform.forward * Time.deltaTime * moveSpeed*2;
+                        transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+                    }
+                }
+                else
+                {
+                    movedDown = true;
+                    moveSpeed = 0;
+                }
+            }
+        }
+
+
+
+
+    }
 
 }
