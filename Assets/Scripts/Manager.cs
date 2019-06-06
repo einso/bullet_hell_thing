@@ -29,7 +29,7 @@ public class Manager : MonoBehaviour
     public int[] enemyProbabilities;
     [Space(20)]
 
-    public int spawnsAtOnce = 3;
+    public int waveSize = 3;
     public float maxSecNextEnemySpawn = 0f;
     public float minSecNextEnemySpawn = 0.2f;
     float randSecNextEnemySpawn;
@@ -37,6 +37,9 @@ public class Manager : MonoBehaviour
     public float scoreCount;
     [HideInInspector]
     public float levelCount = 1f;
+
+    //[HideInInspector]
+    public int WaveEnemyNr = 0;
     //public int NumberOfEnemies;
 
     // Start is called before the first frame update
@@ -47,7 +50,8 @@ public class Manager : MonoBehaviour
 
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
-      
+
+
     }
 
     // Update is called once per frame
@@ -59,12 +63,15 @@ public class Manager : MonoBehaviour
             time = time + 1 * Time.deltaTime;
 
             //SpawnEnemy
-            if (time > randSecNextEnemySpawn)
-            {
-                SpawnEnemy();                                                                               //Spawn enemy
-                time = 0;                                                                                   //Reset time
-                randSecNextEnemySpawn = Random.Range(minSecNextEnemySpawn, maxSecNextEnemySpawn);           //Set new random spawn time 
-            }
+            /* if (time > randSecNextEnemySpawn)
+             {
+                 SpawnEnemy();                                                                               //Spawn enemy
+                 time = 0;                                                                                   //Reset time
+                 randSecNextEnemySpawn = Random.Range(minSecNextEnemySpawn, maxSecNextEnemySpawn);           //Set new random spawn time 
+             }*/
+
+            //SpawnWave
+            WaveManagement();
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
@@ -124,13 +131,49 @@ public class Manager : MonoBehaviour
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);
     }
 
-    void SpawnNumber()
+    //SpawnWaveEvent
+    void SpawnWave()
+    {
+        for (int i = 0; i < waveSize; i++)
+        {
+            SpawnEnemy();
+            WaveEnemyNr++;
+        }
+    }
+
+    void WaveManagement()
+    {
+        if(WaveEnemyNr < 1)
+        {
+
+
+            SpawnWave();
+            if (GetComponent<LoadLevel>().Level_1)
+            {
+                GetComponent<LoadLevel>().Level_1 = false;
+                GetComponent<LoadLevel>().Level_2 = true;
+            }
+            else if (GetComponent<LoadLevel>().Level_2)
+            {
+                GetComponent<LoadLevel>().Level_2 = false;
+                GetComponent<LoadLevel>().Level_3 = true;
+            }
+            else if (GetComponent<LoadLevel>().Level_3)
+            {
+                GetComponent<LoadLevel>().Level_3 = false;
+                GetComponent<LoadLevel>().Level_1 = true;
+            }
+
+        }
+    }
+
+   /* void SpawnNumber()
     {
         for (int i = 0; i < spawnsAtOnce; i++)
         {
             Invoke("SpawnEnemy", 1);
         }
-    }
+    }*/
 
     public void PlayerLevelUp()
     {
@@ -169,7 +212,10 @@ public class Manager : MonoBehaviour
         //Spawn Particle Effect
         Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
-    }
+
+        //MinusWaveNumber
+        FindObjectOfType<Manager>().WaveEnemyNr--;
+}
 
 
 
