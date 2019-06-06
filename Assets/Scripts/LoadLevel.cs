@@ -7,6 +7,8 @@ public class LoadLevel : MonoBehaviour
     public bool Level_1;
     public bool Level_2;
     public bool Level_3;
+    public bool Level_4;
+    public bool Level_5;
 
 
     void Start()
@@ -29,6 +31,16 @@ public class LoadLevel : MonoBehaviour
         else if (Level_3)
         {
             LoadLevel3();   
+        }
+
+        else if (Level_4)
+        {
+            LoadLevel4();
+        }
+
+        else if (Level_5)
+        {
+            LoadLevel5();
         }
     }
 
@@ -55,6 +67,24 @@ public class LoadLevel : MonoBehaviour
         //GetComponent<Manager>().amountOfProbabilities = GetComponent<Manager>().AmountOfProbabilities();
         GetComponent<Manager>().waveSize = GetComponent<Level3>().waveSize;
         GetComponent<Manager>().enemyProbabilities = GetComponent<Level3>().enemyProbabilities;
+        //GetComponent<Manager>().maxSecNextEnemySpawn = GetComponent<Level3>().maxSecNextEnemySpawn;
+        //GetComponent<Manager>().minSecNextEnemySpawn = GetComponent<Level3>().minSecNextEnemySpawn;
+    }
+
+    void LoadLevel4()
+    {
+        //GetComponent<Manager>().amountOfProbabilities = GetComponent<Manager>().AmountOfProbabilities();
+        GetComponent<Manager>().waveSize = GetComponent<Level4>().waveSize;
+        GetComponent<Manager>().enemyProbabilities = GetComponent<Level4>().enemyProbabilities;
+        //GetComponent<Manager>().maxSecNextEnemySpawn = GetComponent<Level3>().maxSecNextEnemySpawn;
+        //GetComponent<Manager>().minSecNextEnemySpawn = GetComponent<Level3>().minSecNextEnemySpawn;
+    }
+
+    void LoadLevel5()
+    {
+        //GetComponent<Manager>().amountOfProbabilities = GetComponent<Manager>().AmountOfProbabilities();
+        GetComponent<Manager>().waveSize = GetComponent<Level5>().waveSize;
+        GetComponent<Manager>().enemyProbabilities = GetComponent<Level5>().enemyProbabilities;
         //GetComponent<Manager>().maxSecNextEnemySpawn = GetComponent<Level3>().maxSecNextEnemySpawn;
         //GetComponent<Manager>().minSecNextEnemySpawn = GetComponent<Level3>().minSecNextEnemySpawn;
     }

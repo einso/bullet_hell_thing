@@ -6916,7 +6916,7 @@ PrefabInstance:
     - target: {fileID: 1914265159816201203, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.data[1]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201204, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}

@@ -38,7 +38,7 @@ public class Manager : MonoBehaviour
     [HideInInspector]
     public float levelCount = 1f;
 
-    //[HideInInspector]
+    [HideInInspector]
     public int WaveEnemyNr = 0;
     //public int NumberOfEnemies;
 
@@ -161,9 +161,18 @@ public class Manager : MonoBehaviour
             else if (GetComponent<LoadLevel>().Level_3)
             {
                 GetComponent<LoadLevel>().Level_3 = false;
+                GetComponent<LoadLevel>().Level_4 = true;
+            }
+            else if (GetComponent<LoadLevel>().Level_4)
+            {
+                GetComponent<LoadLevel>().Level_4 = false;
+                GetComponent<LoadLevel>().Level_5 = true;
+            }
+            else if (GetComponent<LoadLevel>().Level_5)
+            {
+                GetComponent<LoadLevel>().Level_5 = false;
                 GetComponent<LoadLevel>().Level_1 = true;
             }
-
         }
     }
 
