@@ -16,10 +16,12 @@ public class Manager : MonoBehaviour
     public GameObject scoreGUI;
     public GameObject timeGUI;
     public GameObject levelGUI;
+    public GameObject waveNrGUI;
 
     GameObject SpawnPos1;
 
     float time;
+    float waveNr;
 
     [HideInInspector]
     public int amountOfProbabilities;
@@ -33,7 +35,8 @@ public class Manager : MonoBehaviour
     public float maxSecNextEnemySpawn = 0f;
     public float minSecNextEnemySpawn = 0.2f;
     float randSecNextEnemySpawn;
-
+    public float secondsTillNextWave = 10;
+    float t = 0;
     public float scoreCount;
     [HideInInspector]
     public float levelCount = 1f;
@@ -77,6 +80,7 @@ public class Manager : MonoBehaviour
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
             timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0");
             levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
+            waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
             //PauseGame
             PauseGame();
@@ -148,30 +152,20 @@ public class Manager : MonoBehaviour
 
 
             SpawnWave();
-            if (GetComponent<LoadLevel>().Level_1)
+            LoadWave();
+            t = 0;
+            waveNr++;
+        }
+        else
+        {
+            t += 1 * Time.deltaTime;
+
+            if (t > secondsTillNextWave)
             {
-                GetComponent<LoadLevel>().Level_1 = false;
-                GetComponent<LoadLevel>().Level_2 = true;
-            }
-            else if (GetComponent<LoadLevel>().Level_2)
-            {
-                GetComponent<LoadLevel>().Level_2 = false;
-                GetComponent<LoadLevel>().Level_3 = true;
-            }
-            else if (GetComponent<LoadLevel>().Level_3)
-            {
-                GetComponent<LoadLevel>().Level_3 = false;
-                GetComponent<LoadLevel>().Level_4 = true;
-            }
-            else if (GetComponent<LoadLevel>().Level_4)
-            {
-                GetComponent<LoadLevel>().Level_4 = false;
-                GetComponent<LoadLevel>().Level_5 = true;
-            }
-            else if (GetComponent<LoadLevel>().Level_5)
-            {
-                GetComponent<LoadLevel>().Level_5 = false;
-                GetComponent<LoadLevel>().Level_1 = true;
+                SpawnWave();
+                LoadWave();
+                t = 0;
+                waveNr++;
             }
         }
     }
@@ -183,6 +177,35 @@ public class Manager : MonoBehaviour
             Invoke("SpawnEnemy", 1);
         }
     }*/
+
+    void LoadWave()
+    {
+        if (GetComponent<LoadLevel>().Level_1)
+        {
+            GetComponent<LoadLevel>().Level_1 = false;
+            GetComponent<LoadLevel>().Level_2 = true;
+        }
+        else if (GetComponent<LoadLevel>().Level_2)
+        {
+            GetComponent<LoadLevel>().Level_2 = false;
+            GetComponent<LoadLevel>().Level_3 = true;
+        }
+        else if (GetComponent<LoadLevel>().Level_3)
+        {
+            GetComponent<LoadLevel>().Level_3 = false;
+            GetComponent<LoadLevel>().Level_4 = true;
+        }
+        else if (GetComponent<LoadLevel>().Level_4)
+        {
+            GetComponent<LoadLevel>().Level_4 = false;
+            GetComponent<LoadLevel>().Level_5 = true;
+        }
+        else if (GetComponent<LoadLevel>().Level_5)
+        {
+            GetComponent<LoadLevel>().Level_5 = false;
+            GetComponent<LoadLevel>().Level_1 = true;
+        }
+    }
 
     public void PlayerLevelUp()
     {
