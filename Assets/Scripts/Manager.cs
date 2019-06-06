@@ -17,6 +17,8 @@ public class Manager : MonoBehaviour
     public GameObject timeGUI;
     public GameObject levelGUI;
 
+    GameObject SpawnPos1;
+
     float time;
 
     [HideInInspector]
@@ -32,8 +34,8 @@ public class Manager : MonoBehaviour
     public float minSecNextEnemySpawn = 0.2f;
     float randSecNextEnemySpawn;
 
-    [HideInInspector]
     public float scoreCount;
+    [HideInInspector]
     public float levelCount = 1f;
     //public int NumberOfEnemies;
 
@@ -44,6 +46,7 @@ public class Manager : MonoBehaviour
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
         AmountOfProbabilities();           //Set the amount of probabilities
+        scoreCount = 0;
       
     }
 
@@ -65,7 +68,7 @@ public class Manager : MonoBehaviour
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0.00");
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0");
             levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
 
             //PauseGame
@@ -92,7 +95,7 @@ public class Manager : MonoBehaviour
                 return i;   //return index to spawn enemy with same index
             }
         }
-        Debug.LogError("Du musst noch Wahrscheinlichkeiten einstellen, du Spast!");
+        Debug.LogError("Du musst noch Wahrscheinlichkeiten einstellen");
         return 0;
     }
 
@@ -114,9 +117,7 @@ public class Manager : MonoBehaviour
         //NumberOfEnemies++;
         float spawnPosX = Random.Range(0, 9.46f);
 
-
-
-
+        //Spawn Enemy and Set Position
         GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 4.73f, 1f, Camera.transform.position.z + 9.7f), transform.rotation);
 
         //instance.GetComponent<SinusoidalMove>().moveSpeed = Random.Range(2, 15);
@@ -145,6 +146,32 @@ public class Manager : MonoBehaviour
     {
         DeathScreen.SetActive(true);
     }
+
+    //EnemyDeathEvent
+    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle)
+    {
+
+        //CALCULATE SCORE
+        float scoreValue = other.GetComponent<SinusoidalMove>().scoreValue;
+        FindObjectOfType<Manager>().scoreCount += scoreValue;
+        //GetComponent<Manager>().scoreCount += scoreValue;
+
+        //SHOW SCORE OVER ENEMY
+
+        //GameObject scoreFeedback = Instantiate(scoreFeedbackPrefab, new Vector3(other.transform.position.x - 0.3f, other.transform.position.y, other.transform.position.z - 4.8f), scoreFeedbackPrefab.transform.rotation);
+        GameObject scoreFeedback = Instantiate(scoreFeedbackPrefab, new Vector3(other.transform.position.x +4.73f, other.transform.position.y , other.transform.position.z-0.4f), scoreFeedbackPrefab.transform.rotation);
+
+        scoreFeedback.GetComponent<TextMeshPro>().text = "" + other.GetComponent<SinusoidalMove>().scoreValue;
+
+
+        //FindObjectOfType<SpawnEnemies>().NumberOfEnemies -= 1;
+
+        //Spawn Particle Effect
+        Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
+        //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
+    }
+
+
 
     //PauseGameEvent
     public void PauseGame()

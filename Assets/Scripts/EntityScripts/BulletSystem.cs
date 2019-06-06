@@ -46,8 +46,9 @@ public class BulletSystem : ComponentSystem
                     if (pos.z> hit.transform.position.z - scale)
                     {
                         hit.transform.GetComponent<ECSCollision>().DestroyOnHit();
-                        
-                        
+
+
+
                     }
                     
                 }

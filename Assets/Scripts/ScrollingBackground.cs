@@ -16,14 +16,7 @@ public class ScrollingBackground : MonoBehaviour
     void Update()
     {
         startPos = transform.position;
-        //float newPos = Mathf.Repeat(scrollSpeed*Time.time, 20);
-        //transform.position = startPos + Vector3.forward * scrollSpeed * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - scrollSpeed * Time.deltaTime);
-
-        if (transform.position.z <= -16)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 4);
-
-        }
+        if (transform.position.z <= -16)    transform.position = new Vector3(transform.position.x, transform.position.y, 4);
     }
 }

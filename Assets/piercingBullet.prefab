@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3402970287359944195
 Transform:
   m_ObjectHideFlags: 0
@@ -4866,6 +4866,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92c1bc861339494c92973c043f6a345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 1914265159816201162, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
+  scoreFeedbackPrefab: {fileID: 7853798212319667328, guid: 4319e0ec063b81742a708ad91a34e580,
+    type: 3}
   speed: 20
   rb: {fileID: 6270426409218043588}
   DestroyEnemyParticle: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
