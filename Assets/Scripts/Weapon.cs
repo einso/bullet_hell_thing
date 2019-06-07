@@ -258,7 +258,6 @@ public class Weapon : MonoBehaviour
         pooledObjects[bulletNr].SetActive(true);
         bulletNr++;
         if (bulletNr > pooledAmount-1) bulletNr = 0;
-        Debug.Log(bulletNr);
        
     }
 }
