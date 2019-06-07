@@ -22,6 +22,7 @@ public class ManaBar : MonoBehaviour
     {
 
         if (manaAmount < 0) manaAmount = 0;
+        if (manaAmount > 1000) manaAmount = 1000;
         bar.fillAmount = manaAmount / 1000;
         Debug.Log(manaAmount);
 
