@@ -516,6 +516,7 @@ MonoBehaviour:
   magnitude: 0.5
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!1 &196664921
@@ -1258,6 +1259,7 @@ MonoBehaviour:
   magnitude: 0.5
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!1 &330645578
@@ -1450,6 +1452,7 @@ MonoBehaviour:
   magnitude: 0.5
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!1 &348409074
@@ -1563,6 +1566,7 @@ MonoBehaviour:
   magnitude: 0.5
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!1 &358547442
@@ -2289,6 +2293,7 @@ MonoBehaviour:
   magnitude: 0.5
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!1 &606607777
@@ -2402,6 +2407,7 @@ MonoBehaviour:
   magnitude: 0.5
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!1 &653260035
@@ -3225,6 +3231,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &926745873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,6 +3490,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &979803503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3544,6 +3552,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &1047783795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3604,6 +3613,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &1059463938
 GameObject:
   m_ObjectHideFlags: 0
@@ -4149,6 +4159,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!224 &1198066173 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7960440847575448733, guid: 274cc7b2d3c81bf469e2fcc342e5576c,
@@ -4217,6 +4228,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &1268211655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5134,6 +5146,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &1624619510
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,6 +5578,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &1722703463
 GameObject:
   m_ObjectHideFlags: 0
@@ -5625,6 +5639,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &1723715367
 GameObject:
   m_ObjectHideFlags: 0
@@ -5881,6 +5896,7 @@ MonoBehaviour:
   magnitude: 0.5
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!1 &1802247901 stripped
@@ -6115,6 +6131,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &1913703426
 GameObject:
   m_ObjectHideFlags: 0
@@ -6743,6 +6760,7 @@ MonoBehaviour:
   magnitude: 0.5
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!1 &2059537032
@@ -6917,6 +6935,7 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
@@ -7019,6 +7038,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201162, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
