@@ -45,10 +45,10 @@ public class BulletSystem : ComponentSystem
                     float scale = hit.transform.localScale.y+0.1f;
                     if (pos.z> hit.transform.position.z - scale)
                     {
-                        hit.transform.GetComponent<ECSCollision>().DestroyOnHit();
-
-
-
+                        //hit.transform.GetComponent<ECSCollision>().DestroyOnHit();
+                        hit.transform.GetComponent<EnemyLife>().health--;
+                        hit.transform.GetComponent<EnemyLife>().CheckHealth();
+                        
                     }
                     
                 }
@@ -57,7 +57,7 @@ public class BulletSystem : ComponentSystem
 
 
 
-            /* //Bulet Physics
+            /* //Bullet Physics
              if (translation.Value.y > 5)
              {
                  rot = Quaternion.Euler(0, 0,  180 - angleZ);               

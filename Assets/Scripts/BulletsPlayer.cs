@@ -33,7 +33,7 @@ public class BulletsPlayer : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             //Manager.GetComponent<Manager>().EnemyDeathEvent(Manager,other.gameObject,scoreFeedbackPrefab,HitEnemyParticle,ScoreVFX);
 
            

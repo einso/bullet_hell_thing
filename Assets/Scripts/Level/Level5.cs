@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level2 : MonoBehaviour
+public class Level5 : MonoBehaviour
 {
-    [Header("LEVEL 2")]
+    [Header("LEVEL 5")]
     public int waveSize;
     public int[] enemyProbabilities;
 }
