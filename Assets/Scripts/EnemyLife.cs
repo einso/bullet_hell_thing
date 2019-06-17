@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
+    public GameObject EnemyProjectilePrefab;
     public GameObject scoreFeedbackPrefab;
     public GameObject HitEnemyParticle;
     public GameObject DestroyEnemyParticle;
@@ -50,6 +51,7 @@ public class EnemyLife : MonoBehaviour
             {
                 Destroy(this.gameObject);
                 Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle);
+                DestroyEnemyC();
             }
         }
     }
@@ -64,8 +66,27 @@ public class EnemyLife : MonoBehaviour
 
             //Give Mana
             Manager.GetComponent<ManaBar>().manaAmount += giveMana;
+
+            DestroyEnemyC();
+          
         }
     }
 
+    void DestroyEnemyC()
+    {
+        if (transform.name == "Enemy C(Clone)")
+        {
+            float rotX = 0;
+            float rotY = 145;
+            float rotZ = 0;
 
+            for (int i = 0; i < 16; i++)
+            {
+                Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
+                GameObject shot = Instantiate(EnemyProjectilePrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), rot);
+                shot.GetComponent<EnemyBullet>().speed = 7;
+                rotY -= 22.5f;
+            }
+        }
+    }
 }
