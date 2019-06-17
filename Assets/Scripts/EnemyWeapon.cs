@@ -22,10 +22,14 @@ public class EnemyWeapon : MonoBehaviour
     public bool duoShot;
     public bool triShot;
     public bool flowerShot;
+    public bool shotEnemyA;
+    public bool shotEnemyB;
+    public bool shotEnemyC;
 
     void Start()
     {
         Player = GameObject.Find("Player").transform;
+        time = Random.Range(0, 2);
     }
 
     void Update()
@@ -48,6 +52,11 @@ public class EnemyWeapon : MonoBehaviour
 
         if (flowerShot) FlowerShot(firingPeriod);
 
+        if (shotEnemyA) ShotEnemyA(firingPeriod, 20);
+
+        if (shotEnemyB) ShotEnemyB(firingPeriod, 0);
+
+        if (shotEnemyC) ShotEnemyC(firingPeriod);
     }
     
     void LinearShot(float firingPeriod)
@@ -159,6 +168,67 @@ public class EnemyWeapon : MonoBehaviour
             }
 
             yincrease -= 10;
+            time = 0;
+        }
+    }
+
+    void ShotEnemyA(float firingPeriod, float angle)
+    {
+        if (time >= firingPeriod)
+        {
+            Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
+            GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, rot);
+            shot.GetComponent<EnemyBullet>().speed = 4;
+
+            rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180, enemyFireSpawn.rotation.z);
+            GameObject shot2 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, rot);
+            shot2.GetComponent<EnemyBullet>().speed = 4;
+
+            rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180-angle, enemyFireSpawn.rotation.z);
+            GameObject shot3 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, rot);
+            shot3.GetComponent<EnemyBullet>().speed = 4;
+
+            time = 0;
+        }
+    }
+
+    void ShotEnemyB(float firingPeriod, float angle)
+    {
+        if(transform.parent.GetComponent<SinusoidalMove>().shootingTime)
+        {
+            if (time >= firingPeriod)
+            {
+
+                for (int i = 0; i < 18; i++)
+                {
+                    Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 - angle, enemyFireSpawn.rotation.z);
+                    GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, rot);
+                    shot.GetComponent<EnemyBullet>().speed = 4;
+                    angle = angle + 20;
+                }
+
+                time = 0;
+            }
+        }
+        else
+        {
+            time = 0;
+        }
+
+    }
+
+    void ShotEnemyC(float firingPeriod)
+    {
+        if (time >= firingPeriod)
+        {
+            GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
+            shot.GetComponent<EnemyBullet>().speed = 4;
+            shot.transform.LookAt(Player);
+
+            GameObject shot2 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
+            shot2.GetComponent<EnemyBullet>().speed = 3f;
+            shot2.transform.LookAt(Player);
+
             time = 0;
         }
     }
