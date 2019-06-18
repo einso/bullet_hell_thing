@@ -24,6 +24,7 @@ public class SinusoidalMove : MonoBehaviour
 
     public bool patternMovement1;
     public bool patternMovement2;
+    public bool patternMovement3;
     public bool patternMovement4;
 
     [HideInInspector]
@@ -77,8 +78,30 @@ public class SinusoidalMove : MonoBehaviour
             TakeTImeToShoot();
         }
 
+        if(patternMovement3)
+        {
+            
+
+            if (transform.position.z > 5)
+            {
+                shootingTime = false;
+                pos += transform.right * Time.deltaTime * moveSpeed;
+                transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+            }
+            else
+            {
+                shootingTime = true;
+               /* pos += transform.right * Time.deltaTime * 1;
+                transform.GetChild(0).transform.position = pos + transform.forward * Mathf.Sin(Time.time * 90f) *1f;*/
+            }
+
+          //  pos += transform.right * Time.deltaTime * 3;
+          //  transform.position = pos + transform.forward * Mathf.Sin(Time.time * 1) * 2f;
+        }
+
         if (patternMovement4)
         {
+
             pos += transform.right * Time.deltaTime * moveSpeed;
             transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
 
@@ -95,7 +118,7 @@ public class SinusoidalMove : MonoBehaviour
 
     void CheckWhereToFace()
     {
-        if (pos.x <= -4.73f)
+        if (pos.x <= -4.05f)
         {
             facingRight = true;
         }

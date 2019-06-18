@@ -129,7 +129,7 @@ public class Manager : MonoBehaviour
         float spawnPosX = Random.Range(0, 9.46f);
 
         //Spawn Enemy and Set Position
-        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 4.73f, 1f, Camera.transform.position.z + 9.7f), transform.rotation);
+        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 4.05f, 1f, Camera.transform.position.z + 9.7f), transform.rotation);
 
         //instance.GetComponent<SinusoidalMove>().moveSpeed = Random.Range(2, 15);
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);

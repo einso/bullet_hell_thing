@@ -25,6 +25,7 @@ public class EnemyWeapon : MonoBehaviour
     public bool shotEnemyA;
     public bool shotEnemyB;
     public bool shotEnemyC;
+    public bool shotEnemyD;
 
     void Start()
     {
@@ -57,6 +58,8 @@ public class EnemyWeapon : MonoBehaviour
         if (shotEnemyB) ShotEnemyB(firingPeriod, 0);
 
         if (shotEnemyC) ShotEnemyC(firingPeriod);
+
+        if (shotEnemyD) ShotEnemyD(firingPeriod);
     }
     
     void LinearShot(float firingPeriod)
@@ -231,6 +234,25 @@ public class EnemyWeapon : MonoBehaviour
 
             time = 0;
         }
+    }
+
+    void ShotEnemyD(float firingPeriod)
+    {
+        if (transform.parent.GetComponent<SinusoidalMove>().shootingTime)
+        {
+            if (time >= firingPeriod)
+            {
+                Vector3 pos = transform.position;
+                
+                GameObject shot = Instantiate(EnemyProjectilePrefab, new Vector3(pos.x, pos.y,pos.z), enemyFireSpawn.rotation);
+                shot.GetComponent<EnemyBullet>().speed = 2;
+                shot.transform.LookAt(Player);
+
+                time = 0;
+            }
+        }
+        else time = 0;
+
     }
 
 }
