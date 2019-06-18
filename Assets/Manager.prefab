@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1914265159816201202}
   - component: {fileID: 1914265159816201201}
   - component: {fileID: 1802247903}
+  - component: {fileID: 4751982405324800737}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -64,11 +65,11 @@ MonoBehaviour:
   waveNrGUI: {fileID: 0}
   amountOfProbabilities: 0
   enemyPrefabs:
-  - {fileID: 6907306608720739348, guid: d72a9ceb4f90f104c8c887307c6972eb, type: 3}
-  - {fileID: 6907306608720739348, guid: f8911a5e99d8f194e8234c7e0555a313, type: 3}
-  - {fileID: 6907306608720739348, guid: 84990f9825dbe9b4285245d303e7a910, type: 3}
-  - {fileID: 6907306608720739348, guid: 84990f9825dbe9b4285245d303e7a910, type: 3}
-  - {fileID: 6907306608720739348, guid: 84990f9825dbe9b4285245d303e7a910, type: 3}
+  - {fileID: 6907306608720739348, guid: e4248409e4af0af42bfd873ae6ff61b6, type: 3}
+  - {fileID: 6907306608720739348, guid: d4957347a59e0c740b2eca5474b18758, type: 3}
+  - {fileID: 6907306608720739348, guid: 076cf3d5a422c324e89ae12b02f4c97e, type: 3}
+  - {fileID: 6907306608720739348, guid: 32490344113d1544d84f4ae7a021a26b, type: 3}
+  - {fileID: 6907306608720739348, guid: c2011386cec469f4bbc38004a45e4f48, type: 3}
   enemyProbabilities: 0300000001000000
   waveSize: 3
   maxSecNextEnemySpawn: 2
@@ -106,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acdfcf50b2a2654a9eb7b0880560650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSize: 9
-  enemyProbabilities: 0300000000000000
+  waveSize: 8
+  enemyProbabilities: 0400000001000000000000000000000000000000
 --- !u!114 &1914265159816201203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4f2313a2d781149a06b0e1a9888fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSize: 5
-  enemyProbabilities: 0100000002000000
+  waveSize: 8
+  enemyProbabilities: 0300000001000000000000000000000000000000
 --- !u!114 &1914265159816201204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSize: 10
-  enemyProbabilities: 0200000002000000
+  enemyProbabilities: 0300000000000000020000000000000002000000
 --- !u!114 &181243108413373990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c2729ea466b414c95434a92a2a1de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSize: 12
-  enemyProbabilities: 0100000005000000
+  waveSize: 11
+  enemyProbabilities: 0500000002000000020000000000000000000000
 --- !u!114 &1124460327259189637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSize: 15
-  enemyProbabilities: 0500000003000000
+  enemyProbabilities: 0500000003000000030000000000000003000000
 --- !u!114 &1914265159816201207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135a61a35f702574b98c24a766755c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manaCostTime: 2
+  manaCostNuke: 300
+  nukeEnemy: 0
 --- !u!114 &1802247903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,3 +218,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bar: {fileID: 0}
   manaAmount: 0
+--- !u!114 &4751982405324800737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914265159816201162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55913152a773bd84a9b9102ea7ee860a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyBulletPrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
+    type: 3}
+  EnemyBullets: {fileID: 0}
+  pooledAmount: 100
+  pooledObjects: []
