@@ -118,7 +118,7 @@ public class SinusoidalMove : MonoBehaviour
 
     void CheckWhereToFace()
     {
-        if (pos.x <= -4.73f)
+        if (pos.x <= -4.05f)
         {
             facingRight = true;
         }
