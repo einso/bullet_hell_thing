@@ -24,6 +24,7 @@ public class PlayerAbilities : MonoBehaviour
         {
             timeSlow = true;
             TimeSlow();
+
         }
         else if (Input.GetKeyDown(KeyCode.E) && timeSlow)
         {
@@ -61,6 +62,7 @@ public class PlayerAbilities : MonoBehaviour
         if(timeSlow)
         {
             Time.timeScale = 0.25f;
+            
         }
         else
         {
