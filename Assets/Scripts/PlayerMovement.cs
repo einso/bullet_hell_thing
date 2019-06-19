@@ -20,13 +20,13 @@ public class PlayerMovement : MonoBehaviour
         Quaternion rot = transform.rotation;
         float z = rot.eulerAngles.z;
         z -= Input.GetAxis("Rotation") * playerRotationSpeed * Time.deltaTime;
-        rot = Quaternion.Euler(90, 0, 0);
+        rot = Quaternion.Euler(90, -90 , 0);
         transform.rotation = rot;
 
         //Get Movement Input
         Vector3 pos = transform.position;
-        float moveHori = Input.GetAxis("Vertical");
-        float moveVerti = Input.GetAxis("Horizontal");
+        float moveVerti = Input.GetAxis("Vertical");
+        float moveHori = Input.GetAxis("Horizontal");
         //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
         //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
 
