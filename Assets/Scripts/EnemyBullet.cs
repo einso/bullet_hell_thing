@@ -34,7 +34,7 @@ public class EnemyBullet : MonoBehaviour
         if (other.gameObject.tag == "EndWall")
         {
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
     }

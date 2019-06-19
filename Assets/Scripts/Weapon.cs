@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
     public Transform pod;
     public GameObject podLeft;
     public GameObject podRight;
+    public GameObject PlayerBullets;
     Vector3 podLeftTran;
     Vector3 podRightTran;
     float podDistanceToPlayer;
@@ -52,6 +53,7 @@ public class Weapon : MonoBehaviour
         for (int i = 0; i < pooledAmount; i++)
         {
             GameObject b = Instantiate(bulletPrefab);
+            b.transform.parent = PlayerBullets.transform; 
             b.SetActive(false);
             pooledObjects.Add(b);
         }

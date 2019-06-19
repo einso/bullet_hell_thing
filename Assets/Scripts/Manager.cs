@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
+
     public bool GodMode;
     [Space(20)]
 
@@ -17,11 +18,12 @@ public class Manager : MonoBehaviour
     public GameObject timeGUI;
     public GameObject levelGUI;
     public GameObject waveNrGUI;
-
     GameObject SpawnPos1;
 
     float time;
     float waveNr;
+
+    bool dontSpawnWaves;
 
     [HideInInspector]
     public int amountOfProbabilities;
@@ -143,30 +145,42 @@ public class Manager : MonoBehaviour
             SpawnEnemy();
             WaveEnemyNr++;
         }
+        
     }
 
     void WaveManagement()
     {
-        if(WaveEnemyNr < 1)
+        if(!dontSpawnWaves)
         {
-
-
-            SpawnWave();
-            LoadWave();
-            t = 0;
-            waveNr++;
-        }
-        else
-        {
-            t += 1 * Time.deltaTime;
-
-            if (t > secondsTillNextWave)
+            if (WaveEnemyNr < 1)
             {
                 SpawnWave();
                 LoadWave();
                 t = 0;
                 waveNr++;
             }
+            else
+            {
+                t += 1 * Time.deltaTime;
+
+                if (t > secondsTillNextWave)
+                {
+                    SpawnWave();
+                    LoadWave();
+                    t = 0;
+                    waveNr++;
+                }
+            }
+        }
+
+
+        if(WaveEnemyNr > 25)
+        {
+            dontSpawnWaves = true;
+        }
+        else
+        {
+            dontSpawnWaves = false;
         }
     }
 
