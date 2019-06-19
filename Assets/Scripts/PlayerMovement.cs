@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
 
         //Set Movement Boundaries
-        if (transform.position.x < -4.05f)
+        if (transform.position.x < -3.05f)
         {
             if(moveHori < 0)
             {
