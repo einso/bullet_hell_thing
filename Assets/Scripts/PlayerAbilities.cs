@@ -7,8 +7,8 @@ public class PlayerAbilities : MonoBehaviour
 {
     public GameObject nukepng;
     bool timeSlow;
-    public float manaCostTime = 2;
-    public float manaCostNuke = 200;
+    public float manaCostTime = 2f;
+    public float manaCostNuke = 300f;
     [HideInInspector]
     public bool nukeEnemy;
     int transparence = 255;
@@ -51,7 +51,7 @@ public class PlayerAbilities : MonoBehaviour
         }
 
         //Enemy Nuke
-        if (Input.GetKeyDown(KeyCode.Q) && manaCostNuke < GetComponent<ManaBar>().manaAmount)
+        if (Input.GetKeyDown(KeyCode.Q) && manaCostNuke <= GetComponent<ManaBar>().manaAmount)
         {
             nukeEnemy = true;
         }

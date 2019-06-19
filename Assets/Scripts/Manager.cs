@@ -24,6 +24,7 @@ public class Manager : MonoBehaviour
     float waveNr;
 
     bool dontSpawnWaves;
+    bool doCoroutineOnce;
 
     [HideInInspector]
     public int amountOfProbabilities;
@@ -56,8 +57,9 @@ public class Manager : MonoBehaviour
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
 
-
     }
+
+   
 
     // Update is called once per frame
     void Update()
@@ -90,6 +92,18 @@ public class Manager : MonoBehaviour
             //GodMode
             ToggleGodMode();
         }
+    }
+
+
+    IEnumerator Delay()
+    {
+        doCoroutineOnce = true;
+        yield return new WaitForSeconds(1);
+        doCoroutineOnce = false;
+        SpawnWave();
+        LoadWave();
+        t = 0;
+        waveNr++;
     }
 
     //Generate a random number to detect which type of enemy should spawn next
@@ -152,12 +166,9 @@ public class Manager : MonoBehaviour
     {
         if(!dontSpawnWaves)
         {
-            if (WaveEnemyNr < 1)
+            if (WaveEnemyNr < 1 && !doCoroutineOnce)
             {
-                SpawnWave();
-                LoadWave();
-                t = 0;
-                waveNr++;
+                StartCoroutine(Delay());
             }
             else
             {
