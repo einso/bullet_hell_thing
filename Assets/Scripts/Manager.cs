@@ -19,6 +19,8 @@ public class Manager : MonoBehaviour
     public GameObject levelGUI;
     public GameObject waveNrGUI;
     GameObject SpawnPos1;
+    public AudioClip playerDeath;
+    public AudioSource audioSource;
 
     float time;
     float waveNr;
@@ -56,6 +58,7 @@ public class Manager : MonoBehaviour
 
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -245,6 +248,8 @@ public class Manager : MonoBehaviour
     public void PlayerDeath()
     {
         DeathScreen.SetActive(true);
+        audioSource.PlayOneShot(playerDeath, 0.6F);
+        //sobald mehr leben vorhanden sind kann man mit PlayOneShot andere sounds von einer audiosource abspielen
     }
 
     //EnemyDeathEvent
