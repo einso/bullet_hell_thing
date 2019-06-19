@@ -118,7 +118,7 @@ public class SinusoidalMove : MonoBehaviour
 
     void CheckWhereToFace()
     {
-        if (pos.x <= -4.05f)
+        if (pos.x <= -3.4f)
         {
             facingRight = true;
         }
@@ -164,7 +164,7 @@ public class SinusoidalMove : MonoBehaviour
                 shootingTime = false;
             }
         }
-        else if(pos.x >= 3f)
+        else if(pos.x >= 4f)
         {
             t += 1 * Time.deltaTime;
             shootingTime = true;

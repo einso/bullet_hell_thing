@@ -19,8 +19,6 @@ public class Manager : MonoBehaviour
     public GameObject levelGUI;
     public GameObject waveNrGUI;
     GameObject SpawnPos1;
-    public AudioClip playerDeath;
-    public AudioSource audioSource;
 
     float time;
     float waveNr;
@@ -58,7 +56,6 @@ public class Manager : MonoBehaviour
 
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
-        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -145,10 +142,10 @@ public class Manager : MonoBehaviour
     void SpawnEnemy()
     {
         //NumberOfEnemies++;
-        float spawnPosX = Random.Range(0, 9.46f);
+        float spawnPosX = Random.Range(0, 8.13f);
 
         //Spawn Enemy and Set Position
-        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 4.05f, 1f, Camera.transform.position.z + 9.7f), transform.rotation);
+        GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 3.4f, 1f, Camera.transform.position.z + 9.7f), transform.rotation);
 
         //instance.GetComponent<SinusoidalMove>().moveSpeed = Random.Range(2, 15);
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);
@@ -248,8 +245,6 @@ public class Manager : MonoBehaviour
     public void PlayerDeath()
     {
         DeathScreen.SetActive(true);
-        audioSource.PlayOneShot(playerDeath, 0.6F);
-        //sobald mehr leben vorhanden sind kann man mit PlayOneShot andere sounds von einer audiosource abspielen
     }
 
     //EnemyDeathEvent
