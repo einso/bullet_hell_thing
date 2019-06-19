@@ -1244,7 +1244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248360651}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -17.68, y: 0.589224, z: 3.91}
+  m_LocalPosition: {x: -12.79, y: 0.589224, z: 3.91}
   m_LocalScale: {x: 25, y: 3.9734, z: 1}
   m_Children: []
   m_Father: {fileID: 125921313}
@@ -3184,7 +3184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681512821}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 8.3419895, y: 0.589224, z: 4.16}
+  m_LocalPosition: {x: 1.32, y: 0.589224, z: 4.16}
   m_LocalScale: {x: 25, y: 3.9734, z: 1}
   m_Children: []
   m_Father: {fileID: 125921313}
@@ -3910,6 +3910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 891318981}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
@@ -4245,6 +4246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 972769778}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -4306,6 +4308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 979803504}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
@@ -4599,6 +4602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1047783796}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -5241,6 +5245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1144815882}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
@@ -5310,6 +5315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1239992174}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
@@ -6484,6 +6490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1618570570}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -6916,6 +6923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1715990669}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -6977,6 +6985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1722703464}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -7403,6 +7412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 1909448012}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -8281,6 +8291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 2113658254}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 0}
@@ -8946,18 +8957,24 @@ PrefabInstance:
     - target: {fileID: 7960440848020611718, guid: 274cc7b2d3c81bf469e2fcc342e5576c,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.09625311
+      value: 0.38431373
       objectReference: {fileID: 0}
     - target: {fileID: 7960440848020611718, guid: 274cc7b2d3c81bf469e2fcc342e5576c,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.9384432
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 7960440848020611718, guid: 274cc7b2d3c81bf469e2fcc342e5576c,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.9716981
+      value: 0.84313726
       objectReference: {fileID: 0}
+    - target: {fileID: 7960440848020611718, guid: 274cc7b2d3c81bf469e2fcc342e5576c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3475b408eed5dc54f92feeddc3ae0013,
+        type: 3}
     - target: {fileID: 7960440846599361534, guid: 274cc7b2d3c81bf469e2fcc342e5576c,
         type: 3}
       propertyPath: m_SizeDelta.x
