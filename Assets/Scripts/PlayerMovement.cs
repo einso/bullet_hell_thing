@@ -10,22 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Manager;
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
-    float shipBoundary = 0.35f;
-
-    //Screenbounds
-    public Camera Camera; 
-    private Vector2 screenBounds;
-    private float objectWidth;
-    private float objectHeight;
-
-    void Start()
-    {
-        screenBounds = Camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.transform.position.y));
-        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
-        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.z; //extents = size of height / 2
-
-        Debug.Log(objectHeight);
-    }
+    public float playerShiftSpeed = 3;
+    public GameObject hitParticlePrefab;
 
     private void Update()
     {
@@ -37,12 +23,71 @@ public class PlayerMovement : MonoBehaviour
         rot = Quaternion.Euler(90, 0, 0);
         transform.rotation = rot;
 
-        //Move Player
+        //Get Movement Input
         Vector3 pos = transform.position;
-        Vector3 posChange = new Vector3(Input.GetAxisRaw("Horizontal") * playerMoveSpeed * Time.deltaTime, Input.GetAxisRaw("Vertical") * playerMoveSpeed * Time.deltaTime, 0);
-        pos += rot * posChange;
-        transform.position = pos;
+        float moveHori = Input.GetAxis("Vertical");
+        float moveVerti = Input.GetAxis("Horizontal");
+        //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
+        //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
 
+        //Set Movement Boundaries
+        if (transform.position.x < -3.05f)
+        {
+            if(moveHori < 0)
+            {
+                moveHori = 0;
+            }
+        }
+
+        if (transform.position.x > 4.7f)
+        {
+            if (moveHori > 0)
+            {
+                moveHori = 0;
+            }
+        }
+
+        if (transform.position.z < -4.5f)
+        {
+            if (moveVerti < 0)
+            {
+                moveVerti = 0;
+            }
+        }
+
+        if (transform.position.z > 12.5f)
+        {
+            if (moveVerti > 0)
+            {
+                moveVerti = 0;
+            }
+        }
+
+        //Set Player to new Position
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Vector3 posChange = new Vector3(moveHori * playerShiftSpeed * Time.deltaTime, moveVerti * playerShiftSpeed * Time.deltaTime, 0);
+            pos += rot * posChange;
+            transform.position = pos;
+        }
+        else
+        {
+            Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime, moveVerti * playerMoveSpeed * Time.deltaTime, 0);
+            pos += rot * posChange;
+            transform.position = pos;
+        }
+          
+
+     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            FindObjectOfType<Manager>().PlayerDeath();
+            Instantiate(hitParticlePrefab, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
+        }
     }
-
 }
