@@ -20,7 +20,7 @@ public class PlayerAbilities : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player.GetComponent<PlayerMovement>().speedBonusWhileSlow = 1;
     }
 
     // Update is called once per frame
@@ -99,6 +99,7 @@ public class PlayerAbilities : MonoBehaviour
         {
             timeSlow = false;
             TimeSlow();
+            nukepng.SetActive(false);
         }
     }
 
@@ -108,11 +109,13 @@ public class PlayerAbilities : MonoBehaviour
         if(timeSlow)
         {
             Time.timeScale = 0.25f;
-            
+            Player.GetComponent<PlayerMovement>().speedBonusWhileSlow = 4;
+
         }
         else
         {
             Time.timeScale = 1f;
+            Player.GetComponent<PlayerMovement>().speedBonusWhileSlow = 1;
         }
     }
 
