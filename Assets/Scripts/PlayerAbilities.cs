@@ -109,13 +109,13 @@ public class PlayerAbilities : MonoBehaviour
         if(timeSlow)
         {
             Time.timeScale = 0.25f;
-            Player.GetComponent<PlayerMovement>().speedBonusWhileSlow = 4;
+            if(Player != null) Player.GetComponent<PlayerMovement>().speedBonusWhileSlow = 4;
 
         }
         else
         {
             Time.timeScale = 1f;
-            Player.GetComponent<PlayerMovement>().speedBonusWhileSlow = 1;
+            if (Player != null) Player.GetComponent<PlayerMovement>().speedBonusWhileSlow = 1;
         }
     }
 
