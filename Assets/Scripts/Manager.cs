@@ -226,6 +226,11 @@ public class Manager : MonoBehaviour
         else if (GetComponent<LoadLevel>().Level_5)
         {
             GetComponent<LoadLevel>().Level_5 = false;
+            GetComponent<LoadLevel>().Level_6 = true;
+        }
+        else if (GetComponent<LoadLevel>().Level_6)
+        {
+            GetComponent<LoadLevel>().Level_6 = false;
             GetComponent<LoadLevel>().Level_1 = true;
         }
     }

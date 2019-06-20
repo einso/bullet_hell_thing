@@ -142,7 +142,7 @@ public class ShortKeys : MonoBehaviour
 
     void SpawnLevelUPText()
     {
-        Vector3 pos = new Vector3(player.transform.position.x - 0.75f, player.transform.position.y, player.transform.position.z);
+        Vector3 pos = new Vector3(player.transform.position.x - 1f, player.transform.position.y, player.transform.position.z);
         Quaternion rot = Quaternion.Euler(90, 0, 90);
         GameObject levelUp = Instantiate(weapon.GetComponent<Weapon>().levelUPFeedback, pos, rot);
         levelUp.transform.SetParent(player.transform);

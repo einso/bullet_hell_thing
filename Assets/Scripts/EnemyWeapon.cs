@@ -274,8 +274,11 @@ public class EnemyWeapon : MonoBehaviour
     {
         if (transform.parent.GetComponent<SinusoidalMove>().shootingTime)
         {
+
             if (time >= firingPeriod)
             {
+
+                angle = Random.Range(0, 90);
 
                 for (int i = 0; i < 18; i++)
                 {
@@ -285,9 +288,12 @@ public class EnemyWeapon : MonoBehaviour
                     poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
                     angle = angle + 20;
                 }
+                
+                
 
                 time = 0;
             }
+            
         }
         else
         {

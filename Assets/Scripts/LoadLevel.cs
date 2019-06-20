@@ -9,6 +9,7 @@ public class LoadLevel : MonoBehaviour
     public bool Level_3;
     public bool Level_4;
     public bool Level_5;
+    public bool Level_6;
 
 
     void Start()
@@ -41,6 +42,11 @@ public class LoadLevel : MonoBehaviour
         else if (Level_5)
         {
             LoadLevel5();
+        }
+
+        else if (Level_6)
+        {
+            LoadLevel6();
         }
     }
 
@@ -85,6 +91,15 @@ public class LoadLevel : MonoBehaviour
         //GetComponent<Manager>().amountOfProbabilities = GetComponent<Manager>().AmountOfProbabilities();
         GetComponent<Manager>().waveSize = GetComponent<Level5>().waveSize;
         GetComponent<Manager>().enemyProbabilities = GetComponent<Level5>().enemyProbabilities;
+        //GetComponent<Manager>().maxSecNextEnemySpawn = GetComponent<Level3>().maxSecNextEnemySpawn;
+        //GetComponent<Manager>().minSecNextEnemySpawn = GetComponent<Level3>().minSecNextEnemySpawn;
+    }
+
+    void LoadLevel6()
+    {
+        //GetComponent<Manager>().amountOfProbabilities = GetComponent<Manager>().AmountOfProbabilities();
+        GetComponent<Manager>().waveSize = GetComponent<Level6>().waveSize;
+        GetComponent<Manager>().enemyProbabilities = GetComponent<Level6>().enemyProbabilities;
         //GetComponent<Manager>().maxSecNextEnemySpawn = GetComponent<Level3>().maxSecNextEnemySpawn;
         //GetComponent<Manager>().minSecNextEnemySpawn = GetComponent<Level3>().minSecNextEnemySpawn;
     }
