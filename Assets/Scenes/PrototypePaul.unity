@@ -617,7 +617,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3ceb989c8b7bd6942b8a9f375e0a61f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af84e6d211717f74a9fa19a167e9345d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -636,8 +636,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175833657}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalPosition: {x: 0, y: 0.96353, z: 0}
+  m_LocalScale: {x: 0.19100249, y: 0.19100249, z: 0.25467}
   m_Children:
   - {fileID: 1603048834}
   - {fileID: 207124071}
@@ -8647,11 +8647,6 @@ PrefabInstance:
       propertyPath: pooledAmount
       value: 250
       objectReference: {fileID: 0}
-    - target: {fileID: 1914265159816201202, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: LevelCounter
-      value: 
-      objectReference: {fileID: 1913703426}
     - target: {fileID: 6550634369480593760, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: EnemyBullets
@@ -8662,6 +8657,11 @@ PrefabInstance:
       propertyPath: pooledAmount
       value: 170
       objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201202, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: LevelCounter
+      value: 
+      objectReference: {fileID: 1913703426}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
 --- !u!1001 &2178710025674972765
