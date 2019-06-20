@@ -157,8 +157,7 @@ public class Manager : MonoBehaviour
         {
             SpawnEnemy();
             WaveEnemyNr++;
-        }
-        
+        }        
     }
 
     void WaveManagement()
