@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolEnemyBullets : MonoBehaviour
+public class PoolEnemyRings : MonoBehaviour
 {
 
     //Pooling
     public GameObject EnemyBulletPrefab;
     public GameObject EnemyBullets;
-    public int pooledAmount = 300;
+    public int pooledAmount = 70;
     public List<GameObject> pooledObjects;
     [HideInInspector]
     public int bulletNr = 0;

@@ -324,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -617,7 +617,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 77277593c68fd3e46b2bb2a96f2bf4b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ceb989c8b7bd6942b8a9f375e0a61f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -636,7 +636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175833657}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.52, y: 1, z: -0.46}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children:
   - {fileID: 1603048834}
@@ -6709,6 +6709,7 @@ GameObject:
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
   - component: {fileID: 1687258583}
+  - component: {fileID: 1687258587}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6881,6 +6882,18 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1687258587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6077bfd9148faa640b6a6e6e67b82c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1714527249
 GameObject:
   m_ObjectHideFlags: 0
@@ -8549,21 +8562,6 @@ PrefabInstance:
       propertyPath: waveNrGUI
       value: 
       objectReference: {fileID: 817079950}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 956022031}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: playerDeath
-      value: 
-      objectReference: {fileID: 8300000, guid: 607d857a03ce69b45b615f8843968a78, type: 3}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: GodMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201160, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8624,28 +8622,18 @@ PrefabInstance:
       propertyPath: nukepng
       value: 
       objectReference: {fileID: 85702370}
-    - target: {fileID: 1914265159816201201, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: manaCostTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914265159816201201, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: manaCostNuke
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 1802247903, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
       propertyPath: bar
       value: 
       objectReference: {fileID: 1636849638}
     - target: {fileID: 1802247903, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
-      propertyPath: qBar
-      value: 
-      objectReference: {fileID: 1004209071}
-    - target: {fileID: 1802247903, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
       propertyPath: qGrey
       value: 
       objectReference: {fileID: 782066401}
+    - target: {fileID: 1802247903, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
+      propertyPath: qBar
+      value: 
+      objectReference: {fileID: 1004209071}
     - target: {fileID: 1802247903, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
       propertyPath: eGrey
       value: 
@@ -8662,7 +8650,17 @@ PrefabInstance:
     - target: {fileID: 4751982405324800737, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: pooledAmount
-      value: 300
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6550634369480593760, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: EnemyBullets
+      value: 
+      objectReference: {fileID: 569120826}
+    - target: {fileID: 6550634369480593760, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: pooledAmount
+      value: 170
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3398686f375d44980fe4befe77d582, type: 3}

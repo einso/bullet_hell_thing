@@ -56,7 +56,6 @@ public class Manager : MonoBehaviour
 
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
-
     }
 
    

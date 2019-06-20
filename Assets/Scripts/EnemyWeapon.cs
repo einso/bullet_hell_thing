@@ -8,6 +8,7 @@ public class EnemyWeapon : MonoBehaviour
     Transform Player;
 
     PoolEnemyBullets poolEnemyBullets;
+    PoolEnemyRings poolEnemyRings;
 
     public GameObject RingeXD;
     public GameObject EnemyProjectilePrefab;
@@ -38,6 +39,11 @@ public class EnemyWeapon : MonoBehaviour
         Player = GameObject.Find("Player").transform;
         time = Random.Range(0, 2);
         poolEnemyBullets = GameObject.Find("Manager").GetComponent<PoolEnemyBullets>();
+
+        if(gameObject.transform.parent.name == "Enemy B(Clone)")
+        {
+            poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
+        }
     }
 
     void Update()
@@ -229,8 +235,10 @@ public class EnemyWeapon : MonoBehaviour
                  } */
 
                 Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
-                GameObject shot = Instantiate(RingeXD, enemyFireSpawn.position, rot);
+
+                GameObject shot = poolEnemyRings.pooledObjects[poolEnemyRings.bulletNr];
                 shot.GetComponent<EnemyBullet>().speed = 4;
+                poolEnemyRings.InstantiateEnemyPool(enemyFireSpawn.position, rot);
                 //shot.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 angle = angle + 20;
 
