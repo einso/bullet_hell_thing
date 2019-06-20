@@ -10,12 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Manager;
     public float playerMoveSpeed = 15;
     public float playerRotationSpeed = 15;
-
-
-    void Start()
-    {
-
-    }
+    public float playerShiftSpeed = 3;
+    public GameObject hitParticlePrefab;
 
     private void Update()
     {
@@ -29,11 +25,13 @@ public class PlayerMovement : MonoBehaviour
 
         //Get Movement Input
         Vector3 pos = transform.position;
-        float moveHori = Input.GetAxisRaw("Horizontal");
-        float moveVerti = Input.GetAxisRaw("Vertical");
+        float moveHori = Input.GetAxis("Vertical");
+        float moveVerti = Input.GetAxis("Horizontal");
+        //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
+        //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
 
         //Set Movement Boundaries
-        if (transform.position.x < -7.75f)
+        if (transform.position.x < -3.05f)
         {
             if(moveHori < 0)
             {
@@ -41,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.x > 9.25f)
+        if (transform.position.x > 4.7f)
         {
             if (moveHori > 0)
             {
@@ -49,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.z < -0.5f)
+        if (transform.position.z < -4.5f)
         {
             if (moveVerti < 0)
             {
@@ -57,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.z > 8f)
+        if (transform.position.z > 12.5f)
         {
             if (moveVerti > 0)
             {
@@ -66,13 +64,21 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Set Player to new Position
-        Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime, moveVerti * playerMoveSpeed * Time.deltaTime, 0);
-        pos += rot * posChange;
-        transform.position = pos;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Vector3 posChange = new Vector3(moveHori * playerShiftSpeed * Time.deltaTime, moveVerti * playerShiftSpeed * Time.deltaTime, 0);
+            pos += rot * posChange;
+            transform.position = pos;
+        }
+        else
+        {
+            Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime, moveVerti * playerMoveSpeed * Time.deltaTime, 0);
+            pos += rot * posChange;
+            transform.position = pos;
+        }
+          
 
-
-
-    }
+     }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -81,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
             FindObjectOfType<Manager>().PlayerDeath();
+            Instantiate(hitParticlePrefab, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Level1 : MonoBehaviour
 {
     [Header("LEVEL 1")]
+    public int waveSize;
     public int[] enemyProbabilities;
-    public float maxSecNextEnemySpawn;
-    public float minSecNextEnemySpawn;
 }
