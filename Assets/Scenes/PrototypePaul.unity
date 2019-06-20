@@ -8670,7 +8670,7 @@ PrefabInstance:
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.data[0]
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
@@ -8685,12 +8685,17 @@ PrefabInstance:
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: enemyProbabilities.Array.data[3]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5763684949949474193, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.data[4]
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3398686f375d44980fe4befe77d582, type: 3}

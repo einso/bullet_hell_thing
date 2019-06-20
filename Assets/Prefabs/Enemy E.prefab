@@ -112,9 +112,9 @@ MonoBehaviour:
   frequency: 0
   magnitude: 0
   patternMovement1: 0
-  patternMovement2: 1
+  patternMovement2: 0
   patternMovement3: 0
-  patternMovement4: 0
+  patternMovement4: 1
   shootingTime: 0
 --- !u!114 &584018353786002514
 MonoBehaviour:
@@ -216,4 +216,4 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
-  shotEnemyD: 1
+  shotEnemyD: 0
