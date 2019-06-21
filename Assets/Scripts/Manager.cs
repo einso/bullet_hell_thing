@@ -20,6 +20,16 @@ public class Manager : MonoBehaviour
     public GameObject waveNrGUI;
     GameObject SpawnPos1;
 
+    //Player Level UP
+    public float killsForLevel2;
+    public float killsForLevel3;
+    public float killsForLevel4;
+    public float killsForLevel5;
+
+    public Weapon weapon;
+
+    public float amountOfKills;
+
     float time;
     float waveNr;
 
@@ -87,6 +97,9 @@ public class Manager : MonoBehaviour
 
             //PauseGame
             PauseGame();
+
+            //PlayerLevelUP
+            PlayerLevelUP();
 
             //GodMode
             ToggleGodMode();
@@ -254,20 +267,17 @@ public class Manager : MonoBehaviour
     public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle)
     {
 
+        //CALCULATE AMOUNT OF KILLS
+        amountOfKills++;
+
         //CALCULATE SCORE
         float scoreValue = other.GetComponent<SinusoidalMove>().scoreValue;
         FindObjectOfType<Manager>().scoreCount += scoreValue;
         //GetComponent<Manager>().scoreCount += scoreValue;
 
         //SHOW SCORE OVER ENEMY
-
-        //GameObject scoreFeedback = Instantiate(scoreFeedbackPrefab, new Vector3(other.transform.position.x - 0.3f, other.transform.position.y, other.transform.position.z - 4.8f), scoreFeedbackPrefab.transform.rotation);
         GameObject scoreFeedback = Instantiate(scoreFeedbackPrefab, new Vector3(other.transform.position.x +4.73f, other.transform.position.y , other.transform.position.z-0.4f), scoreFeedbackPrefab.transform.rotation);
-
         scoreFeedback.GetComponent<TextMeshPro>().text = "" + other.GetComponent<SinusoidalMove>().scoreValue;
-
-
-        //FindObjectOfType<SpawnEnemies>().NumberOfEnemies -= 1;
 
         //Spawn Particle Effect
         Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
@@ -275,9 +285,7 @@ public class Manager : MonoBehaviour
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
-}
-
-
+    }
 
     //PauseGameEvent
     public void PauseGame()
@@ -313,5 +321,146 @@ public class Manager : MonoBehaviour
         {
             Player.GetComponent<Collider>().enabled = true;
         }
+    }
+
+    //PlayerLevelUP
+    public void PlayerLevelUP()
+    {
+        if (weapon.Baseshot)
+        {
+            if (amountOfKills > killsForLevel2) Level2();
+        }
+
+        if (weapon.Playerlevel1)
+        {
+            if (amountOfKills > killsForLevel3) Level3();
+        }
+
+        if (weapon.Playerlevel2)
+        {
+            if (amountOfKills > killsForLevel4) Level4();
+        }
+
+        if (weapon.Playerlevel3)
+        {
+            if (amountOfKills > killsForLevel5) Level5();
+        }
+
+    }
+
+    public void Level1()
+    {
+
+        weapon.GetComponent<EntityCreater>().Baseshot = true;
+        weapon.GetComponent<Weapon>().Baseshot = true;
+
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
+
+        weapon.GetComponent<Weapon>().Playerlevel1 = false;
+        weapon.GetComponent<Weapon>().Playerlevel2 = false;
+        weapon.GetComponent<Weapon>().Playerlevel3 = false;
+        weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        //Level Up UI Update
+        levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 1";
+    }
+
+    public void Level2()
+    {
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = true;
+        weapon.GetComponent<Weapon>().Playerlevel1 = true;
+
+        weapon.GetComponent<EntityCreater>().Baseshot = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
+
+        weapon.GetComponent<Weapon>().Baseshot = false;
+        weapon.GetComponent<Weapon>().Playerlevel2 = false;
+        weapon.GetComponent<Weapon>().Playerlevel3 = false;
+        weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        //Level Up Feedback
+        SpawnLevelUPText();
+
+        //Level Up UI Update
+        levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 2";
+    }
+
+    public void Level3()
+    {
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = true;
+        weapon.GetComponent<Weapon>().Playerlevel2 = true;
+
+        weapon.GetComponent<EntityCreater>().Baseshot = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
+
+        weapon.GetComponent<Weapon>().Baseshot = false;
+        weapon.GetComponent<Weapon>().Playerlevel1 = false;
+        weapon.GetComponent<Weapon>().Playerlevel3 = false;
+        weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        //Level Up Feedback
+        SpawnLevelUPText();
+
+        //Level Up UI Update
+        levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 3";
+    }
+
+    public void Level4()
+    {
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = true;
+        weapon.GetComponent<Weapon>().Playerlevel3 = true;
+
+        weapon.GetComponent<EntityCreater>().Baseshot = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
+
+        weapon.GetComponent<Weapon>().Baseshot = false;
+        weapon.GetComponent<Weapon>().Playerlevel1 = false;
+        weapon.GetComponent<Weapon>().Playerlevel2 = false;
+        weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        //Level Up Feedback
+        SpawnLevelUPText();
+
+        //Level Up UI Update
+        levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 4";
+    }
+
+    public void Level5()
+    {
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = true;
+        weapon.GetComponent<Weapon>().Playerlevel4 = true;
+
+        weapon.GetComponent<EntityCreater>().Baseshot = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
+
+        weapon.GetComponent<Weapon>().Baseshot = false;
+        weapon.GetComponent<Weapon>().Playerlevel1 = false;
+        weapon.GetComponent<Weapon>().Playerlevel2 = false;
+        weapon.GetComponent<Weapon>().Playerlevel3 = false;
+
+        //Level Up Feedback
+        SpawnLevelUPText();
+
+        //Level Up UI Update
+        levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 5";
+    }
+
+    void SpawnLevelUPText()
+    {
+        Vector3 pos = new Vector3(Player.transform.position.x - 1f, Player.transform.position.y, Player.transform.position.z);
+        Quaternion rot = Quaternion.Euler(90, 0, 90);
+        GameObject levelUp = Instantiate(weapon.GetComponent<Weapon>().levelUPFeedback, pos, rot);
+        levelUp.transform.SetParent(Player.transform);
     }
 }

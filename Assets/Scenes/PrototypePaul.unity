@@ -6493,7 +6493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8894ba9e8b07f40bd9b7133f074449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Baseshot: 1
+  Baseshot: 0
   Playerlevel1: 0
   Playerlevel2: 0
   Playerlevel3: 0
@@ -7324,6 +7324,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e2d472ca4e0119439a709d50ade839c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1802247908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1914265159816201202, guid: 2c3398686f375d44980fe4befe77d582,
+    type: 3}
+  m_PrefabInstance: {fileID: 1914265159194139927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802247901}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b009d5fd929bf984c819743ff4aa3608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1846777897
@@ -8552,6 +8564,31 @@ PrefabInstance:
       propertyPath: waveNrGUI
       value: 
       objectReference: {fileID: 817079950}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1603048835}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: killsForLevel2
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: killsForLevel3
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: killsForLevel4
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: killsForLevel5
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201160, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8652,6 +8689,11 @@ PrefabInstance:
       propertyPath: LevelCounter
       value: 
       objectReference: {fileID: 1913703426}
+    - target: {fileID: 1914265159816201202, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6550634369480593760, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: EnemyBullets
@@ -8697,7 +8739,38 @@ PrefabInstance:
       propertyPath: enemyProbabilities.Array.data[4]
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1802247902}
+    - target: {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: shortKeys
+      value: 
+      objectReference: {fileID: 1802247908}
+    - target: {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: killsForLevel2
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: killsForLevel3
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: killsForLevel4
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: killsForLevel5
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
 --- !u!1001 &2178710025674972765
 PrefabInstance:

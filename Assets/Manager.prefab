@@ -67,6 +67,7 @@ MonoBehaviour:
   levelGUI: {fileID: 0}
   waveNrGUI: {fileID: 0}
   amountOfProbabilities: 0
+  amountOfKills: 0
   enemyPrefabs:
   - {fileID: 6907306608720739348, guid: e4248409e4af0af42bfd873ae6ff61b6, type: 3}
   - {fileID: 6907306608720739348, guid: d4957347a59e0c740b2eca5474b18758, type: 3}

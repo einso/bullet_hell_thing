@@ -24,109 +24,32 @@ public class ShortKeys : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            weapon.GetComponent<EntityCreater>().Baseshot = true;
-            weapon.GetComponent<Weapon>().Baseshot = true;
-
-            weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
-
-            weapon.GetComponent<Weapon>().Playerlevel1 = false;
-            weapon.GetComponent<Weapon>().Playerlevel2 = false;
-            weapon.GetComponent<Weapon>().Playerlevel3 = false;
-            weapon.GetComponent<Weapon>().Playerlevel4 = false;
-
-            //Level Up UI Update
-            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 1";
+            GetComponent<Manager>().amountOfKills = 0;
+            Level1();
         }  
     
         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {   
-            weapon.GetComponent<EntityCreater>().Playerlevel1 = true;
-            weapon.GetComponent<Weapon>().Playerlevel1 = true;
- 
-            weapon.GetComponent<EntityCreater>().Baseshot = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
-      
-            weapon.GetComponent<Weapon>().Baseshot = false;
-            weapon.GetComponent<Weapon>().Playerlevel2 = false;
-            weapon.GetComponent<Weapon>().Playerlevel3 = false;
-            weapon.GetComponent<Weapon>().Playerlevel4 = false;
-
-            //Level Up Feedback
-            SpawnLevelUPText();
-
-            //Level Up UI Update
-            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 2";
+        {
+            GetComponent<Manager>().amountOfKills = GetComponent<Manager>().killsForLevel2;
+            Level2();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            weapon.GetComponent<EntityCreater>().Playerlevel2 = true;
-            weapon.GetComponent<Weapon>().Playerlevel2 = true;
-
-            weapon.GetComponent<EntityCreater>().Baseshot = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
-
-            weapon.GetComponent<Weapon>().Baseshot = false;
-            weapon.GetComponent<Weapon>().Playerlevel1 = false;
-            weapon.GetComponent<Weapon>().Playerlevel3 = false;
-            weapon.GetComponent<Weapon>().Playerlevel4 = false;
-
-            //Level Up Feedback
-            SpawnLevelUPText();
-
-            //Level Up UI Update
-            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 3";
+            GetComponent<Manager>().amountOfKills = GetComponent<Manager>().killsForLevel3;
+            Level3();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            weapon.GetComponent<EntityCreater>().Playerlevel3 = true;
-            weapon.GetComponent<Weapon>().Playerlevel3 = true;
-
-            weapon.GetComponent<EntityCreater>().Baseshot = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
-
-            weapon.GetComponent<Weapon>().Baseshot = false;
-            weapon.GetComponent<Weapon>().Playerlevel1 = false;
-            weapon.GetComponent<Weapon>().Playerlevel2 = false;
-            weapon.GetComponent<Weapon>().Playerlevel4 = false;
-
-            //Level Up Feedback
-            SpawnLevelUPText();
-
-            //Level Up UI Update
-            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 4";
+            GetComponent<Manager>().amountOfKills = GetComponent<Manager>().killsForLevel4;
+            Level4();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            weapon.GetComponent<EntityCreater>().Playerlevel4 = true;
-            weapon.GetComponent<Weapon>().Playerlevel4 = true;
-
-            weapon.GetComponent<EntityCreater>().Baseshot = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
-            weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
-
-            weapon.GetComponent<Weapon>().Baseshot = false;
-            weapon.GetComponent<Weapon>().Playerlevel1 = false;
-            weapon.GetComponent<Weapon>().Playerlevel2 = false;
-            weapon.GetComponent<Weapon>().Playerlevel3 = false;
-
-            //Level Up Feedback
-            SpawnLevelUPText();
-
-            //Level Up UI Update
-            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 5";
+            GetComponent<Manager>().amountOfKills = GetComponent<Manager>().killsForLevel5;
+            Level5();
         }
 
         if(Input.GetKeyUp(KeyCode.G) && GetComponent<Manager>().GodMode == true)
@@ -138,6 +61,114 @@ public class ShortKeys : MonoBehaviour
         {
             GetComponent<Manager>().GodMode = true;
         }
+    }
+
+    public void Level1()
+    {
+
+        weapon.GetComponent<EntityCreater>().Baseshot = true;
+        weapon.GetComponent<Weapon>().Baseshot = true;
+
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
+
+        weapon.GetComponent<Weapon>().Playerlevel1 = false;
+        weapon.GetComponent<Weapon>().Playerlevel2 = false;
+        weapon.GetComponent<Weapon>().Playerlevel3 = false;
+        weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        //Level Up UI Update
+        LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 1";
+    }
+
+    public void Level2()
+    {
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = true;
+        weapon.GetComponent<Weapon>().Playerlevel1 = true;
+
+        weapon.GetComponent<EntityCreater>().Baseshot = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
+
+        weapon.GetComponent<Weapon>().Baseshot = false;
+        weapon.GetComponent<Weapon>().Playerlevel2 = false;
+        weapon.GetComponent<Weapon>().Playerlevel3 = false;
+        weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        //Level Up Feedback
+        SpawnLevelUPText();
+
+        //Level Up UI Update
+        LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 2";
+    }
+
+    public void Level3()
+    {
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = true;
+        weapon.GetComponent<Weapon>().Playerlevel2 = true;
+
+        weapon.GetComponent<EntityCreater>().Baseshot = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
+
+        weapon.GetComponent<Weapon>().Baseshot = false;
+        weapon.GetComponent<Weapon>().Playerlevel1 = false;
+        weapon.GetComponent<Weapon>().Playerlevel3 = false;
+        weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        //Level Up Feedback
+        SpawnLevelUPText();
+
+        //Level Up UI Update
+        LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 3";
+    }
+
+    public void Level4()
+    {
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = true;
+        weapon.GetComponent<Weapon>().Playerlevel3 = true;
+
+        weapon.GetComponent<EntityCreater>().Baseshot = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = false;
+
+        weapon.GetComponent<Weapon>().Baseshot = false;
+        weapon.GetComponent<Weapon>().Playerlevel1 = false;
+        weapon.GetComponent<Weapon>().Playerlevel2 = false;
+        weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        //Level Up Feedback
+        SpawnLevelUPText();
+
+        //Level Up UI Update
+        LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 4";
+    }
+
+    public void Level5()
+    {
+        weapon.GetComponent<EntityCreater>().Playerlevel4 = true;
+        weapon.GetComponent<Weapon>().Playerlevel4 = true;
+
+        weapon.GetComponent<EntityCreater>().Baseshot = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel1 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel2 = false;
+        weapon.GetComponent<EntityCreater>().Playerlevel3 = false;
+
+        weapon.GetComponent<Weapon>().Baseshot = false;
+        weapon.GetComponent<Weapon>().Playerlevel1 = false;
+        weapon.GetComponent<Weapon>().Playerlevel2 = false;
+        weapon.GetComponent<Weapon>().Playerlevel3 = false;
+
+        //Level Up Feedback
+        SpawnLevelUPText();
+
+        //Level Up UI Update
+        LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 5";
     }
 
     void SpawnLevelUPText()
