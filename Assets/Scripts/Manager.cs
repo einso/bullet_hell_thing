@@ -28,6 +28,7 @@ public class Manager : MonoBehaviour
 
     public Weapon weapon;
 
+    [HideInInspector]
     public float amountOfKills;
 
     float time;
@@ -158,7 +159,6 @@ public class Manager : MonoBehaviour
 
         //Spawn Enemy and Set Position
         GameObject instance = Instantiate(enemyPrefabs[randProbability()], new Vector3(spawnPosX - 3.4f, 1f, Camera.transform.position.z + 9.7f), transform.rotation);
-
         //instance.GetComponent<SinusoidalMove>().moveSpeed = Random.Range(2, 15);
         //instance.GetComponent<SinusoidalMove>().frequency = Random.Range(2, 15);
     }
