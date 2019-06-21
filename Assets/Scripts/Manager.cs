@@ -82,7 +82,7 @@ public class Manager : MonoBehaviour
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
             timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0");
-            levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
+            //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
             waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
             //PauseGame
@@ -157,8 +157,7 @@ public class Manager : MonoBehaviour
         {
             SpawnEnemy();
             WaveEnemyNr++;
-        }
-        
+        }        
     }
 
     void WaveManagement()

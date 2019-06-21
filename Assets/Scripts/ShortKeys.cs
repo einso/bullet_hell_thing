@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShortKeys : MonoBehaviour
 {
-
-    GameObject weapon; 
+    GameObject weapon;
+    GameObject player;
+    GameObject LevelCounter;
 
     void Start()
     {
         weapon = GameObject.Find("FirePoint");
+        player = GameObject.Find("Player");
+        LevelCounter = GameObject.Find("level");
+
+        //Level Up UI Update
+        LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 1";
     }
 
     // Update is called once per frame
@@ -29,6 +36,9 @@ public class ShortKeys : MonoBehaviour
             weapon.GetComponent<Weapon>().Playerlevel2 = false;
             weapon.GetComponent<Weapon>().Playerlevel3 = false;
             weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+            //Level Up UI Update
+            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 1";
         }  
     
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -45,6 +55,12 @@ public class ShortKeys : MonoBehaviour
             weapon.GetComponent<Weapon>().Playerlevel2 = false;
             weapon.GetComponent<Weapon>().Playerlevel3 = false;
             weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+            //Level Up Feedback
+            SpawnLevelUPText();
+
+            //Level Up UI Update
+            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 2";
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -61,6 +77,12 @@ public class ShortKeys : MonoBehaviour
             weapon.GetComponent<Weapon>().Playerlevel1 = false;
             weapon.GetComponent<Weapon>().Playerlevel3 = false;
             weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+            //Level Up Feedback
+            SpawnLevelUPText();
+
+            //Level Up UI Update
+            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 3";
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
@@ -77,6 +99,12 @@ public class ShortKeys : MonoBehaviour
             weapon.GetComponent<Weapon>().Playerlevel1 = false;
             weapon.GetComponent<Weapon>().Playerlevel2 = false;
             weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+            //Level Up Feedback
+            SpawnLevelUPText();
+
+            //Level Up UI Update
+            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 4";
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -93,6 +121,12 @@ public class ShortKeys : MonoBehaviour
             weapon.GetComponent<Weapon>().Playerlevel1 = false;
             weapon.GetComponent<Weapon>().Playerlevel2 = false;
             weapon.GetComponent<Weapon>().Playerlevel3 = false;
+
+            //Level Up Feedback
+            SpawnLevelUPText();
+
+            //Level Up UI Update
+            LevelCounter.GetComponent<TextMeshProUGUI>().text = "Level: 5";
         }
 
         if(Input.GetKeyUp(KeyCode.G) && GetComponent<Manager>().GodMode == true)
@@ -104,5 +138,13 @@ public class ShortKeys : MonoBehaviour
         {
             GetComponent<Manager>().GodMode = true;
         }
+    }
+
+    void SpawnLevelUPText()
+    {
+        Vector3 pos = new Vector3(player.transform.position.x - 0.75f, player.transform.position.y, player.transform.position.z);
+        Quaternion rot = Quaternion.Euler(90, 0, 90);
+        GameObject levelUp = Instantiate(weapon.GetComponent<Weapon>().levelUPFeedback, pos, rot);
+        levelUp.transform.SetParent(player.transform);
     }
 }

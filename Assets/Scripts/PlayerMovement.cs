@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float playerRotationSpeed = 15;
     public float playerShiftSpeed = 3;
     public GameObject hitParticlePrefab;
+    [HideInInspector]
+    public float speedBonusWhileSlow = 1;
 
     private void Update()
     {
@@ -66,13 +68,13 @@ public class PlayerMovement : MonoBehaviour
         //Set Player to new Position
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            Vector3 posChange = new Vector3(moveHori * playerShiftSpeed * Time.deltaTime, moveVerti * playerShiftSpeed * Time.deltaTime, 0);
+            Vector3 posChange = new Vector3(moveHori * playerShiftSpeed * Time.deltaTime * speedBonusWhileSlow, moveVerti * playerShiftSpeed * Time.deltaTime * speedBonusWhileSlow, 0);
             pos += rot * posChange;
             transform.position = pos;
         }
         else
         {
-            Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime, moveVerti * playerMoveSpeed * Time.deltaTime, 0);
+            Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime * speedBonusWhileSlow, moveVerti * playerMoveSpeed * Time.deltaTime * speedBonusWhileSlow, 0);
             pos += rot * posChange;
             transform.position = pos;
         }

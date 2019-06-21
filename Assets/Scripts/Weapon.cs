@@ -27,6 +27,7 @@ public class Weapon : MonoBehaviour
     public GameObject podLeft;
     public GameObject podRight;
     public GameObject PlayerBullets;
+    public GameObject levelUPFeedback;
     Vector3 podLeftTran;
     Vector3 podRightTran;
     float podDistanceToPlayer;
