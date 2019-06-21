@@ -112,8 +112,8 @@ MonoBehaviour:
   frequency: 4
   magnitude: 0.5
   patternMovement1: 0
-  patternMovement2: 0
-  patternMovement3: 1
+  patternMovement2: 1
+  patternMovement3: 0
   patternMovement4: 0
   shootingTime: 0
 --- !u!114 &584018353786002514
@@ -204,7 +204,7 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
-  firingPeriod: 0.1
+  firingPeriod: 0.75
   linearShot: 0
   sinusShot: 0
   sprayShot: 0

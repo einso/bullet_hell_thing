@@ -113,6 +113,7 @@ MonoBehaviour:
   magnitude: 0
   patternMovement1: 0
   patternMovement2: 0
+  patternMovement3: 0
   patternMovement4: 1
   shootingTime: 0
 --- !u!114 &584018353786002514
@@ -196,13 +197,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 6907306609974665127}
+  RingeXD: {fileID: 0}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
-  firingPeriod: 2
+  firingPeriod: 0.75
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -214,3 +216,4 @@ MonoBehaviour:
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
+  shotEnemyD: 0

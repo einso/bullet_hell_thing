@@ -29,11 +29,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 pos = transform.position;
         float moveHori = Input.GetAxis("Vertical");
         float moveVerti = Input.GetAxis("Horizontal");
-        //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
-        //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
 
-        //Set Movement Boundaries
-        if (transform.position.x < -3.05f)
+                //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
+                //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
+
+                //Set Movement Boundaries
+                if (transform.position.x < -2.92f)
         {
             if(moveHori < 0)
             {
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.x > 4.7f)
+        if (transform.position.x > 4.3f)
         {
             if (moveHori > 0)
             {

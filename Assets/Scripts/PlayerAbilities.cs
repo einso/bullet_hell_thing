@@ -29,13 +29,13 @@ public class PlayerAbilities : MonoBehaviour
         if (Player != null)
         {
             //Time Freeze
-            if (Input.GetKeyDown(KeyCode.E) && !timeSlow)
+            if (Input.GetButtonDown("TimeSlow") && !timeSlow)
             {
                 timeSlow = true;
                 TimeSlow();
 
             }
-            else if (Input.GetKeyDown(KeyCode.E) && timeSlow)
+            else if (Input.GetButtonDown("TimeSlow") && timeSlow)
             {
                 timeSlow = false;
                 TimeSlow();
@@ -54,7 +54,7 @@ public class PlayerAbilities : MonoBehaviour
             }
 
             //Enemy Nuke
-            if (Input.GetKeyDown(KeyCode.Q) && manaCostNuke <= GetComponent<ManaBar>().manaAmount)
+            if (Input.GetButtonDown("Nuke") && manaCostNuke <= GetComponent<ManaBar>().manaAmount)
             {
                 nukeEnemy = true;
             }
