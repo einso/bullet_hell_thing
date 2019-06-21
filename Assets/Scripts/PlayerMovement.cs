@@ -15,6 +15,16 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public float speedBonusWhileSlow = 1;
 
+    float speedHori = 0;
+    float accelerationHori = 50;
+    float decelerationHori = 100;
+    float maxSpeedHori = 50;
+
+    float speedVerti = 0;
+    float accelerationVerti = 50;
+    float decelerationVerti = 100;
+    float maxSpeedVerti = 50;
+
     private void Update()
     {
 
@@ -27,20 +37,67 @@ public class PlayerMovement : MonoBehaviour
 
         //Get Movement Input
         Vector3 pos = transform.position;
-        float moveHori = Input.GetAxis("Vertical");
-        float moveVerti = Input.GetAxis("Horizontal");
+        float moveHori = Input.GetAxisRaw("Vertical");
+        float moveVerti = Input.GetAxisRaw("Horizontal");
 
-                //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
-                //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
-
-                //Set Movement Boundaries
-                if (transform.position.x < -2.92f)
+       /* //HORIZONTAL ACCELERATION
+        if (moveHori < 0 && speedHori < maxSpeedHori)
         {
-            if(moveHori < 0)
+            speedHori = speedHori - accelerationHori * Time.deltaTime;
+        }
+        else if (moveHori > 0 && speedHori > -maxSpeedHori) 
+        {
+            speedHori = speedHori + accelerationHori * Time.deltaTime;
+        } 
+        else
+        {
+            if(speedHori > decelerationHori * Time.deltaTime)
             {
-                moveHori = 0;
+                speedHori = speedHori - decelerationHori * Time.deltaTime;
+            }
+            else if(speedHori < -decelerationHori * Time.deltaTime)
+            {
+                speedHori = speedHori + decelerationHori * Time.deltaTime;
+            }
+            else
+            {
+                speedHori = 0;
             }
         }
+
+        //VERTICAL ACCELERATION
+        if (moveVerti < 0 && speedVerti < maxSpeedVerti)
+        {
+            speedVerti = speedVerti - accelerationVerti * Time.deltaTime;
+        }
+        else if (moveVerti > 0 && speedVerti > -maxSpeedVerti)
+        {
+            speedVerti = speedVerti + accelerationVerti * Time.deltaTime;
+        }
+        else
+        {
+            if (speedVerti > decelerationVerti * Time.deltaTime)
+            {
+                speedVerti = speedVerti - decelerationVerti * Time.deltaTime;
+            }
+            else if (speedVerti < -decelerationVerti * Time.deltaTime)
+            {
+                speedVerti = speedVerti + decelerationVerti * Time.deltaTime;
+            }
+            else
+            {
+                speedVerti = 0;
+            }
+        }*/
+
+        //Set Movement Boundaries
+        if (transform.position.x < -2.92f)
+            {
+                if (moveHori < 0)
+                {
+                    moveHori = 0;
+                }
+            }
 
         if (transform.position.x > 4.3f)
         {
@@ -79,9 +136,10 @@ public class PlayerMovement : MonoBehaviour
             pos += rot * posChange;
             transform.position = pos;
         }
-          
 
-     }
+
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
