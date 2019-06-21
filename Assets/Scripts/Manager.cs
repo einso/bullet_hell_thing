@@ -20,6 +20,9 @@ public class Manager : MonoBehaviour
     public GameObject waveNrGUI;
     GameObject SpawnPos1;
 
+    public float minEnemySpawnTime = 0f;
+    public float maxEnemySpawnTime = 4f;
+
     //Player Level UP
     public float killsForLevel2;
     public float killsForLevel3;
@@ -108,7 +111,7 @@ public class Manager : MonoBehaviour
     }
 
 
-    IEnumerator Delay()
+    IEnumerator WaveDelay()
     {
         doCoroutineOnce = true;
         yield return new WaitForSeconds(1);
@@ -164,11 +167,18 @@ public class Manager : MonoBehaviour
     }
 
     //SpawnWaveEvent
+    IEnumerator EnemySpawnDelay()
+    {
+        float rand = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
+        yield return new WaitForSeconds(rand);
+        SpawnEnemy();
+    }
+
     void SpawnWave()
     {
         for (int i = 0; i < waveSize; i++)
         {
-            SpawnEnemy();
+            StartCoroutine(EnemySpawnDelay());
             WaveEnemyNr++;
         }        
     }
@@ -179,7 +189,7 @@ public class Manager : MonoBehaviour
         {
             if (WaveEnemyNr < 1 && !doCoroutineOnce)
             {
-                StartCoroutine(Delay());
+                StartCoroutine(WaveDelay());
             }
             else
             {
