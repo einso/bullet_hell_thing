@@ -46,7 +46,6 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         t = delay;
-        podDistanceToPlayer = podRight.transform.position.x;
 
         //Pooling
         pooledObjects = new List<GameObject>();
@@ -187,8 +186,8 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            podLeft.transform.position = new Vector3(firePoint.position.x - podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
-            podRight.transform.position = new Vector3(firePoint.position.x + podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
+            podLeft.transform.position = new Vector3(firePoint.position.x - 1, podLeft.transform.position.y, podLeft.transform.position.z);
+            podRight.transform.position = new Vector3(firePoint.position.x + 1, podLeft.transform.position.y, podLeft.transform.position.z);
         }
 
         InstantiatePool(new Vector3(podLeft.transform.position.x, podLeft.transform.position.y-0.1f, podLeft.transform.position.z), bulletRotation1);
@@ -207,6 +206,7 @@ public class Weapon : MonoBehaviour
         //PodShot
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            distance = 0;
             float shiftPodLeft = firePoint.position.x - baseShotDistanceBetweenShots * 2;
             float shiftPodRight = firePoint.position.x + baseShotDistanceBetweenShots * 2;
             podLeft.transform.position = new Vector3(shiftPodLeft, podLeft.transform.position.y, podLeft.transform.position.z);
@@ -216,15 +216,15 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            podLeft.transform.position = new Vector3(firePoint.position.x - podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
-            podRight.transform.position = new Vector3(firePoint.position.x + podDistanceToPlayer, podLeft.transform.position.y, podLeft.transform.position.z);
+            podLeft.transform.position = new Vector3(firePoint.position.x - 0.35f, podLeft.transform.position.y, podLeft.transform.position.z);
+            podRight.transform.position = new Vector3(firePoint.position.x + 0.35f, podLeft.transform.position.y, podLeft.transform.position.z);
             bulletRotation2 = Quaternion.Euler(0, -90 + podSprayStrength, 0);
             bulletRotation3 = Quaternion.Euler(0, -90 - podSprayStrength, 0);
         }
 
-        InstantiatePool( new Vector3(podLeft.transform.position.x + baseShotDistanceBetweenShots / 2, podLeft.transform.position.y-0.1f, podLeft.transform.position.z), bulletRotation1);
+        InstantiatePool( new Vector3(podLeft.transform.position.x + baseShotDistanceBetweenShots / 2 - distance, podLeft.transform.position.y-0.1f, podLeft.transform.position.z), bulletRotation1);
         InstantiatePool( new Vector3(podLeft.transform.position.x - baseShotDistanceBetweenShots/2, podLeft.transform.position.y - 0.1f, podLeft.transform.position.z), bulletRotation3);
-        InstantiatePool( new Vector3(podRight.transform.position.x - baseShotDistanceBetweenShots / 2, podRight.transform.position.y-0.1f, podRight.transform.position.z), bulletRotation1);
+        InstantiatePool( new Vector3(podRight.transform.position.x - baseShotDistanceBetweenShots / 2 + distance , podRight.transform.position.y-0.1f, podRight.transform.position.z), bulletRotation1);
         InstantiatePool( new Vector3(podRight.transform.position.x + baseShotDistanceBetweenShots/2, podRight.transform.position.y - 0.1f, podRight.transform.position.z), bulletRotation2);
     }
 

@@ -290,7 +290,7 @@ public class Manager : MonoBehaviour
         scoreFeedback.GetComponent<TextMeshPro>().text = "" + other.GetComponent<SinusoidalMove>().scoreValue;
 
         //Spawn Particle Effect
-        Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
+        GameObject destroyParticle = Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
 
         //MinusWaveNumber
@@ -320,6 +320,7 @@ public class Manager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    //ToggleGodMode
     void ToggleGodMode()
     {
 
@@ -466,6 +467,7 @@ public class Manager : MonoBehaviour
         levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 5";
     }
 
+    //Show Level Up Above Player
     void SpawnLevelUPText()
     {
         Vector3 pos = new Vector3(Player.transform.position.x - 1f, Player.transform.position.y, Player.transform.position.z);

@@ -7,6 +7,7 @@ public class EnemyWeapon : MonoBehaviour
     public Transform enemyFireSpawn;
     Transform Player;
 
+
     PoolEnemyBullets poolEnemyBullets;
     PoolEnemyRings poolEnemyRings;
 
