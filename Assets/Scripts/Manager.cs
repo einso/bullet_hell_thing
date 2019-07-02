@@ -69,7 +69,7 @@ public class Manager : MonoBehaviour
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
         AmountOfProbabilities();           //Set the amount of probabilities
-        scoreCount = 0;
+        scoreCount = 0;        
     }
 
    

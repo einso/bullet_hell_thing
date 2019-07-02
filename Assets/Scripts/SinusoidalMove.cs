@@ -5,6 +5,7 @@ using UnityEngine;
 public class SinusoidalMove : MonoBehaviour
 {
     GameObject Camera;
+    public GameObject player;
 
     float t;
 
@@ -26,6 +27,7 @@ public class SinusoidalMove : MonoBehaviour
     public bool patternMovement2;
     public bool patternMovement3;
     public bool patternMovement4;
+    public bool patternMovement5;
 
     [HideInInspector]
     public bool shootingTime;
@@ -110,6 +112,21 @@ public class SinusoidalMove : MonoBehaviour
                 GetComponent<EnemyLife>().health = 0;
                 GetComponent<EnemyLife>().CheckHealth();
             }
+        }
+
+        if (patternMovement5)
+        {
+            Vector3 playerPos = player.transform.position;
+            pos = transform.position;
+
+            if (pos.x > playerPos.x - player.transform.localScale.x / 2 && pos.x < playerPos.x + player.transform.localScale.x / 2)
+            {
+
+            }
+            else if (pos.x < playerPos.x) pos = new Vector3(pos.x + 1 * moveSpeed * Time.deltaTime, pos.y, pos.z);
+            else if (pos.x > playerPos.x) pos = new Vector3(pos.x - 1 * moveSpeed * Time.deltaTime, pos.y, pos.z);
+
+            transform.position = pos;
         }
     }
 

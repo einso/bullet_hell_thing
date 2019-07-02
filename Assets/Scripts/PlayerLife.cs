@@ -44,6 +44,7 @@ public class PlayerLife : MonoBehaviour
     {
         health -= damage;   //Health - Damage
         StartCoroutine(toggleInvincibility()); //Toggle invincibility if hit
+        //StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.6f, 0.5f)); //Camera Shake
     }
 
     //Blink Player after taking Damage
