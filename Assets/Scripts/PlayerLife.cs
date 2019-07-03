@@ -34,7 +34,8 @@ public class PlayerLife : MonoBehaviour
         //Check if health is 0
         if(health <= 0)
         {
-            Destroy(gameObject);    //Destroy Player
+            //Destroy(gameObject);    //Destroy Player
+            gameObject.SetActive(false);
             FindObjectOfType<Manager>().PlayerDeath();  //Game Over Screen
         }
     }

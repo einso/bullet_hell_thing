@@ -572,7 +572,6 @@ GameObject:
   - component: {fileID: 175833658}
   - component: {fileID: 175833660}
   - component: {fileID: 175833663}
-  - component: {fileID: 175833661}
   - component: {fileID: 175833662}
   m_Layer: 0
   m_Name: Player
@@ -666,20 +665,6 @@ MonoBehaviour:
   playerShiftSpeed: 1.5
   hitParticlePrefab: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   speedBonusWhileSlow: 4
---- !u!136 &175833661
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175833657}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.42
-  m_Height: 2.2313082
-  m_Direction: 0
-  m_Center: {x: 0.024001166, y: -0.12999998, z: -3.7337784e-16}
 --- !u!54 &175833662
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8695,12 +8680,12 @@ PrefabInstance:
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.data[0]
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
@@ -8805,7 +8790,7 @@ PrefabInstance:
     - target: {fileID: 1914265159816201203, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.data[1]
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201203, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
@@ -9145,31 +9130,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 175833657}
-    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: patternMovement2
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: patternMovement6
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343968488592743450, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: poolEnemyBullets
-      value: 
-      objectReference: {fileID: 1802247905}
-    - target: {fileID: 3343968488592743450, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: poolEnemyRings
-      value: 
-      objectReference: {fileID: 1802247903}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 059548685f317f842bc87dd2136c4894, type: 3}
 --- !u!1001 &3459595133783835822

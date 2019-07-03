@@ -56,6 +56,11 @@ public class EnemyWeapon : MonoBehaviour
 
     void Update()
     {
+        if(Player == null)
+        {
+            enabled = false;
+        }
+
         if(transform.parent.GetComponent<SinusoidalMove>().movedDown)
         {
             time += Time.deltaTime;

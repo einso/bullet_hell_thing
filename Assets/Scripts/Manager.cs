@@ -318,11 +318,11 @@ public class Manager : MonoBehaviour
 
         if (GodMode)
         {
-            Player.GetComponent<Collider>().enabled = false;
+            Player.GetComponentInChildren<Collider>().enabled = false;
         }
         else
         {
-            Player.GetComponent<Collider>().enabled = true;
+            Player.GetComponentInChildren<Collider>().enabled = true;
         }
     }
 

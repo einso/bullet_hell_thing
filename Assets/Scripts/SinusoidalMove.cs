@@ -68,6 +68,11 @@ public class SinusoidalMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(player == null)
+        {
+            enabled = false;
+        }
+
         //Start Pos
         MoveDown();
 
@@ -151,12 +156,12 @@ public class SinusoidalMove : MonoBehaviour
                 {
                     MoveRight();
                     facingRight = true;
-                    shootingTime = false;
+                    shootingTime = false;                    
                 }
 
             }
 
-            if (pos.x >= 4f)
+            else if (pos.x >= 4f)
             {
 
                 t += 1 * Time.deltaTime;
@@ -166,7 +171,7 @@ public class SinusoidalMove : MonoBehaviour
                 {
                     MoveLeft();
                     facingRight = false;
-                    shootingTime = false;
+                    shootingTime = false;                 
                 }
 
             }
@@ -178,7 +183,8 @@ public class SinusoidalMove : MonoBehaviour
                     MoveRight();
                 else
                     MoveLeft();
-                    t = 0;
+
+                t = 0;
             }
         }
     }
