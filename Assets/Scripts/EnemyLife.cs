@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
+    Color32 color;
     SpriteRenderer spriteRenderer;
     public GameObject EnemyProjectilePrefab;
     public GameObject scoreFeedbackPrefab;
@@ -24,6 +25,9 @@ public class EnemyLife : MonoBehaviour
 
         //Get Child SpriteRender
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        //get Color
+        color = spriteRenderer.color;
     }
 
 
@@ -84,10 +88,9 @@ public class EnemyLife : MonoBehaviour
 
     IEnumerator HitVFX()
     {
-
         spriteRenderer.color = new Color32(255, 0, 0, 255);
         yield return new WaitForSeconds(0.05f);
-        spriteRenderer.color = new Color32(255, 255, 255, 255);
+        spriteRenderer.color = color;
     }
 
     void DestroyEnemyC()

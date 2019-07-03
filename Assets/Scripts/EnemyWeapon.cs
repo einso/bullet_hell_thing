@@ -9,8 +9,8 @@ public class EnemyWeapon : MonoBehaviour
 
     SinusoidalMove sinusoidalMove;
 
-    public PoolEnemyBullets poolEnemyBullets;
-    public PoolEnemyRings poolEnemyRings;
+    PoolEnemyBullets poolEnemyBullets;
+    PoolEnemyRings poolEnemyRings;
 
     public GameObject RingeXD;
     public GameObject EnemyProjectilePrefab;
@@ -22,6 +22,8 @@ public class EnemyWeapon : MonoBehaviour
     public float firingPeriod = 1;
     int shotCount;
 
+
+    bool startShooting;
     float angle = 0;
 
     public bool linearShot;
@@ -43,43 +45,48 @@ public class EnemyWeapon : MonoBehaviour
         sinusoidalMove = GetComponentInParent<SinusoidalMove>();
         Player = GameObject.Find("Player").transform;
         time = Random.Range(0, 2);
-        //poolEnemyBullets = GameObject.Find("Manager").GetComponent<PoolEnemyBullets>();
+        poolEnemyBullets = GameObject.Find("Manager").GetComponent<PoolEnemyBullets>();
+        poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
 
-       /* if(gameObject.transform.parent.name == "Dodger")
-        {
-            poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
-        }*/
+        /* if(gameObject.transform.parent.name == "Dodger")
+         {
+             poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
+         }*/
     }
 
     void Update()
     {
-        time += Time.deltaTime;
+        if(transform.parent.GetComponent<SinusoidalMove>().movedDown)
+        {
+            time += Time.deltaTime;
 
-        if (linearShot) LinearShot(firingPeriod, 1);
+            if (linearShot) LinearShot(firingPeriod, 1);
 
-        if (sinusShot) SinusShot(firingPeriod);
+            if (sinusShot) SinusShot(firingPeriod);
 
-        if (sprayShot) SprayShot(firingPeriod);
+            if (sprayShot) SprayShot(firingPeriod);
 
-        if (splitShot) SplitShot(firingPeriod);
+            if (splitShot) SplitShot(firingPeriod);
 
-        if (ghostShot) GhostShot(firingPeriod);
+            if (ghostShot) GhostShot(firingPeriod);
 
-        if (duoShot) DuoShot(firingPeriod);
+            if (duoShot) DuoShot(firingPeriod);
 
-        if (triShot) TriShot(firingPeriod);
+            if (triShot) TriShot(firingPeriod);
 
-        if (flowerShot) FlowerShot(firingPeriod);
+            if (flowerShot) FlowerShot(firingPeriod);
 
-        if (harasserShot)HarasserShot(firingPeriod, 0);
+            if (harasserShot) HarasserShot(firingPeriod, 0);
 
-        if (shotEnemyA) ShotEnemyA(firingPeriod, 20);
+            if (shotEnemyA) ShotEnemyA(firingPeriod, 20);
 
-        if (shotEnemyB) ShotEnemyB(firingPeriod);
+            if (shotEnemyB) ShotEnemyB(firingPeriod);
 
-        if (shotEnemyC) ShotEnemyC(firingPeriod);
+            if (shotEnemyC) ShotEnemyC(firingPeriod);
 
-        if (shotEnemyD) ShotEnemyD(firingPeriod, 0);
+            if (shotEnemyD) ShotEnemyD(firingPeriod, 0);
+        }
+
     }
     
     void LinearShot(float firingPeriod, int amountShots)
@@ -210,25 +217,58 @@ public class EnemyWeapon : MonoBehaviour
 
     void FlowerShot(float firingPeriod)
     {
-        if (time >= firingPeriod)
+        if(time >= 3)
         {
-            float rotX = 0;
-            float rotY = 145 + yincrease;
-            float rotZ = 0;
+            startShooting = true;
+            sinusoidalMove.enabled = false;
+        }
 
-            for (int i = 0; i < 8; i++)
+        if(startShooting)
+        {
+            if (time >= firingPeriod)
             {
-                Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
-                Instantiate(EnemyProjectilePrefab, new Vector3(0, transform.position.y, transform.position.z), rot);
-                rotY -= 45;
+                float rotX = 0;
+                float rotY = 145 + yincrease;
+                float rotZ = 0;
+
+                for (int i = 0; i < 8; i++)
+                {
+                    //StartCoroutine(FlowerSalvage(0.1f, rotX, rotY, rotZ));
+
+                    Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
+                    GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
+                    shot.GetComponent<EnemyBullet>().speed = 3;
+                    poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
+                    rotY -= 45;
+
+                }
+
+                shotCount++;
+                yincrease -= 10;
+                time = 0;
             }
 
-            yincrease -= 10;
-            time = 0;
+            if(shotCount > 15)
+            {
+                startShooting = false;
+                sinusoidalMove.enabled = true;
+                shotCount = 0;
+            }
         }
+
+
+        
     }
 
-    void HarasserShot(float firingPeriod, float angle)
+    IEnumerator FlowerSalvage()
+    {
+
+        yield return new WaitForSeconds(0.25f);
+    }
+
+
+
+        void HarasserShot(float firingPeriod, float angle)
     {
         if (time >= firingPeriod)
         {

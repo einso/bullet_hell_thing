@@ -21,7 +21,7 @@ public class PlayerLife : MonoBehaviour
             if (other.gameObject.tag == "EnemyBullet")
             {
                 TakeDamage(1);  //Damage Calculation
-                Destroy(other.gameObject); //Destroy Enemy Bullet
+                other.gameObject.SetActive(false); //Destroy Enemy Bullet
             }
 
             //Collision with Enemy
