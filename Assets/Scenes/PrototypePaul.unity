@@ -4091,7 +4091,8 @@ AudioSource:
   m_GameObject: {fileID: 956022030}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7719917606630056109, guid: f38be297a87762c4a92e40ce4a03ac51,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 613a5678008be494fa9ffb6259712a89, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4213,7 +4214,8 @@ AudioSource:
   m_GameObject: {fileID: 956022030}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8062372903967823657, guid: f38be297a87762c4a92e40ce4a03ac51,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 607d857a03ce69b45b615f8843968a78, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -8512,46 +8514,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 175833657}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: Camera
-      value: 
-      objectReference: {fileID: 1687258581}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: DeathScreen
-      value: 
-      objectReference: {fileID: 358547442}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: PauseScreen
-      value: 
-      objectReference: {fileID: 2096148748}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: scoreGUI
-      value: 
-      objectReference: {fileID: 516773713}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: timeGUI
-      value: 
-      objectReference: {fileID: 2013133576}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: levelGUI
-      value: 
-      objectReference: {fileID: 1913703426}
-    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: waveNrGUI
-      value: 
-      objectReference: {fileID: 817079950}
     - target: {fileID: 1914265159816201160, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8607,6 +8569,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 175833657}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1687258581}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: DeathScreen
+      value: 
+      objectReference: {fileID: 358547442}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: PauseScreen
+      value: 
+      objectReference: {fileID: 2096148748}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: scoreGUI
+      value: 
+      objectReference: {fileID: 516773713}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: timeGUI
+      value: 
+      objectReference: {fileID: 2013133576}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: levelGUI
+      value: 
+      objectReference: {fileID: 1913703426}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveNrGUI
+      value: 
+      objectReference: {fileID: 817079950}
+    - target: {fileID: -8198352756157689762, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 8062372903967823657, guid: f38be297a87762c4a92e40ce4a03ac51,
+        type: 2}
+    - target: {fileID: 1914265159816201202, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: LevelCounter
+      value: 
+      objectReference: {fileID: 1913703426}
     - target: {fileID: 1914265159816201201, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: nukepng
@@ -8657,11 +8670,6 @@ PrefabInstance:
       propertyPath: pooledAmount
       value: 170
       objectReference: {fileID: 0}
-    - target: {fileID: 1914265159816201202, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: LevelCounter
-      value: 
-      objectReference: {fileID: 1913703426}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
 --- !u!1001 &2178710025674972765
