@@ -84,7 +84,7 @@ public class PlayerAbilities : MonoBehaviour
 
             if (nukeCD)
             {
-                nukeTime += 0.5f * Time.deltaTime;
+                nukeTime += 1.3f * Time.deltaTime;
                 nukepng.GetComponent<Image>().color = Color32.Lerp(new Color32(255, 255, 255, 255), new Color32(255, 255, 255, 0), nukeTime);
 
                 if (nukeTime >= 1)
