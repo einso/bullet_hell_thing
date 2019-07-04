@@ -696,10 +696,10 @@ MonoBehaviour:
   lifeBarPar: {fileID: 1783218528}
   lifeBar: {fileID: 701034936}
   health: 5
-  magnitude: 0.15
-  roughness: 0.3
-  fadeInTime: 0.3
-  fadeOutTime: 0.3
+  magnitude: 0.3
+  roughness: 0.15
+  fadeInTime: 0.1
+  fadeOutTime: 0.1
 --- !u!1 &176310938
 GameObject:
   m_ObjectHideFlags: 0
