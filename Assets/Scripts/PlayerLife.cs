@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class PlayerLife : MonoBehaviour
     public int health = 5;  //Health
 
     bool SetLifebarPos;
+
+    public float magnitude = 1f;
+    public float roughness = 1f;
+    public float fadeInTime = 1f;
+    public float fadeOutTime = 1f;
 
     //update
     void Update()
@@ -45,12 +51,14 @@ public class PlayerLife : MonoBehaviour
             {
                 TakeDamage(1);  //Damage Calculation
                 other.gameObject.SetActive(false); //Destroy Enemy Bullet
+                CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             }
 
             //Collision with Enemy
             if (other.gameObject.tag == "Enemy")
             {
                 TakeDamage(1);  //Damage Calculation
+                CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             }
         }
 
