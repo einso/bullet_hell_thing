@@ -7,6 +7,8 @@ public class EnemyWeapon : MonoBehaviour
     public Transform enemyFireSpawn;
     Transform Player;
 
+    SinusoidalMove sinusoidalMove;
+
     PoolEnemyBullets poolEnemyBullets;
     PoolEnemyRings poolEnemyRings;
 
@@ -18,7 +20,10 @@ public class EnemyWeapon : MonoBehaviour
     float yincrease;
     float t = 0;
     public float firingPeriod = 1;
+    int shotCount;
 
+
+    bool startShooting;
     float angle = 0;
 
     public bool linearShot;
@@ -29,6 +34,7 @@ public class EnemyWeapon : MonoBehaviour
     public bool duoShot;
     public bool triShot;
     public bool flowerShot;
+    public bool harasserShot;
     public bool shotEnemyA;
     public bool shotEnemyB;
     public bool shotEnemyC;
@@ -36,51 +42,78 @@ public class EnemyWeapon : MonoBehaviour
 
     void Start()
     {
+        sinusoidalMove = GetComponentInParent<SinusoidalMove>();
         Player = GameObject.Find("Player").transform;
         time = Random.Range(0, 2);
         poolEnemyBullets = GameObject.Find("Manager").GetComponent<PoolEnemyBullets>();
-
-        if(gameObject.transform.parent.name == "Enemy B(Clone)")
-        {
-            poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
-        }
+        poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
     }
 
     void Update()
     {
-        time += Time.deltaTime;
+        if(Player == null)
+        {
+            enabled = false;
+        }
 
-        if (linearShot) LinearShot(firingPeriod);
+        if(transform.parent.GetComponent<SinusoidalMove>().movedDown)
+        {
+            time += Time.deltaTime;
 
-        if (sinusShot) SinusShot(firingPeriod);
+            if (linearShot) LinearShot(firingPeriod, 1);
 
-        if (sprayShot) SprayShot(firingPeriod);
+            if (sinusShot) SinusShot(firingPeriod);
 
-        if (splitShot) SplitShot(firingPeriod);
+            if (sprayShot) SprayShot(firingPeriod);
 
-        if (ghostShot) GhostShot(firingPeriod);
+            if (splitShot) SplitShot(firingPeriod);
 
-        if (duoShot) DuoShot(firingPeriod);
+            if (ghostShot) GhostShot(firingPeriod);
 
-        if (triShot) TriShot(firingPeriod);
+            if (duoShot) DuoShot(firingPeriod);
 
-        if (flowerShot) FlowerShot(firingPeriod);
+            if (triShot) TriShot(firingPeriod);
 
-        if (shotEnemyA) ShotEnemyA(firingPeriod, 20);
+            if (flowerShot) FlowerShot(firingPeriod);
 
-        if (shotEnemyB) ShotEnemyB(firingPeriod);
+            if (harasserShot) HarasserShot(firingPeriod, 0);
 
-        if (shotEnemyC) ShotEnemyC(firingPeriod);
+            if (shotEnemyA) ShotEnemyA(firingPeriod, 20);
 
-        if (shotEnemyD) ShotEnemyD(firingPeriod, 0);
+            if (shotEnemyB) ShotEnemyB(firingPeriod);
+
+            if (shotEnemyC) ShotEnemyC(firingPeriod);
+
+            if (shotEnemyD) ShotEnemyD(firingPeriod, 0);
+        }
+
     }
     
-    void LinearShot(float firingPeriod)
+    void LinearShot(float firingPeriod, int amountShots)
     {
-        if (time >= firingPeriod)
+        if (time + 0.2f >= firingPeriod)
         {
-            Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
-            time = 0;
+            sinusoidalMove.enabled = false;
+
+            if (time >= firingPeriod)
+            {
+                if(amountShots > shotCount)
+                {
+                    Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
+                    GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
+                    shot.GetComponent<EnemyBullet>().speed = 4;
+                    poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
+                    shotCount++;
+                }
+
+                if (time - 0.15f >= firingPeriod)
+                {
+                    sinusoidalMove.enabled = true;
+                    time = 0;
+                    shotCount = 0;
+                }    
+            }
+
         }
     }
     
@@ -95,23 +128,37 @@ public class EnemyWeapon : MonoBehaviour
 
     void SprayShot(float firingPeriod)
     {
-        if (time >= firingPeriod)
+        if (transform.parent.GetComponent<SinusoidalMove>().shootingTime)
         {
-            float numberOfBullets = 4;
-            float posX = -1.5f;
-            float rotX = 0;
-            float rotY = 150;
-            float rotZ = 0;
-
-            for (int i = 0; i < numberOfBullets; i++)
+            if (time >= firingPeriod)
             {
-                Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
-                Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x - posX, enemyFireSpawn.transform.position.y, enemyFireSpawn.transform.position.z), rot);
-                rotY += 20;
-                posX++;
+                Vector3 pos = transform.position;
+                if (pos.x <= -3f) angle = -2;
+                else if (pos.x >= 4f) angle = 2;
+                Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
+                GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
+                shot.GetComponent<EnemyBullet>().speed = 4;
+                poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
+
+                if (pos.x <= -3f) angle = -20;
+                else if (pos.x >= 4f) angle = 20;
+                Quaternion rot2 = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
+                GameObject shot2 = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
+                shot2.GetComponent<EnemyBullet>().speed = 4;
+                poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot2);
+
+                if (pos.x <= -3f) angle = -38;
+                else if (pos.x >= 4f) angle = 38;
+                Quaternion rot3 = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
+                GameObject shot3 = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
+                shot3.GetComponent<EnemyBullet>().speed = 4;
+                poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot3);
+
+                time = 0;
             }
-
-
+        }
+        else
+        {
             time = 0;
         }
     }
@@ -170,22 +217,103 @@ public class EnemyWeapon : MonoBehaviour
 
     void FlowerShot(float firingPeriod)
     {
-        if (time >= firingPeriod)
+        if(time >= 3)
         {
-            float rotX = 0;
-            float rotY = 145 + yincrease;
-            float rotZ = 0;
+            startShooting = true;
+            sinusoidalMove.enabled = false;
+        }
 
-            for (int i = 0; i < 8; i++)
+        if(startShooting)
+        {
+            if (time >= firingPeriod)
             {
-                Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
-                Instantiate(EnemyProjectilePrefab, new Vector3(0, transform.position.y, transform.position.z), rot);
-                rotY -= 45;
+                float rotX = 0;
+                float rotY = 145 + yincrease;
+                float rotZ = 0;
+
+                for (int i = 0; i < 8; i++)
+                {
+                    //StartCoroutine(FlowerSalvage(0.1f, rotX, rotY, rotZ));
+
+                    Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
+                    GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
+                    shot.GetComponent<EnemyBullet>().speed = 3;
+                    poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
+                    rotY -= 45;
+
+                }
+
+                shotCount++;
+                yincrease -= 10;
+                time = 0;
             }
 
-            yincrease -= 10;
-            time = 0;
+            if(shotCount > 15)
+            {
+                startShooting = false;
+                sinusoidalMove.enabled = true;
+                shotCount = 0;
+            }
         }
+
+
+        
+    }
+
+    IEnumerator FlowerSalvage()
+    {
+
+        yield return new WaitForSeconds(0.25f);
+    }
+
+
+
+        void HarasserShot(float firingPeriod, float angle)
+    {
+        if (time >= firingPeriod)
+        {
+            float d = 0.05f;
+            for (int i = 0; i < 4; i++)
+            {
+                d += 0.05f;
+                StartCoroutine(ShotSalvage(d));
+            }
+
+            time = 0;
+            shotCount = 0;
+        }      
+    }
+
+    IEnumerator ShotSalvage(float tDelay)
+    {
+
+        int nrShots = 0;
+        float bPos = 0;
+        float posCorrection = 0;
+        yield return new WaitForSeconds(tDelay);
+        for (int i = 0; i < shotCount+1; i++)
+        {
+            nrShots++;
+            bPos = 0.2f * nrShots;
+            posCorrection = 0.1f * shotCount;
+
+            Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
+            GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
+            shot.GetComponent<EnemyBullet>().speed = 5;    
+            poolEnemyBullets.InstantiateEnemyPool(new Vector3(enemyFireSpawn.position.x + bPos - posCorrection - 0.2f, enemyFireSpawn.position.y, enemyFireSpawn.position.z), rot);
+
+
+            bPos = 0.6f * nrShots;
+            posCorrection = 0.3f * shotCount;
+            shot.transform.LookAt(new Vector3(Player.transform.position.x + bPos - posCorrection, Player.transform.position.y, Player.transform.position.z));
+
+            time = 0;
+
+            
+        }
+
+        shotCount++;
+        nrShots = 0;
     }
 
     void ShotEnemyA(float firingPeriod, float angle)
@@ -274,8 +402,11 @@ public class EnemyWeapon : MonoBehaviour
     {
         if (transform.parent.GetComponent<SinusoidalMove>().shootingTime)
         {
+
             if (time >= firingPeriod)
             {
+
+                angle = Random.Range(0, 90);
 
                 for (int i = 0; i < 18; i++)
                 {
@@ -285,9 +416,12 @@ public class EnemyWeapon : MonoBehaviour
                     poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
                     angle = angle + 20;
                 }
+                
+                
 
                 time = 0;
             }
+            
         }
         else
         {
