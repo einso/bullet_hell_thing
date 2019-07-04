@@ -107,10 +107,13 @@ public class PlayerLife : MonoBehaviour
         float invincibilityLength = blinkSpeed * amountOfBlinks * 2;
 
         yield return new WaitForSeconds(invincibilityLength);
-        invincible = false;
+        invincible = false;        
 
         yield return new WaitForSeconds(2);
-        lifeBarPar.SetActive(false); //Set Lifebar Inactive
-        SetLifebarPos = false;   //Set bool false to position the lifebar in update   
+        if (invincible == false)
+        {
+            lifeBarPar.SetActive(false); //Set Lifebar Inactive
+            SetLifebarPos = false; //Set bool false to position the lifebar in update   
+        }
     }
 }
