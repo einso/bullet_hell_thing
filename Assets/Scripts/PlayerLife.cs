@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class PlayerLife : MonoBehaviour
 
     float blinkSpeed = 0.1f;   //BlinkSpeed
     float amountOfBlinks = 5;
-
     bool invincible;
-
     public int health = 5;  //Health
-
     bool SetLifebarPos;
+    [Space(10)]
+    [Header("Camerashake On-Hit Settings")]
+    public float magnitude = 0.15f;
+    public float roughness = 0.15f;
+    public float fadeInTime = 0.15f;
+    public float fadeOutTime = 0.15f;
 
     //update
     void Update()
@@ -42,12 +46,14 @@ public class PlayerLife : MonoBehaviour
             {
                 TakeDamage(1);  //Damage Calculation
                 other.gameObject.SetActive(false); //Destroy Enemy Bullet
+                CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             }
 
             //Collision with Enemy
             if (other.gameObject.tag == "Enemy")
             {
                 TakeDamage(1);  //Damage Calculation
+                CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             }
         }
 

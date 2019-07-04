@@ -1,10 +1,8 @@
 fileFormatVersion: 2
-guid: c41f95c98750b744bb429ee2fc6a1d70
-labels:
-- cartoonfx
-folderAsset: yes
-DefaultImporter:
+guid: 0dbab54505a234248aa64dd28ac38a8e
+NativeFormatImporter:
   externalObjects: {}
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
