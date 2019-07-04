@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
+    public GameObject lifeBar; //Players Life Bar
+
     float blinkSpeed = 0.1f;   //BlinkSpeed
     float amountOfBlinks = 5;
 
@@ -44,6 +46,8 @@ public class PlayerLife : MonoBehaviour
     void TakeDamage(int damage)
     {
         health -= damage;   //Health - Damage
+        lifeBar.transform.localScale = new Vector3(lifeBar.transform.localScale.x - 0.02f * damage, lifeBar.transform.localScale.y, lifeBar.transform.localScale.z);
+        //lifeBar.transform.position = new Vector3(lifeBar.transform.position.x, lifeBar.transform.position.y, lifeBar.transform.position.z - lifeBar.transform.localScale.x*2);
         StartCoroutine(toggleInvincibility()); //Toggle invincibility if hit
         //StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.6f, 0.5f)); //Camera Shake
     }
