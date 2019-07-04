@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4183374837508792083
 Transform:
   m_ObjectHideFlags: 0
@@ -47,16 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   scoreValue: 100
   moveSpeed: 12
   frequency: 0
   magnitude: 0
+  movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
   patternMovement3: 0
   patternMovement4: 1
   patternMovement5: 0
+  patternMovement6: 0
   shootingTime: 0
 --- !u!114 &4183374837508792077
 MonoBehaviour:
@@ -77,7 +78,7 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
-  health: 1
+  health: 6
   giveMana: 15
 --- !u!65 &4183374837508792076
 BoxCollider:
@@ -136,8 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 4183374837816044109}
-  poolEnemyBullets: {fileID: 0}
-  poolEnemyRings: {fileID: 0}
   RingeXD: {fileID: 6541449336365482647, guid: 999b2a89b9d22c84495b5e9302b554b0, type: 3}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}

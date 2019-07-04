@@ -10,6 +10,9 @@ public class Manager : MonoBehaviour
     public bool GodMode;
     [Space(20)]
 
+    [HideInInspector]
+    public int playerLevelValue;
+
     public GameObject Player;
     public GameObject Camera;
     public GameObject DeathScreen;
@@ -99,6 +102,8 @@ public class Manager : MonoBehaviour
 
             //GodMode
             ToggleGodMode();
+
+            
         }
     }
 
@@ -246,7 +251,7 @@ public class Manager : MonoBehaviour
         else if (GetComponent<LoadLevel>().Level_6)
         {
             GetComponent<LoadLevel>().Level_6 = false;
-            GetComponent<LoadLevel>().Level_1 = true;
+            GetComponent<LoadLevel>().Level_2 = true;
         }
     }
 
@@ -367,6 +372,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel3 = false;
         weapon.GetComponent<Weapon>().Playerlevel4 = false;
 
+        playerLevelValue = 0;
+
         //Level Up UI Update
         levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 1";
     }
@@ -385,6 +392,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel2 = false;
         weapon.GetComponent<Weapon>().Playerlevel3 = false;
         weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        playerLevelValue = 1;
 
         //Level Up Feedback
         SpawnLevelUPText();
@@ -408,6 +417,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel3 = false;
         weapon.GetComponent<Weapon>().Playerlevel4 = false;
 
+        playerLevelValue = 2;
+
         //Level Up Feedback
         SpawnLevelUPText();
 
@@ -430,6 +441,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel2 = false;
         weapon.GetComponent<Weapon>().Playerlevel4 = false;
 
+        playerLevelValue = 3;
+
         //Level Up Feedback
         SpawnLevelUPText();
 
@@ -451,6 +464,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel1 = false;
         weapon.GetComponent<Weapon>().Playerlevel2 = false;
         weapon.GetComponent<Weapon>().Playerlevel3 = false;
+
+        playerLevelValue = 4;
 
         //Level Up Feedback
         SpawnLevelUPText();

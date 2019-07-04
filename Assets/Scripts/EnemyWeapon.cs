@@ -47,11 +47,6 @@ public class EnemyWeapon : MonoBehaviour
         time = Random.Range(0, 2);
         poolEnemyBullets = GameObject.Find("Manager").GetComponent<PoolEnemyBullets>();
         poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
-
-        /* if(gameObject.transform.parent.name == "Dodger")
-         {
-             poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
-         }*/
     }
 
     void Update()
