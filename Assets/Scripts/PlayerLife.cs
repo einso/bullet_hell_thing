@@ -34,10 +34,7 @@ public class PlayerLife : MonoBehaviour
             }
 
         }
-        else
-        {
-            lifeBarPar.SetActive(false);
-        }
+
     }
 
     //Player Collision
@@ -67,6 +64,7 @@ public class PlayerLife : MonoBehaviour
         {
             //Destroy(gameObject);    //Destroy Player
             gameObject.SetActive(false);
+            lifeBarPar.SetActive(false); //Delete Lifebar
             FindObjectOfType<Manager>().PlayerDeath();  //Game Over Screen
         }
     }
