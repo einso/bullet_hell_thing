@@ -5,7 +5,7 @@ using UnityEngine;
 public class SinusoidalMove : MonoBehaviour
 {
     GameObject Camera;
-    public GameObject player;
+    GameObject player;
 
     float t;
 
@@ -21,16 +21,22 @@ public class SinusoidalMove : MonoBehaviour
     float magnitude = 0.5f;
 
     bool facingRight = false;
-    bool movedDown;
+
+    [HideInInspector]
+    public bool movedDown;
 
     public bool patternMovement1;
     public bool patternMovement2;
     public bool patternMovement3;
     public bool patternMovement4;
     public bool patternMovement5;
+    public bool patternMovement6;
 
     [HideInInspector]
     public bool shootingTime;
+
+    int randomPos;
+    
 
     Vector3 pos;
 
@@ -53,11 +59,20 @@ public class SinusoidalMove : MonoBehaviour
             facingRight = false;
         }
 
+        int randomPos = Random.Range(0, 3);
+
+        player = GameObject.Find("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(player == null)
+        {
+            enabled = false;
+        }
+
         //Start Pos
         MoveDown();
 
@@ -128,6 +143,50 @@ public class SinusoidalMove : MonoBehaviour
 
             transform.position = pos;
         }
+
+        if(patternMovement6)
+        {
+            if (pos.x <= -3f)
+            {
+
+                t += 1 * Time.deltaTime;
+                shootingTime = true;
+
+                if (t > 3)
+                {
+                    MoveRight();
+                    facingRight = true;
+                    shootingTime = false;                    
+                }
+
+            }
+
+            else if (pos.x >= 4f)
+            {
+
+                t += 1 * Time.deltaTime;
+                shootingTime = true;
+
+                if (t > 3)
+                {
+                    MoveLeft();
+                    facingRight = false;
+                    shootingTime = false;                 
+                }
+
+            }
+            else
+            {
+                CheckWhereToFace();
+
+                if (facingRight)
+                    MoveRight();
+                else
+                    MoveLeft();
+
+                t = 0;
+            }
+        }
     }
 
 
@@ -153,24 +212,27 @@ public class SinusoidalMove : MonoBehaviour
 
     void MoveRight()
     {
-        pos += transform.forward * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;
-
-        
+        if(movedDown)
+        {
+            pos += transform.forward * Time.deltaTime * moveSpeed;
+            transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;
+        }
     }
 
     void MoveLeft()
     {
-        pos -= transform.forward * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;
+        if(movedDown)
+        {
+            pos -= transform.forward * Time.deltaTime * moveSpeed;
+            transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;
+        }
     }
 
     void TakeTImeToShoot()
     {
-
-
-        if(pos.x <= -3f)
+        if (pos.x <= -3f && randomPos == 0)
         {
+
             t += 1 * Time.deltaTime;
             shootingTime = true;
 
@@ -179,10 +241,14 @@ public class SinusoidalMove : MonoBehaviour
                 MoveRight();
                 facingRight = true;
                 shootingTime = false;
+                randomPos = Random.Range(0, 3);
+                Debug.Log(randomPos);
             }
+
         }
-        else if(pos.x >= 4f)
+        else if (pos.x >= 4f && randomPos == 1)
         {
+
             t += 1 * Time.deltaTime;
             shootingTime = true;
 
@@ -191,7 +257,25 @@ public class SinusoidalMove : MonoBehaviour
                 MoveLeft();
                 facingRight = false;
                 shootingTime = false;
+                randomPos = Random.Range(0, 3);
+                Debug.Log(randomPos);
             }
+
+        }
+        else if (pos.x <= 0.85f && pos.x >= 0.75f && randomPos == 2)
+        {
+
+            t += 1 * Time.deltaTime;
+            shootingTime = true;
+
+            if (t > 3)
+            {
+                MoveLeft();
+                shootingTime = false;
+                randomPos = Random.Range(0, 2);
+                Debug.Log(randomPos);
+            }
+
         }
         else
         {
@@ -212,7 +296,7 @@ public class SinusoidalMove : MonoBehaviour
 
             if (transform.position.z > 12)
             {
-                pos += transform.right * Time.deltaTime * moveSpeed;
+                pos += transform.right * Time.deltaTime * 2;
                 transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
             }
             else

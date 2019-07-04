@@ -69,7 +69,7 @@ public class Manager : MonoBehaviour
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
         AmountOfProbabilities();           //Set the amount of probabilities
-        scoreCount = 0;        
+        scoreCount = 0;
     }
 
    
@@ -81,14 +81,6 @@ public class Manager : MonoBehaviour
         {
             //Take Game Time
             time = time + 1 * Time.deltaTime;
-
-            //SpawnEnemy
-            /* if (time > randSecNextEnemySpawn)
-             {
-                 SpawnEnemy();                                                                               //Spawn enemy
-                 time = 0;                                                                                   //Reset time
-                 randSecNextEnemySpawn = Random.Range(minSecNextEnemySpawn, maxSecNextEnemySpawn);           //Set new random spawn time 
-             }*/
 
             //SpawnWave
             WaveManagement();
@@ -326,11 +318,11 @@ public class Manager : MonoBehaviour
 
         if (GodMode)
         {
-            Player.GetComponent<Collider>().enabled = false;
+            Player.GetComponentInChildren<Collider>().enabled = false;
         }
         else
         {
-            Player.GetComponent<Collider>().enabled = true;
+            Player.GetComponentInChildren<Collider>().enabled = true;
         }
     }
 

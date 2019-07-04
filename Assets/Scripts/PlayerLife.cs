@@ -4,12 +4,35 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
+    public GameObject lifeBarPar; //Players Life Bar Parent
+    public GameObject lifeBar; //Players Life Bar
+
     float blinkSpeed = 0.1f;   //BlinkSpeed
     float amountOfBlinks = 5;
 
     bool invincible;
 
     public int health = 5;  //Health
+
+    bool SetLifebarPos;
+
+    //update
+    void Update()
+    {
+        if(gameObject != null)
+        {
+
+            if (SetLifebarPos)
+            {
+                lifeBarPar.transform.position = new Vector3(transform.position.x - 1.2f, transform.position.y, transform.position.z);
+            }
+
+        }
+        else
+        {
+            lifeBarPar.SetActive(false);
+        }
+    }
 
     //Player Collision
     void OnTriggerEnter(Collider other)
@@ -21,7 +44,7 @@ public class PlayerLife : MonoBehaviour
             if (other.gameObject.tag == "EnemyBullet")
             {
                 TakeDamage(1);  //Damage Calculation
-                Destroy(other.gameObject); //Destroy Enemy Bullet
+                other.gameObject.SetActive(false); //Destroy Enemy Bullet
             }
 
             //Collision with Enemy
@@ -34,7 +57,8 @@ public class PlayerLife : MonoBehaviour
         //Check if health is 0
         if(health <= 0)
         {
-            Destroy(gameObject);    //Destroy Player
+            //Destroy(gameObject);    //Destroy Player
+            gameObject.SetActive(false);
             FindObjectOfType<Manager>().PlayerDeath();  //Game Over Screen
         }
     }
@@ -43,6 +67,10 @@ public class PlayerLife : MonoBehaviour
     void TakeDamage(int damage)
     {
         health -= damage;   //Health - Damage
+        lifeBarPar.SetActive(true); //Set Lifebar Active
+        SetLifebarPos = true;   //Set bool true to position the lifebar in update        
+        lifeBar.transform.localScale = new Vector3(lifeBar.transform.localScale.x - 0.02f, lifeBar.transform.localScale.y, lifeBar.transform.localScale.z); //Shrink life bar on hit
+        lifeBar.transform.localPosition = new Vector3(lifeBar.transform.localPosition.x, lifeBar.transform.localPosition.y, lifeBar.transform.localPosition.z - 0.116f); //Position Correction lifebar
         StartCoroutine(toggleInvincibility()); //Toggle invincibility if hit
         //StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.6f, 0.5f)); //Camera Shake
     }
@@ -76,5 +104,9 @@ public class PlayerLife : MonoBehaviour
 
         yield return new WaitForSeconds(invincibilityLength);
         invincible = false;
+
+        yield return new WaitForSeconds(2);
+        lifeBarPar.SetActive(false); //Set Lifebar Inactive
+        SetLifebarPos = false;   //Set bool false to position the lifebar in update   
     }
 }

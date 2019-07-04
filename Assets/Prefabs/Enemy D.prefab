@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   scoreValue: 100
   moveSpeed: 6
   frequency: 4
@@ -195,6 +196,7 @@ MonoBehaviour:
   patternMovement2: 1
   patternMovement3: 0
   patternMovement4: 0
+  patternMovement5: 0
   shootingTime: 0
 --- !u!114 &584018353786002514
 MonoBehaviour:
@@ -277,7 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFireSpawn: {fileID: 6907306609974665127}
-  RingeXD: {fileID: 0}
+  poolEnemyBullets: {fileID: 0}
+  poolEnemyRings: {fileID: 0}
+  RingeXD: {fileID: 6541449336365482647, guid: 999b2a89b9d22c84495b5e9302b554b0, type: 3}
   EnemyProjectilePrefab: {fileID: 5023740037609329906, guid: 2ca6bbcc63e30504f9d3e9eb1e3af21c,
     type: 3}
   EnemyProjectilePrefab2: {fileID: 5023740037609329906, guid: 88ff54820e7265345be160c8f2889f12,
@@ -293,6 +297,7 @@ MonoBehaviour:
   duoShot: 0
   triShot: 0
   flowerShot: 0
+  harasserShot: 0
   shotEnemyA: 0
   shotEnemyB: 0
   shotEnemyC: 0
