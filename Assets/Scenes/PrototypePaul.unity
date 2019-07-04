@@ -940,7 +940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207124070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.053, z: -0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 175833659}
@@ -6503,9 +6503,9 @@ MonoBehaviour:
   Playerlevel2: 0
   Playerlevel3: 0
   Playerlevel4: 0
-  delay: 0.25
-  baseShotDistanceBetweenShots: 0.25
-  podSprayStrength: 7
+  delay: 0.1
+  baseShotDistanceBetweenShots: 0.5
+  podSprayStrength: 11
   firePoint: {fileID: 1603048834}
   piercingBulletPrefab: {fileID: 805040988089598216, guid: a2757fdc15721344482f1d7d2c1286f6,
     type: 3}
@@ -6517,7 +6517,7 @@ MonoBehaviour:
   PlayerBullets: {fileID: 1487202188}
   levelUPFeedback: {fileID: 306957179436884506, guid: c0f9c75838d0ec041801074c2a9080f6,
     type: 3}
-  pooledAmount: 100
+  pooledAmount: 300
   pooledObjects: []
 --- !u!114 &1603048836
 MonoBehaviour:
