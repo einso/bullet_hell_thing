@@ -10,17 +10,15 @@ public class PlayerLife : MonoBehaviour
 
     float blinkSpeed = 0.1f;   //BlinkSpeed
     float amountOfBlinks = 5;
-
     bool invincible;
-
     public int health = 5;  //Health
-
     bool SetLifebarPos;
-
-    public float magnitude = 1f;
-    public float roughness = 1f;
-    public float fadeInTime = 1f;
-    public float fadeOutTime = 1f;
+    [Space(10)]
+    [Header("Camerashake On-Hit Settings")]
+    public float magnitude = 0.15f;
+    public float roughness = 0.15f;
+    public float fadeInTime = 0.15f;
+    public float fadeOutTime = 0.15f;
 
     //update
     void Update()
