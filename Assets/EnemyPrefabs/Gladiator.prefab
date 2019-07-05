@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2370622086238828074
 Transform:
   m_ObjectHideFlags: 0
@@ -51,6 +51,8 @@ MonoBehaviour:
   moveSpeed: 5
   frequency: 0
   magnitude: 0
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 1
@@ -224,6 +226,11 @@ MonoBehaviour:
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
   firingPeriod: 0.08
+  bulletSpeed: 4
+  firingAngle: 20
+  firingAngleBetweenShots: 0
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0

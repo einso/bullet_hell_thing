@@ -811,6 +811,8 @@ MonoBehaviour:
   moveSpeed: 4
   frequency: 4
   magnitude: 0.5
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
@@ -1635,6 +1637,8 @@ MonoBehaviour:
   moveSpeed: 2
   frequency: 2
   magnitude: 0.5
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
@@ -1752,6 +1756,8 @@ MonoBehaviour:
   moveSpeed: 9
   frequency: 2
   magnitude: 0.5
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
@@ -1869,6 +1875,8 @@ MonoBehaviour:
   moveSpeed: 8
   frequency: 12
   magnitude: 0.5
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
@@ -2598,7 +2606,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &571693178
 GameObject:
@@ -2709,6 +2717,8 @@ MonoBehaviour:
   moveSpeed: 2
   frequency: 2
   magnitude: 0.5
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
@@ -2826,6 +2836,8 @@ MonoBehaviour:
   moveSpeed: 3
   frequency: 3
   magnitude: 0.5
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
@@ -3962,6 +3974,11 @@ MonoBehaviour:
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
   firingPeriod: 1
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -4394,6 +4411,11 @@ MonoBehaviour:
   EnemyProjectilePrefab2: {fileID: 0}
   EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 1.2
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -4458,6 +4480,11 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 1
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -4753,6 +4780,11 @@ MonoBehaviour:
   EnemyProjectilePrefab2: {fileID: 0}
   EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 0.4
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -5302,6 +5334,11 @@ MonoBehaviour:
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
   firingPeriod: 1
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -10125,6 +10162,11 @@ MonoBehaviour:
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
   firingPeriod: 1
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -16148,6 +16190,11 @@ MonoBehaviour:
   EnemyProjectilePrefab2: {fileID: 0}
   EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 1
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -16613,6 +16660,11 @@ MonoBehaviour:
   EnemyProjectilePrefab2: {fileID: 0}
   EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 1
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -16676,6 +16728,11 @@ MonoBehaviour:
   EnemyProjectilePrefab2: {fileID: 0}
   EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 0.7
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -16877,6 +16934,8 @@ MonoBehaviour:
   moveSpeed: 3
   frequency: 3
   magnitude: 0.5
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
@@ -16930,7 +16989,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1914265159194139927}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802247901}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94d872c24a845534faf27294c3748ecf, type: 3}
   m_Name: 
@@ -17176,6 +17235,11 @@ MonoBehaviour:
   EnemyProjectilePrefab2: {fileID: 0}
   EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 0.8
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -17817,6 +17881,8 @@ MonoBehaviour:
   moveSpeed: 6
   frequency: 12
   magnitude: 0.5
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 0
   patternMovement2: 0
@@ -18061,6 +18127,11 @@ MonoBehaviour:
   EnemyProjectilePrefab2: {fileID: 0}
   EnemyProjectilePrefab3: {fileID: 0}
   firingPeriod: 0.7
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -18250,7 +18321,7 @@ PrefabInstance:
     - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
@@ -18777,6 +18848,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2370622086925746231, guid: be8ccfdb67a06e8499d347af28b17199,
+        type: 3}
+      propertyPath: firingAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370622086925746231, guid: be8ccfdb67a06e8499d347af28b17199,
+        type: 3}
+      propertyPath: firingAngleBetweenShots
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be8ccfdb67a06e8499d347af28b17199, type: 3}
 --- !u!1001 &3343968488441519333
@@ -18799,7 +18880,7 @@ PrefabInstance:
     - target: {fileID: 3343968489603122127, guid: 059548685f317f842bc87dd2136c4894,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.12
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3343968489603122127, guid: 059548685f317f842bc87dd2136c4894,
         type: 3}
@@ -18850,6 +18931,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
+        type: 3}
+      propertyPath: moveRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
+        type: 3}
+      propertyPath: moveLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
+        type: 3}
+      propertyPath: moveDown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
+        type: 3}
+      propertyPath: moveUp
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 059548685f317f842bc87dd2136c4894, type: 3}
@@ -18908,7 +19009,7 @@ PrefabInstance:
     - target: {fileID: 3459595133501060888, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3459595133501060888, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
         type: 3}
@@ -18948,7 +19049,7 @@ PrefabInstance:
     - target: {fileID: 3908512544726744230, guid: 75298929f3d0dfb45b469055ab39635c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3908512544726744226, guid: 75298929f3d0dfb45b469055ab39635c,
         type: 3}
@@ -19004,6 +19105,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908512546490128344, guid: 75298929f3d0dfb45b469055ab39635c,
+        type: 3}
+      propertyPath: distanceBetweenBullets
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908512546490128344, guid: 75298929f3d0dfb45b469055ab39635c,
+        type: 3}
+      propertyPath: firingAngle
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908512546490128344, guid: 75298929f3d0dfb45b469055ab39635c,
+        type: 3}
+      propertyPath: NumberOfShots
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75298929f3d0dfb45b469055ab39635c, type: 3}
@@ -19221,6 +19337,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598003688239729446, guid: 26caba66ca2daa34fb54a7529ead970f,
+        type: 3}
+      propertyPath: firingAngle
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598003688239729446, guid: 26caba66ca2daa34fb54a7529ead970f,
+        type: 3}
+      propertyPath: firingPeriod
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598003688239729446, guid: 26caba66ca2daa34fb54a7529ead970f,
+        type: 3}
+      propertyPath: NumberOfShots
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26caba66ca2daa34fb54a7529ead970f, type: 3}
