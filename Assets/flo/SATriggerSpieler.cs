@@ -1,18 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SATriggerSpieler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioSource SXFSpeaker;
+    public AudioClip trefersound;
+    public AnimationClip treffer;
+    private Animator animator;
+
+    private void Start()
     {
-        
+        animator = gameObject.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.tag == "EnemyBullet")
+        {
+            SXFSpeaker.PlayOneShot(trefersound, 0.7f);
+
+            animator.Play("cubetreffer");
+        }
+
     }
 }
