@@ -268,7 +268,7 @@ public class EnemyWeapon : MonoBehaviour
 
 
 
-        void HarasserShot(float firingPeriod, float angle)
+    void HarasserShot(float firingPeriod, float angle)
     {
         if (time >= firingPeriod)
         {
