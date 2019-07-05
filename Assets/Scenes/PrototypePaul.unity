@@ -3979,6 +3979,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -4416,6 +4417,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -4485,6 +4487,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -4785,6 +4788,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -5339,6 +5343,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -10167,6 +10172,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -16195,6 +16201,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -16665,6 +16672,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -16733,6 +16741,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -17240,6 +17249,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
@@ -18132,6 +18142,7 @@ MonoBehaviour:
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0

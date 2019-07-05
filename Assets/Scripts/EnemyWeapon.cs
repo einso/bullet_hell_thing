@@ -35,6 +35,7 @@ public class EnemyWeapon : MonoBehaviour
 
     [Header("Tank")]
     public int NumberOfShots = 15;
+    public float TimeBetwennSalvages = 3;
 
 
 
@@ -234,7 +235,7 @@ public class EnemyWeapon : MonoBehaviour
 
     void FlowerShot(float firingPeriod)
     {
-        if(time >= 3)
+        if(time >= firingPeriod)
         {
             startShooting = true;
             sinusoidalMove.enabled = false;
@@ -242,7 +243,7 @@ public class EnemyWeapon : MonoBehaviour
 
         if(startShooting)
         {
-            if (time >= firingPeriod)
+            if (time >= TimeBetwennSalvages)
             {
                 float rotX = 0;
                 float rotY = 145 + yincrease;

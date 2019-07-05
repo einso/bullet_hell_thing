@@ -146,12 +146,13 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
-  firingPeriod: 0.2
+  firingPeriod: 3
   bulletSpeed: 4
   firingAngle: -10
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 15
+  TimeBetwennSalvages: 0.2
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
