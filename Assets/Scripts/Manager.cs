@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class Manager : MonoBehaviour
 {
@@ -73,6 +76,30 @@ public class Manager : MonoBehaviour
 
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
+
+
+        //// screen resolution
+        resolutions = Screen.resolutions;
+
+        resolutionDroptown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResulutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResulutionIndex = i;
+            }
+        }
+
+        resolutionDroptown.AddOptions(options);
+        resolutionDroptown.value = currentResulutionIndex;
+        resolutionDroptown.RefreshShownValue();
     }
 
    
@@ -329,6 +356,62 @@ public class Manager : MonoBehaviour
         {
             Player.GetComponentInChildren<Collider>().enabled = true;
         }
+    }
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    public GameObject menue;
+    public GameObject options;
+    //Options Menü
+    public void Optionsstart()
+    {
+        menue.SetActive(false);
+        options.SetActive(true);
+        
+    }
+
+    //options Back
+    public void Optionsback()
+    {
+        menue.SetActive(true);
+        options.SetActive(false);
+        Debug.Log("test");
+    }
+
+
+    //Einstellung Der Auflösung + Fulscrenn Einstelung//////////////////////////
+    Resolution[] resolutions;
+    public Dropdown resolutionDroptown;
+
+
+
+
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+    }
+    /// //////////////////////////////////////////////
+    //Sound Einstellungen/////////////////////////////
+    public Slider[] volumeSlieder;
+    public AudioMixer audiomixer;
+
+    public void SetMasterVolume(float volume)
+    {
+        audiomixer.SetFloat("MasterVolume", volume);
+    }
+    public void SetMusicVolume(float volume)
+    {
+        audiomixer.SetFloat("MusicVolume", volume);
+    }
+    public void SetSXFVolume(float volume)
+    {
+        audiomixer.SetFloat("SoundVolume", volume);
     }
 
     //PlayerLevelUP
