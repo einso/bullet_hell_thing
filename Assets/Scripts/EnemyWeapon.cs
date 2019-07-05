@@ -19,13 +19,27 @@ public class EnemyWeapon : MonoBehaviour
     private float time = 0;
     float yincrease;
     float t = 0;
+
+    [Header("All")]
     public float firingPeriod = 1;
-    int shotCount;
+    public float bulletSpeed = 4;
+
+    [Header("Dodger & Gladiator & Tank & Harasser")]
+    public float firingAngle = 2;
+
+    [Header("Dodger")]
+    public float firingAngleBetweenShots = 18;
+
+    [Header("Harasser")]
+    public float distanceBetweenBullets = 0.2f;
+
+    [Header("Tank")]
+    public int NumberOfShots = 15;
+    public float TimeBetwennSalvages = 3;
 
 
-    bool startShooting;
-    float angle = 0;
 
+    [Space(20)]
     public bool linearShot;
     public bool sinusShot;
     public bool sprayShot;
@@ -39,6 +53,10 @@ public class EnemyWeapon : MonoBehaviour
     public bool shotEnemyB;
     public bool shotEnemyC;
     public bool shotEnemyD;
+
+    int shotCount;
+    bool startShooting;
+    float angle = 0;
 
     void Start()
     {
@@ -101,7 +119,7 @@ public class EnemyWeapon : MonoBehaviour
                 {
                     Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
                     GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-                    shot.GetComponent<EnemyBullet>().speed = 4;
+                    shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
                     poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
                     shotCount++;
                 }
@@ -133,25 +151,25 @@ public class EnemyWeapon : MonoBehaviour
             if (time >= firingPeriod)
             {
                 Vector3 pos = transform.position;
-                if (pos.x <= -3f) angle = -2;
-                else if (pos.x >= 4f) angle = 2;
+                if (pos.x <= -3f) angle = -firingAngle;
+                else if (pos.x >= 4f) angle = firingAngle;
                 Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
                 GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-                shot.GetComponent<EnemyBullet>().speed = 4;
+                shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
                 poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
 
-                if (pos.x <= -3f) angle = -20;
-                else if (pos.x >= 4f) angle = 20;
+                if (pos.x <= -3f) angle = -firingAngle -firingAngleBetweenShots;
+                else if (pos.x >= 4f) angle = firingAngle +firingAngleBetweenShots;
                 Quaternion rot2 = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
                 GameObject shot2 = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-                shot2.GetComponent<EnemyBullet>().speed = 4;
+                shot2.GetComponent<EnemyBullet>().speed = bulletSpeed;
                 poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot2);
 
-                if (pos.x <= -3f) angle = -38;
-                else if (pos.x >= 4f) angle = 38;
+                if (pos.x <= -3f) angle = -firingAngle -firingAngleBetweenShots*2;
+                else if (pos.x >= 4f) angle = firingAngle+firingAngleBetweenShots*2;
                 Quaternion rot3 = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
                 GameObject shot3 = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-                shot3.GetComponent<EnemyBullet>().speed = 4;
+                shot3.GetComponent<EnemyBullet>().speed = bulletSpeed;
                 poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot3);
 
                 time = 0;
@@ -177,7 +195,7 @@ public class EnemyWeapon : MonoBehaviour
         if (time >= firingPeriod)
         {
             GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot.GetComponent<EnemyBullet>().speed = 5;
+            shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
             shot.transform.LookAt(Player);
             time = 0;
         }
@@ -189,8 +207,8 @@ public class EnemyWeapon : MonoBehaviour
         {
             GameObject shot1 = Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x - 1.9f, 0.8f, enemyFireSpawn.transform.position.z), enemyFireSpawn.rotation);
             GameObject shot2 = Instantiate(EnemyProjectilePrefab, new Vector3(enemyFireSpawn.transform.position.x + 1.9f, 0.8f, enemyFireSpawn.transform.position.z), enemyFireSpawn.rotation);
-            shot1.GetComponent<EnemyBullet>().speed = 5;
-            shot2.GetComponent<EnemyBullet>().speed = 5;
+            shot1.GetComponent<EnemyBullet>().speed = bulletSpeed;
+            shot2.GetComponent<EnemyBullet>().speed = bulletSpeed;
             time = 0;
         }
     }
@@ -200,15 +218,15 @@ public class EnemyWeapon : MonoBehaviour
         if (time >= firingPeriod)
         {
             GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot.GetComponent<EnemyBullet>().speed = 4;
+            shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
             shot.transform.LookAt(Player);
 
             GameObject shot2 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot2.GetComponent<EnemyBullet>().speed = 3f;
+            shot2.GetComponent<EnemyBullet>().speed = bulletSpeed - 1;
             shot2.transform.LookAt(Player);
 
             GameObject shot3 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot3.GetComponent<EnemyBullet>().speed = 2;
+            shot3.GetComponent<EnemyBullet>().speed = bulletSpeed - 2;
             shot3.transform.LookAt(Player);
 
             time = 0;  
@@ -217,7 +235,7 @@ public class EnemyWeapon : MonoBehaviour
 
     void FlowerShot(float firingPeriod)
     {
-        if(time >= 3)
+        if(time >= firingPeriod)
         {
             startShooting = true;
             sinusoidalMove.enabled = false;
@@ -225,7 +243,7 @@ public class EnemyWeapon : MonoBehaviour
 
         if(startShooting)
         {
-            if (time >= firingPeriod)
+            if (time >= TimeBetwennSalvages)
             {
                 float rotX = 0;
                 float rotY = 145 + yincrease;
@@ -237,18 +255,18 @@ public class EnemyWeapon : MonoBehaviour
 
                     Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
                     GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-                    shot.GetComponent<EnemyBullet>().speed = 3;
+                    shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
                     poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
                     rotY -= 45;
 
                 }
 
                 shotCount++;
-                yincrease -= 10;
+                yincrease -= firingAngle;
                 time = 0;
             }
 
-            if(shotCount > 15)
+            if(shotCount > NumberOfShots)
             {
                 startShooting = false;
                 sinusoidalMove.enabled = true;
@@ -268,7 +286,7 @@ public class EnemyWeapon : MonoBehaviour
 
 
 
-        void HarasserShot(float firingPeriod, float angle)
+    void HarasserShot(float firingPeriod, float angle)
     {
         if (time >= firingPeriod)
         {
@@ -294,17 +312,17 @@ public class EnemyWeapon : MonoBehaviour
         for (int i = 0; i < shotCount+1; i++)
         {
             nrShots++;
-            bPos = 0.2f * nrShots;
-            posCorrection = 0.1f * shotCount;
+            bPos = distanceBetweenBullets * nrShots;
+            posCorrection = distanceBetweenBullets/2 * shotCount;
 
             Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
             GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-            shot.GetComponent<EnemyBullet>().speed = 5;    
+            shot.GetComponent<EnemyBullet>().speed = bulletSpeed;    
             poolEnemyBullets.InstantiateEnemyPool(new Vector3(enemyFireSpawn.position.x + bPos - posCorrection - 0.2f, enemyFireSpawn.position.y, enemyFireSpawn.position.z), rot);
 
 
-            bPos = 0.6f * nrShots;
-            posCorrection = 0.3f * shotCount;
+            bPos = firingAngle * nrShots;
+            posCorrection = firingAngle/2 * shotCount;
             shot.transform.LookAt(new Vector3(Player.transform.position.x + bPos - posCorrection, Player.transform.position.y, Player.transform.position.z));
 
             time = 0;
@@ -323,19 +341,19 @@ public class EnemyWeapon : MonoBehaviour
             Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
             //GameObject shot = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, rot);
             GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-            shot.GetComponent<EnemyBullet>().speed = 4;
+            shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
             poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
 
             rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180, enemyFireSpawn.rotation.z);
             GameObject shot2 = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-            shot2.GetComponent<EnemyBullet>().speed = 4;
+            shot2.GetComponent<EnemyBullet>().speed = bulletSpeed;
             poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
             //GameObject shot2 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, rot);
             // shot2.GetComponent<EnemyBullet>().speed = 4;
 
             rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180-angle, enemyFireSpawn.rotation.z);
             GameObject shot3 = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-            shot3.GetComponent<EnemyBullet>().speed = 4;
+            shot3.GetComponent<EnemyBullet>().speed = bulletSpeed;
             poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
             // GameObject shot3 = Instantiate(EnemyProjectilePrefab, enemyFireSpawn.position, rot);
             // shot3.GetComponent<EnemyBullet>().speed = 4;
@@ -365,10 +383,10 @@ public class EnemyWeapon : MonoBehaviour
                 Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
 
                 GameObject shot = poolEnemyRings.pooledObjects[poolEnemyRings.bulletNr];
-                shot.GetComponent<EnemyBullet>().speed = 4;
+                shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
                 poolEnemyRings.InstantiateEnemyPool(enemyFireSpawn.position, rot);
                 //shot.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                angle = angle + 20;
+                angle = angle + firingAngle;
 
                 time = 0;
             }
@@ -386,12 +404,12 @@ public class EnemyWeapon : MonoBehaviour
         {
             GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
             poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot.GetComponent<EnemyBullet>().speed = 4;
+            shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
             shot.transform.LookAt(Player);
 
             GameObject shot2 = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
             poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, enemyFireSpawn.rotation);
-            shot.GetComponent<EnemyBullet>().speed = 3;
+            shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
             shot.transform.LookAt(Player);
 
             time = 0;
@@ -412,7 +430,7 @@ public class EnemyWeapon : MonoBehaviour
                 {
                     Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 - angle, enemyFireSpawn.rotation.z);
                     GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
-                    shot.GetComponent<EnemyBullet>().speed = 4;
+                    shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
                     poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
                     angle = angle + 20;
                 }

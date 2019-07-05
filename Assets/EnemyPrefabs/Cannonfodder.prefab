@@ -52,6 +52,11 @@ MonoBehaviour:
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
   firingPeriod: 0.9
+  bulletSpeed: 4
+  firingAngle: 2
+  firingAngleBetweenShots: 18
+  distanceBetweenBullets: 0.6
+  NumberOfShots: 18
   linearShot: 1
   sinusShot: 0
   sprayShot: 0
@@ -195,6 +200,8 @@ MonoBehaviour:
   moveSpeed: 3
   frequency: 0
   magnitude: 0
+  moveUp: 0
+  moveDown: 0
   movedDown: 0
   patternMovement1: 1
   patternMovement2: 0
