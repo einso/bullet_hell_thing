@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         }*/
 
         //Set Movement Boundaries
-        if (transform.position.x < -2.92f)
+        if (transform.position.x < -3.25f)
             {
                 if (moveHori < 0)
                 {
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.z < -4.5f)
+        if (transform.position.z < -4.57f)
         {
             if (moveVerti < 0)
             {
