@@ -21,6 +21,7 @@ public class Manager : MonoBehaviour
     public GameObject timeGUI;
     public GameObject levelGUI;
     public GameObject waveNrGUI;
+    public GameObject lootParticle;
     GameObject SpawnPos1;
 
     public float minEnemySpawnTime = 0f;
@@ -289,9 +290,12 @@ public class Manager : MonoBehaviour
         //Spawn Particle Effect
         GameObject destroyParticle = Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
+        Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
+
+       
     }
 
     //PauseGameEvent
