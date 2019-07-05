@@ -22,6 +22,9 @@ public class SinusoidalMove : MonoBehaviour
 
     bool facingRight = false;
 
+    public bool moveUp;
+    public bool moveDown;
+
     [HideInInspector]
     public bool movedDown;
 
@@ -48,13 +51,13 @@ public class SinusoidalMove : MonoBehaviour
 
         //localScale = transform.localScale;
 
-        int direction = Random.Range(0, 2);
+        //int direction = Random.Range(0, 2);
 
-        if (direction == 0)
+        if (moveDown)
         {
             facingRight = true;
         }
-        else if (direction == 1)
+        else if (moveUp)
         {
             facingRight = false;
         }
