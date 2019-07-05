@@ -108,8 +108,12 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     //Time Freeze
-    void TimeSlow()
+
+   
+    public void TimeSlow()
     {
+        if PauseGame();
+            { }
         if(timeSlow)
         {
             Time.timeScale = 0.25f;
@@ -121,6 +125,11 @@ public class PlayerAbilities : MonoBehaviour
             Time.timeScale = 1f;
             if (Player != null) Player.GetComponent<PlayerMovement>().speedBonusWhileSlow = 1;
         }
+    }
+
+    public void NoTimeSlowDuringPause()
+    {
+
     }
 
 }

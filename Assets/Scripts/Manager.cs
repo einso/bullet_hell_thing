@@ -68,6 +68,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("Manager").GetComponent<PlayerAbilities>.bool = false;
         Time.timeScale = 1;                //Set Time to 1
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
@@ -268,6 +269,7 @@ public class Manager : MonoBehaviour
     public void PlayerDeath()
     {
         DeathScreen.SetActive(true);
+        //PlayerAbilities.TimeSlow(timeSlow == false);
     }
 
     //EnemyDeathEvent
