@@ -2606,7 +2606,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &571693178
 GameObject:
@@ -18831,7 +18831,7 @@ PrefabInstance:
     - target: {fileID: 2370622086238828074, guid: be8ccfdb67a06e8499d347af28b17199,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 2370622086238828074, guid: be8ccfdb67a06e8499d347af28b17199,
         type: 3}
@@ -18846,16 +18846,6 @@ PrefabInstance:
     - target: {fileID: 2370622086238828074, guid: be8ccfdb67a06e8499d347af28b17199,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2370622086925746231, guid: be8ccfdb67a06e8499d347af28b17199,
-        type: 3}
-      propertyPath: firingAngle
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2370622086925746231, guid: be8ccfdb67a06e8499d347af28b17199,
-        type: 3}
-      propertyPath: firingAngleBetweenShots
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -18915,7 +18905,7 @@ PrefabInstance:
     - target: {fileID: 3343968489603122127, guid: 059548685f317f842bc87dd2136c4894,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3343968489603122127, guid: 059548685f317f842bc87dd2136c4894,
         type: 3}
@@ -18931,26 +18921,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: moveRight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: moveLeft
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: moveDown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343968489603122124, guid: 059548685f317f842bc87dd2136c4894,
-        type: 3}
-      propertyPath: moveUp
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 059548685f317f842bc87dd2136c4894, type: 3}
@@ -19009,7 +18979,7 @@ PrefabInstance:
     - target: {fileID: 3459595133501060888, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 3459595133501060888, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
         type: 3}
@@ -19089,7 +19059,7 @@ PrefabInstance:
     - target: {fileID: 3908512544726744226, guid: 75298929f3d0dfb45b469055ab39635c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3908512544726744226, guid: 75298929f3d0dfb45b469055ab39635c,
         type: 3}
@@ -19105,21 +19075,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3908512546490128344, guid: 75298929f3d0dfb45b469055ab39635c,
-        type: 3}
-      propertyPath: distanceBetweenBullets
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3908512546490128344, guid: 75298929f3d0dfb45b469055ab39635c,
-        type: 3}
-      propertyPath: firingAngle
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3908512546490128344, guid: 75298929f3d0dfb45b469055ab39635c,
-        type: 3}
-      propertyPath: NumberOfShots
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75298929f3d0dfb45b469055ab39635c, type: 3}
@@ -19178,7 +19133,7 @@ PrefabInstance:
     - target: {fileID: 4183374837508792083, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
         type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 4183374837508792083, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
         type: 3}
@@ -19321,7 +19276,7 @@ PrefabInstance:
     - target: {fileID: 7598003688045625049, guid: 26caba66ca2daa34fb54a7529ead970f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 7598003688045625049, guid: 26caba66ca2daa34fb54a7529ead970f,
         type: 3}
@@ -19337,21 +19292,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7598003688239729446, guid: 26caba66ca2daa34fb54a7529ead970f,
-        type: 3}
-      propertyPath: firingAngle
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7598003688239729446, guid: 26caba66ca2daa34fb54a7529ead970f,
-        type: 3}
-      propertyPath: firingPeriod
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7598003688239729446, guid: 26caba66ca2daa34fb54a7529ead970f,
-        type: 3}
-      propertyPath: NumberOfShots
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26caba66ca2daa34fb54a7529ead970f, type: 3}
