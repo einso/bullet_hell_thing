@@ -40,8 +40,8 @@ public class Manager : MonoBehaviour
     [HideInInspector]
     public float amountOfKills;
 
-    float time;
-    float waveNr;
+    public float time;
+    public float waveNr;
 
     bool dontSpawnWaves;
     bool doCoroutineOnce;
