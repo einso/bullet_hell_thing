@@ -662,9 +662,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 1802247901}
-  playerMoveSpeed: 5
+  playerMoveSpeed: 6
   playerRotationSpeed: 15
-  playerShiftSpeed: 1.5
+  playerShiftSpeed: 3
   hitParticlePrefab: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   speedBonusWhileSlow: 4
 --- !u!54 &175833662
@@ -698,8 +698,8 @@ MonoBehaviour:
   lifeBarPar: {fileID: 1783218528}
   lifeBar: {fileID: 701034936}
   health: 5
-  magnitude: 0.3
-  roughness: 0.15
+  magnitude: 0.5
+  roughness: 0.3
   fadeInTime: 0.1
   fadeOutTime: 0.1
 --- !u!1 &176310938
@@ -16018,8 +16018,8 @@ MonoBehaviour:
   Playerlevel3: 0
   Playerlevel4: 0
   delay: 0.1
-  baseShotDistanceBetweenShots: 0.5
-  podSprayStrength: 11
+  baseShotDistanceBetweenShots: 0.65
+  podSprayStrength: 12
   firePoint: {fileID: 1603048834}
   piercingBulletPrefab: {fileID: 805040988089598216, guid: a2757fdc15721344482f1d7d2c1286f6,
     type: 3}
