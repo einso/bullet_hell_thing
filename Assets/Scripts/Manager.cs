@@ -10,6 +10,9 @@ public class Manager : MonoBehaviour
     public bool GodMode;
     [Space(20)]
 
+    [HideInInspector]
+    public int playerLevelValue;
+
     public GameObject Player;
     public GameObject Camera;
     public GameObject DeathScreen;
@@ -18,6 +21,7 @@ public class Manager : MonoBehaviour
     public GameObject timeGUI;
     public GameObject levelGUI;
     public GameObject waveNrGUI;
+    public GameObject lootParticle;
     GameObject SpawnPos1;
 
     public float minEnemySpawnTime = 0f;
@@ -82,14 +86,6 @@ public class Manager : MonoBehaviour
             //Take Game Time
             time = time + 1 * Time.deltaTime;
 
-            //SpawnEnemy
-            /* if (time > randSecNextEnemySpawn)
-             {
-                 SpawnEnemy();                                                                               //Spawn enemy
-                 time = 0;                                                                                   //Reset time
-                 randSecNextEnemySpawn = Random.Range(minSecNextEnemySpawn, maxSecNextEnemySpawn);           //Set new random spawn time 
-             }*/
-
             //SpawnWave
             WaveManagement();
 
@@ -107,6 +103,8 @@ public class Manager : MonoBehaviour
 
             //GodMode
             ToggleGodMode();
+
+            
         }
     }
 
@@ -254,7 +252,7 @@ public class Manager : MonoBehaviour
         else if (GetComponent<LoadLevel>().Level_6)
         {
             GetComponent<LoadLevel>().Level_6 = false;
-            GetComponent<LoadLevel>().Level_1 = true;
+            GetComponent<LoadLevel>().Level_2 = true;
         }
     }
 
@@ -290,11 +288,14 @@ public class Manager : MonoBehaviour
         scoreFeedback.GetComponent<TextMeshPro>().text = "" + other.GetComponent<SinusoidalMove>().scoreValue;
 
         //Spawn Particle Effect
-        Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
+        GameObject destroyParticle = Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
+        Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
+
+       
     }
 
     //PauseGameEvent
@@ -320,16 +321,17 @@ public class Manager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    //ToggleGodMode
     void ToggleGodMode()
     {
 
         if (GodMode)
         {
-            Player.GetComponent<Collider>().enabled = false;
+            Player.GetComponentInChildren<Collider>().enabled = false;
         }
         else
         {
-            Player.GetComponent<Collider>().enabled = true;
+            Player.GetComponentInChildren<Collider>().enabled = true;
         }
     }
 
@@ -374,6 +376,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel3 = false;
         weapon.GetComponent<Weapon>().Playerlevel4 = false;
 
+        playerLevelValue = 0;
+
         //Level Up UI Update
         levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 1";
     }
@@ -392,6 +396,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel2 = false;
         weapon.GetComponent<Weapon>().Playerlevel3 = false;
         weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        playerLevelValue = 1;
 
         //Level Up Feedback
         SpawnLevelUPText();
@@ -415,6 +421,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel3 = false;
         weapon.GetComponent<Weapon>().Playerlevel4 = false;
 
+        playerLevelValue = 2;
+
         //Level Up Feedback
         SpawnLevelUPText();
 
@@ -436,6 +444,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel1 = false;
         weapon.GetComponent<Weapon>().Playerlevel2 = false;
         weapon.GetComponent<Weapon>().Playerlevel4 = false;
+
+        playerLevelValue = 3;
 
         //Level Up Feedback
         SpawnLevelUPText();
@@ -459,6 +469,8 @@ public class Manager : MonoBehaviour
         weapon.GetComponent<Weapon>().Playerlevel2 = false;
         weapon.GetComponent<Weapon>().Playerlevel3 = false;
 
+        playerLevelValue = 4;
+
         //Level Up Feedback
         SpawnLevelUPText();
 
@@ -466,6 +478,7 @@ public class Manager : MonoBehaviour
         levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: 5";
     }
 
+    //Show Level Up Above Player
     void SpawnLevelUPText()
     {
         Vector3 pos = new Vector3(Player.transform.position.x - 1f, Player.transform.position.y, Player.transform.position.z);

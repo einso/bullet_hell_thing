@@ -14,6 +14,7 @@ public class PlayerAbilities : MonoBehaviour
     public bool nukeEnemy;
     int transparence = 255;
     bool nukeVFX;
+    bool nukeSFX;
     bool nukeCD;
     float nukeTime;
 
@@ -67,6 +68,7 @@ public class PlayerAbilities : MonoBehaviour
             if (nukeEnemy)
             {
                 nukeVFX = true;
+                nukeSFX = true;
             }
 
             if (nukeVFX)
@@ -76,6 +78,7 @@ public class PlayerAbilities : MonoBehaviour
 
                 if (nukeTime >= 1)
                 {
+                    nukeSFX = false;
                     nukeVFX = false;
                     nukeTime = 0;
                     nukeCD = true;
@@ -84,12 +87,13 @@ public class PlayerAbilities : MonoBehaviour
 
             if (nukeCD)
             {
-                nukeTime += 0.5f * Time.deltaTime;
+                nukeTime += 1.3f * Time.deltaTime;
                 nukepng.GetComponent<Image>().color = Color32.Lerp(new Color32(255, 255, 255, 255), new Color32(255, 255, 255, 0), nukeTime);
 
                 if (nukeTime >= 1)
                 {
                     nukeCD = false;
+                    nukeSFX = false;
                     nukeVFX = false;
                     nukeTime = 0;
                 }
