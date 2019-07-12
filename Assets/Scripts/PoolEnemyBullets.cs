@@ -22,8 +22,8 @@ public class PoolEnemyBullets : MonoBehaviour
         for (int i = 0; i < pooledAmount; i++)
         {
            GameObject b = Instantiate(EnemyBulletPrefab);
-           b.transform.parent = EnemyBullets.transform;
            b.SetActive(false);
+           b.transform.parent = EnemyBullets.transform;
            pooledObjects.Add(b);
         }
     }

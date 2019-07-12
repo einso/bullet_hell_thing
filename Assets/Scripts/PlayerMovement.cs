@@ -12,6 +12,18 @@ public class PlayerMovement : MonoBehaviour
     public float playerRotationSpeed = 15;
     public float playerShiftSpeed = 3;
     public GameObject hitParticlePrefab;
+    [HideInInspector]
+    public float speedBonusWhileSlow = 1;
+
+    float speedHori = 0;
+    float accelerationHori = 50;
+    float decelerationHori = 100;
+    float maxSpeedHori = 50;
+
+    float speedVerti = 0;
+    float accelerationVerti = 50;
+    float decelerationVerti = 100;
+    float maxSpeedVerti = 50;
 
     private void Update()
     {
@@ -25,21 +37,69 @@ public class PlayerMovement : MonoBehaviour
 
         //Get Movement Input
         Vector3 pos = transform.position;
-        float moveVerti = Input.GetAxis("Vertical");
-        float moveHori = Input.GetAxis("Horizontal");
-        //bool moveHoriShift = Input.GetKey("Horizontal") && Input.GetKey("Shift");
-        //bool moveVertiShift = Input.GetKey("Vertical") && Input.GetKey("Shift");
+        float moveHori = Input.GetAxisRaw("Vertical");
+        float moveVerti = Input.GetAxisRaw("Horizontal");
 
-        //Set Movement Boundaries
-        if (transform.position.x < -3.05f)
+       /* //HORIZONTAL ACCELERATION
+        if (moveHori < 0 && speedHori < maxSpeedHori)
         {
-            if(moveHori < 0)
+            speedHori = speedHori - accelerationHori * Time.deltaTime;
+        }
+        else if (moveHori > 0 && speedHori > -maxSpeedHori) 
+        {
+            speedHori = speedHori + accelerationHori * Time.deltaTime;
+        } 
+        else
+        {
+            if(speedHori > decelerationHori * Time.deltaTime)
             {
-                moveHori = 0;
+                speedHori = speedHori - decelerationHori * Time.deltaTime;
+            }
+            else if(speedHori < -decelerationHori * Time.deltaTime)
+            {
+                speedHori = speedHori + decelerationHori * Time.deltaTime;
+            }
+            else
+            {
+                speedHori = 0;
             }
         }
 
-        if (transform.position.x > 4.7f)
+        //VERTICAL ACCELERATION
+        if (moveVerti < 0 && speedVerti < maxSpeedVerti)
+        {
+            speedVerti = speedVerti - accelerationVerti * Time.deltaTime;
+        }
+        else if (moveVerti > 0 && speedVerti > -maxSpeedVerti)
+        {
+            speedVerti = speedVerti + accelerationVerti * Time.deltaTime;
+        }
+        else
+        {
+            if (speedVerti > decelerationVerti * Time.deltaTime)
+            {
+                speedVerti = speedVerti - decelerationVerti * Time.deltaTime;
+            }
+            else if (speedVerti < -decelerationVerti * Time.deltaTime)
+            {
+                speedVerti = speedVerti + decelerationVerti * Time.deltaTime;
+            }
+            else
+            {
+                speedVerti = 0;
+            }
+        }*/
+
+        //Set Movement Boundaries
+        if (transform.position.x < -3.25f)
+            {
+                if (moveHori < 0)
+                {
+                    moveHori = 0;
+                }
+            }
+
+        if (transform.position.x > 4.3f)
         {
             if (moveHori > 0)
             {
@@ -47,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.z < -4.5f)
+        if (transform.position.z < -4.57f)
         {
             if (moveVerti < 0)
             {
@@ -66,19 +126,20 @@ public class PlayerMovement : MonoBehaviour
         //Set Player to new Position
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            Vector3 posChange = new Vector3(moveHori * playerShiftSpeed * Time.deltaTime, moveVerti * playerShiftSpeed * Time.deltaTime, 0);
+            Vector3 posChange = new Vector3(moveHori * playerShiftSpeed * Time.deltaTime * speedBonusWhileSlow, moveVerti * playerShiftSpeed * Time.deltaTime * speedBonusWhileSlow, 0);
             pos += rot * posChange;
             transform.position = pos;
         }
         else
         {
-            Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime, moveVerti * playerMoveSpeed * Time.deltaTime, 0);
+            Vector3 posChange = new Vector3(moveHori * playerMoveSpeed * Time.deltaTime * speedBonusWhileSlow, moveVerti * playerMoveSpeed * Time.deltaTime * speedBonusWhileSlow, 0);
             pos += rot * posChange;
             transform.position = pos;
         }
-          
 
-     }
+
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -25,12 +25,6 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            FindObjectOfType<Manager>().PlayerDeath();
-        }
         if (other.gameObject.tag == "EndWall")
         {
 
@@ -38,6 +32,5 @@ public class EnemyBullet : MonoBehaviour
         }
 
     }
-
 
 }
