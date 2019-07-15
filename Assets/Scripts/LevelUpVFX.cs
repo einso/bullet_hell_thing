@@ -22,7 +22,7 @@ public class LevelUpVFX : MonoBehaviour
     {
         //Move position
         Vector3 pos = transform.position;
-        transform.position = new Vector3(pos.x - 1 * Time.deltaTime, pos.y, pos.z);
+        transform.position = new Vector3(pos.x - 1f * Time.deltaTime, pos.y, pos.z);
 
         //Change transparency
         t += 2 * Time.deltaTime;

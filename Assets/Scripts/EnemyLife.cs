@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
+    Color32 color;
+    SpriteRenderer spriteRenderer;
     public GameObject EnemyProjectilePrefab;
     public GameObject scoreFeedbackPrefab;
     public GameObject HitEnemyParticle;
@@ -18,15 +20,27 @@ public class EnemyLife : MonoBehaviour
 
     void Awake()
     {
+        //Get Manager
         Manager = GameObject.Find("Manager");
+
+        //Get Child SpriteRender
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        //get Color
+        color = spriteRenderer.color;
     }
 
+
+    //ON TRIGGER ENTER
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")
         {
             health -= 1;
             Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+
+
+            StartCoroutine(HitVFX());
         }
 
         CheckHealth();
@@ -70,6 +84,13 @@ public class EnemyLife : MonoBehaviour
             DestroyEnemyC();
           
         }
+    }
+
+    IEnumerator HitVFX()
+    {
+        spriteRenderer.color = new Color32(255, 0, 0, 255);
+        yield return new WaitForSeconds(0.05f);
+        spriteRenderer.color = color;
     }
 
     void DestroyEnemyC()
