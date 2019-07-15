@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         Quaternion rot = transform.rotation;
         float z = rot.eulerAngles.z;
         z -= Input.GetAxis("Rotation") * playerRotationSpeed * Time.deltaTime;
-        rot = Quaternion.Euler(90, -90 , 0);
+        rot = Quaternion.Euler(90, 0, 0);
         transform.rotation = rot;
 
         //Get Movement Input
