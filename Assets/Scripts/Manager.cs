@@ -72,6 +72,7 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SpawnWave();
         Time.timeScale = 1;                //Set Time to 1
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
@@ -118,7 +119,7 @@ public class Manager : MonoBehaviour
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0");
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + t.ToString("0");
             //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
             waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
@@ -143,7 +144,7 @@ public class Manager : MonoBehaviour
         doCoroutineOnce = false;
         SpawnWave();
         LoadWave();
-        t = 0;
+        t = secondsTillNextWave;
         waveNr++;
     }
 
@@ -218,13 +219,13 @@ public class Manager : MonoBehaviour
             }
             else
             {
-                t += 1 * Time.deltaTime;
+                t -= 1 * Time.deltaTime;
 
-                if (t > secondsTillNextWave)
+                if (t < 0)
                 {
                     SpawnWave();
                     LoadWave();
-                    t = 0;
+                    t = secondsTillNextWave;
                     waveNr++;
                 }
             }

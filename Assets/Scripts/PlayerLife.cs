@@ -44,7 +44,7 @@ public class PlayerLife : MonoBehaviour
             //Collision with Enemy Bullet
             if (other.gameObject.tag == "EnemyBullet")
             {
-                TakeDamage(1);  //Damage Calculation
+                TakeDamage(other.GetComponent<EnemyBullet>().damage);  //Damage Calculation
                 other.gameObject.SetActive(false); //Destroy Enemy Bullet
                 CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             }
@@ -73,8 +73,8 @@ public class PlayerLife : MonoBehaviour
         health -= damage;   //Health - Damage
         lifeBarPar.SetActive(true); //Set Lifebar Active
         SetLifebarPos = true;   //Set bool true to position the lifebar in update        
-        lifeBar.transform.localScale = new Vector3(lifeBar.transform.localScale.x - 0.02f, lifeBar.transform.localScale.y, lifeBar.transform.localScale.z); //Shrink life bar on hit
-        lifeBar.transform.localPosition = new Vector3(lifeBar.transform.localPosition.x, lifeBar.transform.localPosition.y, lifeBar.transform.localPosition.z - 0.116f); //Position Correction lifebar
+        lifeBar.transform.localScale = new Vector3(lifeBar.transform.localScale.x - 0.02f*damage, lifeBar.transform.localScale.y, lifeBar.transform.localScale.z); //Shrink life bar on hit
+        lifeBar.transform.localPosition = new Vector3(lifeBar.transform.localPosition.x, lifeBar.transform.localPosition.y, lifeBar.transform.localPosition.z - 0.116f*damage); //Position Correction lifebar
         StartCoroutine(toggleInvincibility()); //Toggle invincibility if hit
         //StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.6f, 0.5f)); //Camera Shake
     }
