@@ -6,46 +6,43 @@ public class MoveToPlayer : MonoBehaviour
 {
     float moveSpeed = 20;
     GameObject player;
+    GameObject manager;
 
     float posX;
     float posY;
     float posZ;
 
+    public float manaValue;
+
+    float distanceToPlayer;
+
     void Start()
     {
         player = GameObject.Find("Player");
+        manager = GameObject.Find("Manager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 playerPos = player.transform.position;
+        distanceToPlayer = transform.position.z - player.transform.position.z;
+
+        //Move To Player
+        if(transform.position.x>0.5f) transform.LookAt(new Vector3(player.transform.position.x + distanceToPlayer/2, player.transform.position.y, player.transform.position.z));
+        else transform.LookAt(new Vector3(player.transform.position.x - distanceToPlayer/2, player.transform.position.y, player.transform.position.z));
+        Quaternion rot = transform.rotation;
         Vector3 pos = transform.position;
+        Vector3 posChange = new Vector3(0, 0, moveSpeed * Time.deltaTime);
+        pos += rot * posChange;
+        transform.position = pos;
 
-        posX = transform.position.x;
-        posY = transform.position.y;
-        posZ = transform.position.z;
+        if(transform.position.z < player.transform.position.z)
+        {
+            //Give Mana
+            manager.GetComponent<ManaBar>().manaAmount += manaValue;
 
-        if (playerPos.z < pos.z)
-        {
-            posZ = posZ - 1 * moveSpeed *  Time.deltaTime;
-            
-        }
-
-        if(transform.position.x > playerPos.x -0.5)
-        {
-            posX = posX - 1 * 5 * Time.deltaTime;
-        }
-        else if(transform.position.x < playerPos.x +0.5)
-        {
-            posX = posX + 1 * moveSpeed * Time.deltaTime;
-        }
-
-        if (playerPos.z > pos.z && transform.position.x > playerPos.x - 0.5 && transform.position.x < playerPos.x + 0.5)
-        {
+            //Destroy
             Destroy(gameObject);
         }
-
-        transform.position = new Vector3(posX, posY, posZ);
     }
 }
