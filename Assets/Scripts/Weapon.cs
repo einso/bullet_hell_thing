@@ -45,6 +45,7 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
+
         t = delay;
 
         //Pooling
@@ -259,6 +260,7 @@ public class Weapon : MonoBehaviour
         pooledObjects[bulletNr].transform.position = pos;
         pooledObjects[bulletNr].transform.rotation = rot;
         pooledObjects[bulletNr].SetActive(true);
+        //pooledObjects[bulletNr].GetComponent<ParticleSystem>().Play();
         bulletNr++;
         if (bulletNr > pooledAmount-1) bulletNr = 0;
        
