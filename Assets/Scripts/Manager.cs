@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class Manager : MonoBehaviour
 {
@@ -38,8 +41,8 @@ public class Manager : MonoBehaviour
     [HideInInspector]
     public float amountOfKills;
 
-    float time;
-    float waveNr;
+    public float time;
+    public float waveNr;
 
     bool dontSpawnWaves;
     bool doCoroutineOnce;
@@ -69,11 +72,36 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SpawnWave();
         Time.timeScale = 1;                //Set Time to 1
         randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
+
+
+        //// screen resolution
+        resolutions = Screen.resolutions;
+
+        resolutionDroptown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResulutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResulutionIndex = i;
+            }
+        }
+
+        resolutionDroptown.AddOptions(options);
+        resolutionDroptown.value = currentResulutionIndex;
+        resolutionDroptown.RefreshShownValue();
     }
 
    
@@ -91,7 +119,7 @@ public class Manager : MonoBehaviour
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0");
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + t.ToString("0");
             //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
             waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
@@ -116,7 +144,7 @@ public class Manager : MonoBehaviour
         doCoroutineOnce = false;
         SpawnWave();
         LoadWave();
-        t = 0;
+        t = secondsTillNextWave;
         waveNr++;
     }
 
@@ -191,13 +219,13 @@ public class Manager : MonoBehaviour
             }
             else
             {
-                t += 1 * Time.deltaTime;
+                t -= 1 * Time.deltaTime;
 
-                if (t > secondsTillNextWave)
+                if (t < 0)
                 {
                     SpawnWave();
                     LoadWave();
-                    t = 0;
+                    t = secondsTillNextWave;
                     waveNr++;
                 }
             }
@@ -290,7 +318,8 @@ public class Manager : MonoBehaviour
         //Spawn Particle Effect
         GameObject destroyParticle = Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
-        Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
+        GameObject lootMyAss = Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
+        lootMyAss.GetComponent<MoveToPlayer>().manaValue = other.GetComponent<EnemyLife>().giveMana;
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
@@ -324,15 +353,73 @@ public class Manager : MonoBehaviour
     //ToggleGodMode
     void ToggleGodMode()
     {
+        if(Player.activeInHierarchy)
+        {
+            if (GodMode)
+            {
+                Player.GetComponentInChildren<Collider>().enabled = false;
+            }
+            else
+            {
+                Player.GetComponentInChildren<Collider>().enabled = true;
+            }
+        }
+    }
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (GodMode)
-        {
-            Player.GetComponentInChildren<Collider>().enabled = false;
-        }
-        else
-        {
-            Player.GetComponentInChildren<Collider>().enabled = true;
-        }
+
+    public GameObject menue;
+    public GameObject options;
+    //Options Menü
+    public void Optionsstart()
+    {
+        menue.SetActive(false);
+        options.SetActive(true);
+        
+    }
+
+    //options Back
+    public void Optionsback()
+    {
+        menue.SetActive(true);
+        options.SetActive(false);
+        Debug.Log("test");
+    }
+
+
+    //Einstellung Der Auflösung + Fulscrenn Einstelung//////////////////////////
+    Resolution[] resolutions;
+    public Dropdown resolutionDroptown;
+
+
+
+
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+    }
+    /// //////////////////////////////////////////////
+    //Sound Einstellungen/////////////////////////////
+    public Slider[] volumeSlieder;
+    public AudioMixer audiomixer;
+
+    public void SetMasterVolume(float volume)
+    {
+        audiomixer.SetFloat("MasterVolume", volume);
+    }
+    public void SetMusicVolume(float volume)
+    {
+        audiomixer.SetFloat("MusicVolume", volume);
+    }
+    public void SetSXFVolume(float volume)
+    {
+        audiomixer.SetFloat("SoundVolume", volume);
     }
 
     //PlayerLevelUP
