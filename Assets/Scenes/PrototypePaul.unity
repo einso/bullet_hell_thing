@@ -10914,6 +10914,31 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1196722902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4183374838401256354, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
+    type: 3}
+  m_PrefabInstance: {fileID: 4183374839147138530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1196722905
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196722902}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01b486e8a87bb92478a5dc0cbb2e36cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &1198066173 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7960440847575448733, guid: 274cc7b2d3c81bf469e2fcc342e5576c,
@@ -21100,12 +21125,12 @@ PrefabInstance:
     - target: {fileID: 4183374837508792079, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4183374837508792083, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.51958
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 4183374837508792083, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
         type: 3}
@@ -21115,7 +21140,7 @@ PrefabInstance:
     - target: {fileID: 4183374837508792083, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.94
+      value: 6.68
       objectReference: {fileID: 0}
     - target: {fileID: 4183374837508792083, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
         type: 3}
@@ -21157,7 +21182,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4183374837508792082, guid: f53e1ce62d45ed44dbdb3b8aef0582db,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1068354371, guid: f53e1ce62d45ed44dbdb3b8aef0582db, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f53e1ce62d45ed44dbdb3b8aef0582db, type: 3}
 --- !u!1001 &6533293457722357315
 PrefabInstance:
