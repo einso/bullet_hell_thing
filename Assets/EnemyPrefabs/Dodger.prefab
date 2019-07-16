@@ -51,12 +51,13 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
-  firingPeriod: 0.4
-  bulletSpeed: 4
+  firingPeriod: 0.2
+  bulletSpeed: 7
   firingAngle: 2
-  firingAngleBetweenShots: 18
+  firingAngleBetweenShots: 15
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 1
@@ -150,7 +151,7 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
-  health: 2
+  health: 3
   giveMana: 30
 --- !u!65 &3343968489603122114
 BoxCollider:
