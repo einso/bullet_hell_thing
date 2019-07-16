@@ -17,6 +17,7 @@ public class PlayerAbilities : MonoBehaviour
     bool nukeSFX;
     bool nukeCD;
     float nukeTime;
+    public int nukeDamage;
 
     // Start is called before the first frame update
     void Start()
