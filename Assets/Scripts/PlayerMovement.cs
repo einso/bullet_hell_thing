@@ -141,14 +141,4 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            FindObjectOfType<Manager>().PlayerDeath();
-            Instantiate(hitParticlePrefab, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
-        }
-    }
 }
