@@ -25,27 +25,27 @@ public class MainManu : MonoBehaviour
 
     public void Update()
     {
-        time++;
-        if(MainMenübool == true)
-        {
-            mainmenu.SetActive(true);
-            settings.SetActive(false);
-        }
+        //time++;
+        //if(MainMenübool == true)
+        //{
+        //    mainmenu.SetActive(true);
+        //    settings.SetActive(false);
+        //}
 
-        if (settingsbool == true && settingsbooltime == true)
-        {
-            if (settingstime <= time)
-            {
-                mainmenu.SetActive(false);
-                settings.SetActive(true);
-            }
-        }
-        else if (settingsbool == true)
-        {
-            settingstime = time;
-            settingstime += 300;
-            settingsbooltime = true;
-        }
+        //if (settingsbool == true && settingsbooltime == true)
+        //{
+        //    if (settingstime <= time)
+        //    {
+        //        mainmenu.SetActive(false);
+        //        settings.SetActive(true);
+        //    }
+        //}
+        //else if (settingsbool == true)
+        //{
+        //    settingstime = time;
+        //    settingstime += 300;
+        //    settingsbooltime = true;
+        //}
     }
     public void Settingsstart()
     {
