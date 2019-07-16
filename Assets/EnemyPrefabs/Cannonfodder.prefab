@@ -53,10 +53,12 @@ MonoBehaviour:
     type: 3}
   firingPeriod: 0.9
   bulletSpeed: 4
+  bulletDamage: 1
   firingAngle: 2
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 1
   sinusShot: 0
   sprayShot: 0
