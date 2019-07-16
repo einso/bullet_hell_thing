@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class MainManu : MonoBehaviour
 {
-
+    public int time;
+    public bool MainMenübool = true;
+    public bool settingsbool = false;
+    public bool settingsbooltime = false;
+    public int settingstime;
     [Header("Animatoren für die Menüs")]
     public Animator[] animMainMenüUI;
     public Animator[] animSettingsUI;
@@ -14,17 +18,34 @@ public class MainManu : MonoBehaviour
     public Animator[] animcontrolsUi;
     public Animator protagonist;
     int animatorlengh;
-    
 
-    [Header("Buttons Main Menü")]
+    [Header("Menüs")]
     public GameObject mainmenu;
-
-    [Header("Buttons/Slider und co Settings")]
     public GameObject settings;
 
     public void Update()
     {
-        animatorlengh = animMainMenüUI.Length;
+        time++;
+        if(MainMenübool == true)
+        {
+            mainmenu.SetActive(true);
+            settings.SetActive(false);
+        }
+
+        if (settingsbool == true && settingsbooltime == true)
+        {
+            if (settingstime <= time)
+            {
+                mainmenu.SetActive(false);
+                settings.SetActive(true);
+            }
+        }
+        else if (settingsbool == true)
+        {
+            settingstime = time;
+            settingstime += 300;
+            settingsbooltime = true;
+        }
     }
     public void Settingsstart()
     {
@@ -33,6 +54,14 @@ public class MainManu : MonoBehaviour
         {
             animMainMenüUI[i].SetBool("Raus", true);
         }
+        settingsbool = true;
+    }
+    public void Settingsquit()
+    {
+        protagonist.SetBool("Raus", false);
+        settingsbool = false;
+        settingsbooltime = false;
+        MainMenübool = true;
 
     }
 }
