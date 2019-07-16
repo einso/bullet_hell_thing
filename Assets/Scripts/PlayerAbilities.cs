@@ -7,7 +7,8 @@ public class PlayerAbilities : MonoBehaviour
 {
     public GameObject Player;
     public GameObject nukepng;
-    bool timeSlow;
+    [HideInInspector]
+    public bool timeSlow;
     public float manaCostTime = 2f;
     public float manaCostNuke = 300f;
     [HideInInspector]
