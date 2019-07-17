@@ -2283,7 +2283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &353483932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4079,7 +4079,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 667906047}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149033938}
+        m_MethodName: SettingsSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &667906047
@@ -4537,7 +4548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &765338050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5028,7 +5039,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 827110108}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149033938}
+        m_MethodName: settingscontrols
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &827110108
@@ -5763,7 +5785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &936739749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7107,10 +7129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  "MainMen\xFCbool": 1
-  settingsbool: 0
-  settingsbooltime: 0
-  settingstime: 0
   "animMainMen\xFCUI":
   - {fileID: 1386585109}
   - {fileID: 2007594023}
@@ -7121,15 +7139,25 @@ MonoBehaviour:
   - {fileID: 1779917083}
   - {fileID: 2070527529}
   - {fileID: 614023662}
-  animSettingsUI: []
+  animSettingsUI:
+  - {fileID: 1518695970}
+  - {fileID: 1525444621}
   animSettingssoundUI:
-  - {fileID: 614023662}
-  animSettingscontrolsUI: []
-  animSettingsgrapficUI: []
+  - {fileID: 353483933}
+  animSettingscontrolsUI:
+  - {fileID: 1926111270}
+  animSettingsgrapficUI:
+  - {fileID: 1974926959}
   animcontrolsUi: []
   protagonist: {fileID: 1048716613}
   mainmenu: {fileID: 936739748}
   settings: {fileID: 590430411}
+  soundbutton: {fileID: 0}
+  screenbutton: {fileID: 0}
+  controlsbutton: {fileID: 0}
+  soundsettings: {fileID: 353483931}
+  scrensettings: {fileID: 1974926957}
+  controlsettings: {fileID: 1926111268}
 --- !u!1 &1154723987
 GameObject:
   m_ObjectHideFlags: 0
@@ -7581,7 +7609,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1214447712}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149033938}
+        m_MethodName: SettingsScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1214447712
@@ -10996,7 +11035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1926111269
 RectTransform:
   m_ObjectHideFlags: 0

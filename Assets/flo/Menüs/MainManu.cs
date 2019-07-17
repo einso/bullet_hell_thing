@@ -5,10 +5,6 @@ using UnityEngine;
 public class MainManu : MonoBehaviour
 {
     public int time;
-    public bool MainMenübool = true;
-    public bool settingsbool = false;
-    public bool settingsbooltime = false;
-    public int settingstime;
     [Header("Animatoren für die Menüs")]
     public Animator[] animMainMenüUI;
     public Animator[] animSettingsUI;
@@ -23,29 +19,20 @@ public class MainManu : MonoBehaviour
     public GameObject mainmenu;
     public GameObject settings;
 
+    [Header("Settingsbutton")]
+    public GameObject soundbutton;
+    public GameObject screenbutton;
+    public GameObject controlsbutton;
+
+    [Header("Settingsoptionen")]
+    public GameObject soundsettings;
+    public GameObject scrensettings;
+    public GameObject controlsettings;
+
+
     public void Update()
     {
-        //time++;
-        //if(MainMenübool == true)
-        //{
-        //    mainmenu.SetActive(true);
-        //    settings.SetActive(false);
-        //}
 
-        //if (settingsbool == true && settingsbooltime == true)
-        //{
-        //    if (settingstime <= time)
-        //    {
-        //        mainmenu.SetActive(false);
-        //        settings.SetActive(true);
-        //    }
-        //}
-        //else if (settingsbool == true)
-        //{
-        //    settingstime = time;
-        //    settingstime += 300;
-        //    settingsbooltime = true;
-        //}
     }
     public void Settingsstart()
     {
@@ -54,14 +41,97 @@ public class MainManu : MonoBehaviour
         {
             animMainMenüUI[i].SetBool("Raus", true);
         }
-        settingsbool = true;
+        Invoke("menutosettings", 5);
     }
     public void Settingsquit()
     {
-        protagonist.SetBool("Raus", false);
-        settingsbool = false;
-        settingsbooltime = false;
-        MainMenübool = true;
+        animSettingsUI[0].SetBool("Raus", true);
+        animSettingsUI[1].SetBool("Raus", true);
+        animSettingscontrolsUI[0].SetBool("Raus", true);
+        animSettingsgrapficUI[0].SetBool("Raus", true);
+        animSettingssoundUI[0].SetBool("Raus", true);
 
+        Invoke("settingstomenu", 5);
+    }
+    // Settings
+    public void SettingsSound()
+    {
+        if(soundsettings.active == true)
+        {
+
+        }
+        else
+        {
+            animSettingscontrolsUI[0].SetBool("Raus", true);
+            animSettingsgrapficUI[0].SetBool("Raus", true);
+            animSettingssoundUI[0].SetBool("Raus", true);
+            Invoke("gotosound", 2);
+        }
+    }
+    public void SettingsScreen()
+    {
+        if (scrensettings.active == true)
+        {
+
+        }
+        else
+        {
+            animSettingscontrolsUI[0].SetBool("Raus", true);
+            animSettingsgrapficUI[0].SetBool("Raus", true);
+            animSettingssoundUI[0].SetBool("Raus", true);
+            Invoke("gotoscreen", 2);
+        }
+    }
+    public void settingscontrols()
+    {
+        if (controlsettings.active == true)
+        {
+
+        }
+        else
+        {
+            animSettingscontrolsUI[0].SetBool("Raus", true);
+            animSettingsgrapficUI[0].SetBool("Raus", true);
+            animSettingssoundUI[0].SetBool("Raus", true);
+            Invoke("gotocontrols", 2);
+        }
+    }
+
+
+
+    void gotosound()
+    {
+        soundsettings.SetActive(true);
+        scrensettings.SetActive(false);
+        controlsettings.SetActive(false);
+    }
+    void gotoscreen()
+    {
+        soundsettings.SetActive(false);
+        scrensettings.SetActive(true);
+        controlsettings.SetActive(false);
+    }
+    void gotocontrols()
+    {
+        soundsettings.SetActive(false);
+        scrensettings.SetActive(false);
+        controlsettings.SetActive(true);
+    }
+
+
+
+
+
+
+
+    void menutosettings()
+    {
+        mainmenu.SetActive(false);
+        settings.SetActive(true);
+    }
+    void settingstomenu()
+    {
+        mainmenu.SetActive(true);
+        settings.SetActive(false);
     }
 }
