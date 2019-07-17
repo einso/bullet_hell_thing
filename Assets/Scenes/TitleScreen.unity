@@ -1805,7 +1805,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 320300422}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149033938}
+        m_MethodName: Controllback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &320300422
@@ -3673,7 +3684,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 614023664}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1149033938}
+        m_MethodName: Controllmenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &614023664
@@ -6778,7 +6800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096292639}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -549, y: 269, z: -196.17258}
+  m_LocalPosition: {x: -375, y: 272, z: -196.17258}
   m_LocalScale: {x: 98.93187, y: 110.3471, z: 21.13929}
   m_Children: []
   m_Father: {fileID: 1454194671}
@@ -7142,6 +7164,8 @@ MonoBehaviour:
   animSettingsUI:
   - {fileID: 1518695970}
   - {fileID: 1525444621}
+  animcontrolsmenuUI:
+  - {fileID: 1454194672}
   animSettingssoundUI:
   - {fileID: 353483933}
   animSettingscontrolsUI:
@@ -7152,9 +7176,7 @@ MonoBehaviour:
   protagonist: {fileID: 1048716613}
   mainmenu: {fileID: 936739748}
   settings: {fileID: 590430411}
-  soundbutton: {fileID: 0}
-  screenbutton: {fileID: 0}
-  controlsbutton: {fileID: 0}
+  controlsmenu: {fileID: 1454194670}
   soundsettings: {fileID: 353483931}
   scrensettings: {fileID: 1974926957}
   controlsettings: {fileID: 1926111268}
@@ -8918,6 +8940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1454194671}
+  - component: {fileID: 1454194672}
   m_Layer: 5
   m_Name: controls
   m_TagString: Untagged
@@ -8945,9 +8968,28 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2124, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1454194672
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454194670}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e06ce886af3df4e4489357e6193e3022, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1455922280
 GameObject:
   m_ObjectHideFlags: 0

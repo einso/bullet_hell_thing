@@ -8,6 +8,7 @@ public class MainManu : MonoBehaviour
     [Header("Animatoren für die Menüs")]
     public Animator[] animMainMenüUI;
     public Animator[] animSettingsUI;
+    public Animator[] animcontrolsmenuUI;
     public Animator[] animSettingssoundUI;
     public Animator[] animSettingscontrolsUI;
     public Animator[] animSettingsgrapficUI;
@@ -18,11 +19,7 @@ public class MainManu : MonoBehaviour
     [Header("Menüs")]
     public GameObject mainmenu;
     public GameObject settings;
-
-    [Header("Settingsbutton")]
-    public GameObject soundbutton;
-    public GameObject screenbutton;
-    public GameObject controlsbutton;
+    public GameObject controlsmenu;
 
     [Header("Settingsoptionen")]
     public GameObject soundsettings;
@@ -36,6 +33,7 @@ public class MainManu : MonoBehaviour
     }
     public void Settingsstart()
     {
+        protagonist.SetBool("Rein", false);
         protagonist.SetBool("Raus", true);
         for (int i = 0; i < animMainMenüUI.Length; i++)
         {
@@ -53,6 +51,24 @@ public class MainManu : MonoBehaviour
 
         Invoke("settingstomenu", 5);
     }
+    public void Controllmenu()
+    {
+        protagonist.SetBool("Rein", false);
+        protagonist.SetBool("Raus", true);
+        for (int i = 0; i < animMainMenüUI.Length; i++)
+        {
+            animMainMenüUI[i].SetBool("Raus", true);
+        }
+        Invoke("menutocontrolsmenu", 5);
+    }
+    public void Controllback()
+    {
+        animcontrolsmenuUI[0].SetBool("Raus", true);
+        Invoke("controlsmenutomainmenu", 2.5f);
+    }
+
+
+
     // Settings
     public void SettingsSound()
     {
@@ -96,9 +112,6 @@ public class MainManu : MonoBehaviour
             Invoke("gotocontrols", 2);
         }
     }
-
-
-
     void gotosound()
     {
         soundsettings.SetActive(true);
@@ -117,21 +130,34 @@ public class MainManu : MonoBehaviour
         scrensettings.SetActive(false);
         controlsettings.SetActive(true);
     }
-
-
-
-
+    //settings
 
 
 
     void menutosettings()
     {
+        protagonist.SetBool("Rein", false);
         mainmenu.SetActive(false);
         settings.SetActive(true);
     }
     void settingstomenu()
     {
+        protagonist.SetBool("Raus", false);
+        protagonist.SetBool("Rein", true);
         mainmenu.SetActive(true);
         settings.SetActive(false);
+    }
+    void menutocontrolsmenu()
+    {
+        protagonist.SetBool("Rein", false);
+        mainmenu.SetActive(false);
+        controlsmenu.SetActive(true);
+    }
+    void controlsmenutomainmenu()
+    {
+        protagonist.SetBool("Raus", false);
+        protagonist.SetBool("Rein", true);
+        mainmenu.SetActive(true);
+        controlsmenu.SetActive(false);
     }
 }
