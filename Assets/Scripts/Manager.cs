@@ -174,7 +174,7 @@ public class Manager : MonoBehaviour
                 {
                     if (presetWaves[presetWaveNr].transform.childCount == 0) //If wave is cleared
                     {
-                        Destroy(presetWaves[presetWaveNr]); //Destroy empty Wave
+                        presetWaves[presetWaveNr].SetActive(false); //Destroy empty Wave
                         presetWaveNr++; //count wave number + 1
                         t = secondsTillNextWave;
                     }
