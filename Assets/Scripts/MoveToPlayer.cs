@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MoveToPlayer : MonoBehaviour
 {
+    Vector3 playerSize = new Vector3(0.1910025f, 0.1910025f, 0.25467f);
+    Vector3 playerSize2 = new Vector3(0.205f, 0.205f, 0.25467f);
+
     public float moveSpeed = 20;
     public float angle = 2;
     GameObject player;
@@ -22,6 +25,7 @@ public class MoveToPlayer : MonoBehaviour
     {
         player = GameObject.Find("Player");
         manager = GameObject.Find("Manager");
+        playerSize = new Vector3(0.1910025f, 0.1910025f, 0.25467f);
     }
 
     // Update is called once per frame
@@ -44,8 +48,19 @@ public class MoveToPlayer : MonoBehaviour
             //Give Mana
             manager.GetComponent<ManaBar>().manaAmount += manaValue;
 
+            //Player Feedback
+            StartCoroutine(popPlayer());
+
             //Destroy
-            Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator popPlayer()
+    {
+        player.transform.localScale = playerSize2;
+        yield return new WaitForSeconds(0.075f);
+        player.transform.localScale = playerSize;
+        Destroy(gameObject);
     }
 }

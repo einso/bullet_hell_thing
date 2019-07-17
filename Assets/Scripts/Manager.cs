@@ -353,14 +353,16 @@ public class Manager : MonoBehaviour
     //ToggleGodMode
     void ToggleGodMode()
     {
-
-        if (GodMode)
+        if(Player.activeInHierarchy)
         {
-            Player.GetComponentInChildren<Collider>().enabled = false;
-        }
-        else
-        {
-            Player.GetComponentInChildren<Collider>().enabled = true;
+            if (GodMode)
+            {
+                Player.GetComponentInChildren<Collider>().enabled = false;
+            }
+            else
+            {
+                Player.GetComponentInChildren<Collider>().enabled = true;
+            }
         }
     }
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////

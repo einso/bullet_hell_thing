@@ -95,7 +95,7 @@ public class PlayerLife : MonoBehaviour
         transform.position = new Vector3(transform.position.x + 1 * fallingSpeed * Time.deltaTime, transform.position.y, transform.position.z - 1 * 5 * Time.deltaTime);
 
         //Wait For Seconds
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(1.5f);
         alive = true;
         gameObject.SetActive(false);
         FindObjectOfType<Manager>().PlayerDeath();  //Game Over Screen
