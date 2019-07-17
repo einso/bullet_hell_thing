@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 100
-  moveSpeed: 3
+  moveSpeed: 2
   frequency: 0
   magnitude: 0
   moveUp: 0
@@ -251,8 +251,8 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
-  health: 3
-  giveMana: 15
+  health: 2
+  giveMana: 60
 --- !u!65 &3459595133501060891
 BoxCollider:
   m_ObjectHideFlags: 0

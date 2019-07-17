@@ -7,7 +7,8 @@ public class PlayerAbilities : MonoBehaviour
 {
     public GameObject Player;
     public GameObject nukepng;
-    bool timeSlow;
+    [HideInInspector]
+    public bool timeSlow;
     public float manaCostTime = 2f;
     public float manaCostNuke = 300f;
     [HideInInspector]
@@ -17,6 +18,7 @@ public class PlayerAbilities : MonoBehaviour
     bool nukeSFX;
     bool nukeCD;
     float nukeTime;
+    public int nukeDamage;
 
     // Start is called before the first frame update
     void Start()

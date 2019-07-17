@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7552131059857937324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.73, y: 1, z: 4.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 7552131060532663452}
   - {fileID: 7552131060904304391}
@@ -4768,6 +4768,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c64ddcd64d0c7547a07e67f06b39c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 20
+  angle: 2
+  manaValue: 0
 --- !u!1 &7552131060198148554
 GameObject:
   m_ObjectHideFlags: 0
