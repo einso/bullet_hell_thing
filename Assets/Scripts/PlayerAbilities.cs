@@ -27,14 +27,13 @@ public class PlayerAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player != null)
+        if (Player.activeInHierarchy)
         {
             //Time Freeze
             if (Input.GetButtonDown("TimeSlow") && !timeSlow)
             {
                 timeSlow = true;
                 TimeSlow();
-
             }
             else if (Input.GetButtonDown("TimeSlow") && timeSlow)
             {

@@ -78,9 +78,7 @@ public class EnemyLife : MonoBehaviour
             Destroy(this.gameObject);
             Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle);
 
-            //Give Mana
-            Manager.GetComponent<ManaBar>().manaAmount += giveMana;
-
+            //Destroy            
             DestroyEnemyC();
           
         }
