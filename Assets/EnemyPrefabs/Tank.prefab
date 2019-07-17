@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 100
-  moveSpeed: 2
+  scoreValue: 500
+  moveSpeed: 1.5
   frequency: 0
   magnitude: 0
   moveUp: 0
-  moveDown: 0
+  moveDown: 1
   movedDown: 0
   patternMovement1: 1
   patternMovement2: 0
@@ -80,8 +80,8 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
-  health: 10
-  giveMana: 40
+  health: 50
+  giveMana: 80
 --- !u!65 &7598003688045625052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -146,13 +146,13 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
-  firingPeriod: 3
+  firingPeriod: 4
   bulletSpeed: 4
-  firingAngle: -10
+  firingAngle: -14
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0.6
-  NumberOfShots: 15
-  TimeBetwennSalvages: 0.2
+  NumberOfShots: 45
+  TimeBetwennSalvages: 0.075
   linearShot: 0
   sinusShot: 0
   sprayShot: 0
