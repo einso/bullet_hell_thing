@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 100
+  scoreValue: 300
   moveSpeed: 5
   frequency: 0
   magnitude: 0
