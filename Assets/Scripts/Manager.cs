@@ -218,7 +218,6 @@ public class Manager : MonoBehaviour
             }
         }
 
-        Debug.Log(presetWaveNr);
 
         //Wave Delay
         IEnumerator WaveDelay()
