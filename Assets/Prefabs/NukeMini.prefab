@@ -19021,7 +19021,7 @@ GameObject:
   - component: {fileID: 2864043974121028957}
   m_Layer: 0
   m_Name: NukeMini
-  m_TagString: Untagged
+  m_TagString: Nuke
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19106,6 +19106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5234598a734e3fa4eb3454f10bdd5b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyPos: {x: 0, y: 0, z: 0}
 --- !u!1 &7472502700262561194
 GameObject:
   m_ObjectHideFlags: 0

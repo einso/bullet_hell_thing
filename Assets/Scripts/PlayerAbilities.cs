@@ -8,13 +8,16 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject Player;
     public GameObject nukepng;
     public GameObject miniNuke;
-    GameObject nuky;
+    [HideInInspector]
+    public GameObject nuky;
     [HideInInspector]
     public bool timeSlow;
     public float manaCostTime = 2f;
     public float manaCostNuke = 300f;
     [HideInInspector]
     public bool nukeEnemy;
+    [HideInInspector]
+    public bool splitNuke;
     int transparence = 255;
     bool nukeVFX;
     bool nukeSFX;
@@ -22,6 +25,7 @@ public class PlayerAbilities : MonoBehaviour
     float nukeTime;
     public int nukeDamage;
     bool moveNuke;
+    bool nukeInProcess;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +38,11 @@ public class PlayerAbilities : MonoBehaviour
     {
         if (Player.activeInHierarchy)
         {
-            //TESTING
-            if(Input.GetKeyDown(KeyCode.R))
+            //NEW NUKE
+            if(Input.GetButtonDown("Nuke") && manaCostNuke <= GetComponent<ManaBar>().manaAmount && !nukeInProcess)
             {
+                nukeInProcess = true;
+                GetComponent<ManaBar>().manaAmount -= manaCostNuke;
                 StartCoroutine(NukeProcess(1));
             }
 
@@ -60,10 +66,11 @@ public class PlayerAbilities : MonoBehaviour
             }
 
             IEnumerator Boom() {
+                splitNuke = true;                
                 nuky.SetActive(false);
                 yield return new WaitForEndOfFrame();
 
-                float rot = -15;
+                /*float rot = -15;
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -71,10 +78,15 @@ public class PlayerAbilities : MonoBehaviour
                     boomy.transform.GetChild(1).gameObject.SetActive(true);
                     rot += 15;
                     boomy.GetComponent<MovementTest>().enabled = true;
-                }
-                Destroy(nuky);
+                }*/
+
+                
                 moveNuke = false;
+                splitNuke = false;
+                Destroy(nuky);
+                nukeInProcess = false;
             }
+
 
             //Time Freeze
             if (Input.GetButtonDown("TimeSlow") && !timeSlow)
@@ -100,7 +112,7 @@ public class PlayerAbilities : MonoBehaviour
                 }
             }
 
-            //Enemy Nuke
+          /*  //Old Nuke
             if (Input.GetButtonDown("Nuke") && manaCostNuke <= GetComponent<ManaBar>().manaAmount)
             {
                 nukeEnemy = true;
@@ -143,7 +155,7 @@ public class PlayerAbilities : MonoBehaviour
                     nukeVFX = false;
                     nukeTime = 0;
                 }
-            }
+            }*/
         }
         else
         {
