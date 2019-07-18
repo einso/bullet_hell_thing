@@ -25,6 +25,7 @@ public class Manager : MonoBehaviour
     public GameObject levelGUI;
     public GameObject waveNrGUI;
     public GameObject lootParticle;
+    public GameObject levelParticle;
     GameObject SpawnPos1;
 
     public float minEnemySpawnTime = 0f;
@@ -393,6 +394,7 @@ public class Manager : MonoBehaviour
         {
             PauseScreen.SetActive(false);
             Time.timeScale = 1;
+            if (GetComponent<PlayerAbilities>().timeSlow) Time.timeScale = 0.25f;
         }
     }
 
@@ -401,6 +403,7 @@ public class Manager : MonoBehaviour
     {
         PauseScreen.SetActive(false);
         Time.timeScale = 1;
+        if (GetComponent<PlayerAbilities>().timeSlow) Time.timeScale = 0.25f;
     }
 
     //ToggleGodMode
@@ -625,5 +628,8 @@ public class Manager : MonoBehaviour
         Quaternion rot = Quaternion.Euler(90, 0, 90);
         GameObject levelUp = Instantiate(weapon.GetComponent<Weapon>().levelUPFeedback, pos, rot);
         levelUp.transform.SetParent(Player.transform);
+
+        GameObject levelPartInst = Instantiate(levelParticle, new Vector3(Player.transform.position.x +0.7f, Player.transform.position.y, Player.transform.position.z), levelParticle.transform.rotation);
+        levelPartInst.transform.SetParent(Player.transform);
     }
 }
