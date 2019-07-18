@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc3f3fcc4aa9aa41b55a0c9f638ae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 100
+  scoreValue: 300
   moveSpeed: 5
   frequency: 0
   magnitude: 0
@@ -225,12 +225,13 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
-  firingPeriod: 0.08
+  firingPeriod: 0.015
   bulletSpeed: 4
-  firingAngle: 20
+  firingAngle: 10
   firingAngleBetweenShots: 0
   distanceBetweenBullets: 0.6
   NumberOfShots: 18
+  TimeBetwennSalvages: 3
   linearShot: 0
   sinusShot: 0
   sprayShot: 0

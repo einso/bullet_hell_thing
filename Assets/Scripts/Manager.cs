@@ -41,10 +41,15 @@ public class Manager : MonoBehaviour
     [HideInInspector]
     public float amountOfKills;
 
+    [HideInInspector]
+    public int waveCicle = 0;
+
     public float time;
     public float waveNr;
 
-    bool dontSpawnWaves;
+    int presetWaveNr = 0;
+
+    bool dontSpawnRandomWaves;
     bool doCoroutineOnce;
 
     [HideInInspector]
@@ -55,12 +60,14 @@ public class Manager : MonoBehaviour
     public int[] enemyProbabilities;
     [Space(20)]
 
+    public GameObject[] presetWaves;
+    [Space(20)]
     public int waveSize = 3;
     public float maxSecNextEnemySpawn = 0f;
     public float minSecNextEnemySpawn = 0.2f;
     float randSecNextEnemySpawn;
     public float secondsTillNextWave = 10;
-    float t = 0;
+    float t = 10;
     public float scoreCount;
     [HideInInspector]
     public float levelCount = 1f;
@@ -72,9 +79,12 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnWave();
+        //SpawnWave();
+        //randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
+
         Time.timeScale = 1;                //Set Time to 1
-        randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
+
+        t = secondsTillNextWave;
 
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
@@ -136,16 +146,99 @@ public class Manager : MonoBehaviour
         }
     }
 
+    //Wave management
+    void WaveManagement()
+    {
+        //allow/disallow wave spawning
+        if (WaveEnemyNr > 25)   //Dont spawn waves if too many enemies
+        {
+            dontSpawnRandomWaves = true;
+        }
+        else if (presetWaveNr < presetWaves.Length) //Dont spawn Waves while preset waves are still active
+        {
+            dontSpawnRandomWaves = true;
+        }
+        else
+        {
+            dontSpawnRandomWaves = false;
+        }
 
-    IEnumerator WaveDelay()
+        //Preset Wave System
+        if(dontSpawnRandomWaves)
+        {
+            if (WaveEnemyNr < 1)
+            {
+                if (!doCoroutineOnce) StartCoroutine(SpawnPresetWave(1)); //Spawn Preset Wave
+
+                if (presetWaves[presetWaveNr] != null) //Check if null
+                {
+                    if (presetWaves[presetWaveNr].transform.childCount == 0) //If wave is cleared
+                    {
+                        presetWaves[presetWaveNr].SetActive(false); //Destroy empty Wave
+                        presetWaveNr++; //count wave number + 1
+                        t = secondsTillNextWave;
+                    }
+                }
+            }
+            else
+            {
+                t -= 1 * Time.deltaTime;
+
+                if (t < 0)  //If timer hit 0
+                {
+                    presetWaveNr++; //count wave number + 1
+                    presetWaves[presetWaveNr].SetActive(true); //Spawn Preset Wave
+                    WaveEnemyNr += presetWaves[presetWaveNr].transform.childCount; //Count how many enemies spawned
+                    t = secondsTillNextWave;    //Reset time
+                    waveNr++;                   //Count wave number for UI
+                }
+            }
+        }
+        
+
+        //Random Wave System
+        if (!dontSpawnRandomWaves)
+        {
+            if (WaveEnemyNr < 1 && !doCoroutineOnce)    //If no Enemies are Left
+            {
+                StartCoroutine(WaveDelay());    //Spawn Next Wave
+            }
+            else
+            {
+                t -= 1 * Time.deltaTime;
+
+                if (t < 0)  //If timer hit 0
+                {
+                    SpawnWave();    //Spawn next wave
+                    LoadWave();     //Load next wave
+                    t = secondsTillNextWave;    //Reset time
+                    waveNr++;                   //Count wave number for UI
+                }
+            }
+        }
+
+        //Wave Delay
+        IEnumerator WaveDelay()
+        {
+            doCoroutineOnce = true;
+            yield return new WaitForSeconds(1);
+            doCoroutineOnce = false;
+            SpawnWave();
+            LoadWave();
+            t = secondsTillNextWave;
+            waveNr++;
+        }
+    }
+
+    //Spawn Preset Wave
+    IEnumerator SpawnPresetWave(float delay)
     {
         doCoroutineOnce = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(delay);
         doCoroutineOnce = false;
-        SpawnWave();
-        LoadWave();
-        t = secondsTillNextWave;
-        waveNr++;
+        presetWaves[presetWaveNr].SetActive(true); //Spawn Preset Wave
+        WaveEnemyNr += presetWaves[presetWaveNr].transform.childCount; //Count how many enemies spawned
+        waveNr++;   //Wave Nr UI +1 
     }
 
     //Generate a random number to detect which type of enemy should spawn next
@@ -168,6 +261,7 @@ public class Manager : MonoBehaviour
         return 0;
     }
 
+    //Create pool of probabilities
     public int AmountOfProbabilities()
     {
         amountOfProbabilities = 0;
@@ -193,62 +287,22 @@ public class Manager : MonoBehaviour
     }
 
     //SpawnWaveEvent
+    void SpawnWave()
+    {
+        //Spawn number of Enemies depending on waveSize
+        for (int i = 0; i < waveSize; i++)
+        {
+            StartCoroutine(EnemySpawnDelay()); //Delay enemies during wave
+            WaveEnemyNr++;  //Count enemies inside wave
+        }        
+    }
+
     IEnumerator EnemySpawnDelay()
     {
         float rand = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
         yield return new WaitForSeconds(rand);
         SpawnEnemy();
     }
-
-    void SpawnWave()
-    {
-        for (int i = 0; i < waveSize; i++)
-        {
-            StartCoroutine(EnemySpawnDelay());
-            WaveEnemyNr++;
-        }        
-    }
-
-    void WaveManagement()
-    {
-        if(!dontSpawnWaves)
-        {
-            if (WaveEnemyNr < 1 && !doCoroutineOnce)
-            {
-                StartCoroutine(WaveDelay());
-            }
-            else
-            {
-                t -= 1 * Time.deltaTime;
-
-                if (t < 0)
-                {
-                    SpawnWave();
-                    LoadWave();
-                    t = secondsTillNextWave;
-                    waveNr++;
-                }
-            }
-        }
-
-
-        if(WaveEnemyNr > 25)
-        {
-            dontSpawnWaves = true;
-        }
-        else
-        {
-            dontSpawnWaves = false;
-        }
-    }
-
-   /* void SpawnNumber()
-    {
-        for (int i = 0; i < spawnsAtOnce; i++)
-        {
-            Invoke("SpawnEnemy", 1);
-        }
-    }*/
 
     void LoadWave()
     {
@@ -280,7 +334,8 @@ public class Manager : MonoBehaviour
         else if (GetComponent<LoadLevel>().Level_6)
         {
             GetComponent<LoadLevel>().Level_6 = false;
-            GetComponent<LoadLevel>().Level_2 = true;
+            GetComponent<LoadLevel>().Level_1 = true;
+            waveCicle++;
         }
     }
 
@@ -323,8 +378,6 @@ public class Manager : MonoBehaviour
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
-
-       
     }
 
     //PauseGameEvent
