@@ -125,10 +125,11 @@ public class SinusoidalMove : MonoBehaviour
             pos += transform.right * Time.deltaTime * moveSpeed;
             transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
 
-            if(transform.position.z <= -7.3f)
+            if(transform.position.z <= -20f)
             {
-                GetComponent<EnemyLife>().health = 0;
-                GetComponent<EnemyLife>().CheckHealth();
+                //MinusWaveNumber
+                FindObjectOfType<Manager>().WaveEnemyNr--;
+                Destroy(gameObject);
             }
         }
 

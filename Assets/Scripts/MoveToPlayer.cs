@@ -7,6 +7,7 @@ public class MoveToPlayer : MonoBehaviour
     Vector3 playerSize = new Vector3(0.1910025f, 0.1910025f, 0.25467f);
     Vector3 playerSize2 = new Vector3(0.205f, 0.205f, 0.25467f);
 
+    float speedWhileTimeSlow = 1;
     public float moveSpeed = 20;
     public float angle = 2;
     GameObject player;
@@ -37,13 +38,21 @@ public class MoveToPlayer : MonoBehaviour
         //Move To Player
         if(transform.position.x>0.5f) transform.LookAt(new Vector3(player.transform.position.x + distanceToPlayer/angle, player.transform.position.y, player.transform.position.z));
         else transform.LookAt(new Vector3(player.transform.position.x - distanceToPlayer/angle, player.transform.position.y, player.transform.position.z));
+
+        /*if (manager.GetComponent<PlayerAbilities>().timeSlow)
+        {
+            speedWhileTimeSlow = 4;
+        }
+        else speedWhileTimeSlow = 1;*/
+
+
         Quaternion rot = transform.rotation;
         Vector3 pos = transform.position;
-        Vector3 posChange = new Vector3(0, 0, moveSpeed * Time.deltaTime);
+        Vector3 posChange = new Vector3(0, 0, moveSpeed * speedWhileTimeSlow * Time.deltaTime);
         pos += rot * posChange;
         transform.position = pos;
 
-        if(transform.position.z < player.transform.position.z)
+        if(transform.position.z < player.transform.position.z + 0.2f && transform.position.z > player.transform.position.z - 0.2f && transform.position.x < player.transform.position.x + 0.3f && transform.position.x > player.transform.position.x - 0.3f)
         {
             //Give Mana
             manager.GetComponent<ManaBar>().manaAmount += manaValue;

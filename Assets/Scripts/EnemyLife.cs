@@ -10,6 +10,7 @@ public class EnemyLife : MonoBehaviour
     public GameObject scoreFeedbackPrefab;
     public GameObject HitEnemyParticle;
     public GameObject DestroyEnemyParticle;
+    public GameObject miniNuke;
     GameObject Manager;
     public float health = 1;
     bool destroy;
@@ -17,6 +18,8 @@ public class EnemyLife : MonoBehaviour
     float t;
     float manaCostNuke = 0.5f;
     public float giveMana = 30;
+    GameObject boomy;
+    bool targetThis;
 
     void Awake()
     {
@@ -38,8 +41,6 @@ public class EnemyLife : MonoBehaviour
         {
             health -= 1;
             Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-
-
             StartCoroutine(HitVFX());
         }
 
@@ -48,32 +49,66 @@ public class EnemyLife : MonoBehaviour
 
     void Update()
     {
-        //Screen Nuke
-        if(Manager.GetComponent<PlayerAbilities>().nukeEnemy)
-        {
-            destroy = true;
-            rand = Random.Range(0.0f, 0.5f);
+        NukeThis();
+    }
 
+    public void NukeThis()
+    {
+        //Screen Nuke
+        /* if (Manager.GetComponent<PlayerAbilities>().nukeEnemy)
+         {
+             destroy = true;
+             rand = Random.Range(0.0f, 0.5f);
+
+         }
+
+
+         if (destroy)
+         {
+             t += 1 * Time.deltaTime;
+
+             if (t > rand)
+             {
+                 health = health - Manager.GetComponent<PlayerAbilities>().nukeDamage;
+                 CheckHealth();
+                 destroy = false;
+                 t = 0;
+             }
+         }*/
+
+        //Nuke 
+        if(Manager.GetComponent<PlayerAbilities>().splitNuke)
+        {
+            boomy = Instantiate(miniNuke, Manager.GetComponent<PlayerAbilities>().nuky.transform.position, Quaternion.Euler(90, 0, 0)); //Spawn new Nuke
+            boomy.transform.GetChild(1).gameObject.SetActive(true); //Activate trail effect
+            boomy.GetComponent<MovementTest>().enabled = true;  //Activate movement script
+            targetThis = true; //set bool true
         }
 
-
-        if (destroy)
+        //Split Nuke
+        if (targetThis)
         {
-            t += 1 * Time.deltaTime;
+            boomy.GetComponent<MovementTest>().EnemyPos = transform.position; //Send position to movement script
 
-            if (t > rand)
+            //Deal Damage
+            if (boomy.transform.position.z > transform.position.z - 0.1f && boomy.transform.position.z < transform.position.z + 0.1f && boomy.transform.position.x > transform.position.x - 0.1f && boomy.transform.position.x < transform.position.x + 0.1f)
             {
-                Destroy(this.gameObject);
-                Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle);
-                DestroyEnemyC();
+                health -= Manager.GetComponent<PlayerAbilities>().nukeDamage;
+                Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                StartCoroutine(HitVFX());
+                Destroy(boomy);
+                CheckHealth();
+                targetThis = false;
             }
         }
+
     }
 
     public void CheckHealth()
     {
         if (health <= 0)
         {
+            Destroy(boomy);
             health = 100; //BugFix: when 2 bullets hit the enemy at the same time, only one hit counts so that the score does not get caculated twice...
             Destroy(this.gameObject);
             Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle);

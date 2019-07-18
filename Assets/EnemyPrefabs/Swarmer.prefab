@@ -81,6 +81,8 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
+  miniNuke: {fileID: 7472502699113794685, guid: 089fb45954910d740ad3797dba6a4811,
+    type: 3}
   health: 6
   giveMana: 15
 --- !u!65 &4183374837508792076
@@ -306,7 +308,7 @@ Animator:
   m_GameObject: {fileID: 4183374838401256354}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 01b486e8a87bb92478a5dc0cbb2e36cb, type: 2}
+  m_Controller: {fileID: 9100000, guid: f0b4606f3492f9b4a91338c61d82df93, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
