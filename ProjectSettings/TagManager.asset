@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - EndWall
   - EnemyBullet
+  - FxTemporaire
+  - Nuke
   layers:
   - Default
   - TransparentFX

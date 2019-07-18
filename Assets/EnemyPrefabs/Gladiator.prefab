@@ -80,6 +80,8 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
+  miniNuke: {fileID: 7472502699113794685, guid: 089fb45954910d740ad3797dba6a4811,
+    type: 3}
   health: 5
   giveMana: 40
 --- !u!65 &2370622086238828087
@@ -227,6 +229,7 @@ MonoBehaviour:
     type: 3}
   firingPeriod: 0.015
   bulletSpeed: 4
+  bulletDamage: 1
   firingAngle: 10
   firingAngleBetweenShots: 0
   distanceBetweenBullets: 0.6

@@ -52,7 +52,7 @@ public class MoveToPlayer : MonoBehaviour
         pos += rot * posChange;
         transform.position = pos;
 
-        if(transform.position.z < player.transform.position.z)
+        if(transform.position.z < player.transform.position.z + 0.2f && transform.position.z > player.transform.position.z - 0.2f && transform.position.x < player.transform.position.x + 0.3f && transform.position.x > player.transform.position.x - 0.3f)
         {
             //Give Mana
             manager.GetComponent<ManaBar>().manaAmount += manaValue;
