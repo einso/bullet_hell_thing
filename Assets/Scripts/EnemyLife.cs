@@ -108,6 +108,7 @@ public class EnemyLife : MonoBehaviour
     {
         if (health <= 0)
         {
+            Destroy(boomy);
             health = 100; //BugFix: when 2 bullets hit the enemy at the same time, only one hit counts so that the score does not get caculated twice...
             Destroy(this.gameObject);
             Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle);
