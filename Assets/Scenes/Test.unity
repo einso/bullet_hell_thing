@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502697, g: 0.37139347, b: 0.49601266, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -790,7 +790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17977576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.5, y: 0, z: -2.7}
+  m_LocalPosition: {x: -26.8, y: 0, z: -2.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1688212909}
@@ -835,7 +835,7 @@ SpriteRenderer:
   m_SortingOrder: -30
   m_Sprite: {fileID: 21300000, guid: 2cff24bb75a665e4eba4861142210a33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 16, y: 12}
@@ -44970,7 +44970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 15
+  scrollSpeed: 14
   ResetPoint: 80
 --- !u!4 &1240982815 stripped
 Transform:
@@ -48360,7 +48360,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -40
   m_Sprite: {fileID: 21300000, guid: 3164b18731ae740498c861177a456bbe, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6039216, g: 0.05882352, b: 0.4991105, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -77116,6 +77116,11 @@ PrefabInstance:
       propertyPath: pooledAmount
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 7374705718156533934, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: EnemyBullets
+      value: 
+      objectReference: {fileID: 569120826}
     - target: {fileID: 6045846052053974019, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: EnemyBullets
@@ -77134,6 +77139,12 @@ PrefabInstance:
     - target: {fileID: 8720092840892350959, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: TankBulletPrefab
+      value: 
+      objectReference: {fileID: 5023740037609329906, guid: 72cc2dd098245ae49a14a9e0dbd3888e,
+        type: 3}
+    - target: {fileID: 8720092840892350959, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: NoobBulletPrefab
       value: 
       objectReference: {fileID: 5023740037609329906, guid: 72cc2dd098245ae49a14a9e0dbd3888e,
         type: 3}
@@ -77377,7 +77388,7 @@ PrefabInstance:
     - target: {fileID: 3459595133501060893, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3459595133501060888, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
         type: 3}
@@ -78043,12 +78054,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7598003688045625051, guid: 26caba66ca2daa34fb54a7529ead970f,
-        type: 3}
-      propertyPath: EnemyProjectilePrefab
-      value: 
-      objectReference: {fileID: 7720413230672993871, guid: 736ff699dc7aca541a40fc3a4cfc766a,
-        type: 3}
     - target: {fileID: 7598003688239729446, guid: 26caba66ca2daa34fb54a7529ead970f,
         type: 3}
       propertyPath: bulletDamage
@@ -78064,6 +78069,18 @@ PrefabInstance:
       propertyPath: flowerShot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7598003688239729446, guid: 26caba66ca2daa34fb54a7529ead970f,
+        type: 3}
+      propertyPath: TankBulletPrefab
+      value: 
+      objectReference: {fileID: 7720413230672993871, guid: 736ff699dc7aca541a40fc3a4cfc766a,
+        type: 3}
+    - target: {fileID: 7598003688045625051, guid: 26caba66ca2daa34fb54a7529ead970f,
+        type: 3}
+      propertyPath: EnemyProjectilePrefab
+      value: 
+      objectReference: {fileID: 7720413230672993871, guid: 736ff699dc7aca541a40fc3a4cfc766a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26caba66ca2daa34fb54a7529ead970f, type: 3}
 --- !u!1001 &7853798211711008483
