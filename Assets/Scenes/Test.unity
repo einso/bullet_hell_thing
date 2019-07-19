@@ -3566,6 +3566,7 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 0}
   DestroyEnemyParticle: {fileID: 0}
   miniNuke: {fileID: 0}
+  NukeEffect: {fileID: 0}
   health: 100
   giveMana: 20
 --- !u!1001 &103659024
@@ -76707,12 +76708,12 @@ PrefabInstance:
       propertyPath: eBar
       value: 
       objectReference: {fileID: 57337997}
-    - target: {fileID: 7374705718156533934, guid: 2c3398686f375d44980fe4befe77d582,
+    - target: {fileID: 6045846052053974019, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: EnemyBullets
       value: 
       objectReference: {fileID: 569120826}
-    - target: {fileID: 6045846052053974019, guid: 2c3398686f375d44980fe4befe77d582,
+    - target: {fileID: 7374705718156533934, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: EnemyBullets
       value: 
