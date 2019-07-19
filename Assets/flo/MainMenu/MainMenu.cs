@@ -14,7 +14,9 @@ public class MainMenu : MonoBehaviour
     public GameObject gCredits;
 
     [Header("Animation Controller")]
-    public GameObject test1;
+    public Animator[] animMainmenu;
+
+
     [Header("Sound Settings")]
 
     [Header("Screen Settings")]
@@ -42,26 +44,38 @@ public class MainMenu : MonoBehaviour
 
     public void StartLevel()
     {
-        SceneManager.LoadScene(1);
+        Invoke("MainMenu_To_Level", 3);
     }
     public void Quit()
     {
-        Application.Quit();
+        Invoke("MainMenu_To_Quit", 3);
     }
 
     
     //Buttons im MainMenu
     public void Settings()
     {
-        Invoke("MainMenu_To_Settings", 1);
+        Invoke("MainMenu_To_Settings", 3);
+        for (int i = 0; i < animMainmenu.Length; i++)
+        {
+            animMainmenu[i].SetBool("Raus", true);
+        }
     }
     public void Controls()
     {
-        Invoke("MainMenu_To_Controls", 1);
+        Invoke("MainMenu_To_Controls", 3);
+        for (int i = 0; i < animMainmenu.Length; i++)
+        {
+            animMainmenu[i].SetBool("Raus", true);
+        }
     }
     public void Credits()
     {
-        Invoke("MainMenu_To_Credits", 1);
+        Invoke("MainMenu_To_Credits", 3);
+        for (int i = 0; i < animMainmenu.Length; i++)
+        {
+            animMainmenu[i].SetBool("Raus", true);
+        }
     }
 
     //Buttons im SettingsMenu
@@ -125,6 +139,14 @@ public class MainMenu : MonoBehaviour
         gSoundMenu.SetActive(false);
         gScreenMenu.SetActive(false);
         gControlsMenu.SetActive(true);
+    }
+    void MainMenu_To_Level()
+    {
+        SceneManager.LoadScene(1);
+    }
+    void MainMenu_To_Quit()
+    {
+        Application.Quit();
     }
     /// //////////////////////////////////////////////////////////////////////////
     /// Für Alle Wechsel Der Menüs
