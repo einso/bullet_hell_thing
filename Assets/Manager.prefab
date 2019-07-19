@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 1914265159816201201}
   - component: {fileID: 1802247903}
   - component: {fileID: 4751982405324800737}
+  - component: {fileID: 7374705718156533934}
   - component: {fileID: 6550634369480593760}
   m_Layer: 0
   m_Name: Manager
@@ -58,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GodMode: 0
+  playerLevelValue: 0
   Player: {fileID: 0}
   Camera: {fileID: 0}
   DeathScreen: {fileID: 0}
@@ -66,8 +68,20 @@ MonoBehaviour:
   timeGUI: {fileID: 0}
   levelGUI: {fileID: 0}
   waveNrGUI: {fileID: 0}
-  amountOfProbabilities: 0
+  lootParticle: {fileID: 0}
+  levelParticle: {fileID: 0}
+  minEnemySpawnTime: 0
+  maxEnemySpawnTime: 4
+  killsForLevel2: 0
+  killsForLevel3: 0
+  killsForLevel4: 0
+  killsForLevel5: 0
+  weapon: {fileID: 0}
   amountOfKills: 0
+  waveCicle: 0
+  time: 0
+  waveNr: 0
+  amountOfProbabilities: 0
   enemyPrefabs:
   - {fileID: 6907306608720739348, guid: e4248409e4af0af42bfd873ae6ff61b6, type: 3}
   - {fileID: 6907306608720739348, guid: d4957347a59e0c740b2eca5474b18758, type: 3}
@@ -75,6 +89,7 @@ MonoBehaviour:
   - {fileID: 6907306608720739348, guid: 32490344113d1544d84f4ae7a021a26b, type: 3}
   - {fileID: 6907306608720739348, guid: c2011386cec469f4bbc38004a45e4f48, type: 3}
   enemyProbabilities: 0300000001000000
+  presetWaves: []
   waveSize: 3
   maxSecNextEnemySpawn: 2
   minSecNextEnemySpawn: 1
@@ -82,6 +97,11 @@ MonoBehaviour:
   scoreCount: 0
   levelCount: 0
   WaveEnemyNr: 0
+  menue: {fileID: 0}
+  options: {fileID: 0}
+  resolutionDroptown: {fileID: 0}
+  volumeSlieder: []
+  audiomixer: {fileID: 0}
 --- !u!114 &1914265159816201206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +312,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2d472ca4e0119439a709d50ade839c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menue: {fileID: 0}
+  options: {fileID: 0}
+  Gegner1: {fileID: 0}
+  Gegner2: {fileID: 0}
+  Gegner3: {fileID: 0}
+  resolutionDroptown: {fileID: 0}
+  volumeSlieder: []
+  audiomixer: {fileID: 0}
 --- !u!114 &1914265159816201202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,11 +344,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135a61a35f702574b98c24a766755c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PauseMenu: {fileID: 0}
   Player: {fileID: 0}
   nukepng: {fileID: 0}
+  miniNuke: {fileID: 0}
+  nuky: {fileID: 0}
+  timeSlow: 0
   manaCostTime: 2
   manaCostNuke: 500
   nukeEnemy: 0
+  splitNuke: 0
+  nukeDamage: 0
 --- !u!114 &1802247903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +389,23 @@ MonoBehaviour:
     type: 3}
   EnemyBullets: {fileID: 0}
   pooledAmount: 300
+  pooledObjects: []
+  bulletNr: 0
+--- !u!114 &7374705718156533934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914265159816201162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdca2db8a4672b46bc1c2819cfb0fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TankBulletPrefab: {fileID: 0}
+  EnemyBullets: {fileID: 0}
+  pooledAmount: 200
   pooledObjects: []
   bulletNr: 0
 --- !u!114 &6550634369480593760

@@ -8,14 +8,16 @@ public class EnemyWeapon : MonoBehaviour
     Transform Player;
 
     SinusoidalMove sinusoidalMove;
-
+    PoolTankBullets poolTankBullets;
     PoolEnemyBullets poolEnemyBullets;
     PoolEnemyRings poolEnemyRings;
 
     public GameObject RingeXD;
+    
     public GameObject EnemyProjectilePrefab;
     public GameObject EnemyProjectilePrefab2;
     public GameObject EnemyProjectilePrefab3;
+    public GameObject TankBulletPrefab;
     private float time = 0;
     float yincrease;
     float t = 0;
@@ -65,6 +67,7 @@ public class EnemyWeapon : MonoBehaviour
         time = Random.Range(0, 2);
         poolEnemyBullets = GameObject.Find("Manager").GetComponent<PoolEnemyBullets>();
         poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
+        poolTankBullets = GameObject.Find("Manager").GetComponent<PoolTankBullets>();
     }
 
     void Update()
@@ -267,7 +270,7 @@ public class EnemyWeapon : MonoBehaviour
                     GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
                     shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
                     shot.GetComponent<EnemyBullet>().damage = bulletDamage;
-                    poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
+                    poolTankBullets.InstantiateTankPool(enemyFireSpawn.position, rot);
                     rotY -= 45;
 
                 }
