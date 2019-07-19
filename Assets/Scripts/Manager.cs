@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class Manager : MonoBehaviour
 {
@@ -21,6 +24,7 @@ public class Manager : MonoBehaviour
     public GameObject timeGUI;
     public GameObject levelGUI;
     public GameObject waveNrGUI;
+    public GameObject lootParticle;
     GameObject SpawnPos1;
 
     public float minEnemySpawnTime = 0f;
@@ -37,10 +41,15 @@ public class Manager : MonoBehaviour
     [HideInInspector]
     public float amountOfKills;
 
-    float time;
-    float waveNr;
+    [HideInInspector]
+    public int waveCicle = 0;
 
-    bool dontSpawnWaves;
+    public float time;
+    public float waveNr;
+
+    int presetWaveNr = 0;
+
+    bool dontSpawnRandomWaves;
     bool doCoroutineOnce;
 
     [HideInInspector]
@@ -51,12 +60,14 @@ public class Manager : MonoBehaviour
     public int[] enemyProbabilities;
     [Space(20)]
 
+    public GameObject[] presetWaves;
+    [Space(20)]
     public int waveSize = 3;
     public float maxSecNextEnemySpawn = 0f;
     public float minSecNextEnemySpawn = 0.2f;
     float randSecNextEnemySpawn;
     public float secondsTillNextWave = 10;
-    float t = 0;
+    float t = 10;
     public float scoreCount;
     [HideInInspector]
     public float levelCount = 1f;
@@ -68,11 +79,39 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //SpawnWave();
+        //randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
+
         Time.timeScale = 1;                //Set Time to 1
-        randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
+
+        t = secondsTillNextWave;
 
         AmountOfProbabilities();           //Set the amount of probabilities
         scoreCount = 0;
+
+
+        //// screen resolution
+        resolutions = Screen.resolutions;
+
+        resolutionDroptown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResulutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResulutionIndex = i;
+            }
+        }
+
+        resolutionDroptown.AddOptions(options);
+        resolutionDroptown.value = currentResulutionIndex;
+        resolutionDroptown.RefreshShownValue();
     }
 
    
@@ -90,7 +129,7 @@ public class Manager : MonoBehaviour
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + Time.timeSinceLevelLoad.ToString("0");
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + t.ToString("0");
             //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
             waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
@@ -107,16 +146,99 @@ public class Manager : MonoBehaviour
         }
     }
 
+    //Wave management
+    void WaveManagement()
+    {
+        //allow/disallow wave spawning
+        if (WaveEnemyNr > 25)   //Dont spawn waves if too many enemies
+        {
+            dontSpawnRandomWaves = true;
+        }
+        else if (presetWaveNr < presetWaves.Length) //Dont spawn Waves while preset waves are still active
+        {
+            dontSpawnRandomWaves = true;
+        }
+        else
+        {
+            dontSpawnRandomWaves = false;
+        }
 
-    IEnumerator WaveDelay()
+        //Preset Wave System
+        if(dontSpawnRandomWaves)
+        {
+            if (WaveEnemyNr < 1)
+            {
+                if (!doCoroutineOnce) StartCoroutine(SpawnPresetWave(1)); //Spawn Preset Wave
+
+                if (presetWaves[presetWaveNr] != null) //Check if null
+                {
+                    if (presetWaves[presetWaveNr].transform.childCount == 0) //If wave is cleared
+                    {
+                        presetWaves[presetWaveNr].SetActive(false); //Destroy empty Wave
+                        presetWaveNr++; //count wave number + 1
+                        t = secondsTillNextWave;
+                    }
+                }
+            }
+            else
+            {
+                t -= 1 * Time.deltaTime;
+
+                if (t < 0)  //If timer hit 0
+                {
+                    presetWaveNr++; //count wave number + 1
+                    presetWaves[presetWaveNr].SetActive(true); //Spawn Preset Wave
+                    WaveEnemyNr += presetWaves[presetWaveNr].transform.childCount; //Count how many enemies spawned
+                    t = secondsTillNextWave;    //Reset time
+                    waveNr++;                   //Count wave number for UI
+                }
+            }
+        }
+        
+
+        //Random Wave System
+        if (!dontSpawnRandomWaves)
+        {
+            if (WaveEnemyNr < 1 && !doCoroutineOnce)    //If no Enemies are Left
+            {
+                StartCoroutine(WaveDelay());    //Spawn Next Wave
+            }
+            else
+            {
+                t -= 1 * Time.deltaTime;
+
+                if (t < 0)  //If timer hit 0
+                {
+                    SpawnWave();    //Spawn next wave
+                    LoadWave();     //Load next wave
+                    t = secondsTillNextWave;    //Reset time
+                    waveNr++;                   //Count wave number for UI
+                }
+            }
+        }
+
+        //Wave Delay
+        IEnumerator WaveDelay()
+        {
+            doCoroutineOnce = true;
+            yield return new WaitForSeconds(1);
+            doCoroutineOnce = false;
+            SpawnWave();
+            LoadWave();
+            t = secondsTillNextWave;
+            waveNr++;
+        }
+    }
+
+    //Spawn Preset Wave
+    IEnumerator SpawnPresetWave(float delay)
     {
         doCoroutineOnce = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(delay);
         doCoroutineOnce = false;
-        SpawnWave();
-        LoadWave();
-        t = 0;
-        waveNr++;
+        presetWaves[presetWaveNr].SetActive(true); //Spawn Preset Wave
+        WaveEnemyNr += presetWaves[presetWaveNr].transform.childCount; //Count how many enemies spawned
+        waveNr++;   //Wave Nr UI +1 
     }
 
     //Generate a random number to detect which type of enemy should spawn next
@@ -139,6 +261,7 @@ public class Manager : MonoBehaviour
         return 0;
     }
 
+    //Create pool of probabilities
     public int AmountOfProbabilities()
     {
         amountOfProbabilities = 0;
@@ -164,62 +287,22 @@ public class Manager : MonoBehaviour
     }
 
     //SpawnWaveEvent
+    void SpawnWave()
+    {
+        //Spawn number of Enemies depending on waveSize
+        for (int i = 0; i < waveSize; i++)
+        {
+            StartCoroutine(EnemySpawnDelay()); //Delay enemies during wave
+            WaveEnemyNr++;  //Count enemies inside wave
+        }        
+    }
+
     IEnumerator EnemySpawnDelay()
     {
         float rand = Random.Range(minEnemySpawnTime, maxEnemySpawnTime);
         yield return new WaitForSeconds(rand);
         SpawnEnemy();
     }
-
-    void SpawnWave()
-    {
-        for (int i = 0; i < waveSize; i++)
-        {
-            StartCoroutine(EnemySpawnDelay());
-            WaveEnemyNr++;
-        }        
-    }
-
-    void WaveManagement()
-    {
-        if(!dontSpawnWaves)
-        {
-            if (WaveEnemyNr < 1 && !doCoroutineOnce)
-            {
-                StartCoroutine(WaveDelay());
-            }
-            else
-            {
-                t += 1 * Time.deltaTime;
-
-                if (t > secondsTillNextWave)
-                {
-                    SpawnWave();
-                    LoadWave();
-                    t = 0;
-                    waveNr++;
-                }
-            }
-        }
-
-
-        if(WaveEnemyNr > 25)
-        {
-            dontSpawnWaves = true;
-        }
-        else
-        {
-            dontSpawnWaves = false;
-        }
-    }
-
-   /* void SpawnNumber()
-    {
-        for (int i = 0; i < spawnsAtOnce; i++)
-        {
-            Invoke("SpawnEnemy", 1);
-        }
-    }*/
 
     void LoadWave()
     {
@@ -251,7 +334,8 @@ public class Manager : MonoBehaviour
         else if (GetComponent<LoadLevel>().Level_6)
         {
             GetComponent<LoadLevel>().Level_6 = false;
-            GetComponent<LoadLevel>().Level_2 = true;
+            GetComponent<LoadLevel>().Level_1 = true;
+            waveCicle++;
         }
     }
 
@@ -289,6 +373,8 @@ public class Manager : MonoBehaviour
         //Spawn Particle Effect
         GameObject destroyParticle = Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
+        GameObject lootMyAss = Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
+        lootMyAss.GetComponent<MoveToPlayer>().manaValue = other.GetComponent<EnemyLife>().giveMana;
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
@@ -320,15 +406,73 @@ public class Manager : MonoBehaviour
     //ToggleGodMode
     void ToggleGodMode()
     {
+        if(Player.activeInHierarchy)
+        {
+            if (GodMode)
+            {
+                Player.GetComponentInChildren<Collider>().enabled = false;
+            }
+            else
+            {
+                Player.GetComponentInChildren<Collider>().enabled = true;
+            }
+        }
+    }
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (GodMode)
-        {
-            Player.GetComponentInChildren<Collider>().enabled = false;
-        }
-        else
-        {
-            Player.GetComponentInChildren<Collider>().enabled = true;
-        }
+
+    public GameObject menue;
+    public GameObject options;
+    //Options Menü
+    public void Optionsstart()
+    {
+        menue.SetActive(false);
+        options.SetActive(true);
+        
+    }
+
+    //options Back
+    public void Optionsback()
+    {
+        menue.SetActive(true);
+        options.SetActive(false);
+        Debug.Log("test");
+    }
+
+
+    //Einstellung Der Auflösung + Fulscrenn Einstelung//////////////////////////
+    Resolution[] resolutions;
+    public Dropdown resolutionDroptown;
+
+
+
+
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+    }
+    /// //////////////////////////////////////////////
+    //Sound Einstellungen/////////////////////////////
+    public Slider[] volumeSlieder;
+    public AudioMixer audiomixer;
+
+    public void SetMasterVolume(float volume)
+    {
+        audiomixer.SetFloat("MasterVolume", volume);
+    }
+    public void SetMusicVolume(float volume)
+    {
+        audiomixer.SetFloat("MusicVolume", volume);
+    }
+    public void SetSXFVolume(float volume)
+    {
+        audiomixer.SetFloat("SoundVolume", volume);
     }
 
     //PlayerLevelUP

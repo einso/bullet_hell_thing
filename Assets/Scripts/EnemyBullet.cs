@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-
+    public int damage = 1;
     public float speed = 2f;
     public Rigidbody rb;
 
@@ -27,7 +27,6 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "EndWall")
         {
-
             gameObject.SetActive(false);
         }
 

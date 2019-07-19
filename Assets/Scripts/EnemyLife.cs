@@ -63,9 +63,10 @@ public class EnemyLife : MonoBehaviour
 
             if (t > rand)
             {
-                Destroy(this.gameObject);
-                Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle);
-                DestroyEnemyC();
+                health = health - Manager.GetComponent<PlayerAbilities>().nukeDamage;
+                CheckHealth();
+                destroy = false;
+                t = 0;
             }
         }
     }
@@ -78,9 +79,7 @@ public class EnemyLife : MonoBehaviour
             Destroy(this.gameObject);
             Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle);
 
-            //Give Mana
-            Manager.GetComponent<ManaBar>().manaAmount += giveMana;
-
+            //Destroy            
             DestroyEnemyC();
           
         }
