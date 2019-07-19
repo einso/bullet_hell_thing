@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolEnemyBullets : MonoBehaviour
+public class PoolDodgerBullets : MonoBehaviour
 {
 
     //Pooling
