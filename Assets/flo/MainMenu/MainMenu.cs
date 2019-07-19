@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     [Header("Animation Controller")]
     public Animator[] animMainmenu;
     public Animator[] animSettings;
-
+    public Animator[] animControls;
     [Header("Sound Settings")]
 
     [Header("Screen Settings")]
@@ -106,6 +106,7 @@ public class MainMenu : MonoBehaviour
         {
             animSettings[i].SetBool("Raus", true);
         }
+        animControls[0].SetBool("Raus", true);
     }
 
     //Umschalter für die scenen
