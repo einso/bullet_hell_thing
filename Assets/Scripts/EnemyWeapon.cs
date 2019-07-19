@@ -330,7 +330,7 @@ public class EnemyWeapon : MonoBehaviour
             GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
             shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
             shot.GetComponent<EnemyBullet>().damage = bulletDamage;
-            poolEnemyBullets.InstantiateEnemyPool(new Vector3(enemyFireSpawn.position.x + bPos - posCorrection - 0.2f, enemyFireSpawn.position.y, enemyFireSpawn.position.z), rot);
+            poolEnemyBullets.InstantiateEnemyPool(new Vector3(enemyFireSpawn.position.x + bPos - posCorrection + 0.5f, enemyFireSpawn.position.y, enemyFireSpawn.position.z), rot);
 
 
             bPos = firingAngle * nrShots;
