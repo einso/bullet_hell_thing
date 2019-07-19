@@ -66,8 +66,7 @@ public class Weapon : MonoBehaviour
         t = t + 1 * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.Space) && t > delay)
-        {
-            
+        {            
 
             if(Baseshot)
             {
@@ -116,6 +115,15 @@ public class Weapon : MonoBehaviour
             }
 
         }
+
+        if (Input.GetKey(KeyCode.Space)) {
+            transform.parent.GetComponent<Animator>().enabled = true;
+        }
+        else
+        {
+            transform.parent.GetComponent<Animator>().enabled = false;
+        }
+
     }
 
     //BaseShot
