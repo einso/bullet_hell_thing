@@ -148,6 +148,7 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
+  TankBulletPrefab: {fileID: 0}
   firingPeriod: 1.6
   bulletSpeed: 4
   bulletDamage: 1

@@ -9,8 +9,10 @@ public class EnemyWeapon : MonoBehaviour
 
     SinusoidalMove sinusoidalMove;
     PoolTankBullets poolTankBullets;
-    PoolEnemyBullets poolEnemyBullets;
+    PoolHarasserBullets poolHarasserBullets;
+    PoolDodgerBullets poolEnemyBullets;
     PoolEnemyRings poolEnemyRings;
+    PoolNoobBullets poolNoobBullets;
 
     public GameObject RingeXD;
     
@@ -65,9 +67,11 @@ public class EnemyWeapon : MonoBehaviour
         sinusoidalMove = GetComponentInParent<SinusoidalMove>();
         Player = GameObject.Find("Player").transform;
         time = Random.Range(0, 2);
-        poolEnemyBullets = GameObject.Find("Manager").GetComponent<PoolEnemyBullets>();
+        poolEnemyBullets = GameObject.Find("Manager").GetComponent<PoolDodgerBullets>();
         poolEnemyRings = GameObject.Find("Manager").GetComponent<PoolEnemyRings>();
         poolTankBullets = GameObject.Find("Manager").GetComponent<PoolTankBullets>();
+        poolHarasserBullets = GameObject.Find("Manager").GetComponent<PoolHarasserBullets>();
+        poolNoobBullets = GameObject.Find("Manager").GetComponent<PoolNoobBullets>();
     }
 
     void Update()
@@ -124,7 +128,7 @@ public class EnemyWeapon : MonoBehaviour
                     GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
                     shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
                     shot.GetComponent<EnemyBullet>().damage = bulletDamage;
-                    poolEnemyBullets.InstantiateEnemyPool(enemyFireSpawn.position, rot);
+                    poolNoobBullets.InstantiateNoobPool(enemyFireSpawn.position, rot);
                     shotCount++;
                 }
 
@@ -330,10 +334,10 @@ public class EnemyWeapon : MonoBehaviour
             posCorrection = distanceBetweenBullets/2 * shotCount;
 
             Quaternion rot = Quaternion.Euler(enemyFireSpawn.rotation.x, -180 + angle, enemyFireSpawn.rotation.z);
-            GameObject shot = poolEnemyBullets.pooledObjects[poolEnemyBullets.bulletNr];
+            GameObject shot = poolHarasserBullets.pooledObjects[poolHarasserBullets.bulletNr];
             shot.GetComponent<EnemyBullet>().speed = bulletSpeed;
             shot.GetComponent<EnemyBullet>().damage = bulletDamage;
-            poolEnemyBullets.InstantiateEnemyPool(new Vector3(enemyFireSpawn.position.x + bPos - posCorrection + 0.5f, enemyFireSpawn.position.y, enemyFireSpawn.position.z), rot);
+            poolHarasserBullets.InstantiateEnemyPool(new Vector3(enemyFireSpawn.position.x + bPos - posCorrection + 0.5f, enemyFireSpawn.position.y, enemyFireSpawn.position.z), rot);
 
 
             bPos = firingAngle * nrShots;
