@@ -51,7 +51,7 @@ public class PlayerAbilities : MonoBehaviour
             {
                 nuky = Instantiate(miniNuke);
                 nuky.transform.parent = Player.transform;
-                nuky.transform.localPosition = new Vector3(-2.5f, 2.8f, 0);
+                nuky.transform.localPosition = new Vector3(-1.5f, 1.9f, 0);
                 yield return new WaitForSeconds(Loading);
                 moveNuke = true;
                 nuky.transform.GetChild(1).gameObject.SetActive(true);
