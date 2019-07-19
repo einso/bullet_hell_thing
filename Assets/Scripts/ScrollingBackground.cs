@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScrollingBackground : MonoBehaviour
 {
     public float scrollSpeed = 1;
+    public float ResetPoint = 80;
 
     // Update is called once per frame
     void Update()
@@ -12,7 +13,7 @@ public class ScrollingBackground : MonoBehaviour
 
         //Scrolling Background
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - scrollSpeed * Time.deltaTime);
-        if (transform.position.z <= -16)    transform.position = new Vector3(transform.position.x, transform.position.y, 4);
+        if (transform.position.z <= -ResetPoint)    transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
     }
 }

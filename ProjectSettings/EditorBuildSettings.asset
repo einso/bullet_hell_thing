@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene1.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
-    path: Assets/Scenes/TitleScreen.unity
-    guid: dd778769dfc4b0a46951c20332e7a848
+    path: Assets/flo/MainMenu/MainMenu.unity
+    guid: d5d0a8d41fec68d4e8e49b32f147aad5
   - enabled: 1
     path: Assets/Scenes/PrototypePaul.unity
     guid: d075f1fa1bc68a148b1ce375512f021b

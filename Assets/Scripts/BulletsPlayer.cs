@@ -40,6 +40,15 @@ public class BulletsPlayer : MonoBehaviour
 
         }
 
+        if (other.gameObject.tag == "EndWall")
+        {
+            gameObject.SetActive(false);
+            //Manager.GetComponent<Manager>().EnemyDeathEvent(Manager,other.gameObject,scoreFeedbackPrefab,HitEnemyParticle,ScoreVFX);
+
+
+
+        }
+
     }
 
     
