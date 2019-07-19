@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502697, g: 0.37139347, b: 0.49601266, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -76717,6 +76717,11 @@ PrefabInstance:
       propertyPath: EnemyBullets
       value: 
       objectReference: {fileID: 569120826}
+    - target: {fileID: 7374705718156533934, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: pooledAmount
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 6045846052053974019, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: EnemyBullets
@@ -76738,11 +76743,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5023740037609329906, guid: 72cc2dd098245ae49a14a9e0dbd3888e,
         type: 3}
-    - target: {fileID: 7374705718156533934, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: pooledAmount
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
@@ -76983,7 +76983,7 @@ PrefabInstance:
     - target: {fileID: 3459595133501060893, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3459595133501060888, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
         type: 3}
@@ -77040,6 +77040,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3459595132652915478, guid: e2c0584c2ad9aad4a84a7d55e9a2c178,
+        type: 3}
+      propertyPath: TankBulletPrefab
+      value: 
+      objectReference: {fileID: 7720413230672993871, guid: 736ff699dc7aca541a40fc3a4cfc766a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2c0584c2ad9aad4a84a7d55e9a2c178, type: 3}
 --- !u!4 &3900005062024962029 stripped
