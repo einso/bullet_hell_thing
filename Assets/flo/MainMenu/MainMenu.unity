@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4436,7 +4436,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Credits\n\n\n\n\n\n\n404 Games Presentirt\n\n\n\n\n\n\n\nBullet  Hell Thing
     \n\n\n\n\n\nDesigner\nCedrick Holm [Vison Ceaper]\n\n\n\nArt\nJasper Oltmanns\nJoey
-    Manta\nJennifer Hogrebe\n\n\n\nProg\nJulian Franz\nPual Roggan\nFlorian Hogrebe\n\n\n\nProduce\nPaul
+    Manta\nJennifer Hogrebe\n\n\n\nProg\nJulian Franz\nPaul Roggan\nFlorian Hogrebe\n\n\n\nProduce\nPaul
     Roggan"
 --- !u!222 &1056652813
 CanvasRenderer:
