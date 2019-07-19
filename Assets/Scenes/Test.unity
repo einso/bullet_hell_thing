@@ -76736,7 +76736,7 @@ PrefabInstance:
     - target: {fileID: 6550634369480593760, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: pooledAmount
-      value: 300
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 4751982405324800737, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
@@ -77320,6 +77320,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7720413230672993871, guid: 736ff699dc7aca541a40fc3a4cfc766a,
         type: 3}
+    - target: {fileID: 7374705718156533934, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: pooledAmount
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
