@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fcdca2db8a4672b46bc1c2819cfb0fa3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TankBulletPrefab: {fileID: 3885662341945807014, guid: 6acce4a87ff219b489a137931b4680c7,
+      type: 3}
+  - EnemyBullets: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
