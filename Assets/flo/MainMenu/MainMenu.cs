@@ -18,14 +18,42 @@ public class MainMenu : MonoBehaviour
     public Animator[] animSettings;
     public Animator[] animControls;
     [Header("Sound Settings")]
+    public Slider[] volumeSlieder;
+    public AudioMixer audiomixer;
 
     [Header("Screen Settings")]
+    Resolution[] resolutions;
+    public Dropdown resolutionDroptown;
 
     [Header("Settings")]
     public GameObject gScreenMenu;
     public GameObject gSoundMenu;
     public GameObject gControlsMenu;
 
+    private void Start()
+    {
+        resolutions = Screen.resolutions;
+
+        resolutionDroptown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResulutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResulutionIndex = i;
+            }
+        }
+
+        resolutionDroptown.AddOptions(options);
+        resolutionDroptown.value = currentResulutionIndex;
+        resolutionDroptown.RefreshShownValue();
+    }
 
     public void Update()
     {
@@ -166,6 +194,31 @@ public class MainMenu : MonoBehaviour
     /// Settings
     /// //////////////////////////////////////////////////////////////////////////
 
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+    }
+
+
+
+    public void SetMasterVolume(float volume)
+    {
+        audiomixer.SetFloat("MasterVolume", volume);
+    }
+    public void SetMusicVolume(float volume)
+    {
+        audiomixer.SetFloat("MusicVolume", volume);
+    }
+    public void SetSXFVolume(float volume)
+    {
+        audiomixer.SetFloat("SoundVolume", volume);
+    }
 
     /// //////////////////////////////////////////////////////////////////////////
     /// Settings
