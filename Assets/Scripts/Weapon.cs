@@ -67,6 +67,8 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && t > delay)
         {
+            
+
             if(Baseshot)
             {
                 if (pod.GetComponent<SpriteRenderer>().enabled == true) pod.GetComponent<SpriteRenderer>().enabled = false;
