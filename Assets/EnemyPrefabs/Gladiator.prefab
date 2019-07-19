@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600653378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.05, y: 0, z: -0.344}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.7, y: 0, z: -0.63}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 2370622086238828074}
   m_RootOrder: 2
@@ -4833,7 +4833,8 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
-  miniNuke: {fileID: 0}
+  miniNuke: {fileID: 7472502699113794685, guid: 089fb45954910d740ad3797dba6a4811,
+    type: 3}
   health: 7
   giveMana: 40
 --- !u!65 &2370622086238828087
