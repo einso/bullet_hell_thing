@@ -80,7 +80,8 @@ MonoBehaviour:
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
-  health: 5
+  miniNuke: {fileID: 0}
+  health: 7
   giveMana: 40
 --- !u!65 &2370622086238828087
 BoxCollider:
@@ -105,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2370622086402231801}
   - component: {fileID: 2370622086402231806}
+  - component: {fileID: 3163171861011397285}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -121,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 2370622086402231800}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9, y: 0.3, z: 1}
+  m_LocalScale: {x: 5.218758, y: 0.8240144, z: 2.7467146}
   m_Children: []
   m_Father: {fileID: 2370622086238828074}
   m_RootOrder: 0
@@ -174,6 +176,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3163171861011397285
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370622086402231800}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 61fe6205d4b58b24fb4c13165a202bcf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2370622086925746225
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +248,7 @@ MonoBehaviour:
     type: 3}
   firingPeriod: 0.015
   bulletSpeed: 4
+  bulletDamage: 1
   firingAngle: 10
   firingAngleBetweenShots: 0
   distanceBetweenBullets: 0.6

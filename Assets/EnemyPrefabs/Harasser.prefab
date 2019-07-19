@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3908512544726744230}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.16, y: 1, z: 10.94}
-  m_LocalScale: {x: 0.054493498, y: 0.096165, z: 0.6411}
+  m_LocalScale: {x: 0.054493528, y: 0.096165, z: 0.6411002}
   m_Children:
   - {fileID: 3908512546774561893}
   - {fileID: 3908512546490128345}
@@ -79,6 +79,8 @@ MonoBehaviour:
     type: 3}
   HitEnemyParticle: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
+    type: 3}
+  miniNuke: {fileID: 7472502699113794685, guid: 089fb45954910d740ad3797dba6a4811,
     type: 3}
   health: 6
   giveMana: 30
@@ -148,6 +150,7 @@ MonoBehaviour:
     type: 3}
   firingPeriod: 1.6
   bulletSpeed: 4
+  bulletDamage: 1
   firingAngle: 0.6
   firingAngleBetweenShots: 18
   distanceBetweenBullets: 0
@@ -176,6 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3908512546774561893}
   - component: {fileID: 3908512546774561892}
+  - component: {fileID: 540814970}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -190,13 +194,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3908512546774561914}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.29, y: 0.13, z: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: -2.61e-13, y: -3.13, z: 0.911}
+  m_LocalScale: {x: 2.181564, y: 0.226656, z: 2.181564}
   m_Children: []
   m_Father: {fileID: 3908512544726744226}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!212 &3908512546774561892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -239,9 +243,28 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 11.52, y: 6.48}
+  m_Size: {x: 10.63, y: 12.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &540814970
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908512546774561914}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b04376f0a62a3644bb5668db60cd7846, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
