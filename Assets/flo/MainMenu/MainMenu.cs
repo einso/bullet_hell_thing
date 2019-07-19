@@ -14,16 +14,46 @@ public class MainMenu : MonoBehaviour
     public GameObject gCredits;
 
     [Header("Animation Controller")]
-    public GameObject test1;
+    public Animator[] animMainmenu;
+    public Animator[] animSettings;
+    public Animator[] animControls;
     [Header("Sound Settings")]
+    public Slider[] volumeSlieder;
+    public AudioMixer audiomixer;
 
     [Header("Screen Settings")]
+    Resolution[] resolutions;
+    public Dropdown resolutionDroptown;
 
     [Header("Settings")]
     public GameObject gScreenMenu;
     public GameObject gSoundMenu;
     public GameObject gControlsMenu;
 
+    private void Start()
+    {
+        resolutions = Screen.resolutions;
+
+        resolutionDroptown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        int currentResulutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResulutionIndex = i;
+            }
+        }
+
+        resolutionDroptown.AddOptions(options);
+        resolutionDroptown.value = currentResulutionIndex;
+        resolutionDroptown.RefreshShownValue();
+    }
 
     public void Update()
     {
@@ -42,46 +72,69 @@ public class MainMenu : MonoBehaviour
 
     public void StartLevel()
     {
-        SceneManager.LoadScene(1);
+        Invoke("MainMenu_To_Level", 3);
     }
     public void Quit()
     {
-        Application.Quit();
+        Invoke("MainMenu_To_Quit", 3);
     }
 
     
     //Buttons im MainMenu
     public void Settings()
     {
-        Invoke("MainMenu_To_Settings", 1);
+        Invoke("MainMenu_To_Settings", 3);
+        for (int i = 0; i < animMainmenu.Length; i++)
+        {
+            animMainmenu[i].SetBool("Raus", true);
+        }
     }
     public void Controls()
     {
-        Invoke("MainMenu_To_Controls", 1);
+        Invoke("MainMenu_To_Controls", 3);
+        for (int i = 0; i < animMainmenu.Length; i++)
+        {
+            animMainmenu[i].SetBool("Raus", true);
+        }
     }
     public void Credits()
     {
-        Invoke("MainMenu_To_Credits", 1);
+        Invoke("MainMenu_To_Credits", 3);
+        for (int i = 0; i < animMainmenu.Length; i++)
+        {
+            animMainmenu[i].SetBool("Raus", true);
+        }
     }
 
     //Buttons im SettingsMenu
     public void SettingsSound()
     {
-        Invoke("Settings_Go_To_Sound", 1);
+        Invoke("Settings_Go_To_Sound", 1.5f);
+        animSettings[2].SetBool("Raus", true);
+        animSettings[3].SetBool("Raus", true);
     }
     public void SettingsScreen()
     {
-        Invoke("Settings_Go_To_Screen", 1);
+        Invoke("Settings_Go_To_Screen", 1.5f);
+        animSettings[1].SetBool("Raus", true);
+        animSettings[3].SetBool("Raus", true);
     }
     public void SettingsControls()
     {
-        Invoke("Settings_Go_To_Controls", 1);
+        Invoke("Settings_Go_To_Controls", 1.5f);
+        animSettings[1].SetBool("Raus", true);
+        animSettings[2].SetBool("Raus", true);
     }
 
     //quit zum Mainmenu aus jeder scene
     public void QuitToMainManu()
     {
-        Invoke("Back_To_MainMenu", 1);
+        Invoke("Back_To_MainMenu", 1.5f);
+        for (int i = 0; i < animSettings.Length; i++)
+        {
+            animSettings[i].SetBool("Raus", true);
+        }
+        animControls[0].SetBool("Raus", true);
     }
 
     //Umschalter für die scenen
@@ -126,6 +179,14 @@ public class MainMenu : MonoBehaviour
         gScreenMenu.SetActive(false);
         gControlsMenu.SetActive(true);
     }
+    void MainMenu_To_Level()
+    {
+        SceneManager.LoadScene(1);
+    }
+    void MainMenu_To_Quit()
+    {
+        Application.Quit();
+    }
     /// //////////////////////////////////////////////////////////////////////////
     /// Für Alle Wechsel Der Menüs
     /// //////////////////////////////////////////////////////////////////////////
@@ -133,6 +194,31 @@ public class MainMenu : MonoBehaviour
     /// Settings
     /// //////////////////////////////////////////////////////////////////////////
 
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+    }
+
+
+
+    public void SetMasterVolume(float volume)
+    {
+        audiomixer.SetFloat("MasterVolume", volume);
+    }
+    public void SetMusicVolume(float volume)
+    {
+        audiomixer.SetFloat("MusicVolume", volume);
+    }
+    public void SetSXFVolume(float volume)
+    {
+        audiomixer.SetFloat("SoundVolume", volume);
+    }
 
     /// //////////////////////////////////////////////////////////////////////////
     /// Settings
