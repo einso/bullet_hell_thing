@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
 
     [Header("Animation Controller")]
     public Animator[] animMainmenu;
-
+    public Animator[] animSettings;
 
     [Header("Sound Settings")]
 
@@ -81,21 +81,31 @@ public class MainMenu : MonoBehaviour
     //Buttons im SettingsMenu
     public void SettingsSound()
     {
-        Invoke("Settings_Go_To_Sound", 1);
+        Invoke("Settings_Go_To_Sound", 1.5f);
+        animSettings[2].SetBool("Raus", true);
+        animSettings[3].SetBool("Raus", true);
     }
     public void SettingsScreen()
     {
-        Invoke("Settings_Go_To_Screen", 1);
+        Invoke("Settings_Go_To_Screen", 1.5f);
+        animSettings[1].SetBool("Raus", true);
+        animSettings[3].SetBool("Raus", true);
     }
     public void SettingsControls()
     {
-        Invoke("Settings_Go_To_Controls", 1);
+        Invoke("Settings_Go_To_Controls", 1.5f);
+        animSettings[1].SetBool("Raus", true);
+        animSettings[2].SetBool("Raus", true);
     }
 
     //quit zum Mainmenu aus jeder scene
     public void QuitToMainManu()
     {
-        Invoke("Back_To_MainMenu", 1);
+        Invoke("Back_To_MainMenu", 1.5f);
+        for (int i = 0; i < animSettings.Length; i++)
+        {
+            animSettings[i].SetBool("Raus", true);
+        }
     }
 
     //Umschalter für die scenen
