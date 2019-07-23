@@ -23,7 +23,7 @@ public class PlayerLife : MonoBehaviour
     [Space(10)]
     [Header("Camerashake On-Hit Settings")]
     public float magnitude = 0.15f;
-    public float roughness = 0.15f;
+    public float roughness = 0.15f; 
     public float fadeInTime = 0.15f;
     public float fadeOutTime = 0.15f; 
 
