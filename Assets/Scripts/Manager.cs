@@ -130,7 +130,7 @@ public class Manager : MonoBehaviour
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + t.ToString("0");
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time to next  Wave: " + t.ToString("0");
             //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
             waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
