@@ -4835,6 +4835,8 @@ MonoBehaviour:
     type: 3}
   miniNuke: {fileID: 7472502699113794685, guid: 089fb45954910d740ad3797dba6a4811,
     type: 3}
+  NukeEffect: {fileID: 6806279155261601982, guid: fa83e9333d7efc24b931f1279c420ab0,
+    type: 3}
   health: 50
   giveMana: 80
 --- !u!65 &7598003688045625052

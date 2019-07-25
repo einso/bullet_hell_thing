@@ -4846,7 +4846,7 @@ GameObject:
   - component: {fileID: 823045887}
   - component: {fileID: 823045888}
   m_Layer: 0
-  m_Name: EnemyProjectile
+  m_Name: DodgerBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
