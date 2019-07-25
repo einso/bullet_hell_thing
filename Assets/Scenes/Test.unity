@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 2
+  scrollSpeed: 3
   ResetPoint: 53
 --- !u!4 &38364279 stripped
 Transform:
@@ -10310,7 +10310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 5
+  scrollSpeed: 6
   ResetPoint: 44.9
 --- !u!1 &274897829 stripped
 GameObject:
