@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 100
-  moveSpeed: 12
+  moveSpeed: 9
   frequency: 0
   magnitude: 0
   moveUp: 0
