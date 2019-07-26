@@ -130,7 +130,7 @@ public class Manager : MonoBehaviour
 
             //GUI Update
             scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time: " + t.ToString("0");
+            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time to next  Wave: " + t.ToString("0"); 
             //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
             waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
@@ -173,7 +173,7 @@ public class Manager : MonoBehaviour
 
                 if (presetWaves[presetWaveNr] != null) //Check if null
                 {
-                    if (presetWaves[presetWaveNr].transform.childCount == 0) //If wave is cleared
+                    if (presetWaves[presetWaveNr].transform.childCount == 0 ) //If wave is cleared
                     {
                         presetWaves[presetWaveNr].SetActive(false); //Destroy empty Wave
                         presetWaveNr++; //count wave number + 1
@@ -195,7 +195,8 @@ public class Manager : MonoBehaviour
                 }
             }
         }
-        
+
+        Debug.Log(WaveEnemyNr);
 
         //Random Wave System
         if (!dontSpawnRandomWaves)
@@ -218,7 +219,6 @@ public class Manager : MonoBehaviour
             }
         }
 
-        Debug.Log(presetWaveNr);
 
         //Wave Delay
         IEnumerator WaveDelay()

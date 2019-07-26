@@ -51,6 +51,7 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
+  TankBulletPrefab: {fileID: 0}
   firingPeriod: 0.9
   bulletSpeed: 4
   bulletDamage: 1
@@ -140,7 +141,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 781ef749bad71524595be4d2c76db61f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -252,6 +253,8 @@ MonoBehaviour:
   DestroyEnemyParticle: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3,
     type: 3}
   miniNuke: {fileID: 7472502699113794685, guid: 089fb45954910d740ad3797dba6a4811,
+    type: 3}
+  NukeEffect: {fileID: 6806279155261601982, guid: fa83e9333d7efc24b931f1279c420ab0,
     type: 3}
   health: 2
   giveMana: 60

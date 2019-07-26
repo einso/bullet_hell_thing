@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolEnemyBullets : MonoBehaviour
+public class PoolTankBullets : MonoBehaviour
 {
 
     //Pooling
-    public GameObject EnemyBulletPrefab;
+    public GameObject TankBulletPrefab;
     public GameObject EnemyBullets;
-    public int pooledAmount = 300;
+    public int pooledAmount = 200;
     public List<GameObject> pooledObjects;
     [HideInInspector]
     public int bulletNr = 0;
@@ -21,14 +21,14 @@ public class PoolEnemyBullets : MonoBehaviour
 
         for (int i = 0; i < pooledAmount; i++)
         {
-           GameObject b = Instantiate(EnemyBulletPrefab);
-           b.SetActive(false);
-           b.transform.parent = EnemyBullets.transform;
-           pooledObjects.Add(b);
+            GameObject b = Instantiate(TankBulletPrefab);
+            b.SetActive(false);
+            b.transform.parent = EnemyBullets.transform;
+            pooledObjects.Add(b);
         }
     }
 
-    public void InstantiateEnemyPool(Vector3 pos, Quaternion rot)
+    public void InstantiateTankPool(Vector3 pos, Quaternion rot)
     {
         pooledObjects[bulletNr].transform.position = pos;
         pooledObjects[bulletNr].transform.rotation = rot;

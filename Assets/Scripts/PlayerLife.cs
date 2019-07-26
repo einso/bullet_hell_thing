@@ -23,9 +23,9 @@ public class PlayerLife : MonoBehaviour
     [Space(10)]
     [Header("Camerashake On-Hit Settings")]
     public float magnitude = 0.15f;
-    public float roughness = 0.15f;
+    public float roughness = 0.15f; 
     public float fadeInTime = 0.15f;
-    public float fadeOutTime = 0.15f;
+    public float fadeOutTime = 0.15f; 
 
     //update
     void Update()
@@ -108,7 +108,7 @@ public class PlayerLife : MonoBehaviour
         lifeBarPar.SetActive(true); //Set Lifebar Active
         SetLifebarPos = true;   //Set bool true to position the lifebar in update        
         lifeBar.transform.localScale = new Vector3(lifeBar.transform.localScale.x - 0.02f*damage, lifeBar.transform.localScale.y, lifeBar.transform.localScale.z); //Shrink life bar on hit
-        lifeBar.transform.localPosition = new Vector3(lifeBar.transform.localPosition.x, lifeBar.transform.localPosition.y, lifeBar.transform.localPosition.z - 0.116f*damage); //Position Correction lifebar
+        lifeBar.transform.localPosition = new Vector3(lifeBar.transform.localPosition.x + 0.116f * damage, lifeBar.transform.localPosition.y,lifeBar.transform.localRotation.z); //Position Correction lifebar
         if(health > 0) StartCoroutine(toggleInvincibility()); //Toggle invincibility if hit
         //StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.6f, 0.5f)); //Camera Shake
     }
