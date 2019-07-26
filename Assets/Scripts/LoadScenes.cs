@@ -16,6 +16,7 @@ public class LoadScenes : MonoBehaviour
     //Load TitleScreen
     public void LoadScene0()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 

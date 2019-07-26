@@ -34,6 +34,8 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        gMainMenü.SetActive(true);
+
         resolutions = Screen.resolutions;
 
         resolutionDroptown.ClearOptions();
@@ -75,6 +77,8 @@ public class MainMenu : MonoBehaviour
     public void StartLevel()
     {
         Invoke("MainMenu_To_Level", 0);
+        
+
     }
     public void Quit()
     {
@@ -162,6 +166,7 @@ public class MainMenu : MonoBehaviour
         gControls.SetActive(false);
         gCredits.SetActive(false);
         gMainMenü.SetActive(true);
+        Debug.Log("miau1");
     }
     void Settings_Go_To_Sound()
     {
