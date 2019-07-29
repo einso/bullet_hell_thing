@@ -1897,7 +1897,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Slowmo
+  m_Text: 'Slowmotion
 
 '
 --- !u!222 &359389222
@@ -3527,7 +3527,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Quit
+  m_Text: 'Back
 
 '
 --- !u!222 &805229035
@@ -4439,9 +4439,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Quit
-
-'
+  m_Text: Back
 --- !u!222 &1017158712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4736,10 +4734,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Credits\n\n\n\n\n\n\n404 Games Presentirt\n\n\n\n\n\n\n\nBullet  Hell Thing
-    \n\n\n\n\n\nDesigner\nCedrick Holm [Vison Ceaper]\n\n\n\nArt\nJasper Oltmanns\nJoey
-    Manta\nJennifer Hogrebe\n\n\n\nProg\nJulian Franz\nPual Roggan\nFlorian Hogrebe\n\n\n\nProduce\nPaul
-    Roggan"
+  m_Text: "Credits\n\n404 Games proudly presents\n\n\nBullet  Hell Thing \n\n\nDesigner:\nCedrick
+    Holm [Vison Keeper]\n\n\nArtists:\nJasper Oltmanns\nJoey Manta\nJennifer Hogrebe\n\n\nPr0grammer:\nJulian
+    Franz\nPaul Roggan\nFlorian Hogrebe\n\n\nProducer:\nPaul Roggan"
 --- !u!222 &1056652813
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5715,7 +5712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1305655283
 RectTransform:
   m_ObjectHideFlags: 0
