@@ -164,7 +164,7 @@ public class Manager : MonoBehaviour
         {
             dontSpawnRandomWaves = true;
         }
-        else if (presetWaveNr < presetWaves.Length) //Dont spawn Waves while preset waves are still active
+        else if (presetWaveNr < presetWaves.Length ) //Dont spawn Waves while preset waves are still active
         {
             dontSpawnRandomWaves = true;
         }
@@ -186,7 +186,7 @@ public class Manager : MonoBehaviour
                     {
                         presetWaves[presetWaveNr].SetActive(false); //Destroy empty Wave
                         presetWaveNr++; //count wave number + 1
-                        t = secondsTillNextWave;
+                        t = secondsTillNextWave;                        
                     }
                 }
             }
@@ -655,7 +655,14 @@ public class Manager : MonoBehaviour
     {
         showWaveProgress = true;
         waveProgress.transform.position = new Vector3(-3.28f, 1, 15);
-        waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;        
+        int messageOrNumber = Random.Range(0, 3);
+
+        if(messageOrNumber == 0) waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+        else
+        {
+            int randomMessage = Random.Range(0, waveProgressMessages.Length);
+            waveProgress.GetComponentInChildren<TextMeshPro>().text = waveProgressMessages[randomMessage];
+        }
     }
 
     //WaveProgessionFeedback
@@ -675,7 +682,7 @@ public class Manager : MonoBehaviour
         
         if(throwAwayWaveFeedback)
         {
-            if(waveProgress.transform.position.z > -6)
+            if(waveProgress.transform.position.z > -10)
             {
                 waveProgress.transform.position = new Vector3(waveProgress.transform.position.x, waveProgress.transform.position.y, waveProgress.transform.position.z - speed * Time.deltaTime);
             }
