@@ -7,6 +7,8 @@ public class EnemyBullet : MonoBehaviour
     public int damage = 1;
     public float speed = 2f;
     public Rigidbody rb;
+    public bool shouldTriggerBulletFix = false;
+    public Manager manager;
 
     void Start()
     {
@@ -25,6 +27,11 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (shouldTriggerBulletFix && other.gameObject.tag == "EndWall")
+        {
+            manager.WaveEnemyNr--;
+        }
+
         if (other.gameObject.tag == "EndWall")
         {
             gameObject.SetActive(false);

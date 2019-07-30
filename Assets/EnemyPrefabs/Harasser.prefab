@@ -82,6 +82,8 @@ MonoBehaviour:
     type: 3}
   miniNuke: {fileID: 7472502699113794685, guid: 089fb45954910d740ad3797dba6a4811,
     type: 3}
+  NukeEffect: {fileID: 6806279155261601982, guid: fa83e9333d7efc24b931f1279c420ab0,
+    type: 3}
   health: 6
   giveMana: 30
 --- !u!65 &3908512544726744225
@@ -96,7 +98,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 11.193932, y: 5.9, z: 0.9596441}
-  m_Center: {x: 0.01801451, y: 0, z: 0.0017013962}
+  m_Center: {x: 0.01801451, y: 0, z: 0.97}
 --- !u!1 &3908512546490128350
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +150,7 @@ MonoBehaviour:
     type: 3}
   EnemyProjectilePrefab3: {fileID: 5023740037609329906, guid: fd1c311103e0ec74d8f347fa2f2b906e,
     type: 3}
+  TankBulletPrefab: {fileID: 0}
   firingPeriod: 1.6
   bulletSpeed: 4
   bulletDamage: 1

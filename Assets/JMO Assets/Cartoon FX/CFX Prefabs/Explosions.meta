@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 03b8e4d070063a1498b5b64be4e124c8
+guid: c41f95c98750b744bb429ee2fc6a1d70
+labels:
+- cartoonfx
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

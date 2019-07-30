@@ -11,6 +11,7 @@ public class EnemyLife : MonoBehaviour
     public GameObject HitEnemyParticle;
     public GameObject DestroyEnemyParticle;
     public GameObject miniNuke;
+    public GameObject NukeEffect;
     GameObject Manager;
     public float health = 1;
     bool destroy;
@@ -98,7 +99,7 @@ public class EnemyLife : MonoBehaviour
                 StartCoroutine(HitVFX());
                 Destroy(boomy);
                 CheckHealth();
-                targetThis = false;
+                targetThis = false;                
             }
         }
 
