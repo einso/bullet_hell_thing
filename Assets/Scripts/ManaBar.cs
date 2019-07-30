@@ -45,14 +45,12 @@ public class ManaBar : MonoBehaviour
 
         if (qBar.fillAmount >= 1)
         {
-            qBar.GetComponent<Image>().color = new Color32(98, 147, 215, 120);
-            qGrey.GetComponent<Image>().color = new Color32(69, 69, 69, 0);
+            qBar.GetComponent<Image>().color = new Color32(78, 78, 78, 120);
         }
 
         if (qBar.fillAmount < 1) 
         {
-            qBar.GetComponent<Image>().color = new Color32(157, 218, 224, 180 );
-            qGrey.GetComponent<Image>().color = new Color32(69, 69, 69, 120);
+            qBar.GetComponent<Image>().color = new Color32(78, 78, 78, 120);
         }
 
         //E BAR 
@@ -60,14 +58,12 @@ public class ManaBar : MonoBehaviour
 
         if (eBar.fillAmount > 0)
         {
-            eBar.GetComponent<Image>().color = new Color32(98, 147, 215, 120);
-            eGrey.GetComponent<Image>().color = new Color32(69, 69, 69, 120);
+            qBar.GetComponent<Image>().color = new Color32(78, 166, 255, 255);
         }
 
         if (eBar.fillAmount == 0)
         {
-            eBar.GetComponent<Image>().color = new Color32(157, 218, 224, 180);
-            eGrey.GetComponent<Image>().color = new Color32(69, 69, 69, 120);
+            qBar.GetComponent<Image>().color = new Color32(78, 166, 255, 255);
         }
     }
 
