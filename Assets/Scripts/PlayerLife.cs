@@ -13,7 +13,8 @@ public class PlayerLife : MonoBehaviour
     public GameObject lifeBar; //Players Life Bar
     public GameObject capsule;
     public GameObject hbEmission1; 
-    public GameObject hbEmission2; 
+    public GameObject hbEmission2;
+    public GameObject UI;
 
     float blinkSpeed = 0.1f;   //BlinkSpeed
     float amountOfBlinks = 5;
@@ -78,6 +79,7 @@ public class PlayerLife : MonoBehaviour
             hbEmission2.SetActive(false);
             capsule.SetActive(false);
             gameObject.GetComponent<PlayerMovement>().enabled = false;
+            UI.SetActive(false);
             alive = false;
             rot = Random.Range(25, 360);
             side = Random.Range(0, 2);
