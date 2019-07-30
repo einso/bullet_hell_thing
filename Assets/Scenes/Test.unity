@@ -83971,6 +83971,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
+      propertyPath: waveProgressMessages.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 175833657}
@@ -84109,6 +84114,56 @@ PrefabInstance:
       propertyPath: waveProgress
       value: 
       objectReference: {fileID: 1327474764}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[0]
+      value: Keep going!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[1]
+      value: Your death is my pleasure
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[2]
+      value: You suck!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[3]
+      value: Next wave!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[4]
+      value: Try while you can
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[5]
+      value: You will die soon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[6]
+      value: Your mom gay!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[7]
+      value: "Hier k\xF6nnte ihre Werbung stehen!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[8]
+      value: You still suck!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: waveProgressMessages.Array.data[9]
+      value: Fuck you!
+      objectReference: {fileID: 0}
     - target: {fileID: 6550634369480593760, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: EnemyBullets
@@ -84276,6 +84331,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5023740037609329906, guid: 72cc2dd098245ae49a14a9e0dbd3888e,
         type: 3}
+    - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: enemyProbabilities.Array.size
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: EnemyBullets
