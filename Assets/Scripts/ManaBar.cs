@@ -43,19 +43,19 @@ public class ManaBar : MonoBehaviour
         //Q BAR               
         qBar.fillAmount = manaAmount / GetComponent<PlayerAbilities>().manaCostNuke;
 
-        if (qBar.fillAmount >= 1)
-        {
-            qBar.GetComponent<Image>().color = new Color32(78, 78, 78, 120);
-        }
 
         if (qBar.fillAmount < 1) 
         {
-            qBar.GetComponent<Image>().color = new Color32(78, 78, 78, 120);
+            qBar.GetComponent<Image>().color = new Color32(20, 20, 20, 120);
+        }
+        else
+        {
+            qBar.GetComponent<Image>().color = new Color32(34, 119, 231, 255);
         }
 
         //E BAR 
         eBar.fillAmount = manaAmount / 1000;
-
+        /*
         if (eBar.fillAmount > 0)
         {
             qBar.GetComponent<Image>().color = new Color32(78, 166, 255, 255);
@@ -64,7 +64,7 @@ public class ManaBar : MonoBehaviour
         if (eBar.fillAmount == 0)
         {
             qBar.GetComponent<Image>().color = new Color32(78, 166, 255, 255);
-        }
+        }*/
     }
 
 

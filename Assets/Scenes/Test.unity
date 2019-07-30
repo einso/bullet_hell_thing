@@ -2395,7 +2395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.30588236, g: 0.6509804, b: 1, a: 1}
+  m_Color: {r: 0.13243146, g: 0.46574548, b: 0.9056604, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2407,7 +2407,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -36295,7 +36295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.30588233, g: 0.6516841, b: 1, a: 1}
+  m_Color: {r: 0.13333334, g: 0.46666667, b: 0.9056604, a: 0.3647059}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -36307,7 +36307,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -84334,7 +84334,7 @@ PrefabInstance:
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.size
-      value: 15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
