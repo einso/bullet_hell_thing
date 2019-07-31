@@ -30,7 +30,7 @@ public class Manager : MonoBehaviour
     public GameObject backgroundLayers;
     public string[] waveProgressMessages;
     GameObject SpawnPos1;
-
+    
     public float minEnemySpawnTime = 0f;
     public float maxEnemySpawnTime = 4f;
 
