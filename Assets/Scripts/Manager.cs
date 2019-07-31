@@ -182,6 +182,7 @@ public class Manager : MonoBehaviour
             {
                 startGame = true;
                 UI.SetActive(true);
+                Player.GetComponent<PlayerMovement>().enabled = true;
                 backgroundLayers.transform.GetChild(0).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer1;
                 backgroundLayers.transform.GetChild(1).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer2;
                 backgroundLayers.transform.GetChild(2).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer3;

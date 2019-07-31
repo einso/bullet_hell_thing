@@ -22,6 +22,9 @@ public class EnemyLife : MonoBehaviour
     GameObject boomy;
     bool targetThis;
 
+    Vector3 monsterSize;
+    Vector3 monsterSize2;
+
     void Awake()
     {
         //Get Manager
@@ -32,6 +35,10 @@ public class EnemyLife : MonoBehaviour
 
         //get Color
         color = spriteRenderer.color;
+
+        //take Size
+        monsterSize = transform.localScale;
+        monsterSize2 = new Vector3(monsterSize.x *1.1f, monsterSize.y *1.1f, monsterSize.z*1.1f); 
     }
 
 
@@ -42,10 +49,18 @@ public class EnemyLife : MonoBehaviour
         {
             health -= 1;
             Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            StartCoroutine(PopMonster());
             StartCoroutine(HitVFX());
         }
 
         CheckHealth(true);
+    }
+
+    IEnumerator PopMonster()
+    {
+        transform.localScale = monsterSize2;
+        yield return new WaitForSeconds(0.055f);
+        transform.localScale = monsterSize;
     }
 
     void Update()
@@ -97,6 +112,7 @@ public class EnemyLife : MonoBehaviour
                 health -= Manager.GetComponent<PlayerAbilities>().nukeDamage;
                 Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
                 StartCoroutine(HitVFX());
+                StartCoroutine(PopMonster());
                 Destroy(boomy);
                 CheckHealth(false);
                 targetThis = false;                
