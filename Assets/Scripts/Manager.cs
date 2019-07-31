@@ -26,6 +26,8 @@ public class Manager : MonoBehaviour
     public GameObject lootParticle;
     public GameObject levelParticle;
     public GameObject waveProgress;
+    public GameObject UI;
+    public GameObject backgroundLayers;
     public string[] waveProgressMessages;
     GameObject SpawnPos1;
 
@@ -81,10 +83,26 @@ public class Manager : MonoBehaviour
     bool showWaveProgress;
     bool throwAwayWaveFeedback;
 
+    bool startGame;
+    bool startAni;
+
+    float scrollSpeedLayer1;
+    float scrollSpeedLayer2;
+    float scrollSpeedLayer3;
+
     // Start is called before the first frame update
     void Start()
     {
+        Player.transform.position = new Vector3(0.5f, 1, -9);
+        UI.SetActive(false);
 
+        scrollSpeedLayer1 = backgroundLayers.transform.GetChild(0).GetComponent<ScrollingBackground>().scrollSpeed;
+        scrollSpeedLayer2 = backgroundLayers.transform.GetChild(1).GetComponent<ScrollingBackground>().scrollSpeed;
+        scrollSpeedLayer3 = backgroundLayers.transform.GetChild(2).GetComponent<ScrollingBackground>().scrollSpeed;
+
+        backgroundLayers.transform.GetChild(0).GetComponent<ScrollingBackground>().scrollSpeed = 0;
+        backgroundLayers.transform.GetChild(1).GetComponent<ScrollingBackground>().scrollSpeed = 0;
+        backgroundLayers.transform.GetChild(2).GetComponent<ScrollingBackground>().scrollSpeed = 0;
         //SpawnWave();
         //randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
@@ -118,43 +136,59 @@ public class Manager : MonoBehaviour
         resolutionDroptown.AddOptions(options);
         resolutionDroptown.value = currentResulutionIndex;
         resolutionDroptown.RefreshShownValue();
+        
     }
 
-   
 
     // Update is called once per frame
     void Update()
     {
 
-        if(Player != null)
+        if (startGame)
         {
-            //Take Game Time
-            time = time + 1 * Time.deltaTime;
+            if (Player != null)
+            {
+                //Take Game Time
+                time = time + 1 * Time.deltaTime;
 
-            //SpawnWave
-            WaveManagement();
+                //SpawnWave
+                WaveManagement();
 
-            //GUI Update
-            scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time to next  Wave: " + t.ToString("0"); 
-            //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
-            waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
+                //GUI Update
+                scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: " + scoreCount;
+                timeGUI.GetComponent<TextMeshProUGUI>().text = "Time to next  Wave: " + t.ToString("0");
+                //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
+                waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
-            //WaveProgresionFeedback
-            WaveProgressionFeedback(20);
+                //WaveProgresionFeedback
+                WaveProgressionFeedback(20);
 
-            //PauseGame
-            PauseGame();
+                //PauseGame
+                PauseGame();
 
-            //PlayerLevelUP
-            PlayerLevelUP();
+                //PlayerLevelUP
+                PlayerLevelUP();
 
-            //GodMode
-            ToggleGodMode();
+                //GodMode
+                ToggleGodMode();
+            }
 
-            
+        }
+        else
+        {
+            Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z + 5 * Time.deltaTime);
+
+            if (Player.transform.position.z > -1)
+            {
+                startGame = true;
+                UI.SetActive(true);
+                backgroundLayers.transform.GetChild(0).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer1;
+                backgroundLayers.transform.GetChild(1).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer2;
+                backgroundLayers.transform.GetChild(2).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer3;
+            }
         }
     }
+
 
     //Wave management
     void WaveManagement()
@@ -164,7 +198,7 @@ public class Manager : MonoBehaviour
         {
             dontSpawnRandomWaves = true;
         }
-        else if (presetWaveNr < presetWaves.Length) //Dont spawn Waves while preset waves are still active
+        else if (presetWaveNr < presetWaves.Length ) //Dont spawn Waves while preset waves are still active
         {
             dontSpawnRandomWaves = true;
         }
@@ -186,7 +220,7 @@ public class Manager : MonoBehaviour
                     {
                         presetWaves[presetWaveNr].SetActive(false); //Destroy empty Wave
                         presetWaveNr++; //count wave number + 1
-                        t = secondsTillNextWave;
+                        t = secondsTillNextWave;                        
                     }
                 }
             }
@@ -655,7 +689,21 @@ public class Manager : MonoBehaviour
     {
         showWaveProgress = true;
         waveProgress.transform.position = new Vector3(-3.28f, 1, 15);
-        waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;        
+        int messageOrNumber = Random.Range(0, 3);
+
+        if (waveNr > 3)
+        {
+            if (messageOrNumber == 0) waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+            else
+            {
+                int randomMessage = Random.Range(0, waveProgressMessages.Length);
+                waveProgress.GetComponentInChildren<TextMeshPro>().text = waveProgressMessages[randomMessage];
+            }
+        }
+        else
+        {
+            waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+        }
     }
 
     //WaveProgessionFeedback
@@ -675,7 +723,7 @@ public class Manager : MonoBehaviour
         
         if(throwAwayWaveFeedback)
         {
-            if(waveProgress.transform.position.z > -6)
+            if(waveProgress.transform.position.z > -10)
             {
                 waveProgress.transform.position = new Vector3(waveProgress.transform.position.x, waveProgress.transform.position.y, waveProgress.transform.position.z - speed * Time.deltaTime);
             }
