@@ -58,9 +58,15 @@ public class PlayerLife : MonoBehaviour
             //Collision with Enemy Bullet
             if (other.gameObject.tag == "EnemyBullet")
             {
+                if (other.GetComponent<BulletFix>() != null)
+                {
+                    manager.GetComponent<Manager>().WaveEnemyNr--;
+                }
+
                 TakeDamage(other.GetComponent<EnemyBullet>().damage);  //Damage Calculation
                 other.gameObject.SetActive(false); //Destroy Enemy Bullet
                 CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
+
             }
 
             //Collision with Enemy
