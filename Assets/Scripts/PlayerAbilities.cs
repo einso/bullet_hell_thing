@@ -49,10 +49,13 @@ public class PlayerAbilities : MonoBehaviour
 
             IEnumerator NukeProcess(float Loading)
             {
+                Player.transform.GetChild(0).GetComponent<Weapon>().enabled = false;
+                Player.transform.GetComponent<Animator>().enabled = false;
                 nuky = Instantiate(miniNuke);
                 nuky.transform.parent = Player.transform;
                 nuky.transform.localPosition = new Vector3(-1.5f, 1.9f, 0);
                 yield return new WaitForSeconds(Loading);
+                Player.transform.GetChild(0).GetComponent<Weapon>().enabled = true;
                 moveNuke = true;
                 nuky.transform.GetChild(1).gameObject.SetActive(true);
                 nuky.transform.parent = null;

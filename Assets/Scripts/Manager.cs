@@ -93,6 +93,10 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //RESET HIGSCORE
+        //PlayerPrefs.SetFloat("HighestScore", 0);
+
+
         Player.transform.position = new Vector3(0.5f, 1, -9);
         UI.SetActive(false);
 
@@ -241,7 +245,7 @@ public class Manager : MonoBehaviour
             }
         }
 
-        Debug.Log(WaveEnemyNr);
+        //Debug.Log(WaveEnemyNr);
 
         //Random Wave System
         if (!dontSpawnRandomWaves)
