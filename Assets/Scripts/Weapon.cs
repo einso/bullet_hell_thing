@@ -133,6 +133,7 @@ public class Weapon : MonoBehaviour
         bulletRotation2 = Quaternion.Euler(0, -90, 0);
 
         float distance = baseShotDistanceBetweenShots / 2;
+
         InstantiatePool(new Vector3(firePoint.position.x - distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation1);
         InstantiatePool(new Vector3(firePoint.position.x + distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation2);
     }

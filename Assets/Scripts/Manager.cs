@@ -25,6 +25,10 @@ public class Manager : MonoBehaviour
     public GameObject waveNrGUI;
     public GameObject lootParticle;
     public GameObject levelParticle;
+    public GameObject waveProgress;
+    public GameObject UI;
+    public GameObject backgroundLayers;
+    public string[] waveProgressMessages;
     GameObject SpawnPos1;
 
     public float minEnemySpawnTime = 0f;
@@ -76,9 +80,33 @@ public class Manager : MonoBehaviour
     public int WaveEnemyNr = 0;
     //public int NumberOfEnemies;
 
+    bool showWaveProgress;
+    bool throwAwayWaveFeedback;
+
+    bool startGame;
+    bool startAni;
+
+    float scrollSpeedLayer1;
+    float scrollSpeedLayer2;
+    float scrollSpeedLayer3;
+
     // Start is called before the first frame update
     void Start()
     {
+        //RESET HIGSCORE
+        //PlayerPrefs.SetFloat("HighestScore", 0);
+
+
+        Player.transform.position = new Vector3(0.5f, 1, -9);
+        UI.SetActive(false);
+
+        scrollSpeedLayer1 = backgroundLayers.transform.GetChild(0).GetComponent<ScrollingBackground>().scrollSpeed;
+        scrollSpeedLayer2 = backgroundLayers.transform.GetChild(1).GetComponent<ScrollingBackground>().scrollSpeed;
+        scrollSpeedLayer3 = backgroundLayers.transform.GetChild(2).GetComponent<ScrollingBackground>().scrollSpeed;
+
+        backgroundLayers.transform.GetChild(0).GetComponent<ScrollingBackground>().scrollSpeed = 0;
+        backgroundLayers.transform.GetChild(1).GetComponent<ScrollingBackground>().scrollSpeed = 0;
+        backgroundLayers.transform.GetChild(2).GetComponent<ScrollingBackground>().scrollSpeed = 0;
         //SpawnWave();
         //randSecNextEnemySpawn = time;      //Set Time you need to spawn the first enemy
 
@@ -112,39 +140,60 @@ public class Manager : MonoBehaviour
         resolutionDroptown.AddOptions(options);
         resolutionDroptown.value = currentResulutionIndex;
         resolutionDroptown.RefreshShownValue();
+        
     }
 
-   
 
     // Update is called once per frame
     void Update()
     {
-        if(Player != null)
+
+        if (startGame)
         {
-            //Take Game Time
-            time = time + 1 * Time.deltaTime;
+            if (Player != null)
+            {
+                //Take Game Time
+                time = time + 1 * Time.deltaTime;
 
-            //SpawnWave
-            WaveManagement();
+                //SpawnWave
+                WaveManagement();
 
-            //GUI Update
-            scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: "+scoreCount;
-            timeGUI.GetComponent<TextMeshProUGUI>().text = "Time to next  Wave: " + t.ToString("0"); 
-            //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
-            waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
+                //GUI Update
+                scoreGUI.GetComponent<TextMeshProUGUI>().text = "Score: " + scoreCount;
+                timeGUI.GetComponent<TextMeshProUGUI>().text = "Time to next  Wave: " + t.ToString("0");
+                //levelGUI.GetComponent<TextMeshProUGUI>().text = "Level: "+levelCount;
+                waveNrGUI.GetComponent<TextMeshProUGUI>().text = "Wave: " + waveNr;
 
-            //PauseGame
-            PauseGame();
+                //WaveProgresionFeedback
+                WaveProgressionFeedback(20);
 
-            //PlayerLevelUP
-            PlayerLevelUP();
+                //PauseGame
+                PauseGame();
 
-            //GodMode
-            ToggleGodMode();
+                //PlayerLevelUP
+                PlayerLevelUP();
 
-            
+                //GodMode
+                ToggleGodMode();
+            }
+
+        }
+        else
+        {
+            Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z + 5 * Time.deltaTime);
+
+            if (Player.transform.position.z > -1)
+            {
+                startGame = true;
+                UI.SetActive(true);
+                Player.GetComponent<PlayerMovement>().enabled = true;
+                backgroundLayers.transform.GetChild(0).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer1;
+                backgroundLayers.transform.GetChild(1).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer2;
+                backgroundLayers.transform.GetChild(2).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer3;
+            }
         }
     }
+
 
     //Wave management
     void WaveManagement()
@@ -154,7 +203,7 @@ public class Manager : MonoBehaviour
         {
             dontSpawnRandomWaves = true;
         }
-        else if (presetWaveNr < presetWaves.Length) //Dont spawn Waves while preset waves are still active
+        else if (presetWaveNr < presetWaves.Length ) //Dont spawn Waves while preset waves are still active
         {
             dontSpawnRandomWaves = true;
         }
@@ -176,7 +225,7 @@ public class Manager : MonoBehaviour
                     {
                         presetWaves[presetWaveNr].SetActive(false); //Destroy empty Wave
                         presetWaveNr++; //count wave number + 1
-                        t = secondsTillNextWave;
+                        t = secondsTillNextWave;                        
                     }
                 }
             }
@@ -191,11 +240,12 @@ public class Manager : MonoBehaviour
                     WaveEnemyNr += presetWaves[presetWaveNr].transform.childCount; //Count how many enemies spawned
                     t = secondsTillNextWave;    //Reset time
                     waveNr++;                   //Count wave number for UI
+                    WaveFeedbackTrigger();
                 }
             }
         }
 
-        Debug.Log(WaveEnemyNr);
+        //Debug.Log(WaveEnemyNr);
 
         //Random Wave System
         if (!dontSpawnRandomWaves)
@@ -214,6 +264,7 @@ public class Manager : MonoBehaviour
                     LoadWave();     //Load next wave
                     t = secondsTillNextWave;    //Reset time
                     waveNr++;                   //Count wave number for UI
+                    WaveFeedbackTrigger();
                 }
             }
         }
@@ -229,6 +280,7 @@ public class Manager : MonoBehaviour
             LoadWave();
             t = secondsTillNextWave;
             waveNr++;
+            WaveFeedbackTrigger(); //Wave Progress Feedback
         }
     }
 
@@ -241,6 +293,7 @@ public class Manager : MonoBehaviour
         presetWaves[presetWaveNr].SetActive(true); //Spawn Preset Wave
         WaveEnemyNr += presetWaves[presetWaveNr].transform.childCount; //Count how many enemies spawned
         waveNr++;   //Wave Nr UI +1 
+        WaveFeedbackTrigger(); //Wave Progress Feedback
     }
 
     //Generate a random number to detect which type of enemy should spawn next
@@ -296,7 +349,9 @@ public class Manager : MonoBehaviour
         {
             StartCoroutine(EnemySpawnDelay()); //Delay enemies during wave
             WaveEnemyNr++;  //Count enemies inside wave
-        }        
+        }
+
+        
     }
 
     IEnumerator EnemySpawnDelay()
@@ -357,7 +412,7 @@ public class Manager : MonoBehaviour
     }
 
     //EnemyDeathEvent
-    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle)
+    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle, bool dropXP)
     {
 
         //CALCULATE AMOUNT OF KILLS
@@ -375,8 +430,12 @@ public class Manager : MonoBehaviour
         //Spawn Particle Effect
         GameObject destroyParticle = Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
-        GameObject lootMyAss = Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
-        lootMyAss.GetComponent<MoveToPlayer>().manaValue = other.GetComponent<EnemyLife>().giveMana;
+
+        if(dropXP)
+        {
+            GameObject lootMyAss = Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
+            lootMyAss.GetComponent<MoveToPlayer>().manaValue = other.GetComponent<EnemyLife>().giveMana;
+        }
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
@@ -632,5 +691,66 @@ public class Manager : MonoBehaviour
 
         GameObject levelPartInst = Instantiate(levelParticle, new Vector3(Player.transform.position.x +0.7f, Player.transform.position.y, Player.transform.position.z), levelParticle.transform.rotation);
         levelPartInst.transform.SetParent(Player.transform);
+    }
+
+    //Set Wave Progression Feedback true 
+    void WaveFeedbackTrigger()
+    {
+        showWaveProgress = true;
+        waveProgress.transform.position = new Vector3(-3.28f, 1, 15);
+        int messageOrNumber = Random.Range(0, 3);
+
+        if(waveProgressMessages.Length < 1)
+        {
+            waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+        }
+        else if (waveNr > 3)
+        {
+            if (messageOrNumber == 0) waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+            else
+            {
+                int randomMessage = Random.Range(0, waveProgressMessages.Length);
+                waveProgress.GetComponentInChildren<TextMeshPro>().text = waveProgressMessages[randomMessage];
+            }
+        }
+        else
+        {
+            waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+        }
+    }
+
+    //WaveProgessionFeedback
+    void WaveProgressionFeedback(float speed)
+    {
+        if(showWaveProgress)
+        {
+            if (waveProgress.transform.position.z > 4.36f)
+            {
+                waveProgress.transform.position = new Vector3(waveProgress.transform.position.x, waveProgress.transform.position.y, waveProgress.transform.position.z - speed * Time.deltaTime);
+            } 
+            else
+            {
+                StartCoroutine(SetThrowAwayTrue());
+            }
+        }         
+        
+        if(throwAwayWaveFeedback)
+        {
+            if(waveProgress.transform.position.z > -10)
+            {
+                waveProgress.transform.position = new Vector3(waveProgress.transform.position.x, waveProgress.transform.position.y, waveProgress.transform.position.z - speed * Time.deltaTime);
+            }
+            else
+            {
+                throwAwayWaveFeedback = false;
+            }
+        }
+    }
+
+    IEnumerator SetThrowAwayTrue()
+    {
+        showWaveProgress = false;
+        yield return new WaitForSeconds(1);
+        throwAwayWaveFeedback = true;
     }
 }

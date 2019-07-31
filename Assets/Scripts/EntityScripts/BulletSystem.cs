@@ -47,7 +47,7 @@ public class BulletSystem : ComponentSystem
                     {
                         //hit.transform.GetComponent<ECSCollision>().DestroyOnHit();
                         hit.transform.GetComponent<EnemyLife>().health--;
-                        hit.transform.GetComponent<EnemyLife>().CheckHealth();
+                        hit.transform.GetComponent<EnemyLife>().CheckHealth(true);
                         
                     }
                     
