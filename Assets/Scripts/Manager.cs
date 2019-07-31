@@ -407,7 +407,7 @@ public class Manager : MonoBehaviour
     }
 
     //EnemyDeathEvent
-    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle)
+    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle, bool dropXP)
     {
 
         //CALCULATE AMOUNT OF KILLS
@@ -425,8 +425,12 @@ public class Manager : MonoBehaviour
         //Spawn Particle Effect
         GameObject destroyParticle = Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
-        GameObject lootMyAss = Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
-        lootMyAss.GetComponent<MoveToPlayer>().manaValue = other.GetComponent<EnemyLife>().giveMana;
+
+        if(dropXP)
+        {
+            GameObject lootMyAss = Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
+            lootMyAss.GetComponent<MoveToPlayer>().manaValue = other.GetComponent<EnemyLife>().giveMana;
+        }
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
@@ -691,7 +695,11 @@ public class Manager : MonoBehaviour
         waveProgress.transform.position = new Vector3(-3.28f, 1, 15);
         int messageOrNumber = Random.Range(0, 3);
 
-        if (waveNr > 3)
+        if(waveProgressMessages.Length < 1)
+        {
+            waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+        }
+        else if (waveNr > 3)
         {
             if (messageOrNumber == 0) waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
             else
