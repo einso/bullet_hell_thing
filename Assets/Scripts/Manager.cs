@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class Manager : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Manager : MonoBehaviour
     public GameObject backgroundLayers;
     public string[] waveProgressMessages;
     GameObject SpawnPos1;
-    
+
     public float minEnemySpawnTime = 0f;
     public float maxEnemySpawnTime = 4f;
 
@@ -90,9 +91,15 @@ public class Manager : MonoBehaviour
     float scrollSpeedLayer2;
     float scrollSpeedLayer3;
 
+    Transform unselectedTrans;
+    GameObject g;
+
     // Start is called before the first frame update
     void Start()
     {
+       
+
+
         //RESET HIGSCORE
         //PlayerPrefs.SetFloat("HighestScore", 0);
 
@@ -314,6 +321,7 @@ public class Manager : MonoBehaviour
         Debug.LogError("Du musst noch Wahrscheinlichkeiten einstellen");
         return 0;
     }
+
 
     //Create pool of probabilities
     public int AmountOfProbabilities()
@@ -692,8 +700,24 @@ public class Manager : MonoBehaviour
         levelPartInst.transform.SetParent(Player.transform);
     }
 
+    //Select Button
+    public void SelectButton()
+    {
+        g = EventSystem.current.currentSelectedGameObject;
+
+        unselectedTrans = g.transform;
+        Vector3 newScale;
+
+        g.transform.localScale = unselectedTrans.localScale * 1.2f;
+    }
+
+    public void DeSelectButton()
+    {
+        g.transform.localScale = new Vector3(1,1,1);
+    }
+        
     //Set Wave Progression Feedback true 
-    void WaveFeedbackTrigger()
+        void WaveFeedbackTrigger()
     {
         showWaveProgress = true;
         waveProgress.transform.position = new Vector3(-3.28f, 1, 15);
