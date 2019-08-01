@@ -23,11 +23,6 @@ public class BulletFix : MonoBehaviour
         {
             manager.WaveEnemyNr--;
         }
-
-        if (other.gameObject.tag == "Player")
-        {
-            manager.WaveEnemyNr--;
-        }
     }
 }
     //        calls++;
