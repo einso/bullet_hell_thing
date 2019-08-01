@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
         //Rotate Player
         Quaternion rot = transform.rotation;
         float z = rot.eulerAngles.z;
@@ -83,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Set Movement Boundaries
-        if (transform.position.x < -3.25f)
+        if (transform.position.x < -3.4f)
             {
                 if (moveVerti < 0)
                 {
@@ -91,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-        if (transform.position.x > 4.3f)
+        if (transform.position.x > 4.45f)
         {
             if (moveVerti > 0)
             {
@@ -107,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.z > 12.5f)
+        if (transform.position.z > 12.6f)
         {
             if (moveHori > 0)
             {
@@ -128,10 +127,5 @@ public class PlayerMovement : MonoBehaviour
             pos += rot * posChange;
             transform.position = pos;
        // }
-
-
-
     }
-
-
 }
