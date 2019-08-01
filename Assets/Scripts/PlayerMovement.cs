@@ -37,11 +37,13 @@ public class PlayerMovement : MonoBehaviour
         //Calculate Acceleration
         //Vertical
         moveVerti += acceleration * Input.GetAxis("Vertical");
-        moveVerti = Mathf.Clamp(moveVerti, -playerMoveSpeed, playerMoveSpeed);
+        if (Input.GetKey(KeyCode.LeftShift)) moveVerti = Mathf.Clamp(moveVerti, -playerShiftSpeed, playerShiftSpeed);
+        else moveVerti = Mathf.Clamp(moveVerti, -playerMoveSpeed, playerMoveSpeed);
 
         //Horizontal
         moveHori += acceleration * Input.GetAxis("Horizontal");
-        moveHori = Mathf.Clamp(moveHori, -playerMoveSpeed, playerMoveSpeed);
+        if (Input.GetKey(KeyCode.LeftShift)) moveHori = Mathf.Clamp(moveHori, -playerShiftSpeed, playerShiftSpeed);
+        else moveHori = Mathf.Clamp(moveHori, -playerMoveSpeed, playerMoveSpeed);
 
         //Calculate Decceleration
         //Vertical
@@ -113,19 +115,19 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //Set Player to new Position
+      /*  //Set Player to new Position
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            Vector3 posChange = new Vector3(moveHori * playerShiftSpeed * Time.deltaTime * speedBonusWhileSlow, moveVerti * playerShiftSpeed * Time.deltaTime * speedBonusWhileSlow, 0);
+            Vector3 posChange = new Vector3(moveVerti / 5 * Time.deltaTime * speedBonusWhileSlow, moveHori / 5 * Time.deltaTime * speedBonusWhileSlow, 0);
             pos += rot * posChange;
             transform.position = pos;
         }
         else
-        {
+        {*/
             Vector3 posChange = new Vector3(moveVerti * Time.deltaTime * speedBonusWhileSlow, moveHori * Time.deltaTime * speedBonusWhileSlow, 0);
             pos += rot * posChange;
             transform.position = pos;
-        }
+       // }
 
 
 
