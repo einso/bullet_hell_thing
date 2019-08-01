@@ -245,7 +245,6 @@ public class Manager : MonoBehaviour
             }
         }
 
-        Debug.Log(WaveEnemyNr);
 
         //Random Wave System
         if (!dontSpawnRandomWaves)
