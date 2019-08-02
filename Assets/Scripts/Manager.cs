@@ -451,7 +451,7 @@ public class Manager : MonoBehaviour
     //PauseGameEvent
     public void PauseGame()
     {
-        if(Input.GetKeyUp(KeyCode.Escape) && !PauseScreen.activeSelf)
+        if(Input.GetKeyUp(KeyCode.Escape) && !PauseScreen.activeSelf && !DeathScreen.activeInHierarchy)
         {
             PauseScreen.SetActive(true);
             Time.timeScale = 0;
@@ -462,6 +462,7 @@ public class Manager : MonoBehaviour
             PauseScreen.SetActive(false);
             Time.timeScale = 1;
             if (GetComponent<PlayerAbilities>().timeSlow) Time.timeScale = 0.25f;
+            g.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
@@ -706,7 +707,6 @@ public class Manager : MonoBehaviour
         g = EventSystem.current.currentSelectedGameObject;
 
         unselectedTrans = g.transform;
-        Vector3 newScale;
 
         g.transform.localScale = unselectedTrans.localScale * 1.2f;
     }
