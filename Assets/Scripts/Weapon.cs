@@ -126,17 +126,21 @@ public class Weapon : MonoBehaviour
             }
 
         }
-
+        
         if (Input.GetKey(KeyCode.Space))
         {
             transform.parent.GetComponent<Animator>().enabled = true;
-            playerShotSound.Play();
+            
         }
 
         else
         {
             transform.parent.GetComponent<Animator>().enabled = false;
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        { playerShotSound.Play(); }
+        if (Input.GetKeyUp(KeyCode.Space))
+        { playerShotSound.Stop(); }
 
     }
 
