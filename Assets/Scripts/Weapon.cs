@@ -43,8 +43,19 @@ public class Weapon : MonoBehaviour
     public List<GameObject> pooledObjects;
     int bulletNr = 0;
 
+    public AudioSource playerShotSound;
+    //Play the music
+    bool m_Play;
+    //Detect when you use the toggle, ensures music isn’t played multiple times
+    bool m_ToggleChange;
+
+
     void Start()
     {
+        //Fetch the AudioSource from the GameObject
+        playerShotSound = GetComponent<AudioSource>();
+        //Ensure the toggle is set to true for the music to play at start-up
+        m_Play = true;
 
         t = delay;
 
@@ -116,9 +127,12 @@ public class Weapon : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.Space))
+        {
             transform.parent.GetComponent<Animator>().enabled = true;
+            playerShotSound.Play();
         }
+
         else
         {
             transform.parent.GetComponent<Animator>().enabled = false;
@@ -133,6 +147,7 @@ public class Weapon : MonoBehaviour
         bulletRotation2 = Quaternion.Euler(0, -90, 0);
 
         float distance = baseShotDistanceBetweenShots / 2;
+
         InstantiatePool(new Vector3(firePoint.position.x - distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation1);
         InstantiatePool(new Vector3(firePoint.position.x + distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation2);
     }
