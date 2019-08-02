@@ -71706,7 +71706,7 @@ MonoBehaviour:
   Playerlevel4: 0
   delay: 0.1
   baseShotDistanceBetweenShots: 0.65
-  podSprayStrength: 12
+  podSprayStrength: 15
   firePoint: {fileID: 1603048834}
   piercingBulletPrefab: {fileID: 805040988089598216, guid: a2757fdc15721344482f1d7d2c1286f6,
     type: 3}
@@ -71720,6 +71720,7 @@ MonoBehaviour:
     type: 3}
   pooledAmount: 300
   pooledObjects: []
+  playerShotSound: {fileID: 0}
 --- !u!114 &1603048836
 MonoBehaviour:
   m_ObjectHideFlags: 0
