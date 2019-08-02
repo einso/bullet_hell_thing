@@ -78,7 +78,6 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && t > delay)
         {            
-
             if(Baseshot)
             {
                 if (pod.GetComponent<SpriteRenderer>().enabled == true) pod.GetComponent<SpriteRenderer>().enabled = false;
@@ -266,7 +265,6 @@ public class Weapon : MonoBehaviour
     //Player Level 5
     void PlayerWeapon5()
     {
-
         if (Input.GetKey(KeyCode.LeftShift))
         {
             bulletRotation1 = Quaternion.Euler(0, -90 - shiftPodSprayStrength, 0);
@@ -296,7 +294,6 @@ public class Weapon : MonoBehaviour
         pooledObjects[bulletNr].SetActive(true);
         //pooledObjects[bulletNr].GetComponent<ParticleSystem>().Play();
         bulletNr++;
-        if (bulletNr > pooledAmount-1) bulletNr = 0;
-       
+        if (bulletNr > pooledAmount-1) bulletNr = 0;       
     }
 }
