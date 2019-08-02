@@ -35,25 +35,25 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 21.92
+    value: 6
   threshold:
     overrideState: 1
-    value: 9.55
+    value: 2
   softKnee:
-    overrideState: 1
-    value: 1
+    overrideState: 0
+    value: 0.5
   clamp:
     overrideState: 0
-    value: 65471.92
+    value: 65472
   diffusion:
-    overrideState: 1
-    value: 2.98
+    overrideState: 0
+    value: 7
   anamorphicRatio:
-    overrideState: 1
-    value: 1
+    overrideState: 0
+    value: 0
   color:
-    overrideState: 1
-    value: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
+    overrideState: 0
+    value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
     overrideState: 0
     value: 0
@@ -120,25 +120,25 @@ MonoBehaviour:
     value: 0
   tint:
     overrideState: 1
-    value: 5.03
+    value: -10
   colorFilter:
-    overrideState: 1
+    overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    overrideState: 1
-    value: 10.9
+    overrideState: 0
+    value: 0
   saturation:
-    overrideState: 1
-    value: -10.32
+    overrideState: 0
+    value: 0
   brightness:
     overrideState: 0
     value: 0
   postExposure:
-    overrideState: 1
-    value: -0.23
+    overrideState: 0
+    value: 0
   contrast:
-    overrideState: 1
-    value: -10.5
+    overrideState: 0
+    value: 0
   mixerRedOutRedIn:
     overrideState: 1
     value: 9
@@ -168,13 +168,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 0.5907168, z: 0.93659496, w: 0}
+    value: {x: 1, y: 0.32997495, z: 0.92241085, w: 0}
   gamma:
     overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
   gain:
-    overrideState: 1
-    value: {x: 0, y: 1, z: 0.25383496, w: 0}
+    overrideState: 0
+    value: {x: 1, y: 1, z: 1, w: 0}
   masterCurve:
     overrideState: 0
     value:
@@ -1431,19 +1431,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   focusDistance:
     overrideState: 1
-    value: 1
+    value: 0.1
   aperture:
     overrideState: 1
-    value: 0.4
+    value: 4.5
   focalLength:
     overrideState: 1
-    value: 1
+    value: 104
   kernelSize:
     overrideState: 1
     value: 0
