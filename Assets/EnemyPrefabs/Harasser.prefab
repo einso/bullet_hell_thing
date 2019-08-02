@@ -154,9 +154,9 @@ MonoBehaviour:
   firingPeriod: 1.6
   bulletSpeed: 4
   bulletDamage: 1
-  firingAngle: 0.6
+  firingAngle: 2
   firingAngleBetweenShots: 18
-  distanceBetweenBullets: 0
+  distanceBetweenBullets: 0.5
   NumberOfShots: 15
   TimeBetwennSalvages: 3
   linearShot: 0

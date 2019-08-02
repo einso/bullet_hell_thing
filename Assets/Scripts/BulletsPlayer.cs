@@ -27,6 +27,11 @@ public class BulletsPlayer : MonoBehaviour
         Vector3 posChange = new Vector3(speed * Time.deltaTime, 0, 0);
         pos += rot * posChange;
         transform.position = pos;
+
+        if(transform.position.z > 15)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

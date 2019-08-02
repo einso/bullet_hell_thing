@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class Manager : MonoBehaviour
 {
@@ -90,9 +91,19 @@ public class Manager : MonoBehaviour
     float scrollSpeedLayer2;
     float scrollSpeedLayer3;
 
+    Transform unselectedTrans;
+    GameObject g;
+
     // Start is called before the first frame update
     void Start()
     {
+       
+
+
+        //RESET HIGSCORE
+        //PlayerPrefs.SetFloat("HighestScore", 0);
+
+
         Player.transform.position = new Vector3(0.5f, 1, -9);
         UI.SetActive(false);
 
@@ -182,6 +193,7 @@ public class Manager : MonoBehaviour
             {
                 startGame = true;
                 UI.SetActive(true);
+                Player.GetComponent<PlayerMovement>().enabled = true;
                 backgroundLayers.transform.GetChild(0).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer1;
                 backgroundLayers.transform.GetChild(1).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer2;
                 backgroundLayers.transform.GetChild(2).GetComponent<ScrollingBackground>().scrollSpeed = scrollSpeedLayer3;
@@ -240,7 +252,6 @@ public class Manager : MonoBehaviour
             }
         }
 
-        Debug.Log(WaveEnemyNr);
 
         //Random Wave System
         if (!dontSpawnRandomWaves)
@@ -310,6 +321,7 @@ public class Manager : MonoBehaviour
         Debug.LogError("Du musst noch Wahrscheinlichkeiten einstellen");
         return 0;
     }
+
 
     //Create pool of probabilities
     public int AmountOfProbabilities()
@@ -407,7 +419,7 @@ public class Manager : MonoBehaviour
     }
 
     //EnemyDeathEvent
-    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle)
+    public void EnemyDeathEvent(GameObject Manager, GameObject other,GameObject scoreFeedbackPrefab,GameObject HitEnemyParticle, GameObject DestroyEnemyParticle, bool dropXP)
     {
 
         //CALCULATE AMOUNT OF KILLS
@@ -425,8 +437,12 @@ public class Manager : MonoBehaviour
         //Spawn Particle Effect
         GameObject destroyParticle = Instantiate(DestroyEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0,0,0));
         //Instantiate(HitEnemyParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
-        GameObject lootMyAss = Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
-        lootMyAss.GetComponent<MoveToPlayer>().manaValue = other.GetComponent<EnemyLife>().giveMana;
+
+        if(dropXP)
+        {
+            GameObject lootMyAss = Instantiate(lootParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(0, 0, 0));
+            lootMyAss.GetComponent<MoveToPlayer>().manaValue = other.GetComponent<EnemyLife>().giveMana;
+        }
 
         //MinusWaveNumber
         FindObjectOfType<Manager>().WaveEnemyNr--;
@@ -684,14 +700,34 @@ public class Manager : MonoBehaviour
         levelPartInst.transform.SetParent(Player.transform);
     }
 
+    //Select Button
+    public void SelectButton()
+    {
+        g = EventSystem.current.currentSelectedGameObject;
+
+        unselectedTrans = g.transform;
+        Vector3 newScale;
+
+        g.transform.localScale = unselectedTrans.localScale * 1.2f;
+    }
+
+    public void DeSelectButton()
+    {
+        g.transform.localScale = new Vector3(1,1,1);
+    }
+        
     //Set Wave Progression Feedback true 
-    void WaveFeedbackTrigger()
+        void WaveFeedbackTrigger()
     {
         showWaveProgress = true;
         waveProgress.transform.position = new Vector3(-3.28f, 1, 15);
         int messageOrNumber = Random.Range(0, 3);
 
-        if (waveNr > 3)
+        if(waveProgressMessages.Length < 1)
+        {
+            waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+        }
+        else if (waveNr > 3)
         {
             if (messageOrNumber == 0) waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
             else
