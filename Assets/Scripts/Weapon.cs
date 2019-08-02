@@ -43,8 +43,19 @@ public class Weapon : MonoBehaviour
     public List<GameObject> pooledObjects;
     int bulletNr = 0;
 
+    public AudioSource playerShotSound;
+    //Play the music
+    bool m_Play;
+    //Detect when you use the toggle, ensures music isn’t played multiple times
+    bool m_ToggleChange;
+
+
     void Start()
     {
+        //Fetch the AudioSource from the GameObject
+        playerShotSound = GetComponent<AudioSource>();
+        //Ensure the toggle is set to true for the music to play at start-up
+        m_Play = true;
 
         t = delay;
 
@@ -115,14 +126,21 @@ public class Weapon : MonoBehaviour
             }
 
         }
-
-        if (Input.GetKey(KeyCode.Space)) {
+        
+        if (Input.GetKey(KeyCode.Space))
+        {
             transform.parent.GetComponent<Animator>().enabled = true;
+            
         }
+
         else
         {
             transform.parent.GetComponent<Animator>().enabled = false;
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        { playerShotSound.Play(); }
+        if (Input.GetKeyUp(KeyCode.Space))
+        { playerShotSound.Stop(); }
 
     }
 
