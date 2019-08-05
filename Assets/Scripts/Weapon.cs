@@ -43,8 +43,19 @@ public class Weapon : MonoBehaviour
     public List<GameObject> pooledObjects;
     int bulletNr = 0;
 
+    public AudioSource playerShotSound;
+    //Play the music
+    bool m_Play;
+    //Detect when you use the toggle, ensures music isn’t played multiple times
+    bool m_ToggleChange;
+
+
     void Start()
     {
+        //Fetch the AudioSource from the GameObject
+        playerShotSound = GetComponent<AudioSource>();
+        //Ensure the toggle is set to true for the music to play at start-up
+        m_Play = true;
 
         t = delay;
 
@@ -66,7 +77,7 @@ public class Weapon : MonoBehaviour
         t = t + 1 * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.Space) && t > delay)
-        {
+        {            
             if(Baseshot)
             {
                 if (pod.GetComponent<SpriteRenderer>().enabled == true) pod.GetComponent<SpriteRenderer>().enabled = false;
@@ -114,6 +125,22 @@ public class Weapon : MonoBehaviour
             }
 
         }
+        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            transform.parent.GetComponent<Animator>().enabled = true;
+            
+        }
+
+        else
+        {
+            transform.parent.GetComponent<Animator>().enabled = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        { playerShotSound.Play(); }
+        if (Input.GetKeyUp(KeyCode.Space))
+        { playerShotSound.Stop(); }
+
     }
 
     //BaseShot
@@ -123,6 +150,7 @@ public class Weapon : MonoBehaviour
         bulletRotation2 = Quaternion.Euler(0, -90, 0);
 
         float distance = baseShotDistanceBetweenShots / 2;
+
         InstantiatePool(new Vector3(firePoint.position.x - distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation1);
         InstantiatePool(new Vector3(firePoint.position.x + distance, firePoint.position.y - 0.1f, firePoint.position.z), bulletRotation2);
     }
@@ -180,19 +208,24 @@ public class Weapon : MonoBehaviour
         //PodShot
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            float shiftPodLeft = firePoint.position.x - baseShotDistanceBetweenShots *2;
-            float shiftPodRight = firePoint.position.x + baseShotDistanceBetweenShots *2 ;
+            float shiftPodLeft = firePoint.position.x - baseShotDistanceBetweenShots * 2;
+            float shiftPodRight = firePoint.position.x + baseShotDistanceBetweenShots * 2;
             podLeft.transform.position = new Vector3(shiftPodLeft, podLeft.transform.position.y, podLeft.transform.position.z);
             podRight.transform.position = new Vector3(shiftPodRight, podLeft.transform.position.y, podLeft.transform.position.z);
         }
         else
         {
-            podLeft.transform.position = new Vector3(firePoint.position.x - 1, podLeft.transform.position.y, podLeft.transform.position.z);
-            podRight.transform.position = new Vector3(firePoint.position.x + 1, podLeft.transform.position.y, podLeft.transform.position.z);
+            float shiftPodLeft = firePoint.position.x - baseShotDistanceBetweenShots *3;
+            float shiftPodRight = firePoint.position.x + baseShotDistanceBetweenShots *3 ;
+            podLeft.transform.position = new Vector3(shiftPodLeft, podLeft.transform.position.y, podLeft.transform.position.z);
+            podRight.transform.position = new Vector3(shiftPodRight, podLeft.transform.position.y, podLeft.transform.position.z);
         }
 
-        InstantiatePool(new Vector3(podLeft.transform.position.x, podLeft.transform.position.y-0.1f, podLeft.transform.position.z), bulletRotation1);
-        InstantiatePool(new Vector3(podRight.transform.position.x, podRight.transform.position.y-0.1f, podRight.transform.position.z), bulletRotation2);
+        //PodShot
+        InstantiatePool(new Vector3(pod.position.x, pod.position.y - 0.1f, pod.position.z), bulletRotation1);
+
+        InstantiatePool(new Vector3(podLeft.transform.position.x + 0.6f, podLeft.transform.position.y-0.1f, podLeft.transform.position.z-0.2f), bulletRotation1);
+        InstantiatePool(new Vector3(podRight.transform.position.x - 0.6f, podRight.transform.position.y-0.1f, podRight.transform.position.z - 0.2f), bulletRotation2);
     }
 
     //Player Level 4
@@ -208,8 +241,8 @@ public class Weapon : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             distance = 0;
-            float shiftPodLeft = firePoint.position.x - baseShotDistanceBetweenShots * 2;
-            float shiftPodRight = firePoint.position.x + baseShotDistanceBetweenShots * 2;
+            float shiftPodLeft = firePoint.position.x - baseShotDistanceBetweenShots / 3;
+            float shiftPodRight = firePoint.position.x + baseShotDistanceBetweenShots / 3;
             podLeft.transform.position = new Vector3(shiftPodLeft, podLeft.transform.position.y, podLeft.transform.position.z);
             podRight.transform.position = new Vector3(shiftPodRight, podLeft.transform.position.y, podLeft.transform.position.z);
             bulletRotation2 = bulletRotation1;
@@ -223,16 +256,15 @@ public class Weapon : MonoBehaviour
             bulletRotation3 = Quaternion.Euler(0, -90 - podSprayStrength, 0);
         }
 
-        InstantiatePool( new Vector3(podLeft.transform.position.x + baseShotDistanceBetweenShots / 2 - distance, podLeft.transform.position.y-0.1f, podLeft.transform.position.z), bulletRotation1);
+        InstantiatePool( new Vector3(podLeft.transform.position.x + baseShotDistanceBetweenShots / 2 - distance-distance, podLeft.transform.position.y-0.1f, podLeft.transform.position.z), bulletRotation1);
         InstantiatePool( new Vector3(podLeft.transform.position.x - baseShotDistanceBetweenShots/2, podLeft.transform.position.y - 0.1f, podLeft.transform.position.z), bulletRotation3);
-        InstantiatePool( new Vector3(podRight.transform.position.x - baseShotDistanceBetweenShots / 2 + distance , podRight.transform.position.y-0.1f, podRight.transform.position.z), bulletRotation1);
+        InstantiatePool( new Vector3(podRight.transform.position.x - baseShotDistanceBetweenShots / 2 + distance+distance , podRight.transform.position.y-0.1f, podRight.transform.position.z), bulletRotation1);
         InstantiatePool( new Vector3(podRight.transform.position.x + baseShotDistanceBetweenShots/2, podRight.transform.position.y - 0.1f, podRight.transform.position.z), bulletRotation2);
     }
 
     //Player Level 5
     void PlayerWeapon5()
     {
-
         if (Input.GetKey(KeyCode.LeftShift))
         {
             bulletRotation1 = Quaternion.Euler(0, -90 - shiftPodSprayStrength, 0);
@@ -262,7 +294,6 @@ public class Weapon : MonoBehaviour
         pooledObjects[bulletNr].SetActive(true);
         //pooledObjects[bulletNr].GetComponent<ParticleSystem>().Play();
         bulletNr++;
-        if (bulletNr > pooledAmount-1) bulletNr = 0;
-       
+        if (bulletNr > pooledAmount-1) bulletNr = 0;       
     }
 }

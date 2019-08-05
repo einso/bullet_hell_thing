@@ -9,11 +9,13 @@ public class PlayerLife : MonoBehaviour
     int side;
     float rot;
 
+    public GameObject manager;
     public GameObject lifeBarPar; //Players Life Bar Parent
     public GameObject lifeBar; //Players Life Bar
     public GameObject capsule;
     public GameObject hbEmission1; 
-    public GameObject hbEmission2; 
+    public GameObject hbEmission2;
+    public GameObject UI;
 
     float blinkSpeed = 0.1f;   //BlinkSpeed
     float amountOfBlinks = 5;
@@ -23,9 +25,9 @@ public class PlayerLife : MonoBehaviour
     [Space(10)]
     [Header("Camerashake On-Hit Settings")]
     public float magnitude = 0.15f;
-    public float roughness = 0.15f;
+    public float roughness = 0.15f; 
     public float fadeInTime = 0.15f;
-    public float fadeOutTime = 0.15f;
+    public float fadeOutTime = 0.15f; 
 
     //update
     void Update()
@@ -56,9 +58,15 @@ public class PlayerLife : MonoBehaviour
             //Collision with Enemy Bullet
             if (other.gameObject.tag == "EnemyBullet")
             {
+                if (other.GetComponent<BulletFix>() != null)
+                {
+                    manager.GetComponent<Manager>().WaveEnemyNr--;
+                }
+
                 TakeDamage(other.GetComponent<EnemyBullet>().damage);  //Damage Calculation
                 other.gameObject.SetActive(false); //Destroy Enemy Bullet
                 CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
+
             }
 
             //Collision with Enemy
@@ -78,9 +86,19 @@ public class PlayerLife : MonoBehaviour
             hbEmission2.SetActive(false);
             capsule.SetActive(false);
             gameObject.GetComponent<PlayerMovement>().enabled = false;
+            UI.SetActive(false);
             alive = false;
             rot = Random.Range(25, 360);
             side = Random.Range(0, 2);
+
+            //Check For Highscore            
+            if(manager.GetComponent<Manager>().scoreCount > PlayerPrefs.GetFloat("HighestScore"))
+            {
+                PlayerPrefs.SetFloat("HighestScore", manager.GetComponent<Manager>().scoreCount);
+            }
+
+            Debug.Log("HIGHSCORE: "+ PlayerPrefs.GetFloat("HighestScore"));
+
         }
     }
 
@@ -108,7 +126,7 @@ public class PlayerLife : MonoBehaviour
         lifeBarPar.SetActive(true); //Set Lifebar Active
         SetLifebarPos = true;   //Set bool true to position the lifebar in update        
         lifeBar.transform.localScale = new Vector3(lifeBar.transform.localScale.x - 0.02f*damage, lifeBar.transform.localScale.y, lifeBar.transform.localScale.z); //Shrink life bar on hit
-        lifeBar.transform.localPosition = new Vector3(lifeBar.transform.localPosition.x, lifeBar.transform.localPosition.y, lifeBar.transform.localPosition.z - 0.116f*damage); //Position Correction lifebar
+        lifeBar.transform.localPosition = new Vector3(lifeBar.transform.localPosition.x + 0.116f * damage, lifeBar.transform.localPosition.y,lifeBar.transform.localRotation.z); //Position Correction lifebar
         if(health > 0) StartCoroutine(toggleInvincibility()); //Toggle invincibility if hit
         //StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.6f, 0.5f)); //Camera Shake
     }

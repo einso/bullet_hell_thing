@@ -36,7 +36,7 @@ public class PlayerAbilities : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {       
         if (Time.timeScale > 0 && Player.activeInHierarchy)
         {
             //NEW NUKE
@@ -49,10 +49,13 @@ public class PlayerAbilities : MonoBehaviour
 
             IEnumerator NukeProcess(float Loading)
             {
+                Player.transform.GetChild(0).GetComponent<Weapon>().enabled = false;
+                Player.transform.GetComponent<Animator>().enabled = false;
                 nuky = Instantiate(miniNuke);
                 nuky.transform.parent = Player.transform;
-                nuky.transform.localPosition = new Vector3(-2.1f, 3, 0);
+                nuky.transform.localPosition = new Vector3(-1.5f, 1.9f, 0);
                 yield return new WaitForSeconds(Loading);
+                Player.transform.GetChild(0).GetComponent<Weapon>().enabled = true;
                 moveNuke = true;
                 nuky.transform.GetChild(1).gameObject.SetActive(true);
                 nuky.transform.parent = null;

@@ -11,6 +11,7 @@ public class EnemyLife : MonoBehaviour
     public GameObject HitEnemyParticle;
     public GameObject DestroyEnemyParticle;
     public GameObject miniNuke;
+    public GameObject NukeEffect;
     GameObject Manager;
     public float health = 1;
     bool destroy;
@@ -20,6 +21,9 @@ public class EnemyLife : MonoBehaviour
     public float giveMana = 30;
     GameObject boomy;
     bool targetThis;
+
+    Vector3 monsterSize;
+    Vector3 monsterSize2;
 
     void Awake()
     {
@@ -31,6 +35,10 @@ public class EnemyLife : MonoBehaviour
 
         //get Color
         color = spriteRenderer.color;
+
+        //take Size
+        monsterSize = transform.localScale;
+        monsterSize2 = new Vector3(monsterSize.x *1.1f, monsterSize.y *1.1f, monsterSize.z*1.1f); 
     }
 
 
@@ -41,10 +49,18 @@ public class EnemyLife : MonoBehaviour
         {
             health -= 1;
             Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            StartCoroutine(PopMonster());
             StartCoroutine(HitVFX());
         }
 
-        CheckHealth();
+        CheckHealth(true);
+    }
+
+    IEnumerator PopMonster()
+    {
+        transform.localScale = monsterSize2;
+        yield return new WaitForSeconds(0.055f);
+        transform.localScale = monsterSize;
     }
 
     void Update()
@@ -77,7 +93,7 @@ public class EnemyLife : MonoBehaviour
          }*/
 
         //Nuke 
-        if(Manager.GetComponent<PlayerAbilities>().splitNuke)
+        if(Manager.GetComponent<PlayerAbilities>().splitNuke && transform.position.z < 15)
         {
             boomy = Instantiate(miniNuke, Manager.GetComponent<PlayerAbilities>().nuky.transform.position, Quaternion.Euler(90, 0, 0)); //Spawn new Nuke
             boomy.transform.GetChild(1).gameObject.SetActive(true); //Activate trail effect
@@ -96,22 +112,23 @@ public class EnemyLife : MonoBehaviour
                 health -= Manager.GetComponent<PlayerAbilities>().nukeDamage;
                 Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
                 StartCoroutine(HitVFX());
+                StartCoroutine(PopMonster());
                 Destroy(boomy);
-                CheckHealth();
-                targetThis = false;
+                CheckHealth(false);
+                targetThis = false;                
             }
         }
 
     }
 
-    public void CheckHealth()
+    public void CheckHealth(bool lootXP)
     {
         if (health <= 0)
         {
             Destroy(boomy);
             health = 100; //BugFix: when 2 bullets hit the enemy at the same time, only one hit counts so that the score does not get caculated twice...
             Destroy(this.gameObject);
-            Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle);
+            Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle, lootXP);
 
             //Destroy            
             DestroyEnemyC();

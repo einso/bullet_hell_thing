@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
     public GameObject gSettings;
     public GameObject gControls;
     public GameObject gCredits;
+    public GameObject LoadingScreen;
+    public GameObject LoadingBar;
 
     [Header("Animation Controller")]
     public Animator[] animMainmenu;
@@ -32,6 +34,8 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        gMainMenü.SetActive(true);
+
         resolutions = Screen.resolutions;
 
         resolutionDroptown.ClearOptions();
@@ -72,7 +76,9 @@ public class MainMenu : MonoBehaviour
 
     public void StartLevel()
     {
-        Invoke("MainMenu_To_Level", 3);
+        Invoke("MainMenu_To_Level", 0);
+        
+
     }
     public void Quit()
     {
@@ -160,6 +166,7 @@ public class MainMenu : MonoBehaviour
         gControls.SetActive(false);
         gCredits.SetActive(false);
         gMainMenü.SetActive(true);
+        Debug.Log("miau1");
     }
     void Settings_Go_To_Sound()
     {
@@ -181,8 +188,22 @@ public class MainMenu : MonoBehaviour
     }
     void MainMenu_To_Level()
     {
-        SceneManager.LoadScene(1);
+        LoadingScreen.SetActive(true);
+        StartCoroutine(LoadAsynchronously());
     }
+
+    IEnumerator LoadAsynchronously ()
+    {
+         AsyncOperation operation = SceneManager.LoadSceneAsync(1);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            LoadingBar.GetComponent<Slider>().value = progress;
+            yield return null;
+        }
+    }
+
     void MainMenu_To_Quit()
     {
         Application.Quit();

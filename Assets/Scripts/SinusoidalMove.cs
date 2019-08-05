@@ -246,7 +246,6 @@ public class SinusoidalMove : MonoBehaviour
                 facingRight = true;
                 shootingTime = false;
                 randomPos = Random.Range(0, 3);
-                Debug.Log(randomPos);
             }
 
         }
