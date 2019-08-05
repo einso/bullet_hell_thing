@@ -158,7 +158,7 @@ public class MainMenu : MonoBehaviour
     {
         gMainMenü.SetActive(false);
         gCredits.SetActive(true);
-        Invoke("Back_To_MainMenu", 55);
+        Invoke("Back_To_MainMenu", 20);
     }
     void Back_To_MainMenu()
     {

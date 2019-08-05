@@ -34,8 +34,8 @@ public class HSController : MonoBehaviour
 	}
 
 	private string secretKey = "123456789"; // Edit this value and make sure it's the same as the one stored on the server
-	string addScoreURL = "tutorial.bplaced.net/addscore.php?"; //be sure to add a ? to your url
-	string highscoreURL = "tutorial.bplaced.net/display.php";
+	string addScoreURL = "scorebht.bplaced.net/addscore.php?"; //be sure to add a ? to your url
+	string highscoreURL = "scorebht.bplaced.net/display.php";
 
 	//for testing
 	public string uniqueID;
@@ -59,9 +59,9 @@ public class HSController : MonoBehaviour
 	public void updateOnlineHighscoreData()
 	{
 		// uniqueID,name3 and score will get the actual value before posting score
-		uniqueID = "123456789"; //Replace this TestScript variable into your game-variables
-		name3 = "Testname";
-		score = 1000;
+		uniqueID = "123456788"; //Replace this TestScript variable into your game-variables
+		name3 = "Testname1";
+		score = 10000;
 	}
 
 	public  string Md5Sum(string strToEncrypt)
