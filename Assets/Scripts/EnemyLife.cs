@@ -54,7 +54,7 @@ public class EnemyLife : MonoBehaviour
         }
 
         if(Manager.GetComponent<PlayerAbilities>().timeSlow) CheckHealth(false); //Dont give mana when time slow is on
-        else CheckHealth(true); //give mana when timeslow is off
+        else CheckHealth(true); //give mana when timeslow is off 
     }
 
     IEnumerator PopMonster()
