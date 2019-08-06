@@ -4912,6 +4912,8 @@ MonoBehaviour:
   damage: 1
   speed: 2
   rb: {fileID: 6361607847503917791}
+  shouldTriggerBulletFix: 0
+  manager: {fileID: 0}
 --- !u!199 &823045887
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -7568,7 +7570,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2

@@ -9,11 +9,13 @@ public class PlayerLife : MonoBehaviour
     int side;
     float rot;
 
+    public GameObject manager;
     public GameObject lifeBarPar; //Players Life Bar Parent
     public GameObject lifeBar; //Players Life Bar
     public GameObject capsule;
     public GameObject hbEmission1; 
-    public GameObject hbEmission2; 
+    public GameObject hbEmission2;
+    public GameObject UI;
 
     float blinkSpeed = 0.1f;   //BlinkSpeed
     float amountOfBlinks = 5;
@@ -56,9 +58,15 @@ public class PlayerLife : MonoBehaviour
             //Collision with Enemy Bullet
             if (other.gameObject.tag == "EnemyBullet")
             {
+                if (other.GetComponent<BulletFix>() != null)
+                {
+                    manager.GetComponent<Manager>().WaveEnemyNr--;
+                }
+
                 TakeDamage(other.GetComponent<EnemyBullet>().damage);  //Damage Calculation
                 other.gameObject.SetActive(false); //Destroy Enemy Bullet
                 CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
+
             }
 
             //Collision with Enemy
@@ -78,9 +86,19 @@ public class PlayerLife : MonoBehaviour
             hbEmission2.SetActive(false);
             capsule.SetActive(false);
             gameObject.GetComponent<PlayerMovement>().enabled = false;
+            UI.SetActive(false);
             alive = false;
             rot = Random.Range(25, 360);
             side = Random.Range(0, 2);
+
+            //Check For Highscore            
+            if(manager.GetComponent<Manager>().scoreCount > PlayerPrefs.GetFloat("HighestScore"))
+            {
+                PlayerPrefs.SetFloat("HighestScore", manager.GetComponent<Manager>().scoreCount);
+            }
+
+            Debug.Log("HIGHSCORE: "+ PlayerPrefs.GetFloat("HighestScore"));
+
         }
     }
 
