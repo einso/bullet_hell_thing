@@ -76,7 +76,7 @@ public class Weapon : MonoBehaviour
     {
         t = t + 1 * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Space) && t > delay)
+        if (Input.GetButton("Fire") && t > delay)
         {            
             if(Baseshot)
             {
@@ -126,7 +126,7 @@ public class Weapon : MonoBehaviour
 
         }
         
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetButton("Fire"))
         {
             transform.parent.GetComponent<Animator>().enabled = true;
             
@@ -136,11 +136,11 @@ public class Weapon : MonoBehaviour
         {
             transform.parent.GetComponent<Animator>().enabled = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Fire"))
         { playerShotSound.Play(); }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetButtonUp("Fire"))
         { playerShotSound.Stop(); }
-
+        
     }
 
     //BaseShot
