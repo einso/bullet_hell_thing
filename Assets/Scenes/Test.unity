@@ -13796,6 +13796,11 @@ PrefabInstance:
       propertyPath: moveDown
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7598003688045625050, guid: 26caba66ca2daa34fb54a7529ead970f,
+        type: 3}
+      propertyPath: patternMovement4
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26caba66ca2daa34fb54a7529ead970f, type: 3}
 --- !u!1001 &223918910
@@ -29132,7 +29137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &653260036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78582,7 +78587,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1914265159194139927}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802247901}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94d872c24a845534faf27294c3748ecf, type: 3}
   m_Name: 
@@ -83176,8 +83181,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942537987}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.959999, y: 0, z: -4.1738667}
-  m_LocalScale: {x: 4.3081436, y: 4.3081436, z: 4.3081436}
+  m_LocalPosition: {x: 15.53, y: 1.11, z: -4.17}
+  m_LocalScale: {x: 2.005971, y: 1.5675611, z: 1.5675611}
   m_Children: []
   m_Father: {fileID: 38249144}
   m_RootOrder: 3
@@ -83219,12 +83224,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -30
-  m_Sprite: {fileID: 21300000, guid: 26e70df7988fa1641b12da38d33647a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00ecc73e8081f184cb26bfc72286b4ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 3}
+  m_Size: {x: 8.4, y: 6.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -86514,6 +86519,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dodger
       objectReference: {fileID: 0}
+    - target: {fileID: 3343968489603122115, guid: 059548685f317f842bc87dd2136c4894,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3343968489603122127, guid: 059548685f317f842bc87dd2136c4894,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -87564,7 +87574,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2084702722 stripped
@@ -89393,6 +89403,11 @@ PrefabInstance:
       propertyPath: backgroundLayers
       value: 
       objectReference: {fileID: 1658866087}
+    - target: {fileID: 1914265159816201161, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: enemyProbabilities.Array.size
