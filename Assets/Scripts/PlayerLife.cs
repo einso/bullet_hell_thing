@@ -109,6 +109,7 @@ public class PlayerLife : MonoBehaviour
         alive = true;
         gameObject.SetActive(false);
         FindObjectOfType<Manager>().PlayerDeath();  //Game Over Screen
+        FindObjectOfType<Manager>().enabled = false;
     }
 
     //Damage Calculation

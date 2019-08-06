@@ -1578,6 +1578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 358547442}
   scrollSpeed: 3
   ResetPoint: 53
 --- !u!4 &38364279 stripped
@@ -16455,6 +16456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 358547442}
   scrollSpeed: 6
   ResetPoint: 44.9
 --- !u!1 &274897829 stripped
@@ -24482,6 +24484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 0}
   scrollSpeed: 0.5
   ResetPoint: 0
 --- !u!4 &468339096 stripped
@@ -45415,6 +45418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 0}
   scrollSpeed: 0
   ResetPoint: 0
 --- !u!1001 &1108775762
@@ -55219,6 +55223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 358547442}
   scrollSpeed: 14
   ResetPoint: 80
 --- !u!4 &1240982815 stripped
@@ -56020,6 +56025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 0}
   scrollSpeed: 0
   ResetPoint: 0
 --- !u!1001 &1268549277
@@ -72333,6 +72339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 0}
   scrollSpeed: 1
   ResetPoint: 0
 --- !u!4 &1598060278 stripped
@@ -77018,6 +77025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 0}
   scrollSpeed: 0.25
   ResetPoint: 0
 --- !u!1 &1715990668
@@ -81583,6 +81591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd15d41ea31ca374f9027139cd357005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathScreen: {fileID: 0}
   scrollSpeed: -40
   ResetPoint: 0
 --- !u!1 &1847042570 stripped
