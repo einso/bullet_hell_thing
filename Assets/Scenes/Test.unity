@@ -26451,10 +26451,10 @@ MonoBehaviour:
   scoremanager: {fileID: 1802247902}
   yourscore: {fileID: 1489289384}
   yourname: {fileID: 1802994094}
-  inputfield: {fileID: 0}
-  enterbutton: {fileID: 0}
-  usertext: {fileID: 0}
-  usernametext: {fileID: 0}
+  inputfield: {fileID: 1802994092}
+  enterbutton: {fileID: 505265353}
+  usertext: {fileID: 1710848829}
+  usernametext: {fileID: 1710848831}
   username: 
 --- !u!4 &526296397 stripped
 Transform:
