@@ -91241,6 +91241,11 @@ PrefabInstance:
       propertyPath: nukepng
       value: 
       objectReference: {fileID: 85702370}
+    - target: {fileID: 1914265159816201201, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: nukeDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1802247903, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
       propertyPath: bar
       value: 
