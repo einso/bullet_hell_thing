@@ -90,15 +90,7 @@ public class PlayerLife : MonoBehaviour
             alive = false;
             rot = Random.Range(25, 360);
             side = Random.Range(0, 2);
-
-            //Check For Highscore            
-            if(manager.GetComponent<Manager>().scoreCount > PlayerPrefs.GetFloat("HighestScore"))
-            {
-                PlayerPrefs.SetFloat("HighestScore", manager.GetComponent<Manager>().scoreCount);
-            }
-
-            Debug.Log("HIGHSCORE: "+ PlayerPrefs.GetFloat("HighestScore"));
-
+            GetComponent<PlayerSounds>().PlayDeathSound(); // Player Death Sound
         }
     }
 
@@ -117,6 +109,7 @@ public class PlayerLife : MonoBehaviour
         alive = true;
         gameObject.SetActive(false);
         FindObjectOfType<Manager>().PlayerDeath();  //Game Over Screen
+        FindObjectOfType<Manager>().enabled = false;
     }
 
     //Damage Calculation
@@ -128,6 +121,8 @@ public class PlayerLife : MonoBehaviour
         lifeBar.transform.localScale = new Vector3(lifeBar.transform.localScale.x - 0.02f*damage, lifeBar.transform.localScale.y, lifeBar.transform.localScale.z); //Shrink life bar on hit
         lifeBar.transform.localPosition = new Vector3(lifeBar.transform.localPosition.x + 0.116f * damage, lifeBar.transform.localPosition.y,lifeBar.transform.localRotation.z); //Position Correction lifebar
         if(health > 0) StartCoroutine(toggleInvincibility()); //Toggle invincibility if hit
+        GetComponent<PlayerSounds>().PlayDamageSound(); //Player Damage Sound
+
         //StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.6f, 0.5f)); //Camera Shake
     }
 

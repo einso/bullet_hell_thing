@@ -45,6 +45,7 @@ public class PlayerAbilities : MonoBehaviour
                 nukeInProcess = true;
                 GetComponent<ManaBar>().manaAmount -= manaCostNuke;
                 StartCoroutine(NukeProcess(1));
+                Player.GetComponent<PlayerSounds>().PlayNukeSound();
             }
 
             IEnumerator NukeProcess(float Loading)
