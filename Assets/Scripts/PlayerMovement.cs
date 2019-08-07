@@ -35,13 +35,13 @@ public class PlayerMovement : MonoBehaviour
 
         //Calculate Acceleration
         //Vertical
-        moveVerti += acceleration * Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.LeftShift)) moveVerti = Mathf.Clamp(moveVerti, -playerShiftSpeed, playerShiftSpeed);
+        moveVerti -= acceleration * Input.GetAxis("Vertical");
+        if (Input.GetButton("Precision")) moveVerti = Mathf.Clamp(moveVerti, -playerShiftSpeed, playerShiftSpeed);
         else moveVerti = Mathf.Clamp(moveVerti, -playerMoveSpeed, playerMoveSpeed);
 
         //Horizontal
         moveHori += acceleration * Input.GetAxis("Horizontal");
-        if (Input.GetKey(KeyCode.LeftShift)) moveHori = Mathf.Clamp(moveHori, -playerShiftSpeed, playerShiftSpeed);
+        if (Input.GetButton("Precision")) moveHori = Mathf.Clamp(moveHori, -playerShiftSpeed, playerShiftSpeed);
         else moveHori = Mathf.Clamp(moveHori, -playerMoveSpeed, playerMoveSpeed);
 
         //Calculate Decceleration

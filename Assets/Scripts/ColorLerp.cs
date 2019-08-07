@@ -19,7 +19,7 @@ public class ColorLerp : MonoBehaviour
         if (goDark)
         {
             t += 1 * Time.deltaTime;
-            if (t > 250) goDark = false;            
+            if (t > 235) goDark = false;            
         }
         else
         {
