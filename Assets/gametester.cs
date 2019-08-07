@@ -23,7 +23,11 @@ public class gametester : MonoBehaviour
         print(scoremanager.scoreCount);
         username = yourname.text;
 
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            eventSys.GetComponent<EventSystem>().SetSelectedGameObject(restart);
+        }
+
     }
     public void Loghighscore()
     {
