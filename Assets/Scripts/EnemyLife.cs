@@ -55,7 +55,7 @@ public class EnemyLife : MonoBehaviour
             Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
             StartCoroutine(PopMonster());
             StartCoroutine(HitVFX());
-            Player.GetComponent<PlayerSounds>().EnemyHitSound();  //Play Hit Sound
+            //Player.GetComponent<PlayerSounds>().EnemyHitSound();  //Play Hit Sound
         }
 
         if(Manager.GetComponent<PlayerAbilities>().timeSlow) CheckHealth(false); //Dont give mana when time slow is on

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502697, g: 0.37139347, b: 0.49601266, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11768,8 +11768,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c491ba311d0296349bca944b0eb009d6, type: 3}
   - {fileID: 8300000, guid: 4dfe9f6c2bc36794bbc3a66003b25ade, type: 3}
   enemyDeath: {fileID: 8300000, guid: 1b754c32f4f98d64ab6d71a2ba73b94e, type: 3}
-  enemyHit: {fileID: 8300000, guid: de444610104f87645a47556a436abc7b, type: 3}
-  playerAttack: {fileID: 8300000, guid: b680b708056f4d743b69ed06e60e9254, type: 3}
+  enemyHit: {fileID: 0}
+  playerAttack: {fileID: 0}
 --- !u!82 &175833666
 AudioSource:
   m_ObjectHideFlags: 0
@@ -91302,6 +91302,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: enemyProbabilities.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: EnemyBullets
+      value: 
+      objectReference: {fileID: 569120826}
+    - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: EnemyBullets
+      value: 
+      objectReference: {fileID: 569120826}
     - target: {fileID: 1914265159816201201, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: PauseMenu
@@ -91362,6 +91377,11 @@ PrefabInstance:
       propertyPath: eBar
       value: 
       objectReference: {fileID: 57337997}
+    - target: {fileID: 6045846052053974019, guid: 2c3398686f375d44980fe4befe77d582,
+        type: 3}
+      propertyPath: EnemyBullets
+      value: 
+      objectReference: {fileID: 569120826}
     - target: {fileID: 7374705718156533934, guid: 2c3398686f375d44980fe4befe77d582,
         type: 3}
       propertyPath: pooledAmount
@@ -91399,26 +91419,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5023740037609329906, guid: 72cc2dd098245ae49a14a9e0dbd3888e,
         type: 3}
-    - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: enemyProbabilities.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: EnemyBullets
-      value: 
-      objectReference: {fileID: 569120826}
-    - target: {fileID: 1914265159816201205, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: EnemyBullets
-      value: 
-      objectReference: {fileID: 569120826}
-    - target: {fileID: 6045846052053974019, guid: 2c3398686f375d44980fe4befe77d582,
-        type: 3}
-      propertyPath: EnemyBullets
-      value: 
-      objectReference: {fileID: 569120826}
     m_RemovedComponents:
     - {fileID: 5130083719380372123, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c3398686f375d44980fe4befe77d582, type: 3}
