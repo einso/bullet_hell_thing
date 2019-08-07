@@ -256,7 +256,7 @@ MonoBehaviour:
     type: 3}
   NukeEffect: {fileID: 6806279155261601982, guid: fa83e9333d7efc24b931f1279c420ab0,
     type: 3}
-  health: 2
+  health: 4
   giveMana: 60
 --- !u!65 &3459595133501060891
 BoxCollider:
