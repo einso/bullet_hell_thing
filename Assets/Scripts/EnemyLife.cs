@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
+    GameObject Player;
     Color32 color;
     SpriteRenderer spriteRenderer;
     public GameObject EnemyProjectilePrefab;
@@ -30,6 +31,9 @@ public class EnemyLife : MonoBehaviour
         //Get Manager
         Manager = GameObject.Find("Manager");
 
+        //Get Player
+        Player = GameObject.Find("Player");
+
         //Get Child SpriteRender
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
@@ -51,6 +55,7 @@ public class EnemyLife : MonoBehaviour
             Instantiate(HitEnemyParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
             StartCoroutine(PopMonster());
             StartCoroutine(HitVFX());
+            Player.GetComponent<PlayerSounds>().EnemyHitSound();  //Play Hit Sound
         }
 
         if(Manager.GetComponent<PlayerAbilities>().timeSlow) CheckHealth(false); //Dont give mana when time slow is on
@@ -130,6 +135,7 @@ public class EnemyLife : MonoBehaviour
             health = 100; //BugFix: when 2 bullets hit the enemy at the same time, only one hit counts so that the score does not get caculated twice...
             Destroy(this.gameObject);
             Manager.GetComponent<Manager>().EnemyDeathEvent(Manager, gameObject, scoreFeedbackPrefab, HitEnemyParticle, DestroyEnemyParticle, lootXP);
+            Player.GetComponent<PlayerSounds>().EnemyDeathSound();  //Play Death Sound
 
             //Destroy            
             DestroyEnemyC();

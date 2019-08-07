@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public PlayerSounds playerSounds;
+
     public bool Baseshot;
     public bool Playerlevel1;
     public bool Playerlevel2;
@@ -77,8 +79,10 @@ public class Weapon : MonoBehaviour
         t = t + 1 * Time.deltaTime;
 
         if (Input.GetButton("Fire") && t > delay)
-        {            
-            if(Baseshot)
+        {
+            playerSounds.PlayAttackSound();
+
+            if (Baseshot)
             {
                 if (pod.GetComponent<SpriteRenderer>().enabled == true) pod.GetComponent<SpriteRenderer>().enabled = false;
                 if (podLeft.GetComponent<SpriteRenderer>().enabled == true) podLeft.GetComponent<SpriteRenderer>().enabled = false;
@@ -129,17 +133,13 @@ public class Weapon : MonoBehaviour
         if (Input.GetButton("Fire"))
         {
             transform.parent.GetComponent<Animator>().enabled = true;
-            
         }
 
         else
         {
             transform.parent.GetComponent<Animator>().enabled = false;
         }
-        if (Input.GetButtonDown("Fire"))
-        { playerShotSound.Play(); }
-        if (Input.GetButtonUp("Fire"))
-        { playerShotSound.Stop(); }
+
         
     }
 

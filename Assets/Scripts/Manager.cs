@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 
 public class Manager : MonoBehaviour
 {
-
+    public float changeButtonSize = 1.2f;
     public bool GodMode;
     [Space(20)]
 
@@ -708,7 +708,7 @@ public class Manager : MonoBehaviour
 
         unselectedTrans = g.transform;
 
-        g.transform.localScale = unselectedTrans.localScale * 1.2f;
+        g.transform.localScale = unselectedTrans.localScale * changeButtonSize;
     }
 
     public void DeSelectButton()

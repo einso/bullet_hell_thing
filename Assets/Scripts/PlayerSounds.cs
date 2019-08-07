@@ -7,6 +7,9 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip[] playerDamage;
     public AudioClip[] playerDeath;
     public AudioClip[] playerNuke;
+    public AudioClip enemyDeath;
+    public AudioClip enemyHit;
+    public AudioClip playerAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,31 @@ public class PlayerSounds : MonoBehaviour
     {
         int ran = Random.Range(0, 2);
         audio.clip = playerDeath[ran];
+        audio.Play();
+    }
+
+    public void PlayAttackSound()
+    {
+        audio.clip = playerAttack;
+        audio.Play();
+    }
+
+    public void StopAttackSound()
+    {
+        audio.Stop();
+    }
+
+    public void EnemyHitSound()
+    {
+
+        audio.clip = enemyDeath;
+        audio.Play();
+    }
+
+    public void EnemyDeathSound()
+    {
+
+        audio.clip = enemyDeath;
         audio.Play();
     }
 }

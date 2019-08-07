@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
+    public float changeButtonSize;
     public GameObject eve;
     public GameObject g;
     Transform unselectedTrans;
@@ -241,7 +242,7 @@ public class MainMenu : MonoBehaviour
 
         unselectedTrans = g.transform;
 
-        g.transform.localScale = unselectedTrans.localScale * 1.2f;
+        g.transform.localScale = unselectedTrans.localScale * changeButtonSize;
     }
 
     public void DeSelectButton()
