@@ -196,10 +196,7 @@ public class SinusoidalMove : MonoBehaviour
         }
         else
         {
-            pos -= transform.right * Time.deltaTime * 2;
-            transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
-            GetComponentInChildren<EnemyWeapon>().enabled = false;
-            if (transform.position.z > 20) gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
