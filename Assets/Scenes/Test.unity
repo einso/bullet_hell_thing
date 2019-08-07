@@ -11837,15 +11837,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 175833666}
   playerDamage:
-  - {fileID: 8300000, guid: 86d8d7732fd0f264a97166328c958964, type: 3}
-  - {fileID: 8300000, guid: 5f34035611425c349a474b776d4b4f8c, type: 3}
-  - {fileID: 8300000, guid: eb3142bbeb1d4a84d89e588a8b3f5ae0, type: 3}
+  - {fileID: 8300000, guid: 02c7110720c084046beb818a835c5fc7, type: 3}
+  - {fileID: 8300000, guid: add942d0a4bfbf846a23cdedfabf8453, type: 3}
+  - {fileID: 8300000, guid: 53e45eaabb70dd94a984538f6f36f3b7, type: 3}
   playerDeath:
-  - {fileID: 8300000, guid: 39799663d5dc99b4eb3fb8f0ab3b88f7, type: 3}
-  - {fileID: 8300000, guid: 2cf1b9a6ebedc2846be95e2361a81580, type: 3}
+  - {fileID: 8300000, guid: ce9f804d08f1dec4f8fe27a6980587b5, type: 3}
+  - {fileID: 8300000, guid: 4143fcee67a911d48a2c500e9a990f6a, type: 3}
   playerNuke:
-  - {fileID: 8300000, guid: 6526bf370b636684a907608e42bed5dc, type: 3}
-  - {fileID: 8300000, guid: 862b01d311d5fd94c8802561404b724b, type: 3}
+  - {fileID: 8300000, guid: c491ba311d0296349bca944b0eb009d6, type: 3}
+  - {fileID: 8300000, guid: 4dfe9f6c2bc36794bbc3a66003b25ade, type: 3}
 --- !u!82 &175833666
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11856,8 +11856,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 86d8d7732fd0f264a97166328c958964, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 02c7110720c084046beb818a835c5fc7, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
