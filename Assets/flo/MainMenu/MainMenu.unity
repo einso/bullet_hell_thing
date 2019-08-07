@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3052,7 +3052,7 @@ RectTransform:
   m_GameObject: {fileID: 481965984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.1339, z: 1}
   m_Children: []
   m_Father: {fileID: 1305655283}
   m_RootOrder: 7
@@ -4612,7 +4612,7 @@ RectTransform:
   m_GameObject: {fileID: 844994627}
   m_LocalRotation: {x: -0, y: -0, z: -0.6449396, w: 0.7642335}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.223, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1305655283}
   m_RootOrder: 10
@@ -6049,7 +6049,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Fullscren
+  m_Text: 'Fullscreen
 
 '
 --- !u!222 &1051784107
@@ -8916,7 +8916,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1627079379}
-    characterCount: 7
+    characterCount: 8
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
