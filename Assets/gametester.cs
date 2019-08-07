@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class gametester : MonoBehaviour
 {
+    public EventSystem eventSys;
+    public GameObject restart;
     public Manager scoremanager;
     public Text yourscore;
     public InputField yourname;
@@ -29,5 +32,7 @@ public class gametester : MonoBehaviour
         inputfield.SetActive(false);
         enterbutton.SetActive(false);
         Higscore_dreamlo.AddNewHighscore(username, (int)scoremanager.scoreCount);
+        eventSys.GetComponent<EventSystem>().SetSelectedGameObject(restart);
+        yourscore.transform.position = new Vector3(restart.transform.position.x - 50, restart.transform.position.y+ 115,0);
     }
 }
