@@ -76,125 +76,132 @@ public class SinusoidalMove : MonoBehaviour
             enabled = false;
         }
 
-        //Start Pos
-        MoveDown();
-
-        //Move Pattern
-        if(patternMovement1)
+        if(player.activeInHierarchy)
         {
-            if (movedDown)
-            {
-                CheckWhereToFace();
+            //Start Pos
+            MoveDown();
 
-                if (facingRight)
-                    MoveRight();
-                else
-                    MoveLeft();
+            //Move Pattern
+            if (patternMovement1)
+            {
+                if (movedDown)
+                {
+                    CheckWhereToFace();
+
+                    if (facingRight)
+                        MoveRight();
+                    else
+                        MoveLeft();
+                }
             }
-        }
 
-        if(patternMovement2)
-        {
-            TakeTImeToShoot();
-        }
-
-        if(patternMovement3)
-        {
-            
-
-            if (transform.position.z > 5)
+            if (patternMovement2)
             {
-                shootingTime = false;
+                TakeTImeToShoot();
+            }
+
+            if (patternMovement3)
+            {
+
+
+                if (transform.position.z > 5)
+                {
+                    shootingTime = false;
+                    pos += transform.right * Time.deltaTime * moveSpeed;
+                    transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+                }
+                else
+                {
+                    shootingTime = true;
+                    /* pos += transform.right * Time.deltaTime * 1;
+                     transform.GetChild(0).transform.position = pos + transform.forward * Mathf.Sin(Time.time * 90f) *1f;*/
+                }
+
+                //  pos += transform.right * Time.deltaTime * 3;
+                //  transform.position = pos + transform.forward * Mathf.Sin(Time.time * 1) * 2f;
+            }
+
+            if (patternMovement4)
+            {
+
                 pos += transform.right * Time.deltaTime * moveSpeed;
                 transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
-            }
-            else
-            {
-                shootingTime = true;
-               /* pos += transform.right * Time.deltaTime * 1;
-                transform.GetChild(0).transform.position = pos + transform.forward * Mathf.Sin(Time.time * 90f) *1f;*/
-            }
 
-          //  pos += transform.right * Time.deltaTime * 3;
-          //  transform.position = pos + transform.forward * Mathf.Sin(Time.time * 1) * 2f;
-        }
-
-        if (patternMovement4)
-        {
-
-            pos += transform.right * Time.deltaTime * moveSpeed;
-            transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
-
-            if(transform.position.z <= -20f)
-            {
-                //MinusWaveNumber
-                FindObjectOfType<Manager>().WaveEnemyNr--;
-                Destroy(gameObject);
-            }
-        }
-
-        if (patternMovement5)
-        {
-            Vector3 playerPos = player.transform.position;
-            pos = transform.position;
-
-            if (pos.x > playerPos.x - player.transform.localScale.x / 2 && pos.x < playerPos.x + player.transform.localScale.x / 2)
-            {
-
-            }
-            else if (pos.x < playerPos.x) pos = new Vector3(pos.x + 1 * moveSpeed * Time.deltaTime, pos.y, pos.z);
-            else if (pos.x > playerPos.x) pos = new Vector3(pos.x - 1 * moveSpeed * Time.deltaTime, pos.y, pos.z);
-
-            transform.position = pos;
-        }
-
-        if(patternMovement6)
-        {
-            if (pos.x <= -3f)
-            {
-
-                t += 1 * Time.deltaTime;
-                shootingTime = true;
-
-                if (t > 3)
+                if (transform.position.z <= -20f)
                 {
-                    MoveRight();
-                    facingRight = true;
-                    shootingTime = false;                    
+                    //MinusWaveNumber
+                    FindObjectOfType<Manager>().WaveEnemyNr--;
+                    Destroy(gameObject);
+                }
+            }
+
+            if (patternMovement5)
+            {
+                Vector3 playerPos = player.transform.position;
+                pos = transform.position;
+
+                if (pos.x > playerPos.x - player.transform.localScale.x / 2 && pos.x < playerPos.x + player.transform.localScale.x / 2)
+                {
+
+                }
+                else if (pos.x < playerPos.x) pos = new Vector3(pos.x + 1 * moveSpeed * Time.deltaTime, pos.y, pos.z);
+                else if (pos.x > playerPos.x) pos = new Vector3(pos.x - 1 * moveSpeed * Time.deltaTime, pos.y, pos.z);
+
+                transform.position = pos;
+            }
+
+            if (patternMovement6)
+            {
+                if (pos.x <= -3f)
+                {
+
+                    t += 1 * Time.deltaTime;
+                    shootingTime = true;
+
+                    if (t > 3)
+                    {
+                        MoveRight();
+                        facingRight = true;
+                        shootingTime = false;
+                    }
+
                 }
 
-            }
-
-            else if (pos.x >= 4f)
-            {
-
-                t += 1 * Time.deltaTime;
-                shootingTime = true;
-
-                if (t > 3)
+                else if (pos.x >= 4f)
                 {
-                    MoveLeft();
-                    facingRight = false;
-                    shootingTime = false;                 
+
+                    t += 1 * Time.deltaTime;
+                    shootingTime = true;
+
+                    if (t > 3)
+                    {
+                        MoveLeft();
+                        facingRight = false;
+                        shootingTime = false;
+                    }
+
                 }
-
-            }
-            else
-            {
-                CheckWhereToFace();
-
-                if (facingRight)
-                    MoveRight();
                 else
-                    MoveLeft();
+                {
+                    CheckWhereToFace();
 
-                t = 0;
+                    if (facingRight)
+                        MoveRight();
+                    else
+                        MoveLeft();
+
+                    t = 0;
+                }
             }
+        }
+        else
+        {
+            pos -= transform.right * Time.deltaTime * 2;
+            transform.position = pos + transform.forward * Mathf.Sin(Time.time * 0) * 0;
+            GetComponentInChildren<EnemyWeapon>().enabled = false;
+            if (transform.position.z > 20) gameObject.SetActive(false);
         }
     }
-
-
-
 
     void CheckWhereToFace()
     {
@@ -216,7 +223,7 @@ public class SinusoidalMove : MonoBehaviour
 
     void MoveRight()
     {
-        if(movedDown)
+        if (movedDown)
         {
             pos += transform.forward * Time.deltaTime * moveSpeed;
             transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;
@@ -225,7 +232,7 @@ public class SinusoidalMove : MonoBehaviour
 
     void MoveLeft()
     {
-        if(movedDown)
+        if (movedDown)
         {
             pos -= transform.forward * Time.deltaTime * moveSpeed;
             transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * magnitude;
@@ -292,6 +299,8 @@ public class SinusoidalMove : MonoBehaviour
         }
     }
 
+
+
     void MoveDown()
     {
         if (!movedDown)
@@ -306,10 +315,9 @@ public class SinusoidalMove : MonoBehaviour
             {
                 movedDown = true;
             }
-            
+
         }
     }
-
 
 
 
