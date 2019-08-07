@@ -717,7 +717,7 @@ public class Manager : MonoBehaviour
     }
         
     //Set Wave Progression Feedback true 
-        void WaveFeedbackTrigger()
+    void WaveFeedbackTrigger()
     {
         showWaveProgress = true;
         waveProgress.transform.position = new Vector3(-3.28f, 1, 15);
@@ -725,7 +725,8 @@ public class Manager : MonoBehaviour
 
         if(waveProgressMessages.Length < 1)
         {
-            waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
+            if (waveNr == 69) waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: "+waveNr+" ( ͡° ͜ʖ ͡°)";
+            else waveProgress.GetComponentInChildren<TextMeshPro>().text = "Wave: " + waveNr;
         }
         else if (waveNr > 3)
         {
@@ -747,7 +748,7 @@ public class Manager : MonoBehaviour
     {
         if(showWaveProgress)
         {
-            if (waveProgress.transform.position.z > 4.36f)
+            if (waveProgress.transform.position.z > 4.2f)
             {
                 waveProgress.transform.position = new Vector3(waveProgress.transform.position.x, waveProgress.transform.position.y, waveProgress.transform.position.z - speed * Time.deltaTime);
             } 

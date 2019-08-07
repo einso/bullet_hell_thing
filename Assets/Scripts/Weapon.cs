@@ -140,7 +140,7 @@ public class Weapon : MonoBehaviour
         { playerShotSound.Play(); }
         if (Input.GetButtonUp("Fire"))
         { playerShotSound.Stop(); }
-
+        
     }
 
     //BaseShot

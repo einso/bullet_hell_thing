@@ -4,9 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject eve;
+    public GameObject g;
+    Transform unselectedTrans;
+
     [Header("Alle Menüs")]
     public GameObject gMainMenü;
     public GameObject gSettings;
@@ -57,11 +62,14 @@ public class MainMenu : MonoBehaviour
         resolutionDroptown.AddOptions(options);
         resolutionDroptown.value = currentResulutionIndex;
         resolutionDroptown.RefreshShownValue();
+
     }
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        eve.GetComponent<EventSystem>().SetSelectedGameObject(g);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gCredits.active == true)
             {
@@ -226,7 +234,20 @@ public class MainMenu : MonoBehaviour
         Screen.fullScreen = isFullScreen;
     }
 
+    //Select Button
+    public void SelectButton()
+    {
+        g = EventSystem.current.currentSelectedGameObject;
 
+        unselectedTrans = g.transform;
+
+        g.transform.localScale = unselectedTrans.localScale * 1.2f;
+    }
+
+    public void DeSelectButton()
+    {
+        g.transform.localScale = new Vector3(1, 1, 1);
+    }
 
     public void SetMasterVolume(float volume)
     {
