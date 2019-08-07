@@ -101,7 +101,7 @@ Transform:
   m_GameObject: {fileID: 3343968489603122115}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1, y: 1, z: 10.94}
-  m_LocalScale: {x: 0.054493498, y: 0.096165, z: 0.6411}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3343968490064549734}
   - {fileID: 3343968488592743451}
@@ -170,8 +170,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.193932, y: 5.9, z: 0.9596441}
-  m_Center: {x: 0.01801451, y: 0, z: 0.0017013962}
+  m_Size: {x: 0.83572453, y: 5.9, z: 0.9596441}
+  m_Center: {x: -0.2532283, y: 0, z: 0.0017013848}
 --- !u!1 &3343968490064549735
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3343968490064549734}
   - component: {fileID: 3343968490064549729}
+  - component: {fileID: 724662068}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -197,8 +198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3343968490064549735}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.15, z: 1}
+  m_LocalPosition: {x: -2e-15, y: 0, z: 0.000000014901}
+  m_LocalScale: {x: 0.296742, y: 0.296742, z: 0.49457}
   m_Children: []
   m_Father: {fileID: 3343968489603122127}
   m_RootOrder: 0
@@ -240,10 +241,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 3475b408eed5dc54f92feeddc3ae0013, type: 3}
-  m_Color: {r: 0.5283606, g: 0.9433962, b: 0.4672481, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_Sprite: {fileID: 21300000, guid: bf2170793be9b4544825c4d127285634, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 11.52, y: 6.48}
   m_AdaptiveModeThreshold: 0.5
@@ -251,3 +252,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &724662068
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3343968490064549735}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 077d087890d30b6498ae6a3ad929c454, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
